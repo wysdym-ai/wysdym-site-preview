@@ -1472,6 +1472,29 @@
     100% { opacity: 0; transform: translate(var(--x, 0), -140vh) rotate(var(--r, 360deg)) scale(1); }
   }
 
+  /* ===== FAQ accordion (origami · AEO/GEO) ===== */
+  .faq { position: relative; padding: 108px 0 128px; background: var(--near-black); overflow: hidden; }
+  .faq .container { position: relative; z-index: 2; max-width: 880px; }
+  .faq-head { text-align: center; margin-bottom: 50px; }
+  .faq-head .pill { margin-bottom: 20px; }
+  .faq h2 { font-size: clamp(30px, 4vw, 46px); }
+  .faq h2 .serif { color: var(--magenta-light); }
+  .faq-sub { margin-top: 14px; font-size: 16px; color: var(--warm-taupe); }
+  .faq-item { border-top: 1px solid rgba(186,98,150,0.16); }
+  .faq-item:last-child { border-bottom: 1px solid rgba(186,98,150,0.16); }
+  .faq-item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 25px 6px; font-size: clamp(16px, 2.1vw, 19px); font-weight: 600; color: var(--white); transition: color 0.2s ease; }
+  .faq-item > summary::-webkit-details-marker { display: none; }
+  .faq-item > summary:hover, .faq-item[open] > summary { color: var(--magenta-light); }
+  .faq-q { flex: 1; }
+  .faq-fold { flex: none; width: 22px; height: 22px; position: relative; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); }
+  .faq-fold::before { content: ''; position: absolute; left: 0; right: 0; top: 4px; height: 15px; background: linear-gradient(150deg, var(--magenta-light), var(--magenta-deep)); clip-path: polygon(0 0, 100% 0, 50% 100%); filter: drop-shadow(0 3px 5px rgba(186,98,150,0.4)); }
+  .faq-item[open] .faq-fold { transform: rotate(180deg); }
+  .faq-a { color: rgba(255,255,255,0.72); font-size: 16px; line-height: 1.72; max-width: 70ch; padding: 0 34px 30px 38px; }
+  .faq-a strong { color: var(--white); font-weight: 600; }
+  .faq-item[open] .faq-a { animation: faqUnfold 0.5s cubic-bezier(0.16,1,0.3,1); }
+  @keyframes faqUnfold { from { opacity: 0; transform: translateY(-7px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 620px) { .faq-a { padding: 0 4px 26px 38px; } }
+
   /* ===== Mobile nav (hamburger) ===== */
   .nav-toggle {
     display: none; flex-direction: column; justify-content: center; gap: 5px;
@@ -1917,6 +1940,63 @@
     </div>
   </div>
 </div>
+
+<!-- ==================== FAQ ==================== -->
+<section class="faq" id="faq">
+  <div class="crease-bg"></div>
+  <div class="container">
+    <div class="faq-head">
+      <span class="pill">FAQ</span>
+      <h2>Frequently asked <span class="serif">questions.</span></h2>
+      <p class="faq-sub">The harness, unfolded — the questions we hear most about running every GTM agent on wysdym.</p>
+    </div>
+
+    <details class="faq-item" name="home-faq" open>
+      <summary><span class="faq-q">What is wysdym?</span><span class="faq-fold" aria-hidden="true"></span></summary>
+      <div class="faq-a">Wysdym is the platform every go-to-market (GTM) AI agent runs on — the harness beneath the agents, not another agent. It gives every agent shared memory, a skills library, connected integrations, governance, and an outcome feedback loop, so each one inherits the same grounding, acts on your terms, and compounds instead of drifting.</div>
+    </details>
+
+    <details class="faq-item" name="home-faq">
+      <summary><span class="faq-q">What is "the harness" in go-to-market?</span><span class="faq-fold" aria-hidden="true"></span></summary>
+      <div class="faq-a">The harness is the infrastructure layer that sits underneath AI agents — shared memory, skills, integrations, governance, and a feedback loop. Most GTM teams already run several agents in parallel; the harness is what lets those agents share context and get smarter together instead of operating in isolated silos.</div>
+    </details>
+
+    <details class="faq-item" name="home-faq">
+      <summary><span class="faq-q">How is wysdym different from an AI agent or a sales copilot?</span><span class="faq-fold" aria-hidden="true"></span></summary>
+      <div class="faq-a">Agents and copilots do tasks; wysdym is the layer they run on. Rather than adding one more agent, wysdym makes the agents you already use better — grounding them in your knowledge, governing what they can do, and learning from every outcome. It's a substrate, not a competitor: as foundation models improve, wysdym gets more useful, not less.</div>
+    </details>
+
+    <details class="faq-item" name="home-faq">
+      <summary><span class="faq-q">Does wysdym replace the AI agents we already use?</span><span class="faq-fold" aria-hidden="true"></span></summary>
+      <div class="faq-a">No. Wysdym is agent- and CRM-agnostic — it's the layer your existing and future agents plug into over MCP (the Model Context Protocol). It ships with Operator, a working reference agent, but you keep whatever agents you prefer; wysdym simply gives them shared memory, common guardrails, and a way to compound.</div>
+    </details>
+
+    <details class="faq-item" name="home-faq">
+      <summary><span class="faq-q">Why do GTM teams need a harness for their AI agents?</span><span class="faq-fold" aria-hidden="true"></span></summary>
+      <div class="faq-a">Because isolated agents don't compound — and what doesn't compound doesn't grow revenue. Each agent keeps its own memory, wires up the same integrations separately, and runs with no shared governance or feedback. Gartner projects that 40% of agentic AI projects will be cancelled by the end of 2027, largely over cost and governance — a shared harness is built to close exactly those gaps.</div>
+    </details>
+
+    <details class="faq-item" name="home-faq">
+      <summary><span class="faq-q">Is wysdym available today?</span><span class="faq-fold" aria-hidden="true"></span></summary>
+      <div class="faq-a">Wysdym is in its design-partner phase. Operator and the wysdymGraph knowledge graph are already live, along with key GTM integrations, and we're onboarding design partners now. The full platform rolls out through 2026 — join the waitlist or apply to the design-partner program for early access.</div>
+    </details>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is wysdym?","acceptedAnswer":{"@type":"Answer","text":"Wysdym is the platform every go-to-market (GTM) AI agent runs on — the harness beneath the agents, not another agent. It gives every agent shared memory, a skills library, connected integrations, governance, and an outcome feedback loop, so each one inherits the same grounding, acts on your terms, and compounds instead of drifting."}},
+    {"@type":"Question","name":"What is \"the harness\" in go-to-market?","acceptedAnswer":{"@type":"Answer","text":"The harness is the infrastructure layer that sits underneath AI agents — shared memory, skills, integrations, governance, and a feedback loop. Most GTM teams already run several agents in parallel; the harness is what lets those agents share context and get smarter together instead of operating in isolated silos."}},
+    {"@type":"Question","name":"How is wysdym different from an AI agent or a sales copilot?","acceptedAnswer":{"@type":"Answer","text":"Agents and copilots do tasks; wysdym is the layer they run on. Rather than adding one more agent, wysdym makes the agents you already use better — grounding them in your knowledge, governing what they can do, and learning from every outcome. It's a substrate, not a competitor: as foundation models improve, wysdym gets more useful, not less."}},
+    {"@type":"Question","name":"Does wysdym replace the AI agents we already use?","acceptedAnswer":{"@type":"Answer","text":"No. Wysdym is agent- and CRM-agnostic — it's the layer your existing and future agents plug into over MCP (the Model Context Protocol). It ships with Operator, a working reference agent, but you keep whatever agents you prefer; wysdym simply gives them shared memory, common guardrails, and a way to compound."}},
+    {"@type":"Question","name":"Why do GTM teams need a harness for their AI agents?","acceptedAnswer":{"@type":"Answer","text":"Because isolated agents don't compound — and what doesn't compound doesn't grow revenue. Each agent keeps its own memory, wires up the same integrations separately, and runs with no shared governance or feedback. Gartner projects that 40% of agentic AI projects will be cancelled by the end of 2027, largely over cost and governance — a shared harness is built to close exactly those gaps."}},
+    {"@type":"Question","name":"Is wysdym available today?","acceptedAnswer":{"@type":"Answer","text":"Wysdym is in its design-partner phase. Operator and the wysdymGraph knowledge graph are already live, along with key GTM integrations, and we're onboarding design partners now. The full platform rolls out through 2026 — join the waitlist or apply to the design-partner program for early access."}}
+  ]
+}
+</script>
 
 <!-- ==================== FOOTER ==================== -->
 <footer>

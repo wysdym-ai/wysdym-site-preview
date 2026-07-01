@@ -192,6 +192,29 @@
   .lb-close { position: absolute; top: 24px; right: 30px; font-size: 30px; color: rgba(255,255,255,0.7); cursor: pointer; line-height: 1; background: none; border: none; }
   .lb-close:hover { color: #fff; }
 
+  /* ===== FAQ accordion (origami · AEO/GEO) ===== */
+  .faq { position: relative; padding: 108px 0 128px; background: var(--near-black); overflow: hidden; }
+  .faq .container { position: relative; z-index: 2; max-width: 880px; }
+  .faq-head { text-align: center; margin-bottom: 50px; }
+  .faq-head .pill { margin-bottom: 20px; }
+  .faq h2 { font-size: clamp(30px, 4vw, 46px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+  .faq h2 .serif { color: var(--magenta-light); }
+  .faq-sub { margin-top: 14px; font-size: 16px; color: var(--warm-taupe); }
+  .faq-item { border-top: 1px solid rgba(186,98,150,0.16); }
+  .faq-item:last-child { border-bottom: 1px solid rgba(186,98,150,0.16); }
+  .faq-item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 25px 6px; font-size: clamp(16px, 2.1vw, 19px); font-weight: 600; color: var(--white); transition: color 0.2s ease; }
+  .faq-item > summary::-webkit-details-marker { display: none; }
+  .faq-item > summary:hover, .faq-item[open] > summary { color: var(--magenta-light); }
+  .faq-q { flex: 1; }
+  .faq-fold { flex: none; width: 22px; height: 22px; position: relative; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); }
+  .faq-fold::before { content: ''; position: absolute; left: 0; right: 0; top: 4px; height: 15px; background: linear-gradient(150deg, var(--magenta-light), var(--magenta-deep)); clip-path: polygon(0 0, 100% 0, 50% 100%); filter: drop-shadow(0 3px 5px rgba(186,98,150,0.4)); }
+  .faq-item[open] .faq-fold { transform: rotate(180deg); }
+  .faq-a { color: rgba(255,255,255,0.72); font-size: 16px; line-height: 1.72; max-width: 70ch; padding: 0 34px 30px 38px; }
+  .faq-a strong { color: var(--white); font-weight: 600; }
+  .faq-item[open] .faq-a { animation: faqUnfold 0.5s cubic-bezier(0.16,1,0.3,1); }
+  @keyframes faqUnfold { from { opacity: 0; transform: translateY(-7px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 620px) { .faq-a { padding: 0 4px 26px 38px; } }
+
   /* ===== Mobile nav (hamburger) ===== */
   .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 40px; padding: 9px; background: none; border: none; cursor: pointer; }
   .nav-toggle span { display: block; height: 2px; width: 24px; background: var(--warm-taupe); border-radius: 2px; transition: transform .3s ease, opacity .2s ease; }
@@ -438,6 +461,63 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 </section>
+
+<!-- ==================== FAQ ==================== -->
+<section class="faq" id="faq">
+  <div class="crease-bg"></div>
+  <div class="container">
+    <div class="faq-head">
+      <span class="pill">Platform FAQ</span>
+      <h2>Frequently asked <span class="serif">questions.</span></h2>
+      <p class="faq-sub">How the five components — and Operator — actually work.</p>
+    </div>
+
+    <details class="faq-item" name="platform-faq" open>
+      <summary><span class="faq-q">What are the five components of the wysdym platform?</span><span class="faq-fold" aria-hidden="true"></span></summary>
+      <div class="faq-a"><strong>wysdymGraph</strong> is a per-tenant typed knowledge graph of your GTM domains. <strong>wysdymSkills</strong> is an open library of GTM skills any agent can call. <strong>wysdymConnect</strong> wires your full stack — Salesforce, HubSpot, Gong, Slack, Drive, Notion — once, instead of into every agent. <strong>wysdymGateway</strong> is one governed door with per-agent permissions and human-in-the-loop approvals. <strong>wysdymObserve</strong> attributes outcomes to deal stages and flags drift. Operator, a working reference agent, ships on top.</div>
+    </details>
+
+    <details class="faq-item" name="platform-faq">
+      <summary><span class="faq-q">Does wysdym work with Salesforce and HubSpot?</span><span class="faq-fold" aria-hidden="true"></span></summary>
+      <div class="faq-a">Yes. Wysdym is CRM-agnostic with no lock-in — run Salesforce or HubSpot (and switch between them) alongside Gong, Slack, Google Drive, and Notion. Your stack is connected once at the platform layer, so you're not re-wiring the same integrations into every agent.</div>
+    </details>
+
+    <details class="faq-item" name="platform-faq">
+      <summary><span class="faq-q">How does wysdym keep our data secure and governed?</span><span class="faq-fold" aria-hidden="true"></span></summary>
+      <div class="faq-a">Every agent goes through one governed door. Access is read-only by default; writes stay off until you enable them, and then they're approval-gated. You set per-agent permissions, keep a human in the loop on sensitive actions, and get a full audit trail of who did what, when, and with what access.</div>
+    </details>
+
+    <details class="faq-item" name="platform-faq">
+      <summary><span class="faq-q">How do AI agents connect to wysdym?</span><span class="faq-fold" aria-hidden="true"></span></summary>
+      <div class="faq-a">Agents connect over MCP, the Model Context Protocol. Any MCP-compatible agent can read from your knowledge graph, call your skills, and act through the governed gateway — so you keep your choice of agent instead of being locked into one vendor's.</div>
+    </details>
+
+    <details class="faq-item" name="platform-faq">
+      <summary><span class="faq-q">Does wysdym lower our total AI spend?</span><span class="faq-fold" aria-hidden="true"></span></summary>
+      <div class="faq-a">It's designed to. Because integrations and grounding are shared at the platform layer, your agents don't each pay to retrieve the same context over and over. One governed source of memory and connection means far less duplicated inference across your agent stack.</div>
+    </details>
+
+    <details class="faq-item" name="platform-faq">
+      <summary><span class="faq-q">What is Operator?</span><span class="faq-fold" aria-hidden="true"></span></summary>
+      <div class="faq-a">Operator is the working reference agent that ships with wysdym — your agent on day one. It runs on the wysdymGraph, calls your skills, and connects through the gateway, so it's useful immediately for things like account briefs, pipeline questions, and competitive answers — and every action it takes is governed and observable.</div>
+    </details>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What are the five components of the wysdym platform?","acceptedAnswer":{"@type":"Answer","text":"wysdymGraph is a per-tenant typed knowledge graph of your GTM domains. wysdymSkills is an open library of GTM skills any agent can call. wysdymConnect wires your full stack — Salesforce, HubSpot, Gong, Slack, Drive, Notion — once, instead of into every agent. wysdymGateway is one governed door with per-agent permissions and human-in-the-loop approvals. wysdymObserve attributes outcomes to deal stages and flags drift. Operator, a working reference agent, ships on top."}},
+    {"@type":"Question","name":"Does wysdym work with Salesforce and HubSpot?","acceptedAnswer":{"@type":"Answer","text":"Yes. Wysdym is CRM-agnostic with no lock-in — run Salesforce or HubSpot (and switch between them) alongside Gong, Slack, Google Drive, and Notion. Your stack is connected once at the platform layer, so you're not re-wiring the same integrations into every agent."}},
+    {"@type":"Question","name":"How does wysdym keep our data secure and governed?","acceptedAnswer":{"@type":"Answer","text":"Every agent goes through one governed door. Access is read-only by default; writes stay off until you enable them, and then they're approval-gated. You set per-agent permissions, keep a human in the loop on sensitive actions, and get a full audit trail of who did what, when, and with what access."}},
+    {"@type":"Question","name":"How do AI agents connect to wysdym?","acceptedAnswer":{"@type":"Answer","text":"Agents connect over MCP, the Model Context Protocol. Any MCP-compatible agent can read from your knowledge graph, call your skills, and act through the governed gateway — so you keep your choice of agent instead of being locked into one vendor's."}},
+    {"@type":"Question","name":"Does wysdym lower our total AI spend?","acceptedAnswer":{"@type":"Answer","text":"It's designed to. Because integrations and grounding are shared at the platform layer, your agents don't each pay to retrieve the same context over and over. One governed source of memory and connection means far less duplicated inference across your agent stack."}},
+    {"@type":"Question","name":"What is Operator?","acceptedAnswer":{"@type":"Answer","text":"Operator is the working reference agent that ships with wysdym — your agent on day one. It runs on the wysdymGraph, calls your skills, and connects through the gateway, so it's useful immediately for things like account briefs, pipeline questions, and competitive answers — and every action it takes is governed and observable."}}
+  ]
+}
+</script>
 
 <!-- ==================== FOOTER ==================== -->
 <footer>
