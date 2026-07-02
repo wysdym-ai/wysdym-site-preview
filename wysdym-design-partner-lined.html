@@ -142,6 +142,15 @@
   .res:hover .res-menu{display:flex;}
   .res-menu a{padding:7px 10px;border-radius:3px;font-size:13px;}
   .res-menu a:hover{background:rgba(186,98,150,.12);}
+  /* v2.1: bigger logo + handwritten nav */
+  .logo img.logo-crane{width:60px;height:60px;object-fit:contain;}
+  .logo img.logo-word{width:auto;height:34px;}
+  nav.links a{font-family:'Caveat',cursive;font-size:21px;font-weight:600;letter-spacing:.01em;}
+  .res-menu a{font-size:18px;}
+  nav.links a.apply-btn{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;}
+  .pill-apply{font-family:'Caveat',cursive;font-size:28px;color:var(--ink);display:inline-block;transform:rotate(-1.2deg);margin-bottom:14px;}
+  .hl-pink{background:linear-gradient(100deg, rgba(255,133,192,0) 0%, rgba(255,133,192,.55) 4%, rgba(255,133,192,.55) 96%, rgba(255,133,192,0) 100%);
+    padding:2px 14px;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
 </style>
 </head>
 <body>
@@ -167,14 +176,13 @@
 <!-- HERO -->
 <section>
   <div class="wrap">
-    <div class="pill">Design Partner Program · 10 spots</div>
-    <h1>We're choosing 10 teams<br>to <span class="underline-hand">build the harness</span> with.</h1>
-    <p class="lead">wysdym is the platform every GTM agent runs on. Before we open to everyone, we're partnering with ten go-to-market teams to shape it. Founder-led, hands-on, and free for the first 90 days.</p>
+    <div class="pill-apply"><span class="hl-pink">Apply to use wysdym</span></div>
+    <h1>Demand is ahead of us.<br>We onboard <span class="underline-hand">selectively.</span></h1>
+    <p class="lead">wysdym is live — and interest has run well ahead of what we can onboard. Rather than open the doors, we bring on a small cohort of customers at a time and onboard each one properly: founder-led, hands-on, built around your stack.</p>
     <div class="hero-cta">
-      <a href="#apply" class="btn-hand primary">Apply to be a design partner →</a>
+      <a href="#apply" class="btn-hand primary">Apply for access →</a>
       <a href="wysdym-platform-lined-v2.html" class="btn-hand ghost">See the platform</a>
     </div>
-    <div class="roadmap-note">Operator and wysdymGraph are live today. Pilots begin at platform launch — <b>[ROADMAP] Q3 2026.</b></div>
   </div>
 </section>
 
@@ -184,13 +192,13 @@
 <section>
   <div class="wrap fold">
     <div class="eyebrow">a straight trade</div>
-    <h2>You get a platform being built around you.<br>We get ten teams who <span class="underline-hand">make it real.</span></h2>
+    <h2>You get a platform being built around you.<br>We get customers who <span class="underline-hand">make it real.</span></h2>
     <p class="body" style="margin-top:14px;">No fine print games. Here's exactly what each side puts on the table.</p>
     <div class="two-pads">
       <div class="pad get">
         <div class="pad-title">What you get</div>
         <ul class="check-list">
-          <li>A free 90-day pilot from platform launch — no cost, no card.</li>
+          <li>Your first 90 days free — no cost, no card.</li>
           <li>Founder-led implementation. Rob and the team in the room, on your stack, not a support queue.</li>
           <li>A real say in the roadmap. Your GTM priorities shape what we build next.</li>
           <li>Locked pricing, grandfathered 24 months when the pilot converts.</li>
@@ -230,32 +238,11 @@
 
 <div class="crease"></div>
 
-<!-- WHY NOW -->
-<section>
-  <div class="wrap fold">
-    <div class="eyebrow">why partner now</div>
-    <h2>The layer beneath the agents is <span class="underline-hand">unbuilt.</span><br>We're building it in the open, with you.</h2>
-    <p class="body" style="margin-top:16px;">Every vendor will sell you another agent. None of them make your other agents smarter, act on your terms, or tell you which ones are working. That layer — shared memory, skills, governed connections, an outcome feedback loop — is the harness. Get in now and it gets built around your stack.</p>
-    <div class="stat-callout">
-      <div class="big">40%</div>
-      <div class="txt">of agentic AI projects will be cancelled by 2027, largely on cost and governance. <em>Gartner, 2025.</em> A shared harness is built to close exactly those gaps.</div>
-    </div>
-    <div class="proof-notes">
-      <div class="proof"><b>Live today</b><span>Operator + wysdymGraph, on real GTM integrations.</span></div>
-      <div class="proof"><b>Grounded in the field</b><span>Built on 25+ interviews with GTM leaders.</span></div>
-      <div class="proof"><b>Founding team</b><span>From the people behind Achievers and WorkTango.</span></div>
-      <div class="proof"><b>Governed by default</b><span>Read-only, write-approval queues, human-in-the-loop, full audit.</span></div>
-    </div>
-  </div>
-</section>
-
-<div class="crease"></div>
-
 <!-- APPLY -->
 <section id="apply">
   <div class="wrap fold">
-    <div class="eyebrow">apply · 10 spots</div>
-    <h2>Apply to be a <span class="underline-hand">design partner.</span></h2>
+    <div class="eyebrow">apply for access</div>
+    <h2>Apply for <span class="underline-hand">access.</span></h2>
     <p class="body" style="margin-top:14px;">Two minutes. We read every one. Founder replies within a week.</p>
 
     <div class="form-paper">
@@ -273,7 +260,7 @@
         <textarea placeholder="e.g. lift qualified pipeline from the mid-market segment…"></textarea></div>
       <button class="apply-big" id="applyBtn">Apply to join →</button>
       <div class="apply-ok" id="applyOk">✓ Application received — thanks. We read every one; a founder will be in touch within a week.</div>
-      <p class="body" style="margin-top:16px;font-size:15px;">We're selecting ten. We'll be honest if it isn't a fit yet — and keep you close for when it is.</p>
+      <p class="body" style="margin-top:16px;font-size:15px;">We onboard in small cohorts — demand queues, quality first. We'll be honest if it isn't a fit yet, and keep you close for when it is.</p>
       <p class="apply-fine">Prefer email? Reach us directly at <a href="mailto:rob@wysdym.ai">rob@wysdym.ai</a>.</p>
     </div>
   </div>
@@ -285,14 +272,13 @@
 <section>
   <div class="wrap fold">
     <div class="eyebrow">the details</div>
-    <h2>Design partner <span class="underline-hand">questions.</span></h2>
+    <h2>Common <span class="underline-hand">questions.</span></h2>
     <div class="faq" id="faq">
-      <div class="faq-item"><div class="faq-q">What does it cost? <span class="tw">+</span></div><div class="faq-a">Nothing for the 90-day pilot. If it works and you convert, you keep design-partner pricing locked for 24 months. Nothing is charged without a countersigned order form.</div></div>
-      <div class="faq-item"><div class="faq-q">When does the pilot start? <span class="tw">+</span></div><div class="faq-a">Pilots begin at platform launch — [ROADMAP] targeted Q3 2026. Operator and wysdymGraph are live now, so partners get hands-on early, not on a waitlist.</div></div>
-      <div class="faq-item"><div class="faq-q">How much of my time is this? <span class="tw">+</span></div><div class="faq-a">A weekly 30-minute working session during the pilot, plus whoever needs to be in the room for your one use case. Founder-led on our side — you're not handed to a CSM.</div></div>
+      <div class="faq-item"><div class="faq-q">What does it cost? <span class="tw">+</span></div><div class="faq-a">Your first 90 days are free. If it works and you convert, you keep your early-customer pricing locked for 24 months. Nothing is charged without a countersigned order form.</div></div>
+      <div class="faq-item"><div class="faq-q">How much of my time is this? <span class="tw">+</span></div><div class="faq-a">A weekly 30-minute working session during onboarding, plus whoever needs to be in the room for your one use case. Founder-led on our side — you're not handed to a CSM.</div></div>
       <div class="faq-item"><div class="faq-q">Do I have to replace my current agents? <span class="tw">+</span></div><div class="faq-a">No. wysdym is agent- and CRM-agnostic — it's the layer your existing agents plug into over MCP. Keep what you use; we make it compound.</div></div>
       <div class="faq-item"><div class="faq-q">Is my data safe? <span class="tw">+</span></div><div class="faq-a">Read-only by default, per-agent permissions, write-approval queues, human-in-the-loop, and a full audit trail. Governed before it's clever.</div></div>
-      <div class="faq-item"><div class="faq-q">Do I have to do co-marketing? <span class="tw">+</span></div><div class="faq-a">Only if you want to. Some partners go public with us, some stay quiet. Both are fine.</div></div>
+      <div class="faq-item"><div class="faq-q">Do I have to do co-marketing? <span class="tw">+</span></div><div class="faq-a">Only if you want to. Some customers go public with us, some stay quiet. Both are fine.</div></div>
     </div>
   </div>
 </section>

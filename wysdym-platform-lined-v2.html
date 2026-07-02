@@ -50,7 +50,7 @@
   .fold.in{opacity:1;transform:perspective(900px) rotateX(0deg);}
 
   /* read run write learn — papers unfolding */
-  .flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:30px;perspective:800px;cursor:pointer;}
+  .flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:30px;perspective:800px;}
   .flow .step{font-family:'Caveat',cursive;font-size:27px;color:var(--magenta-deep);background:linear-gradient(180deg,#fff,#f8eef5);
     border:2px solid var(--ink);border-radius:3px;padding:5px 20px;box-shadow:3px 3px 0 rgba(58,63,85,.18);
     transform-origin:top center;transform:perspective(700px) rotateX(-92deg);opacity:0;}
@@ -68,7 +68,7 @@
   .comp::after{content:'';position:absolute;top:0;right:0;border-width:0 26px 26px 0;border-style:solid;border-color:transparent var(--paper) transparent transparent;filter:drop-shadow(-2px 2px 1px rgba(0,0,0,.12));}
   .comp-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:4px;}
   .comp-num{font-family:'Caveat',cursive;font-size:34px;color:var(--magenta-deep);line-height:1;}
-  .comp-cat{font-family:'Caveat',cursive;font-size:20px;color:var(--red-pen);}
+  .comp-cat{font-family:'Caveat',cursive;font-size:24px;color:var(--red-pen);}
   .comp-name{font-size:clamp(26px,3.4vw,38px);font-weight:800;letter-spacing:-.02em;margin-left:auto;color:var(--ink);}
   .comp-sub{font-size:21px;font-weight:700;margin:8px 0 8px;letter-spacing:-.01em;}
   .comp-desc{font-size:15.5px;color:var(--pencil);max-width:720px;}
@@ -108,8 +108,13 @@
     max-width:min(940px,94vw);position:relative;transform:rotate(-.5deg);}
   .lb-card img{display:block;max-width:100%;max-height:76vh;background:#1a1833;}
   .lb-cap{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:'Caveat',cursive;font-size:21px;color:var(--pencil);}
-  .lb-x{position:absolute;top:-16px;right:-16px;width:38px;height:38px;border-radius:50%;border:2px solid var(--ink);
-    background:var(--red-pen);color:#fff;font-weight:800;font-size:17px;cursor:pointer;box-shadow:2px 3px 0 var(--ink);}
+  .lb-x{position:absolute;top:-17px;left:50%;transform:translateX(-50%);width:36px;height:36px;border-radius:50%;border:none;
+    cursor:pointer;font-size:0;z-index:5;
+    background:radial-gradient(circle at 32% 28%, #ffb3c6, var(--red-pen) 52%, #8d2b1c 95%);
+    box-shadow:0 5px 9px rgba(0,0,0,.35), inset 0 -3px 5px rgba(0,0,0,.28), inset 0 2px 3px rgba(255,255,255,.5);}
+  .lb-x::after{content:'';position:absolute;left:50%;top:96%;width:4px;height:13px;transform:translateX(-50%);
+    background:linear-gradient(180deg,#b9bec4,#6a6f75);clip-path:polygon(0 0,100% 0,50% 100%);}
+  .lb-x:hover{filter:brightness(1.08);}
 
   /* cta */
   .cta-note{margin-top:12px;max-width:640px;background:var(--paper-2);border:2px solid var(--ink);border-radius:4px;padding:28px 28px 24px;box-shadow:6px 8px 0 rgba(58,63,85,.2);}
@@ -145,6 +150,12 @@
   .res:hover .res-menu{display:flex;}
   .res-menu a{padding:7px 10px;border-radius:3px;font-size:13px;}
   .res-menu a:hover{background:rgba(186,98,150,.12);}
+  /* v2.1: bigger logo + handwritten nav */
+  .logo img.logo-crane{width:60px;height:60px;object-fit:contain;}
+  .logo img.logo-word{width:auto;height:34px;}
+  nav.links a{font-family:'Caveat',cursive;font-size:21px;font-weight:600;letter-spacing:.01em;}
+  .res-menu a{font-size:18px;}
+  nav.links a.apply-btn{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;}
 </style>
 </head>
 <body>
@@ -173,13 +184,13 @@
     <div class="eyebrow">the platform ↓</div>
     <h1>Five components. One platform.<br><span class="underline-hand">Everything every agent needs to actually work.</span></h1>
     <p class="lead">wysdym is the platform every GTM agent runs on — the layer underneath, not another agent vendor. Shared memory, skills, integrations, governance, and an outcome loop, so every agent compounds into a revenue advantage.</p>
-    <div class="flow" id="flow" title="click to unfold again">
+    <div class="flow" id="flow">
       <span class="step" style="--d:.1s;">Read</span><span class="arw" style="--d:.55s;">→</span>
       <span class="step" style="--d:.6s;">Run</span><span class="arw" style="--d:1.05s;">→</span>
       <span class="step" style="--d:1.1s;">Write</span><span class="arw" style="--d:1.55s;">→</span>
       <span class="step" style="--d:1.6s;">Learn</span>
     </div>
-    <div class="flow-hint">↑ one sheet, unfolding — click to fold it again</div>
+    <div class="flow-hint">↑ one sheet, unfolding — on a loop</div>
   </div>
 </section>
 
@@ -223,7 +234,7 @@
   <div class="cr">© 2026 wysdym, Inc.</div>
 </footer>
 
-<div class="lb" id="lb" aria-hidden="true"><div class="lb-card"><button class="lb-x" id="lbX" aria-label="Close">✕</button><img id="lbImg" src="" alt=""><div class="lb-cap" id="lbCap"></div></div></div>
+<div class="lb" id="lb" aria-hidden="true"><div class="lb-card"><button class="lb-x" id="lbX" aria-label="Unpin to close" title="unpin to close">✕</button><img id="lbImg" src="" alt=""><div class="lb-cap" id="lbCap"></div></div></div>
 
 <div class="pocnote">Direction E v2 · Lined Paper · Platform</div>
 
@@ -287,7 +298,7 @@ function wireLightbox(){
   const lb=document.getElementById('lb'), img=document.getElementById('lbImg'), cap=document.getElementById('lbCap');
   const close=()=>{lb.classList.remove('show');img.src='';};
   document.querySelectorAll('.print').forEach(p=>{
-    const open=()=>{img.src=p.dataset.full;cap.textContent=p.dataset.cap;lb.classList.add('show');};
+    const open=()=>{img.src=p.dataset.full;cap.textContent=p.dataset.cap+' · unpin to close';lb.classList.add('show');};
     p.addEventListener('click',open);
     p.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
   });
@@ -295,8 +306,9 @@ function wireLightbox(){
   lb.addEventListener('click',e=>{if(e.target===lb)close();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
   const flow=document.getElementById('flow');
-  setTimeout(()=>flow.classList.add('play'),350);
-  flow.addEventListener('click',()=>{flow.classList.remove('play');void flow.offsetWidth;flow.classList.add('play');});
+  function playFlow(){flow.classList.remove('play');void flow.offsetWidth;flow.classList.add('play');}
+  setTimeout(playFlow,350);
+  setInterval(playFlow,6200);
 }
 COMPONENTS.forEach((c,i)=>{
   const el=document.createElement('div');
