@@ -166,6 +166,9 @@
     border-left:1px dashed rgba(0,0,0,.08);border-right:1px dashed rgba(0,0,0,.08);box-shadow:0 1px 3px rgba(0,0,0,.22);}
   .tape-btn .t1{top:-12px;left:-22px;transform:rotate(-38deg);}
   .tape-btn .t2{top:-12px;right:-22px;transform:rotate(38deg);}
+  .pnl .fold-arrow{position:absolute;left:-19px;top:50%;width:36px;height:23px;z-index:3;pointer-events:none;
+    color:var(--magenta-deep);transform:translateY(-50%) rotate(var(--ar,-3deg));
+    filter:drop-shadow(0 1px 0 rgba(255,255,255,.7));}
 </style>
 </head>
 <body>
@@ -197,9 +200,9 @@
       <p class="lead">wysdym is the platform every GTM agent runs on — the layer underneath, not another agent vendor. Live screens mounted below; click any print to look closer.</p>
       <div class="acc" id="flow" aria-label="Read, run, write, learn — one sheet unfolding">
       <div class="pnl l1"><span>Read</span>
-        <div class="pnl l2"><span>Run</span>
-          <div class="pnl l3"><span>Write</span>
-            <div class="pnl l4"><span>Learn</span></div>
+        <div class="pnl l2"><svg class="fold-arrow" style="--ar:-3deg" viewBox="0 0 40 24" aria-hidden="true"><path d="M2 13 C10 8.5, 21 8.5, 29 12.5 M23.5 6 L30.5 12.5 L22.5 17.5" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Run</span>
+          <div class="pnl l3"><svg class="fold-arrow" style="--ar:2deg" viewBox="0 0 40 24" aria-hidden="true"><path d="M2 13 C10 8.5, 21 8.5, 29 12.5 M23.5 6 L30.5 12.5 L22.5 17.5" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Write</span>
+            <div class="pnl l4"><svg class="fold-arrow" style="--ar:-2deg" viewBox="0 0 40 24" aria-hidden="true"><path d="M2 13 C10 8.5, 21 8.5, 29 12.5 M23.5 6 L30.5 12.5 L22.5 17.5" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Learn</span></div>
           </div>
         </div>
       </div>

@@ -169,6 +169,9 @@
     border:2.5px solid #b5453a;border-bottom:none;border-radius:7px 7px 5px 5px;}
   nav.links a.apply-btn::after{content:'';position:absolute;top:-4px;left:14.5px;width:4px;height:16px;
     border:2px solid #b5453a;border-bottom:none;border-radius:3px 3px 0 0;}
+  .pnl .fold-arrow{position:absolute;left:-19px;top:50%;width:36px;height:23px;z-index:3;pointer-events:none;
+    color:var(--magenta-deep);transform:translateY(-50%) rotate(var(--ar,-3deg));
+    filter:drop-shadow(0 1px 0 rgba(255,255,255,.7));}
 </style>
 </head>
 <body>
@@ -199,9 +202,9 @@
     <p class="lead">wysdym is the platform every GTM agent runs on — the layer underneath, not another agent vendor. Shared memory, skills, integrations, governance, and an outcome loop, so every agent compounds into a revenue advantage.</p>
     <div class="acc" id="flow" aria-label="Read, run, write, learn — one sheet unfolding">
       <div class="pnl l1"><span>Read</span>
-        <div class="pnl l2"><span>Run</span>
-          <div class="pnl l3"><span>Write</span>
-            <div class="pnl l4"><span>Learn</span></div>
+        <div class="pnl l2"><svg class="fold-arrow" style="--ar:-3deg" viewBox="0 0 40 24" aria-hidden="true"><path d="M2 13 C10 8.5, 21 8.5, 29 12.5 M23.5 6 L30.5 12.5 L22.5 17.5" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Run</span>
+          <div class="pnl l3"><svg class="fold-arrow" style="--ar:2deg" viewBox="0 0 40 24" aria-hidden="true"><path d="M2 13 C10 8.5, 21 8.5, 29 12.5 M23.5 6 L30.5 12.5 L22.5 17.5" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Write</span>
+            <div class="pnl l4"><svg class="fold-arrow" style="--ar:-2deg" viewBox="0 0 40 24" aria-hidden="true"><path d="M2 13 C10 8.5, 21 8.5, 29 12.5 M23.5 6 L30.5 12.5 L22.5 17.5" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Learn</span></div>
           </div>
         </div>
       </div>
