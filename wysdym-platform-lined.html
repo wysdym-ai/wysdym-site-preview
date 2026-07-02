@@ -4,27 +4,28 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>wysdym — The Platform (paper concept)</title>
+<title>wysdym — Lined Paper concept · Platform</title>
 <meta name="description" content="Five components. One platform. Everything every agent needs to actually work. The paper/origami reimagining of the Platform page.">
 <link rel="icon" type="image/png" href="origami-magenta-wysdym-FAVICON.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Caveat:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  :root{--magenta:#BA6296;--magenta-deep:#8d4874;--ink:#1f2233;--pencil:#3a3f55;--paper:#f6f0e2;--paper-2:#efe7d4;
+  :root{--magenta:#BA6296;--magenta-deep:#8d4874;--ink:#1f2233;--pencil:#3a3f55;--paper:#fdfcf8;--paper-2:#f5f3ea;
     --grid:#b9c7d6;--grid-strong:#9fb3c8;--red-pen:#d2553f;--green:#5a8f63;--gold:#c9992e;--gold-l:#e8c766;--gold-bg:#fbedc4;}
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--paper);
-    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),
-      linear-gradient(var(--grid-strong) 1.5px,transparent 1.5px),linear-gradient(90deg,var(--grid-strong) 1.5px,transparent 1.5px);
-    background-size:28px 28px,28px 28px,140px 140px,140px 140px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+    background-image:
+      radial-gradient(ellipse 120% 60% at 50% -10%, rgba(60,50,30,.05), transparent 60%),
+      repeating-linear-gradient(180deg, transparent 0 31px, rgba(126,162,204,.42) 31px 32px);
+    background-size:100% 100%,100% 32px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   .hand{font-family:'Caveat',cursive;} .serif{font-family:'Instrument Serif',serif;font-style:italic;}
   .wrap{max-width:1040px;margin:0 auto;padding:0 32px;}
-  body::before{content:'';position:fixed;top:0;left:84px;width:2px;height:100%;background:rgba(210,85,63,.35);pointer-events:none;z-index:0;}
+  body::before{content:'';position:fixed;top:0;left:96px;width:2px;height:100%;background:rgba(224,90,90,.5);pointer-events:none;z-index:0;}
   @media(max-width:720px){body::before{left:40px;}}
   header.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
-    padding:14px 32px;backdrop-filter:blur(4px);background:rgba(246,240,226,.8);border-bottom:1.5px dashed rgba(58,63,85,.25);}
+    padding:14px 32px;backdrop-filter:blur(4px);background:rgba(253,252,248,.8);border-bottom:1.5px dashed rgba(58,63,85,.25);}
   .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
   .logo img{width:30px;height:30px;} .logo .wm{font-family:'Caveat',cursive;font-size:30px;font-weight:700;color:var(--magenta-deep);line-height:1;}
   .logo .wm .dot{color:var(--ink);}
@@ -118,16 +119,25 @@
   footer{padding:60px 0;text-align:center;border-top:1.5px dashed rgba(58,63,85,.25);z-index:1;position:relative;}
   footer .tag{font-family:'Caveat',cursive;font-size:26px;color:var(--magenta-deep);}
   footer .cr{font-size:13px;color:var(--pencil);margin-top:8px;}
-  .pocnote{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:80;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);background:rgba(246,240,226,.85);border:1px dashed var(--pencil);padding:5px 12px;border-radius:20px;}
+  .pocnote{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:80;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);background:rgba(253,252,248,.85);border:1px dashed var(--pencil);padding:5px 12px;border-radius:20px;}
+  /* punched binder holes */
+  .holes{position:fixed;left:28px;top:0;bottom:0;width:30px;z-index:1;pointer-events:none;}
+  .holes i{position:absolute;left:0;width:26px;height:26px;border-radius:50%;
+    background:radial-gradient(circle at 38% 32%, #efece3, #d9d5c8 72%);
+    box-shadow:inset 0 3px 6px rgba(0,0,0,.3), inset 0 -1px 2px rgba(255,255,255,.8);}
+  .holes i:nth-child(1){top:16%;} .holes i:nth-child(2){top:49%;} .holes i:nth-child(3){top:82%;}
+  @media(max-width:720px){.holes{display:none;}}
 </style>
 </head>
 <body>
 
+<div class="holes" aria-hidden="true"><i></i><i></i><i></i></div>
+
 <header class="top">
-  <a class="logo" href="wysdym-home-paper.html"><img src="origami-magenta-wysdym-FAVICON.png" alt="wysdym"><span class="wm">wysdym<span class="dot">.</span></span></a>
+  <a class="logo" href="wysdym-home-lined.html"><img src="origami-magenta-wysdym-FAVICON.png" alt="wysdym"><span class="wm">wysdym<span class="dot">.</span></span></a>
   <nav class="links">
-    <a href="wysdym-home-paper.html#problem">The problem</a>
-    <a href="wysdym-platform-paper.html" class="current">The platform</a>
+    <a href="wysdym-home-lined.html#problem">The problem</a>
+    <a href="wysdym-platform-lined.html" class="current">The platform</a>
     <a href="wysdym-stand-for-paper.html">What we stand for</a>
     <a href="wysdym-design-partner-paper.html" class="apply-btn">Apply for access</a>
   </nav>
@@ -188,7 +198,7 @@
   <div class="cr">© 2026 wysdym, Inc.</div>
 </footer>
 
-<div class="pocnote">Paper concept · The Platform · experience study</div>
+<div class="pocnote">Direction E · Lined Paper · Platform</div>
 
 <script>
 const COMPONENTS=[
