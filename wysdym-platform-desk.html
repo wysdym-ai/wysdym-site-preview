@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wysdym — Dark Desk concept · Platform</title>
+<meta name="description" content="Direction D: the platform reviewed on a midnight desk — sheets, stickies, and fresh prints under the lamp.">
+<link rel="icon" type="image/png" href="origami-white-wysdym-FAVICON.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --desk:#17151f; --desk-2:#221e2e; --lamp:rgba(255,214,150,.10);
+    --sheet:#f8f5ec; --ink:#232030; --pencil:#4a4458;
+    --magenta:#BA6296; --magenta-deep:#8d4874; --magenta-light:#d28bb4;
+    --red-pen:#d2553f; --green:#5a8f63; --gold:#c9992e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:#efe9dd;
+    background:
+      radial-gradient(ellipse 70% 42% at 50% -4%, var(--lamp), transparent 62%),
+      radial-gradient(ellipse 120% 90% at 50% 120%, #0e0c14, transparent 70%),
+      repeating-linear-gradient(88deg, rgba(255,255,255,.014) 0 3px, transparent 3px 9px),
+      linear-gradient(180deg,var(--desk-2),var(--desk));
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  .hand{font-family:'Caveat',cursive;} .serif,.em{font-family:'Instrument Serif',serif;font-style:italic;}
+  .em{color:var(--magenta-deep);}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 30px;}
+  header{position:sticky;top:0;z-index:50;background:rgba(23,21,31,.75);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08);}
+  .nav{max-width:1080px;margin:0 auto;padding:15px 30px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;}
+  .logo img{width:26px;height:26px;} .logo b{font-size:20px;font-weight:800;} .logo b i{color:var(--magenta);font-style:normal;}
+  .links{display:flex;align-items:center;gap:24px;}
+  .links a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);text-decoration:none;}
+  .links a:hover{color:#fff;}
+  .cta-nav{background:var(--magenta);color:#fff !important;padding:10px 18px;border-radius:100px;font-weight:700;}
+  @media(max-width:780px){.links a:not(.cta-nav){display:none;}}
+
+  section{padding:86px 0;position:relative;}
+  .deskline{font-family:'Caveat',cursive;font-size:23px;color:var(--magenta-light);transform:rotate(-1.4deg);display:inline-block;margin-bottom:14px;}
+  .paper{position:relative;background:linear-gradient(180deg,#fdfaf2,var(--sheet));color:var(--ink);border-radius:3px;
+    box-shadow:0 2px 0 rgba(255,255,255,.06), 0 24px 50px -12px rgba(0,0,0,.75), 0 6px 16px rgba(0,0,0,.5);}
+  .tape{position:absolute;height:26px;background:rgba(255,244,200,.5);box-shadow:0 1px 3px rgba(0,0,0,.3);pointer-events:none;
+    border-left:1px dashed rgba(0,0,0,.06);border-right:1px dashed rgba(0,0,0,.06);}
+  h1{font-size:clamp(32px,5vw,60px);font-weight:800;letter-spacing:-.03em;line-height:1.06;color:var(--ink);}
+  h2{font-size:clamp(24px,3.4vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.1;}
+  .lead{font-size:17px;color:var(--pencil);max-width:620px;margin-top:18px;}
+  .hero-paper{max-width:860px;padding:50px 50px 44px;transform:rotate(-.6deg);}
+  .flow{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
+  .flow span{font-family:'Caveat',cursive;font-size:21px;background:var(--ink);color:#f4efe2;padding:4px 18px;border-radius:2px;transform:rotate(var(--r,0deg));box-shadow:0 4px 10px rgba(0,0,0,.5);}
+
+  /* component: sheet + print pairs */
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;margin-top:60px;}
+  @media(max-width:840px){.row{grid-template-columns:1fr;}}
+  .row .note{padding:36px 38px 32px;transform:rotate(var(--nr,-0.6deg));}
+  .row .note .no{font-family:'Caveat',cursive;font-size:26px;color:var(--red-pen);}
+  .row .note h2{margin-top:2px;}
+  .row .note .sub{font-family:'Caveat',cursive;font-size:21px;color:var(--magenta-deep);margin:4px 0 10px;}
+  .row .note p{font-size:14px;color:var(--pencil);line-height:1.55;}
+  .row .note ul{list-style:none;margin-top:14px;}
+  .row .note li{font-size:13.5px;color:var(--ink);padding:6px 0 6px 24px;position:relative;border-bottom:1px dashed rgba(74,68,88,.2);}
+  .row .note li:last-child{border-bottom:none;}
+  .row .note li::before{content:'✓';position:absolute;left:0;font-family:'Caveat',cursive;font-size:18px;color:var(--green);}
+  .row .note.gold-op{outline:2px solid var(--gold);outline-offset:-8px;background-color:#fdf8e6;}
+  .print{position:relative;background:#fff;padding:12px 12px 38px;transform:rotate(var(--pr,1deg));
+    box-shadow:0 26px 50px -10px rgba(0,0,0,.8);transition:transform .2s;}
+  .print:hover{transform:rotate(0) scale(1.02);z-index:3;}
+  .print img{display:block;width:100%;background:#11101a;}
+  .print .cap{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:'Caveat',cursive;font-size:17px;color:var(--pencil);}
+  .print .cap b{color:var(--green);}
+  .print::after{content:'';position:absolute;inset:12px 12px 38px;pointer-events:none;
+    background:linear-gradient(115deg,rgba(255,235,190,.14) 0%,transparent 32%);}
+
+  .cta-paper{max-width:660px;padding:44px 48px 40px;transform:rotate(-.5deg);margin-top:70px;}
+  .btn{display:inline-block;font-size:14px;font-weight:700;padding:13px 26px;border-radius:100px;text-decoration:none;background:var(--magenta-deep);color:#fff;margin-top:20px;transition:.15s;}
+  .btn:hover{background:var(--magenta);}
+
+  footer{padding:56px 0;text-align:center;border-top:1px solid rgba(255,255,255,.08);}
+  footer .hand{font-size:24px;color:var(--magenta-light);}
+  footer .cr{font-size:12.5px;color:rgba(255,255,255,.4);margin-top:8px;}
+  .concept-tag{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:80;font-size:10.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:rgba(255,255,255,.6);background:rgba(23,21,31,.85);border:1px solid rgba(255,255,255,.15);padding:5px 14px;border-radius:100px;}
+  .reveal{opacity:0;transform:translateY(26px);transition:.7s;}
+  .reveal.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="wysdym-home-desk.html"><img src="origami-white-wysdym-FAVICON.png" alt=""><b>wys<i>dym</i></b></a>
+    <nav class="links">
+      <a href="wysdym-home-desk.html#problem">The problem</a>
+      <a href="wysdym-platform-desk.html">The platform</a>
+      <a href="paper-index.html">Other directions</a>
+      <a href="wysdym-design-partner-paper.html" class="cta-nav">Apply for access</a>
+    </nav>
+  </div>
+</header>
+
+<section style="padding-bottom:20px;">
+  <div class="wrap">
+    <div class="deskline">the whole platform, laid out on the desk ↓</div>
+    <div class="hero-paper paper">
+      <span class="tape" style="top:-13px;left:64px;width:86px;transform:rotate(-4deg);"></span>
+      <span class="tape" style="top:-13px;right:84px;width:86px;transform:rotate(4deg);"></span>
+      <h1>Five components. One platform.<br><span class="em">Fresh prints of every screen.</span></h1>
+      <p class="lead">wysdym is the platform every GTM agent runs on — the layer underneath, not another agent vendor. Each sheet below pairs the story with a print of the live product.</p>
+      <div class="flow"><span style="--r:-1.4deg;">Read</span><span style="--r:1deg;">Run</span><span style="--r:-.8deg;">Write</span><span style="--r:1.2deg;">Learn</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap" id="comps"></div>
+
+<section style="padding-top:10px;">
+  <div class="wrap reveal">
+    <div class="cta-paper paper">
+      <span class="tape" style="top:-13px;left:50%;margin-left:-43px;width:86px;transform:rotate(-2deg);"></span>
+      <div class="deskline" style="color:var(--red-pen);">before the lamp goes off —</div>
+      <h2>Run every agent on the harness.</h2>
+      <p class="lead" style="font-size:15.5px;">wysdym is live — and we're onboarding a select group of customers. We take on the ones we can go deepest with.</p>
+      <a class="btn" href="wysdym-design-partner-paper.html">Apply for access →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="hand">The platform every GTM agent runs on.</div>
+  <div class="cr">© 2026 wysdym, Inc.</div>
+</footer>
+
+<div class="concept-tag">Direction D · Dark Desk · Platform</div>
+
+<script>
+const C=[
+  {no:'01',name:'wysdymGraph',sub:'your whole GTM brain, on one screen',shot:'assets/01-wysdymGraph.gif',
+   desc:'A per-tenant typed knowledge graph — 39 GTM domains. Self-learning: every approval, edit, and override makes it sharper.',
+   pts:['Answers from your truth — not generic guesses','Update once, everything follows','Gets smarter as you use it — human-approved']},
+  {no:'02',name:'wysdymSkills',sub:'162 GTM skills, ready on day one',shot:'assets/02-wysdymSkills.gif',
+   desc:'An open skill library, invoked by any agent over MCP. Usage patterns generate and refine new skills.',
+   pts:['Stop reinventing the same prompt','Built for GTM, not generic','Your playbook, executable — BANT, MEDDIC, or yours']},
+  {no:'03',name:'wysdymConnect',sub:'your stack, wired once',shot:'assets/03-wysdymConnect.gif',
+   desc:'The full GTM stack — Salesforce, HubSpot, Gong, Slack, Drive, Notion — wired once, not into every agent.',
+   pts:['Read-only by default; writes approval-gated','CRM-agnostic, no lock-in','Always current — sources sync continuously']},
+  {no:'04',name:'wysdymGateway',sub:'every agent through one governed door',shot:'assets/04-wysdymGateway.gif',
+   desc:'One governed door. Per-agent permissions, human-in-the-loop review, and write-approval queues.',
+   pts:['No agent gets extra access','Autonomous or approved — your call','Every action, logged']},
+  {no:'05',name:'wysdymObserve',sub:'know what every agent did — and what it was worth',shot:'assets/05-wysdymObserve.gif',
+   desc:'Outcome attribution to deal stages. Findings flag drift and deal risk with the exact write to fix it.',
+   pts:['Catch drift before it costs pipeline','Attribution, finally','Every finding has a next step']},
+  {no:'06',name:'wysdymPlays',sub:'your recurring motions, running themselves',shot:'assets/07-wysdymPlays.png',
+   desc:'Chained skills that fire on a schedule or a signal — your team’s repeatable plays, automated and measured.',
+   pts:['Champion leaves? You know first','Stale deals swept daily','Measured like a rep']},
+  {no:'★',name:'Operator',sub:'ask anything. get an answer with receipts',shot:'assets/06-wysdymCopilot.png',gold:true,
+   desc:'Your working agent on day one. Runs on the Cortex, calls your Skills, connects through the Gateway — governed and observed.',
+   pts:['Useful on day one','Trust you can inspect','Call-prep in seconds']}
+];
+const host=document.getElementById('comps');
+C.forEach((c,i)=>{
+  const d=document.createElement('div'); d.className='row reveal';
+  d.style.setProperty('--nr',(i%2? '.6deg':'-.6deg'));
+  d.style.setProperty('--pr',(i%2? '-1.2deg':'1.2deg'));
+  const note=`
+    <div class="note paper${c.gold?' gold-op':''}">
+      <span class="tape" style="top:-13px;left:36px;width:74px;transform:rotate(-4deg);"></span>
+      <span class="no">${c.no}</span>
+      <h2>${c.name}</h2>
+      <div class="sub">${c.sub}</div>
+      <p>${c.desc}</p>
+      <ul>${c.pts.map(p=>`<li>${p}</li>`).join('')}</ul>
+    </div>`;
+  const print=`
+    <div class="print">
+      <span class="tape" style="top:-13px;${i%2?'left':'right'}:30px;width:78px;transform:rotate(${i%2?'-':''}5deg);"></span>
+      <img src="${c.shot}" alt="${c.name} live screen" loading="lazy">
+      <div class="cap">${c.name} — <b>live, not a mock</b></div>
+    </div>`;
+  d.innerHTML = i%2 ? print+note : note+print;
+  host.appendChild(d);
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
+</script>
+</body>
+</html>

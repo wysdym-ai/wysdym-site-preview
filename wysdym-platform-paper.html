@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>wysdym — The Platform (paper concept)</title>
 <meta name="description" content="Five components. One platform. Everything every agent needs to actually work. The paper/origami reimagining of the Platform page.">
@@ -80,16 +79,26 @@
   .comp.gold .cpoint b::before{color:var(--gold);}
   .gold-flag{display:inline-block;font-family:'Caveat',cursive;font-size:19px;color:var(--gold);background:rgba(201,153,46,.14);border:1.5px solid var(--gold);border-radius:100px;padding:2px 14px;transform:rotate(-1.5deg);margin-bottom:8px;}
 
-  /* sketch mockups */
+  /* sketch mockups — tracing paper over the real screenshot */
   .comp-sketch{position:relative;}
-  .mockup{background:#fbf7ec;border:2px solid var(--ink);border-radius:5px;box-shadow:3px 4px 0 rgba(58,63,85,.18);overflow:hidden;transform:rotate(1.2deg);}
-  .mockup .bar{display:flex;align-items:center;gap:6px;padding:7px 10px;border-bottom:1.5px solid var(--pencil);background:rgba(58,63,85,.06);}
+  .shot-stack{position:relative;transform:rotate(1.2deg);cursor:pointer;}
+  .shot-real{display:block;width:100%;border:2px solid var(--ink);border-radius:5px;box-shadow:3px 4px 0 rgba(58,63,85,.18);background:#1a1833;}
+  .mockup{position:absolute;inset:0;background:#fbf7ec;border:2px solid var(--ink);border-radius:5px;overflow:hidden;
+    transform-origin:22px 10px;transition:transform .65s cubic-bezier(.5,.05,.3,1), box-shadow .4s;
+    box-shadow:3px 4px 0 rgba(58,63,85,.18);display:flex;flex-direction:column;}
+  .shot-stack.lifted .mockup{transform:rotate(-77deg) translate(-6px,-4px);box-shadow:10px 14px 22px rgba(58,63,85,.3);}
+  .mockup .bar{display:flex;align-items:center;gap:6px;padding:7px 10px;border-bottom:1.5px solid var(--pencil);background:rgba(58,63,85,.06);flex-shrink:0;}
   .mockup .bar i{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--pencil);display:block;}
   .mockup .bar .ttl{margin-left:6px;font-family:'Caveat',cursive;font-size:15px;color:var(--pencil);}
-  .mockup svg{display:block;width:100%;height:auto;background:#fbf7ec;}
-  .sketch-cap{font-family:'Caveat',cursive;font-size:17px;color:var(--red-pen);text-align:center;margin-top:9px;transform:rotate(-1deg);}
+  .mockup svg{display:block;width:100%;height:auto;background:#fbf7ec;flex:1;}
+  .clip{position:absolute;top:-14px;left:12px;width:26px;height:48px;z-index:5;pointer-events:none;
+    filter:drop-shadow(1px 2px 2px rgba(0,0,0,.25));transition:transform .3s;}
+  .shot-stack:hover .clip{transform:rotate(-8deg);}
+  .sketch-cap{font-family:'Caveat',cursive;font-size:17px;color:var(--red-pen);text-align:center;margin-top:9px;transform:rotate(-1deg);transition:color .3s;}
+  .shot-stack.lifted ~ .sketch-cap,.comp-sketch.lifted .sketch-cap{color:var(--green);}
   .comp.gold .mockup{border-color:var(--gold);}
   .comp.gold .mockup .bar{border-bottom-color:var(--gold);}
+  .comp.gold .shot-real{border-color:var(--gold);}
 
   /* cta */
   .cta-note{margin-top:12px;max-width:640px;background:var(--paper-2);border:2px solid var(--ink);border-radius:4px;padding:28px 28px 24px;box-shadow:6px 8px 0 rgba(58,63,85,.2);}
@@ -234,14 +243,44 @@ const SK={
 'wysdymPlays':'<polygon points="26,23 26,41 42,32"/><line x1="54" y1="32" x2="176" y2="32" stroke-width="1"/><rect x="196" y="24" width="118" height="15" rx="7"/><line x1="201" y1="31" x2="262" y2="31" stroke-width="6"/><polygon points="26,65 26,83 42,74"/><line x1="54" y1="74" x2="176" y2="74" stroke-width="1"/><rect x="196" y="66" width="118" height="15" rx="7"/><line x1="201" y1="73" x2="298" y2="73" stroke-width="6"/><polygon points="26,107 26,125 42,116"/><line x1="54" y1="116" x2="176" y2="116" stroke-width="1"/><rect x="196" y="108" width="118" height="15" rx="7"/><line x1="201" y1="115" x2="238" y2="115" stroke-width="6"/><polygon points="26,149 26,167 42,158"/><line x1="54" y1="158" x2="176" y2="158" stroke-width="1"/><rect x="196" y="150" width="118" height="15" rx="7"/><line x1="201" y1="157" x2="286" y2="157" stroke-width="6"/>',
 'Operator':'<rect x="24" y="20" width="176" height="34" rx="12"/><line x1="36" y1="32" x2="150" y2="32" stroke-width="1"/><line x1="36" y1="44" x2="120" y2="44" stroke-width="1"/><rect x="150" y="64" width="166" height="28" rx="12"/><line x1="162" y1="78" x2="290" y2="78" stroke-width="1"/><rect x="24" y="102" width="228" height="46" rx="12"/><line x1="36" y1="118" x2="220" y2="118" stroke-width="1"/><line x1="36" y1="132" x2="180" y2="132" stroke-width="1"/><rect x="24" y="158" width="94" height="18" rx="9"/><line x1="34" y1="167" x2="108" y2="167" stroke-width="1"/><rect x="126" y="158" width="104" height="18" rx="9"/><line x1="136" y1="167" x2="220" y2="167" stroke-width="1"/><rect x="24" y="184" width="292" height="22" rx="10"/><line x1="36" y1="195" x2="150" y2="195" stroke-width="1"/><circle cx="303" cy="195" r="8"/>'
 };
+// real screenshots (already deployed in assets/)
+const SHOT={
+  'wysdymGraph':'assets/01-wysdymGraph.gif',
+  'wysdymSkills':'assets/02-wysdymSkills.gif',
+  'wysdymConnect':'assets/03-wysdymConnect.gif',
+  'wysdymGateway':'assets/04-wysdymGateway.gif',
+  'wysdymObserve':'assets/05-wysdymObserve.gif',
+  'wysdymPlays':'assets/07-wysdymPlays.png',
+  'Operator':'assets/06-wysdymCopilot.png'
+};
+const CLIP_SVG='<svg class="clip" viewBox="0 0 26 48" xmlns="http://www.w3.org/2000/svg"><path d="M8 6 v30 a5 5 0 0 0 10 0 V10 a3 3 0 0 0 -6 0 v24" fill="none" stroke="#b5453a" stroke-width="3" stroke-linecap="round"/></svg>';
 function mockup(c){
   return `<div class="comp-sketch">
-    <div class="mockup">
-      <div class="bar"><i></i><i></i><i></i><span class="ttl">${c.name} — screen</span></div>
-      <svg viewBox="0 0 340 210" xmlns="http://www.w3.org/2000/svg"><g filter="url(#rough)" stroke="#3a3f55" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${SK[c.name]||''}</g></svg>
+    <div class="shot-stack" role="button" tabindex="0" aria-label="Lift the tracing paper to see the real ${c.name} screen" title="Lift the tracing paper">
+      ${CLIP_SVG}
+      <img class="shot-real" src="${SHOT[c.name]||''}" alt="${c.name} — real product screen" loading="lazy">
+      <div class="mockup">
+        <div class="bar"><i></i><i></i><i></i><span class="ttl">${c.name} — screen</span></div>
+        <svg viewBox="0 0 340 210" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g filter="url(#rough)" stroke="#3a3f55" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${SK[c.name]||''}</g></svg>
+      </div>
     </div>
-    <div class="sketch-cap">~ rough sketch of the ${c.name} screen</div>
+    <div class="sketch-cap">📎 our sketch — click to lift the tracing paper</div>
   </div>`;
+}
+// lift/lower the tracing paper
+function wireSketchReveals(){
+  document.querySelectorAll('.shot-stack').forEach(st=>{
+    const cap=st.parentElement.querySelector('.sketch-cap');
+    const name=st.querySelector('.shot-real').alt.split(' — ')[0];
+    const toggle=()=>{
+      st.classList.toggle('lifted');
+      const up=st.classList.contains('lifted');
+      st.parentElement.classList.toggle('lifted',up);
+      cap.textContent = up ? '✓ the real '+name+' — live product, not a mock. Click to trace again.' : '📎 our sketch — click to lift the tracing paper';
+    };
+    st.addEventListener('click',toggle);
+    st.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();} });
+  });
 }
 
 COMPONENTS.forEach((c,i)=>{
@@ -261,6 +300,7 @@ COMPONENTS.forEach((c,i)=>{
     </div>`;
   compsEl.appendChild(el);
 });
+wireSketchReveals();
 
 const FAQ=[
   ['What are the five components of the wysdym platform?','wysdymGraph is a per-tenant typed knowledge graph of your GTM domains. wysdymSkills is an open library of GTM skills any agent can call. wysdymConnect wires your full stack — Salesforce, HubSpot, Gong, Slack, Drive, Notion — once, instead of into every agent. wysdymGateway is one governed door with per-agent permissions and human-in-the-loop approvals. wysdymObserve attributes outcomes to deal stages and flags drift. Operator, a working reference agent, ships on top.'],

@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>wysdym — The platform every GTM agent runs on (paper concept)</title>
 <meta name="description" content="More agents won't grow revenue. Compounding intelligence will. The paper/origami reimagining of the wysdym homepage — including the problem.">
@@ -109,6 +108,53 @@
   .faq-a{font-size:15px;color:var(--pencil);line-height:1.6;max-height:0;overflow:hidden;transition:max-height .35s ease;}
   .faq-item.open .faq-a{max-height:320px;margin-top:10px;}
 
+  /* ---- the envelope: real screenshots enclosed ---- */
+  .env-zone{display:flex;flex-direction:column;align-items:center;margin-top:120px;}
+  .envelope{position:relative;width:min(540px,92vw);height:200px;cursor:pointer;transition:transform .2s;}
+  .envelope:hover{transform:translateY(-3px);}
+  .env-back{position:absolute;inset:0;background:linear-gradient(180deg,#eccf96,#e0bd7d);border:2px solid #8a6a3a;border-radius:6px;box-shadow:5px 7px 0 rgba(58,63,85,.2);}
+  .env-flap{position:absolute;left:0;right:0;top:0;height:104px;z-index:6;transform-origin:top center;
+    transition:transform .55s cubic-bezier(.5,.05,.3,1), z-index 0s .2s;}
+  .env-flap::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#f2dcae,#e6c78c);
+    clip-path:polygon(0 0,100% 0,50% 100%);border-radius:6px 6px 0 0;filter:drop-shadow(0 2px 2px rgba(0,0,0,.15));}
+  .env-flap::after{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:#8a6a3a;}
+  .envelope.open .env-flap{transform:rotateX(172deg);z-index:1;}
+  .env-front{position:absolute;inset:0;top:auto;height:132px;z-index:4;background:linear-gradient(180deg,#ecd09a,#dfba78);
+    border:2px solid #8a6a3a;border-top:none;border-radius:0 0 6px 6px;}
+  .env-label{position:absolute;bottom:38px;left:0;right:0;text-align:center;z-index:5;font-family:'Caveat',cursive;font-size:24px;color:#6b4a1f;pointer-events:none;}
+  .env-label small{display:block;font-family:'Inter';font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#8a6a3a;margin-top:2px;}
+  .env-stamp{position:absolute;top:10px;right:12px;z-index:7;width:44px;height:52px;border:2px dashed #b5453a;border-radius:3px;
+    display:flex;align-items:center;justify-content:center;transform:rotate(4deg);pointer-events:none;}
+  .env-stamp img{width:30px;height:30px;}
+  .env-photos{position:absolute;left:50%;top:52%;z-index:2;pointer-events:none;}
+  .ph{position:absolute;left:0;top:0;width:196px;padding:7px 7px 24px;background:#fff;border:1px solid #cfc5ae;
+    box-shadow:0 6px 16px rgba(58,63,85,.3);transform:translate(-50%,-50%) scale(.4) rotate(0deg);opacity:0;
+    transition:transform .6s cubic-bezier(.3,.9,.3,1.1), opacity .35s;pointer-events:none;}
+  .ph img{display:block;width:100%;background:#1a1833;}
+  .ph .ph-cap{position:absolute;left:0;right:0;bottom:3px;text-align:center;font-family:'Caveat',cursive;font-size:14px;color:var(--pencil);}
+  .envelope.open .ph{opacity:1;pointer-events:auto;cursor:zoom-in;}
+  .envelope.open .ph:hover{z-index:9;}
+  .envelope.open .ph1{transform:translate(-160%,-118%) rotate(-9deg);}
+  .envelope.open .ph2{transform:translate(-84%,-138%) rotate(-2deg);}
+  .envelope.open .ph3{transform:translate(-14%,-132%) rotate(5deg);}
+  .envelope.open .ph4{transform:translate(58%,-112%) rotate(11deg);}
+  @media(max-width:640px){
+    .envelope.open .ph1{transform:translate(-118%,-128%) rotate(-8deg);}
+    .envelope.open .ph2{transform:translate(-50%,-146%) rotate(-1deg);}
+    .envelope.open .ph3{transform:translate(14%,-124%) rotate(7deg);}
+    .envelope.open .ph4{transform:translate(-50%,-58%) rotate(2deg);}
+  }
+  .env-hint{font-family:'Caveat',cursive;font-size:21px;color:var(--red-pen);margin-top:18px;transform:rotate(-1deg);}
+  /* paper lightbox */
+  .lb{position:fixed;inset:0;z-index:200;background:rgba(31,34,51,.55);display:none;align-items:center;justify-content:center;padding:30px;}
+  .lb.show{display:flex;}
+  .lb-card{background:#fff;border:2px solid var(--ink);padding:14px 14px 40px;box-shadow:8px 10px 0 rgba(31,34,51,.35);
+    max-width:min(920px,94vw);position:relative;transform:rotate(-.6deg);}
+  .lb-card img{display:block;max-width:100%;max-height:74vh;background:#1a1833;}
+  .lb-cap{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:'Caveat',cursive;font-size:21px;color:var(--pencil);}
+  .lb-x{position:absolute;top:-16px;right:-16px;width:38px;height:38px;border-radius:50%;border:2px solid var(--ink);
+    background:var(--red-pen);color:#fff;font-weight:800;font-size:17px;cursor:pointer;box-shadow:2px 3px 0 var(--ink);}
+
   footer{padding:60px 0;text-align:center;border-top:1.5px dashed rgba(58,63,85,.25);z-index:1;position:relative;}
   footer .tag{font-family:'Caveat',cursive;font-size:26px;color:var(--magenta-deep);}
   footer .cr{font-size:13px;color:var(--pencil);margin-top:8px;}
@@ -175,8 +221,35 @@
       <a class="foldcard op" href="wysdym-platform-paper.html" style="--r:1.2deg;"><div class="tag">★ the agent</div><h3>Operator</h3><p>The reference agent that ships with wysdym — your working agent on day one.</p></a>
     </div>
     <div style="margin-top:26px;"><a href="wysdym-platform-paper.html" class="btn-hand ghost">Explore the full platform →</a></div>
+
+    <!-- the real thing, enclosed -->
+    <div class="env-zone fold">
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the envelope to see real product screens">
+        <div class="env-back"></div>
+        <div class="env-photos">
+          <div class="ph ph1" data-full="assets/01-wysdymGraph.gif" data-cap="wysdymGraph — live"><img src="assets/01-wysdymGraph.png" alt="wysdymGraph screen" loading="lazy"><span class="ph-cap">wysdymGraph</span></div>
+          <div class="ph ph2" data-full="assets/03-wysdymConnect.gif" data-cap="wysdymConnect — live"><img src="assets/03-wysdymConnect.png" alt="wysdymConnect screen" loading="lazy"><span class="ph-cap">wysdymConnect</span></div>
+          <div class="ph ph3" data-full="assets/06-wysdymCopilot.png" data-cap="Operator — live"><img src="assets/06-wysdymCopilot.png" alt="Operator screen" loading="lazy"><span class="ph-cap">Operator</span></div>
+          <div class="ph ph4" data-full="assets/05-wysdymObserve.gif" data-cap="wysdymObserve — live"><img src="assets/05-wysdymObserve.png" alt="wysdymObserve screen" loading="lazy"><span class="ph-cap">wysdymObserve</span></div>
+        </div>
+        <div class="env-flap"></div>
+        <div class="env-front"></div>
+        <div class="env-label">the real thing<small>photos enclosed · open me</small></div>
+        <div class="env-stamp"><img src="origami-magenta-wysdym-FAVICON.png" alt=""></div>
+      </div>
+      <div class="env-hint" id="envHint">↑ not just sketches — open the envelope for real screens</div>
+    </div>
   </div>
 </section>
+
+<!-- paper lightbox -->
+<div class="lb" id="lb" aria-hidden="true">
+  <div class="lb-card">
+    <button class="lb-x" id="lbX" aria-label="Close">✕</button>
+    <img id="lbImg" src="" alt="">
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+</div>
 
 <div class="crease"></div>
 
@@ -284,6 +357,28 @@
   FAQ.forEach(f=>{ const it=document.createElement('div'); it.className='faq-item';
     it.innerHTML=`<div class="faq-q">${f[0]} <span class="tw">+</span></div><div class="faq-a">${f[1]}</div>`;
     it.addEventListener('click',()=>it.classList.toggle('open')); faqEl.appendChild(it); });
+
+  // envelope: open → photos fan out; click a photo → paper lightbox
+  const env=document.getElementById('envelope');
+  const envHint=document.getElementById('envHint');
+  const lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'), lbCap=document.getElementById('lbCap');
+  function toggleEnv(){
+    env.classList.toggle('open');
+    envHint.textContent = env.classList.contains('open')
+      ? 'that’s the live product — click any photo to look closer'
+      : '↑ not just sketches — open the envelope for real screens';
+  }
+  env.addEventListener('click',e=>{ if(e.target.closest('.ph')) return; toggleEnv(); });
+  env.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleEnv();} });
+  document.querySelectorAll('.ph').forEach(p=>p.addEventListener('click',e=>{
+    e.stopPropagation();
+    lbImg.src=p.dataset.full; lbCap.textContent=p.dataset.cap;
+    lb.classList.add('show'); lb.setAttribute('aria-hidden','false');
+  }));
+  function closeLb(){ lb.classList.remove('show'); lb.setAttribute('aria-hidden','true'); lbImg.src=''; }
+  document.getElementById('lbX').addEventListener('click',closeLb);
+  lb.addEventListener('click',e=>{ if(e.target===lb) closeLb(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLb(); });
 
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.06});
   document.querySelectorAll('.fold').forEach(f=>io.observe(f));
