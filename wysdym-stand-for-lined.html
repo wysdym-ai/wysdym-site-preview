@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wysdym — What we stand for · Direction E v2</title>
+<meta name="description" content="We stand for one thing: revenue that compounds. The paper/origami reimagining of the What We Stand For page.">
+<link rel="icon" type="image/png" href="origami-magenta-wysdym-FAVICON.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Caveat:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --magenta:#BA6296; --magenta-deep:#8d4874; --midnight:#2c2a4a;
+    --ink:#1f2233; --pencil:#3a3f55; --paper:#fdfcf8; --paper-2:#f5f3ea;
+    --grid:#b9c7d6; --grid-strong:#9fb3c8; --red-pen:#d2553f; --green:#5a8f63;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',-apple-system,sans-serif;color:var(--ink);background:var(--paper);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+      linear-gradient(var(--grid-strong) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, var(--grid-strong) 1.5px, transparent 1.5px);
+    background-size:28px 28px,28px 28px,140px 140px,140px 140px;
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  .hand{font-family:'Caveat',cursive;}
+  .serif{font-family:'Instrument Serif',serif;font-style:italic;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 32px;}
+  /* notebook margin line */
+  body::before{content:'';position:fixed;top:0;left:96px;width:2px;height:100%;background:rgba(224,90,90,.5);pointer-events:none;z-index:0;}
+  @media(max-width:720px){ body::before{left:40px;} }
+
+  /* ---------- Nav ---------- */
+  header.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+    padding:14px 32px;backdrop-filter:blur(4px);background:rgba(253,252,248,.8);border-bottom:1.5px dashed rgba(58,63,85,.25);}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .logo img{width:30px;height:30px;}
+  .logo .wm{font-family:'Caveat',cursive;font-size:30px;font-weight:700;color:var(--magenta-deep);line-height:1;}
+  .logo .wm .dot{color:var(--ink);}
+  nav.links{display:flex;align-items:center;gap:22px;}
+  nav.links a{font-size:14px;font-weight:600;color:var(--pencil);text-decoration:none;position:relative;}
+  nav.links a:hover{color:var(--magenta-deep);}
+  nav.links a.current::after{content:'';position:absolute;left:-2px;right:-2px;bottom:-4px;height:7px;background:var(--magenta);opacity:.35;transform:skewX(-10deg);border-radius:40%;}
+  .res{position:relative;}
+  .res-menu{position:absolute;top:26px;right:0;background:var(--paper-2);border:1.5px solid var(--pencil);border-radius:3px;
+    box-shadow:4px 5px 0 rgba(58,63,85,.18);padding:8px;display:none;flex-direction:column;gap:4px;min-width:210px;z-index:60;}
+  .res:hover .res-menu{display:flex;}
+  .res-menu a{padding:7px 10px;border-radius:3px;font-size:13px;}
+  .res-menu a:hover{background:rgba(186,98,150,.12);}
+  .apply-btn{font-size:13px;font-weight:700;border:2px solid var(--ink);border-radius:2px;padding:9px 16px;
+    background:var(--magenta-deep);color:#fff;box-shadow:3px 3px 0 var(--ink);cursor:pointer;transition:transform .12s,box-shadow .12s;text-decoration:none;display:inline-block;}
+  .apply-btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink);}
+  @media(max-width:820px){ nav.links a:not(.res-a){display:none;} }
+
+  section{position:relative;padding:88px 0;z-index:1;}
+  .eyebrow{font-family:'Caveat',cursive;font-size:25px;color:var(--red-pen);transform:rotate(-2deg);display:inline-block;margin-bottom:6px;}
+  h1{font-size:clamp(40px,6vw,80px);font-weight:800;letter-spacing:-.03em;line-height:1.02;}
+  h2{font-size:clamp(30px,4.4vw,52px);font-weight:800;letter-spacing:-.02em;line-height:1.06;}
+  .lead{font-size:20px;color:var(--pencil);max-width:640px;margin-top:22px;}
+  p.body{font-size:17px;color:var(--pencil);max-width:620px;}
+  .underline-hand{position:relative;display:inline-block;}
+  .underline-hand::after{content:'';position:absolute;left:-4px;right:-4px;bottom:2px;height:11px;background:var(--magenta);opacity:.35;transform:skewX(-12deg);border-radius:40%;z-index:-1;}
+  .crease{height:1px;background:repeating-linear-gradient(90deg,var(--magenta) 0 8px,transparent 8px 16px);opacity:.5;margin:0 auto;max-width:1040px;}
+
+  /* fold-reveal */
+  .fold{opacity:0;transform:perspective(900px) rotateX(-70deg);transform-origin:top center;transition:opacity .7s ease, transform .9s cubic-bezier(.2,.8,.2,1);}
+  .fold.in{opacity:1;transform:perspective(900px) rotateX(0deg);}
+
+  /* ---------- Acronym game ---------- */
+  .acro-card{margin-top:44px;background:linear-gradient(180deg,#fff,#f3ead7);border:2px solid var(--ink);border-radius:4px;
+    padding:34px 30px 26px;box-shadow:6px 8px 0 rgba(58,63,85,.2);max-width:820px;}
+  .acro-hint{font-family:'Caveat',cursive;font-size:20px;color:var(--red-pen);margin-bottom:18px;}
+  .acro-letters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:6px 0 22px;}
+  .letter{flex:1;min-width:110px;text-align:center;}
+  .letter .cap{font-family:'Instrument Serif',serif;font-weight:400;font-size:52px;color:var(--magenta-deep);line-height:1;}
+  .letter .word{font-family:'Caveat',cursive;font-size:24px;color:var(--ink);border-bottom:2px solid var(--grid-strong);
+    min-height:34px;padding:2px 4px;outline:none;transition:background .15s;}
+  .letter .word[contenteditable="true"]{background:rgba(255,224,102,.35);border-bottom-color:var(--red-pen);}
+  .acro-ctl{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px;}
+  .pbtn{font-family:'Inter';font-size:13px;font-weight:700;border:2px solid var(--ink);background:var(--paper-2);color:var(--ink);
+    border-radius:2px;padding:9px 16px;box-shadow:3px 3px 0 var(--ink);cursor:pointer;transition:transform .1s,box-shadow .1s;}
+  .pbtn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink);}
+  .pbtn.go{background:var(--magenta-deep);color:#fff;}
+  .acro-msg{font-family:'Caveat',cursive;font-size:22px;color:var(--magenta-deep);text-align:center;margin-top:20px;min-height:30px;}
+
+  /* ---------- Post-it beliefs ---------- */
+  .postits{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 26px;margin-top:52px;}
+  @media(max-width:820px){ .postits{grid-template-columns:1fr 1fr;} }
+  @media(max-width:560px){ .postits{grid-template-columns:1fr;} }
+  .postit{position:relative;padding:26px 22px 24px;border-radius:2px;transform:rotate(var(--r,0deg));
+    box-shadow:4px 7px 14px rgba(58,63,85,.22);transition:transform .18s ease, box-shadow .18s ease;min-height:200px;}
+  .postit:hover{transform:rotate(0deg) translateY(-4px) scale(1.02);box-shadow:6px 12px 22px rgba(58,63,85,.28);z-index:2;}
+  .postit::before{content:'';position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(var(--tape,-3deg));
+    width:88px;height:26px;background:rgba(255,255,255,.45);border:1px solid rgba(0,0,0,.05);box-shadow:0 1px 2px rgba(0,0,0,.08);}
+  .postit .num{font-family:'Caveat',cursive;font-size:22px;color:rgba(31,34,51,.5);}
+  .postit h3{font-family:'Inter';font-size:19px;font-weight:800;letter-spacing:-.01em;margin:2px 0 10px;line-height:1.2;}
+  .postit p{font-size:14.5px;color:rgba(31,34,51,.82);line-height:1.5;}
+  .p-yellow{background:#fdf0a6;} .p-pink{background:#ffd0dd;} .p-blue{background:#c6e4ff;}
+  .p-green{background:#cfeecb;} .p-orange{background:#ffdcb8;} .p-purple{background:#e4d4ff;}
+
+  /* ---------- Apply note ---------- */
+  .apply-note{margin-top:40px;max-width:660px;background:var(--paper-2);border:1.5px solid rgba(58,63,85,.45);border-radius:2px;
+    padding:30px 30px 26px;box-shadow:4px 6px 0 rgba(58,63,85,.18);position:relative;}
+  .apply-note::after{content:'';position:absolute;top:0;right:0;border-width:0 26px 26px 0;border-style:solid;
+    border-color:transparent var(--paper) transparent transparent;filter:drop-shadow(-2px 2px 1px rgba(0,0,0,.12));}
+  .apply-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;}
+  .apply-row input{flex:1;min-width:220px;font-family:'Caveat',cursive;font-size:22px;color:var(--ink);background:transparent;
+    border:none;border-bottom:2px solid var(--grid-strong);padding:6px 4px;outline:none;}
+  .apply-row input:focus{border-bottom-color:var(--red-pen);}
+  .apply-big{font-size:16px;font-weight:700;color:#fff;background:var(--magenta-deep);border:2px solid var(--ink);border-radius:2px;
+    padding:12px 24px;box-shadow:4px 5px 0 var(--ink);cursor:pointer;transition:transform .12s,box-shadow .12s;}
+  .apply-big:hover{transform:translate(-2px,-2px);box-shadow:6px 7px 0 var(--ink);}
+  .apply-ok{font-family:'Caveat',cursive;font-size:22px;color:var(--green);margin-top:16px;display:none;}
+  .apply-ok.show{display:block;}
+  .stamp{position:absolute;bottom:16px;right:20px;transform:rotate(-8deg);font-family:'Caveat',cursive;font-weight:700;color:var(--green);
+    border:2px solid var(--green);border-radius:6px;padding:2px 10px;font-size:17px;opacity:.85;}
+
+  footer{padding:60px 0;text-align:center;border-top:1.5px dashed rgba(58,63,85,.25);}
+  footer .tag{font-family:'Caveat',cursive;font-size:26px;color:var(--magenta-deep);}
+  footer .cr{font-size:13px;color:var(--pencil);margin-top:8px;}
+  .pocnote{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:80;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--pencil);background:rgba(253,252,248,.85);border:1px dashed var(--pencil);padding:5px 12px;border-radius:20px;}
+  .holes{position:fixed;left:28px;top:0;bottom:0;width:30px;z-index:1;pointer-events:none;}
+  .holes i{position:absolute;left:0;width:26px;height:26px;border-radius:50%;
+    background:radial-gradient(circle at 38% 32%, #efece3, #d9d5c8 72%);
+    box-shadow:inset 0 3px 6px rgba(0,0,0,.3), inset 0 -1px 2px rgba(255,255,255,.8);}
+  .holes i:nth-child(1){top:16%;} .holes i:nth-child(2){top:49%;} .holes i:nth-child(3){top:82%;}
+  @media(max-width:720px){.holes{display:none;}}
+  .logo img.logo-crane{width:40px;height:40px;object-fit:contain;}
+  .logo img.logo-word{width:auto;height:17px;}
+</style>
+</head>
+<body>
+
+<div class="holes" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<header class="top">
+  <a class="logo" href="wysdym-home-lined-v2.html"><img class="logo-crane" src="origami-crane-wysdym.png" alt="wysdym crane"><img class="logo-word" src="wysdym-wordmark-magenta.svg" alt="wysdym"></a>
+  <nav class="links">
+    <a href="wysdym-home-lined-v2.html#problem">The problem</a>
+    <a href="wysdym-platform-lined-v2.html">The platform</a>
+    <a href="wysdym-stand-for-lined.html" class="current">What we stand for</a>
+    <span class="res"><a href="#" class="res-a">Resources ▾</a>
+      <span class="res-menu">
+        <a href="https://gtmstats.wysdym.ai" target="_blank" rel="noopener">2026 Go-to-Market AI Stats</a>
+        <a href="wysdym-blog-lined.html">Blog</a>
+      </span>
+    </span>
+    <a href="wysdym-design-partner-lined.html" class="apply-btn">Apply for access</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">what we stand for ↓</div>
+    <h1>We stand for one thing:<br><span class="serif underline-hand" style="color:var(--magenta-deep);font-size:.9em;">revenue that compounds.</span></h1>
+    <p class="lead">Every GTM tool promises lift. Almost none of it compounds — so teams keep buying agents, keep starting from zero, and keep wondering why the number didn't move. We're building the opposite: <strong>the platform underneath, where every action makes the next one smarter.</strong></p>
+  </div>
+</section>
+
+<div class="crease"></div>
+
+<!-- ACRONYM GAME -->
+<section>
+  <div class="wrap fold">
+    <div class="eyebrow">a little test ✎</div>
+    <h2>Okay, but what does <span class="underline-hand">wysdym actually stand for?</span></h2>
+    <p class="body" style="margin-top:16px;">Everyone assumes it's an acronym. Go on — take a guess. Fill in your own words, or shuffle through the wrong ones.</p>
+
+    <div class="acro-card">
+      <div class="acro-hint" id="acroHint">Take a guess — write a word for each letter, or roll the dice for wrong ones.</div>
+      <div class="acro-letters" id="acroLetters"></div>
+      <div class="acro-ctl">
+        <button class="pbtn go" id="btnGuess">✎ Write your own</button>
+        <button class="pbtn" id="btnDice">🎲 Wrong guesses</button>
+        <button class="pbtn" id="btnReveal">Reveal the answer</button>
+      </div>
+      <div class="acro-msg" id="acroMsg"></div>
+    </div>
+  </div>
+</section>
+
+<div class="crease"></div>
+
+<!-- SIX BELIEFS -->
+<section>
+  <div class="wrap fold">
+    <div class="eyebrow">the actual convictions</div>
+    <h2>Six things <span class="underline-hand">we believe.</span></h2>
+    <p class="body" style="margin-top:16px;">Not a values poster. The actual convictions that decide what we build — and what we refuse to.</p>
+
+    <div class="postits" id="postits"></div>
+  </div>
+</section>
+
+<div class="crease"></div>
+
+<!-- APPLY -->
+<section id="apply">
+  <div class="wrap fold">
+    <div class="eyebrow">the ask</div>
+    <h2>Stand with us <span class="underline-hand">early.</span></h2>
+    <p class="body" style="margin-top:16px;">wysdym is live — and we're onboarding a select group of customers as demand grows. Stand with us early: apply, and we take on the ones we can go deepest with.</p>
+
+    <div class="apply-note">
+      <span class="stamp">reviewing ✓</span>
+      <div class="hand" style="font-size:22px;color:var(--magenta-deep);">Apply for access —</div>
+      <div class="apply-row">
+        <input id="applyEmail" type="email" placeholder="name@company.com" aria-label="Work email">
+        <button class="apply-big" id="applyBtn">Apply →</button>
+      </div>
+      <div class="apply-ok" id="applyOk">✓ Got it — we review every application and follow up fast.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="hand tag">The platform every GTM agent runs on.</div>
+  <div class="cr">© 2026 wysdym, Inc.</div>
+</footer>
+
+<div class="pocnote">Direction E v2 · Lined Paper · What we stand for</div>
+
+<script>
+  const LETTERS = ['W','Y','S','D','Y','M'];
+  const REAL = ['When','Your','Stack','Doesn’t,','You','Multiply'];
+  const WRONG = [
+    ['When','Your','Stack','Doesn’t,','You','Multiply'],
+    ['Why','Your','Silos','Don’t','Yield…','Much'],
+    ['We’re','Your','Shared','Data-Yielding','Yarn','Machine'],
+    ['Wildly','Yearning','Seamless','Data,','Yours','Mostly'],
+    ['Winning','Your','SDRs’','Devotion','Yearly,','Maybe'],
+    ['Would','You','Suddenly','Deploy','Your','Model?']
+  ];
+
+  const lettersEl = document.getElementById('acroLetters');
+  const msg = document.getElementById('acroMsg');
+  const hint = document.getElementById('acroHint');
+  let words = REAL.slice(), diceIdx = 0, editing = false;
+
+  function render(){
+    lettersEl.innerHTML = '';
+    LETTERS.forEach((L,i)=>{
+      const d = document.createElement('div'); d.className='letter';
+      d.innerHTML = `<div class="cap">${L}</div><div class="word" data-i="${i}" ${editing?'contenteditable="true"':''}>${words[i]}</div>`;
+      lettersEl.appendChild(d);
+    });
+  }
+  render();
+
+  document.getElementById('btnDice').addEventListener('click',()=>{
+    editing=false; diceIdx=(diceIdx+1)%WRONG.length; words=WRONG[diceIdx].slice(); render();
+    msg.textContent = diceIdx===1 ? 'Ooh, that one’s honestly growing on us.' : 'Nope. But keep them coming.';
+  });
+  document.getElementById('btnGuess').addEventListener('click',()=>{
+    editing=true; words=['','','','','',''];
+    render(); hint.textContent = 'Your turn — click each line and write a word.';
+    msg.textContent='';
+    const first=lettersEl.querySelector('.word'); if(first){first.focus();}
+  });
+  document.getElementById('btnReveal').addEventListener('click',()=>{
+    editing=false; words=REAL.slice(); render();
+    msg.innerHTML = 'We’re not going to give it up THAT easily — we’ll share it one day…<br><span style="font-size:18px;color:var(--pencil);">(Though “Why Your Silos Don’t Yield… Much” is honestly growing on us.)</span>';
+  });
+
+  // BELIEFS as post-its
+  const BELIEFS = [
+    {t:'The platform, not another agent.', b:'More agents won’t grow revenue. The layer beneath them will — the memory, skills, governance, and feedback loop every agent inherits.', c:'p-yellow'},
+    {t:'Compounding beats flash.', b:'A win you can’t reuse is a demo. We judge ourselves on whether your GTM gets smarter every week — not on one shiny output.', c:'p-pink'},
+    {t:'Your truth, not the model’s guess.', b:'Agents act on your positioning, your playbook, your outcomes — grounded in your business, governed on your terms.', c:'p-blue'},
+    {t:'Trust is the product.', b:'Read-only by default. Write-approval queues. Receipts on every action. Governance isn’t the brake — it’s what lets you take your hands off the wheel.', c:'p-green'},
+    {t:'We rise with the models.', b:'We’re a substrate, not a competitor to the foundation models. The better they get, the better wysdym gets. We’re long on progress.', c:'p-orange'},
+    {t:'Honest about where we are.', b:'We tell you what’s live and what’s roadmap — clearly labeled, every time. Honesty and trust are how we work with every customer.', c:'p-purple'}
+  ];
+  const rots=[-2.5,1.8,-1.2,2.2,-2,1.4], tapes=[-4,3,-2,4,-3,2];
+  const pit = document.getElementById('postits');
+  BELIEFS.forEach((b,i)=>{
+    const el=document.createElement('div');
+    el.className='postit '+b.c;
+    el.style.setProperty('--r', rots[i]+'deg');
+    el.style.setProperty('--tape', tapes[i]+'deg');
+    el.innerHTML=`<div class="num">0${i+1}</div><h3>${b.t}</h3><p>${b.b}</p>`;
+    pit.appendChild(el);
+  });
+
+  // apply (display-only)
+  document.getElementById('applyBtn').addEventListener('click',()=>{
+    document.getElementById('applyOk').classList.add('show');
+  });
+
+  // fold-reveal
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.fold').forEach(f=>io.observe(f));
+</script>
+</body>
+</html>
