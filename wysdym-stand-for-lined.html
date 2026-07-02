@@ -182,6 +182,7 @@
       <div class="acro-letters" id="acroLetters"></div>
       <div class="acro-ctl">
         <button class="pbtn go" id="btnGuess">✎ Write your own</button>
+        <button class="pbtn go" id="btnSubmit" style="display:none;">✓ Submit my guess</button>
         <button class="pbtn" id="btnDice">🎲 Wrong guesses</button>
         <button class="pbtn" id="btnReveal">Reveal the answer</button>
       </div>
@@ -255,17 +256,44 @@
   render();
 
   document.getElementById('btnDice').addEventListener('click',()=>{
-    editing=false; diceIdx=(diceIdx+1)%WRONG.length; words=WRONG[diceIdx].slice(); render();
+    editing=false; btnSubmit.style.display='none'; diceIdx=(diceIdx+1)%WRONG.length; words=WRONG[diceIdx].slice(); render();
     msg.textContent = diceIdx===1 ? 'Ooh, that one’s honestly growing on us.' : 'Nope. But keep them coming.';
   });
+  const btnSubmit=document.getElementById('btnSubmit');
   document.getElementById('btnGuess').addEventListener('click',()=>{
     editing=true; words=['','','','','',''];
-    render(); hint.textContent = 'Your turn — click each line and write a word.';
-    msg.textContent='';
+    render(); hint.textContent = 'Your turn — write a word on each line, then submit.';
+    msg.textContent=''; btnSubmit.style.display='';
     const first=lettersEl.querySelector('.word'); if(first){first.focus();}
   });
+  const REJECT=[
+    'Officially: no. Unofficially: we\u2019re writing that one down.',
+    'Not it \u2014 but honestly better than some of ours.',
+    'Nope. The napkin with the real answer stays in the drawer.',
+    'Close-ish. The real one has more\u2026 revenue in it.',
+    'Wrong, but it would look great on a t-shirt.'
+  ];
+  const norm=s=>s.toLowerCase().replace(/[^a-z]/g,'');
+  btnSubmit.addEventListener('click',()=>{
+    const ws=[...lettersEl.querySelectorAll('.word')].map(w=>w.textContent.trim());
+    if(ws.some(w=>!w)){ msg.textContent='Six lines, six words \u2014 fill them all in \u270E'; return; }
+    const guess=ws.join(' ');
+    if(ws.every((w,i)=>norm(w)===norm(REAL[i]))){
+      msg.innerHTML='\u201C'+guess+'\u201D \u2014 \u2026that\u2019s eerily close. We\u2019ll neither confirm nor deny. \uD83D\uDC40';
+    } else {
+      msg.innerHTML='\u201C'+guess+'\u201D \u2014 '+REJECT[Math.floor(Math.random()*REJECT.length)];
+    }
+  });
+  // Enter hops to the next line; on the last line it submits
+  lettersEl.addEventListener('keydown',e=>{
+    if(!e.target.classList.contains('word')||e.key!=='Enter') return;
+    e.preventDefault();
+    const all=[...lettersEl.querySelectorAll('.word')];
+    const i=all.indexOf(e.target);
+    if(i<all.length-1){ all[i+1].focus(); } else { btnSubmit.click(); }
+  });
   document.getElementById('btnReveal').addEventListener('click',()=>{
-    editing=false; words=REAL.slice(); render();
+    editing=false; btnSubmit.style.display='none'; words=REAL.slice(); render();
     msg.innerHTML = 'We’re not going to give it up THAT easily — we’ll share it one day…<br><span style="font-size:18px;color:var(--pencil);">(Though “Why Your Silos Don’t Yield… Much” is honestly growing on us.)</span>';
   });
 
