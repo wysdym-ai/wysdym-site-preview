@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wysdym — Paper concept (review)</title>
+<link rel="icon" type="image/png" href="origami-magenta-wysdym-FAVICON.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Caveat:wght@600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root{--magenta:#BA6296;--magenta-deep:#8d4874;--ink:#1f2233;--pencil:#3a3f55;--paper:#f6f0e2;--paper-2:#efe7d4;--grid:#b9c7d6;--grid-strong:#9fb3c8;--red-pen:#d2553f;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--paper);
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),
+      linear-gradient(var(--grid-strong) 1.5px,transparent 1.5px),linear-gradient(90deg,var(--grid-strong) 1.5px,transparent 1.5px);
+    background-size:28px 28px,28px 28px,140px 140px,140px 140px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;}
+  .wrap{max-width:760px;margin:0 auto;padding:60px 28px 80px;}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:8px;}
+  .logo img{width:32px;height:32px;} .logo span{font-family:'Caveat',cursive;font-size:32px;font-weight:700;color:var(--magenta-deep);}
+  .logo .dot{color:var(--ink);}
+  .eyebrow{font-family:'Caveat',cursive;font-size:24px;color:var(--red-pen);transform:rotate(-1.5deg);display:inline-block;}
+  h1{font-size:clamp(30px,5vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.06;margin:2px 0 12px;}
+  .lead{font-size:17px;color:var(--pencil);max-width:560px;}
+  .serif{font-family:'Instrument Serif',serif;font-style:italic;}
+  .note{font-family:'Caveat',cursive;font-size:19px;color:var(--pencil);margin-top:14px;}
+  .list{margin-top:34px;display:flex;flex-direction:column;gap:16px;}
+  .card{display:block;text-decoration:none;color:var(--ink);background:linear-gradient(180deg,#fff,#f3ead7);border:2px solid var(--ink);
+    border-radius:4px;padding:20px 22px;box-shadow:5px 6px 0 rgba(58,63,85,.18);transition:transform .12s,box-shadow .12s;transform:rotate(var(--r,0deg));}
+  .card:hover{transform:rotate(0) translate(-2px,-2px);box-shadow:7px 9px 0 rgba(58,63,85,.24);}
+  .card b{font-size:19px;font-weight:800;} .card .tag{font-family:'Caveat',cursive;color:var(--red-pen);font-size:18px;margin-left:8px;}
+  .card p{font-size:14px;color:var(--pencil);margin-top:4px;}
+  .foot{margin-top:40px;font-size:13px;color:var(--pencil);border-top:1.5px dashed rgba(58,63,85,.3);padding-top:16px;}
+  .foot a{color:var(--magenta-deep);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="logo" href="wysdym-home-paper.html"><img src="origami-magenta-wysdym-FAVICON.png" alt="wysdym"><span>wysdym<span class="dot">.</span></span></a>
+  <div class="eyebrow">internal review ✎</div>
+  <h1>The <span class="serif" style="color:var(--magenta-deep);">paper concept</span> — full site.</h1>
+  <p class="lead">A reimagining of the site in a paper / origami / post-it aesthetic — same content, new experience. Click through to compare against the current dark site.</p>
+  <div class="note">↳ Start with the homepage, or jump to any page:</div>
+
+  <div class="list">
+    <a class="card" href="wysdym-home-paper.html" style="--r:-.6deg;"><b>Home</b><span class="tag">start here</span><p>Hero tagline, the problem, five-folds platform teaser, Operator, a mini origami fortune teller, apply + FAQ.</p></a>
+    <a class="card" href="wysdym-platform-paper.html" style="--r:.5deg;"><b>The platform</b><span class="tag">with screen sketches</span><p>All six components + Operator (in gold), each with a hand-drawn wireframe sketch of its screen.</p></a>
+    <a class="card" href="wysdym-stand-for-paper.html" style="--r:-.4deg;"><b>What we stand for</b><p>Acronym guessing game + six beliefs as post-it notes.</p></a>
+    <a class="card" href="wysdym-design-partner-paper.html" style="--r:.6deg;"><b>Design partner program</b><p>Trade-off notepads, fit criteria post-its, and a paper application form.</p></a>
+    <a class="card" href="wysdym-crane-paper.html" style="--r:-.5deg;"><b>Crane fold</b><p>A flat sheet folds into the crane — the origami moment.</p></a>
+  </div>
+
+  <div class="foot">Internal preview · not indexed. For comparison, the current site is <a href="wysdym-v3-origami.html">here</a>. © 2026 wysdym, Inc.</div>
+</div>
+</body>
+</html>

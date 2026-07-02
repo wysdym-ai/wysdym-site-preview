@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wysdym — The Platform (paper concept)</title>
+<meta name="description" content="Five components. One platform. Everything every agent needs to actually work. The paper/origami reimagining of the Platform page.">
+<link rel="icon" type="image/png" href="origami-magenta-wysdym-FAVICON.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Caveat:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{--magenta:#BA6296;--magenta-deep:#8d4874;--ink:#1f2233;--pencil:#3a3f55;--paper:#f6f0e2;--paper-2:#efe7d4;
+    --grid:#b9c7d6;--grid-strong:#9fb3c8;--red-pen:#d2553f;--green:#5a8f63;--gold:#c9992e;--gold-l:#e8c766;--gold-bg:#fbedc4;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--paper);
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),
+      linear-gradient(var(--grid-strong) 1.5px,transparent 1.5px),linear-gradient(90deg,var(--grid-strong) 1.5px,transparent 1.5px);
+    background-size:28px 28px,28px 28px,140px 140px,140px 140px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  .hand{font-family:'Caveat',cursive;} .serif{font-family:'Instrument Serif',serif;font-style:italic;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 32px;}
+  body::before{content:'';position:fixed;top:0;left:84px;width:2px;height:100%;background:rgba(210,85,63,.35);pointer-events:none;z-index:0;}
+  @media(max-width:720px){body::before{left:40px;}}
+  header.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+    padding:14px 32px;backdrop-filter:blur(4px);background:rgba(246,240,226,.8);border-bottom:1.5px dashed rgba(58,63,85,.25);}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .logo img{width:30px;height:30px;} .logo .wm{font-family:'Caveat',cursive;font-size:30px;font-weight:700;color:var(--magenta-deep);line-height:1;}
+  .logo .wm .dot{color:var(--ink);}
+  nav.links{display:flex;align-items:center;gap:22px;}
+  nav.links a{font-size:14px;font-weight:600;color:var(--pencil);text-decoration:none;position:relative;}
+  nav.links a:hover{color:var(--magenta-deep);}
+  nav.links a.current::after{content:'';position:absolute;left:-2px;right:-2px;bottom:-4px;height:7px;background:var(--magenta);opacity:.35;transform:skewX(-10deg);border-radius:40%;}
+  .apply-btn{font-size:13px;font-weight:700;border:2px solid var(--ink);border-radius:2px;padding:9px 16px;background:var(--magenta-deep);color:#fff;box-shadow:3px 3px 0 var(--ink);cursor:pointer;transition:transform .12s,box-shadow .12s;text-decoration:none;}
+  .apply-btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink);}
+  @media(max-width:820px){nav.links a:not(.apply-btn){display:none;}}
+
+  section{position:relative;padding:70px 0;z-index:1;}
+  .eyebrow{font-family:'Caveat',cursive;font-size:23px;color:var(--red-pen);transform:rotate(-2deg);display:inline-block;margin-bottom:4px;}
+  h1{font-size:clamp(34px,5vw,64px);font-weight:800;letter-spacing:-.03em;line-height:1.04;max-width:880px;}
+  h2{font-size:clamp(26px,3.6vw,40px);font-weight:800;letter-spacing:-.02em;line-height:1.1;}
+  .lead{font-size:19px;color:var(--pencil);max-width:680px;margin-top:20px;}
+  p.body{font-size:17px;color:var(--pencil);max-width:640px;}
+  .underline-hand{position:relative;display:inline-block;}
+  .underline-hand::after{content:'';position:absolute;left:-4px;right:-4px;bottom:2px;height:11px;background:var(--magenta);opacity:.35;transform:skewX(-12deg);border-radius:40%;z-index:-1;}
+  .crease{height:1px;background:repeating-linear-gradient(90deg,var(--magenta) 0 8px,transparent 8px 16px);opacity:.5;max-width:1040px;margin:0 auto;}
+  .fold{opacity:0;transform:perspective(900px) rotateX(-70deg);transform-origin:top center;transition:opacity .6s ease,transform .8s cubic-bezier(.2,.8,.2,1);}
+  .fold.in{opacity:1;transform:perspective(900px) rotateX(0deg);}
+
+  /* read run write learn flow */
+  .flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:28px;font-family:'Caveat',cursive;font-size:26px;color:var(--magenta-deep);}
+  .flow .step{background:var(--paper-2);border:2px solid var(--ink);border-radius:3px;padding:4px 16px;box-shadow:3px 3px 0 rgba(58,63,85,.18);transform:rotate(var(--r,0deg));}
+  .flow .arw{color:var(--red-pen);font-family:'Inter';font-weight:800;font-size:20px;}
+
+  /* component cards */
+  .comps{margin-top:20px;display:flex;flex-direction:column;gap:36px;}
+  .comp{position:relative;background:linear-gradient(180deg,#fff,#f3ead7);border:2px solid var(--ink);border-radius:4px;
+    padding:28px 30px 26px;box-shadow:6px 9px 0 rgba(58,63,85,.2);transform:rotate(var(--r,0deg));}
+  .comp::after{content:'';position:absolute;top:0;right:0;border-width:0 26px 26px 0;border-style:solid;border-color:transparent var(--paper) transparent transparent;filter:drop-shadow(-2px 2px 1px rgba(0,0,0,.12));}
+  .comp-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:4px;}
+  .comp-num{font-family:'Caveat',cursive;font-size:34px;color:var(--magenta-deep);line-height:1;}
+  .comp-cat{font-family:'Caveat',cursive;font-size:20px;color:var(--red-pen);}
+  .comp-name{font-size:clamp(26px,3.4vw,38px);font-weight:800;letter-spacing:-.02em;margin-left:auto;color:var(--ink);}
+  .comp-sub{font-size:21px;font-weight:700;margin:8px 0 8px;letter-spacing:-.01em;}
+  .comp-desc{font-size:15.5px;color:var(--pencil);max-width:720px;}
+  .comp-body{display:grid;grid-template-columns:1.3fr 1fr;gap:26px;align-items:start;margin-top:6px;}
+  @media(max-width:860px){.comp-body{grid-template-columns:1fr;}}
+  .comp-points{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:14px;margin-top:18px;}
+  @media(max-width:720px){.comp-points{grid-template-columns:1fr;}}
+  .cpoint{border-top:2px solid var(--grid-strong);padding-top:10px;}
+  .cpoint b{display:block;font-size:14.5px;font-weight:800;margin-bottom:3px;position:relative;padding-left:22px;}
+  .cpoint b::before{content:'✓';position:absolute;left:0;top:-1px;font-family:'Caveat',cursive;font-size:20px;color:var(--green);}
+  .cpoint span{font-size:13.5px;color:var(--pencil);line-height:1.45;}
+  /* operator gold */
+  .comp.gold{background:linear-gradient(180deg,#fffaf0,var(--gold-bg));border-color:var(--gold);box-shadow:6px 9px 0 rgba(201,153,46,.35);}
+  .comp.gold::after{border-color:transparent var(--paper) transparent transparent;}
+  .comp.gold .comp-num,.comp.gold .comp-cat{color:var(--gold);}
+  .comp.gold .comp-name{color:#8a6a12;}
+  .comp.gold .cpoint b::before{color:var(--gold);}
+  .gold-flag{display:inline-block;font-family:'Caveat',cursive;font-size:19px;color:var(--gold);background:rgba(201,153,46,.14);border:1.5px solid var(--gold);border-radius:100px;padding:2px 14px;transform:rotate(-1.5deg);margin-bottom:8px;}
+
+  /* sketch mockups */
+  .comp-sketch{position:relative;}
+  .mockup{background:#fbf7ec;border:2px solid var(--ink);border-radius:5px;box-shadow:3px 4px 0 rgba(58,63,85,.18);overflow:hidden;transform:rotate(1.2deg);}
+  .mockup .bar{display:flex;align-items:center;gap:6px;padding:7px 10px;border-bottom:1.5px solid var(--pencil);background:rgba(58,63,85,.06);}
+  .mockup .bar i{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--pencil);display:block;}
+  .mockup .bar .ttl{margin-left:6px;font-family:'Caveat',cursive;font-size:15px;color:var(--pencil);}
+  .mockup svg{display:block;width:100%;height:auto;background:#fbf7ec;}
+  .sketch-cap{font-family:'Caveat',cursive;font-size:17px;color:var(--red-pen);text-align:center;margin-top:9px;transform:rotate(-1deg);}
+  .comp.gold .mockup{border-color:var(--gold);}
+  .comp.gold .mockup .bar{border-bottom-color:var(--gold);}
+
+  /* cta */
+  .cta-note{margin-top:12px;max-width:640px;background:var(--paper-2);border:2px solid var(--ink);border-radius:4px;padding:28px 28px 24px;box-shadow:6px 8px 0 rgba(58,63,85,.2);}
+  .cta-big{display:inline-block;font-size:16px;font-weight:700;color:#fff;background:var(--magenta-deep);border:2px solid var(--ink);border-radius:2px;padding:13px 26px;box-shadow:4px 5px 0 var(--ink);cursor:pointer;text-decoration:none;transition:transform .12s,box-shadow .12s;margin-top:8px;}
+  .cta-big:hover{transform:translate(-2px,-2px);box-shadow:6px 7px 0 var(--ink);}
+
+  /* faq */
+  .faq{margin-top:32px;max-width:820px;}
+  .faq-item{border-bottom:1.5px dashed rgba(58,63,85,.3);padding:16px 0;cursor:pointer;}
+  .faq-q{font-family:'Caveat',cursive;font-size:23px;color:var(--ink);display:flex;justify-content:space-between;gap:12px;}
+  .faq-q .tw{color:var(--magenta);transition:transform .2s;}
+  .faq-item.open .faq-q .tw{transform:rotate(45deg);}
+  .faq-a{font-size:15px;color:var(--pencil);line-height:1.6;max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-item.open .faq-a{max-height:320px;margin-top:10px;}
+
+  footer{padding:60px 0;text-align:center;border-top:1.5px dashed rgba(58,63,85,.25);z-index:1;position:relative;}
+  footer .tag{font-family:'Caveat',cursive;font-size:26px;color:var(--magenta-deep);}
+  footer .cr{font-size:13px;color:var(--pencil);margin-top:8px;}
+  .pocnote{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:80;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);background:rgba(246,240,226,.85);border:1px dashed var(--pencil);padding:5px 12px;border-radius:20px;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="logo" href="wysdym-home-paper.html"><img src="origami-magenta-wysdym-FAVICON.png" alt="wysdym"><span class="wm">wysdym<span class="dot">.</span></span></a>
+  <nav class="links">
+    <a href="wysdym-home-paper.html#problem">The problem</a>
+    <a href="wysdym-platform-paper.html" class="current">The platform</a>
+    <a href="wysdym-stand-for-paper.html">What we stand for</a>
+    <a href="wysdym-design-partner-paper.html" class="apply-btn">Apply for access</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">the platform ↓</div>
+    <h1>Five components. One platform.<br><span class="underline-hand">Everything every agent needs to actually work.</span></h1>
+    <p class="lead">wysdym is the platform every GTM agent runs on — the layer underneath, not another agent vendor. Shared memory, skills, integrations, governance, and an outcome loop, so every agent compounds into a revenue advantage.</p>
+    <div class="flow">
+      <span class="step" style="--r:-2deg;">Read</span><span class="arw">→</span>
+      <span class="step" style="--r:1.5deg;">Run</span><span class="arw">→</span>
+      <span class="step" style="--r:-1deg;">Write</span><span class="arw">→</span>
+      <span class="step" style="--r:2deg;">Learn</span>
+    </div>
+  </div>
+</section>
+
+<div class="crease"></div>
+
+<!-- COMPONENTS -->
+<section>
+  <div class="wrap">
+    <div class="comps fold" id="comps"></div>
+  </div>
+</section>
+
+<div class="crease"></div>
+
+<!-- CTA -->
+<section>
+  <div class="wrap fold">
+    <div class="eyebrow">the ask</div>
+    <h2>Run every agent on <span class="underline-hand">the harness.</span></h2>
+    <div class="cta-note">
+      <p class="body" style="font-size:16px;">wysdym is live — and we're onboarding a select group of customers as demand grows. Apply to run every agent on the harness; we take on the ones we can go deepest with.</p>
+      <a href="wysdym-design-partner-paper.html" class="cta-big">Apply for access →</a>
+    </div>
+  </div>
+</section>
+
+<div class="crease"></div>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap fold">
+    <div class="eyebrow">platform FAQ</div>
+    <h2>Frequently asked <span class="underline-hand">questions.</span></h2>
+    <p class="body" style="margin-top:12px;">How the five components — and Operator — actually work.</p>
+    <div class="faq" id="faq"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="hand tag">The platform every GTM agent runs on.</div>
+  <div class="cr">© 2026 wysdym, Inc.</div>
+</footer>
+
+<div class="pocnote">Paper concept · The Platform · experience study</div>
+
+<script>
+const COMPONENTS=[
+  {num:'01',cat:'Knowledge · Cortex',name:'wysdymGraph',sub:'Your whole GTM brain, on one screen.',
+   desc:'A per-tenant typed knowledge graph — 39 GTM domains. Self-learning: every approval, edit, and override makes it sharper.',
+   points:[['Answers from your truth','Agents read your positioning and battle cards — not generic guesses.'],
+           ['Update once, everything follows','Dependent domains update when the source changes. No more stale decks.'],
+           ['Gets smarter as you use it','Conversations and outcomes feed back in — with a human approving every change.']]},
+  {num:'02',cat:'Capabilities',name:'wysdymSkills',sub:'162 GTM skills, ready on day one.',
+   desc:'An open skill library, invoked by any agent over MCP. Usage patterns generate and refine new skills.',
+   points:[['Stop reinventing the same prompt','Your best rep’s prep brief becomes a skill everyone uses the same way.'],
+           ['Built for GTM, not generic','Organized by what your team does: sales, research, enablement, ops, content.'],
+           ['Your playbook, executable','Skills run on your criteria — BANT, MEDDIC, or your own.']]},
+  {num:'03',cat:'Integrations',name:'wysdymConnect',sub:'Your stack, wired once.',
+   desc:'The full GTM stack — Salesforce, HubSpot, Gong, Slack, Drive, Notion — wired once, not into every agent.',
+   points:[['Read-only by default','Writes are off until you enable them — then approval-gated. Security says yes.'],
+           ['CRM-agnostic, no lock-in','Salesforce or HubSpot — your choice, switchable. No ecosystem bet.'],
+           ['Always current','Sources sync continuously — agents answer from today’s content.']]},
+  {num:'04',cat:'Governance',name:'wysdymGateway',sub:'Every agent through one governed door.',
+   desc:'One governed door. Per-agent permissions, human-in-the-loop review, and write-approval queues.',
+   points:[['No agent gets extra access','Permissions per agent, set by you. Research reads; only deal desk proposes writes.'],
+           ['Autonomous or approved','Run agents fully autonomous, or keep a human in the loop on the exact change.'],
+           ['Every action, logged','Who did what, when, with what access — answered in seconds.']]},
+  {num:'05',cat:'Telemetry · Findings',name:'wysdymObserve',sub:'Know what every agent did — and what it was worth.',
+   desc:'Outcome attribution to deal stages. Findings flag drift and deal risk with the exact write to fix it.',
+   points:[['Catch drift before it costs pipeline','Qualification slipping, talk tracks underperforming — flagged with evidence.'],
+           ['Attribution, finally','Which agent produced which outcome — meetings, leads, deals progressed.'],
+           ['Every finding has a next step','Route it to a play, assign it, or dismiss it with a reason.']]},
+  {num:'06',cat:'Plays · Recurring motions',name:'wysdymPlays',sub:'Your recurring motions, running themselves.',
+   desc:'Chained skills that fire on a schedule or a signal — your team’s repeatable plays, automated and measured.',
+   points:[['Champion leaves? You know first','Signal spotted, account researched, owner briefed — before Monday’s meeting.'],
+           ['Stale deals swept daily','Deals stalled 14+ days get a recommended next action for the AE.'],
+           ['Measured like a rep','Every play shows fires and success rate. Keep what works, kill what doesn’t.']]},
+  {num:'★',cat:'The agent that ships with wysdym',name:'Operator',sub:'Ask anything. Get an answer with receipts.',gold:true,
+   desc:'Your working agent on day one. Runs on the Cortex, calls your Skills, connects through the Gateway — governed and observed.',
+   points:[['Useful on day one','Account briefs, pipeline questions, competitive answers from your graph — immediately.'],
+           ['Trust you can inspect','Every answer shows what it read and called. When it matters, check it.'],
+           ['Call-prep in seconds','A one-ask deal brief replaces twenty minutes of tab-hopping.']]}
+];
+const rots=[-1,.8,-.7,1,-.6,.7,-.4];
+const compsEl=document.getElementById('comps');
+
+// shared hand-drawn "rough" filter for all sketches
+document.body.insertAdjacentHTML('afterbegin','<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.013 0.016" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs></svg>');
+
+// pencil-sketch wireframes of each screen (viewBox 0 0 340 210)
+const SK={
+'wysdymGraph':'<circle cx="168" cy="100" r="17"/><circle cx="78" cy="52" r="10"/><circle cx="258" cy="46" r="10"/><circle cx="54" cy="150" r="10"/><circle cx="278" cy="140" r="10"/><circle cx="172" cy="176" r="10"/><circle cx="115" cy="108" r="8"/><line x1="168" y1="100" x2="78" y2="52"/><line x1="168" y1="100" x2="258" y2="46"/><line x1="168" y1="100" x2="54" y2="150"/><line x1="168" y1="100" x2="278" y2="140"/><line x1="168" y1="100" x2="172" y2="176"/><line x1="168" y1="100" x2="115" y2="108"/><line x1="78" y1="52" x2="115" y2="108"/><line x1="258" y1="46" x2="278" y2="140"/><line x1="152" y1="128" x2="186" y2="128" stroke-width="1"/>',
+'wysdymSkills':'<rect x="22" y="16" width="296" height="24" rx="8"/><circle cx="40" cy="28" r="5"/><line x1="54" y1="28" x2="150" y2="28" stroke-width="1"/><rect x="22" y="56" width="92" height="58" rx="6"/><circle cx="36" cy="72" r="6"/><line x1="48" y1="72" x2="104" y2="72" stroke-width="1"/><line x1="34" y1="90" x2="100" y2="90" stroke-width="1"/><line x1="34" y1="100" x2="84" y2="100" stroke-width="1"/><rect x="122" y="56" width="92" height="58" rx="6"/><circle cx="136" cy="72" r="6"/><line x1="148" y1="72" x2="204" y2="72" stroke-width="1"/><line x1="134" y1="90" x2="200" y2="90" stroke-width="1"/><line x1="134" y1="100" x2="184" y2="100" stroke-width="1"/><rect x="222" y="56" width="92" height="58" rx="6"/><circle cx="236" cy="72" r="6"/><line x1="248" y1="72" x2="304" y2="72" stroke-width="1"/><line x1="234" y1="90" x2="300" y2="90" stroke-width="1"/><line x1="234" y1="100" x2="284" y2="100" stroke-width="1"/><rect x="22" y="124" width="92" height="58" rx="6"/><circle cx="36" cy="140" r="6"/><line x1="48" y1="140" x2="104" y2="140" stroke-width="1"/><line x1="34" y1="158" x2="100" y2="158" stroke-width="1"/><line x1="34" y1="168" x2="84" y2="168" stroke-width="1"/><rect x="122" y="124" width="92" height="58" rx="6"/><circle cx="136" cy="140" r="6"/><line x1="148" y1="140" x2="204" y2="140" stroke-width="1"/><line x1="134" y1="158" x2="200" y2="158" stroke-width="1"/><line x1="134" y1="168" x2="184" y2="168" stroke-width="1"/><rect x="222" y="124" width="92" height="58" rx="6"/><circle cx="236" cy="140" r="6"/><line x1="248" y1="140" x2="304" y2="140" stroke-width="1"/><line x1="234" y1="158" x2="300" y2="158" stroke-width="1"/><line x1="234" y1="168" x2="284" y2="168" stroke-width="1"/>',
+'wysdymConnect':'<rect x="138" y="86" width="64" height="34" rx="7"/><line x1="150" y1="103" x2="190" y2="103" stroke-width="1"/><line x1="46" y1="30" x2="170" y2="103"/><line x1="294" y1="30" x2="170" y2="103"/><line x1="36" y1="104" x2="170" y2="103"/><line x1="304" y1="104" x2="170" y2="103"/><line x1="68" y1="176" x2="170" y2="103"/><line x1="272" y1="176" x2="170" y2="103"/><rect x="24" y="18" width="44" height="24" rx="5"/><line x1="32" y1="30" x2="60" y2="30" stroke-width="1"/><rect x="272" y="18" width="44" height="24" rx="5"/><line x1="280" y1="30" x2="308" y2="30" stroke-width="1"/><rect x="14" y="92" width="44" height="24" rx="5"/><line x1="22" y1="104" x2="50" y2="104" stroke-width="1"/><rect x="282" y="92" width="44" height="24" rx="5"/><line x1="290" y1="104" x2="318" y2="104" stroke-width="1"/><rect x="46" y="164" width="44" height="24" rx="5"/><line x1="54" y1="176" x2="82" y2="176" stroke-width="1"/><rect x="250" y="164" width="44" height="24" rx="5"/><line x1="258" y1="176" x2="286" y2="176" stroke-width="1"/>',
+'wysdymGateway':'<rect x="26" y="26" width="26" height="20" rx="3"/><path d="M31 26 v-6 a6 6 0 0 1 16 0 v6"/><line x1="66" y1="36" x2="150" y2="36" stroke-width="1"/><rect x="24" y="61" width="18" height="18" rx="3"/><path d="M27 70 l4 4 l7 -8"/><line x1="50" y1="70" x2="150" y2="70" stroke-width="1"/><rect x="248" y="62" width="40" height="16" rx="8"/><circle cx="278" cy="70" r="6"/><rect x="24" y="97" width="18" height="18" rx="3"/><line x1="50" y1="106" x2="150" y2="106" stroke-width="1"/><rect x="248" y="98" width="40" height="16" rx="8"/><circle cx="258" cy="106" r="6"/><rect x="24" y="133" width="18" height="18" rx="3"/><line x1="50" y1="142" x2="150" y2="142" stroke-width="1"/><rect x="248" y="134" width="40" height="16" rx="8"/><circle cx="278" cy="142" r="6"/><rect x="24" y="169" width="18" height="18" rx="3"/><line x1="50" y1="178" x2="150" y2="178" stroke-width="1"/><rect x="248" y="170" width="40" height="16" rx="8"/><circle cx="258" cy="178" r="6"/>',
+'wysdymObserve':'<line x1="24" y1="152" x2="188" y2="152" stroke-width="1"/><rect x="30" y="97" width="20" height="55"/><rect x="64" y="64" width="20" height="88"/><rect x="98" y="110" width="20" height="42"/><rect x="132" y="47" width="20" height="105"/><rect x="166" y="80" width="20" height="72"/><polyline points="40,96 74,66 108,112 142,50 176,82"/><polygon points="210,44 210,58 222,51"/><line x1="228" y1="51" x2="316" y2="51" stroke-width="1"/><polygon points="210,80 210,94 222,87"/><line x1="228" y1="87" x2="316" y2="87" stroke-width="1"/><polygon points="210,116 210,130 222,123"/><line x1="228" y1="123" x2="300" y2="123" stroke-width="1"/>',
+'wysdymPlays':'<polygon points="26,23 26,41 42,32"/><line x1="54" y1="32" x2="176" y2="32" stroke-width="1"/><rect x="196" y="24" width="118" height="15" rx="7"/><line x1="201" y1="31" x2="262" y2="31" stroke-width="6"/><polygon points="26,65 26,83 42,74"/><line x1="54" y1="74" x2="176" y2="74" stroke-width="1"/><rect x="196" y="66" width="118" height="15" rx="7"/><line x1="201" y1="73" x2="298" y2="73" stroke-width="6"/><polygon points="26,107 26,125 42,116"/><line x1="54" y1="116" x2="176" y2="116" stroke-width="1"/><rect x="196" y="108" width="118" height="15" rx="7"/><line x1="201" y1="115" x2="238" y2="115" stroke-width="6"/><polygon points="26,149 26,167 42,158"/><line x1="54" y1="158" x2="176" y2="158" stroke-width="1"/><rect x="196" y="150" width="118" height="15" rx="7"/><line x1="201" y1="157" x2="286" y2="157" stroke-width="6"/>',
+'Operator':'<rect x="24" y="20" width="176" height="34" rx="12"/><line x1="36" y1="32" x2="150" y2="32" stroke-width="1"/><line x1="36" y1="44" x2="120" y2="44" stroke-width="1"/><rect x="150" y="64" width="166" height="28" rx="12"/><line x1="162" y1="78" x2="290" y2="78" stroke-width="1"/><rect x="24" y="102" width="228" height="46" rx="12"/><line x1="36" y1="118" x2="220" y2="118" stroke-width="1"/><line x1="36" y1="132" x2="180" y2="132" stroke-width="1"/><rect x="24" y="158" width="94" height="18" rx="9"/><line x1="34" y1="167" x2="108" y2="167" stroke-width="1"/><rect x="126" y="158" width="104" height="18" rx="9"/><line x1="136" y1="167" x2="220" y2="167" stroke-width="1"/><rect x="24" y="184" width="292" height="22" rx="10"/><line x1="36" y1="195" x2="150" y2="195" stroke-width="1"/><circle cx="303" cy="195" r="8"/>'
+};
+function mockup(c){
+  return `<div class="comp-sketch">
+    <div class="mockup">
+      <div class="bar"><i></i><i></i><i></i><span class="ttl">${c.name} — screen</span></div>
+      <svg viewBox="0 0 340 210" xmlns="http://www.w3.org/2000/svg"><g filter="url(#rough)" stroke="#3a3f55" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${SK[c.name]||''}</g></svg>
+    </div>
+    <div class="sketch-cap">~ rough sketch of the ${c.name} screen</div>
+  </div>`;
+}
+
+COMPONENTS.forEach((c,i)=>{
+  const el=document.createElement('div');
+  el.className='comp'+(c.gold?' gold':'');
+  el.style.setProperty('--r',rots[i]+'deg');
+  el.innerHTML=`
+    ${c.gold?'<div class="gold-flag">★ the reference agent</div>':''}
+    <div class="comp-head"><span class="comp-num">${c.num}</span><span class="comp-cat">${c.cat}</span><span class="comp-name">${c.name}</span></div>
+    <div class="comp-body">
+      <div class="comp-text">
+        <div class="comp-sub">${c.sub}</div>
+        <div class="comp-desc">${c.desc}</div>
+        <div class="comp-points">${c.points.map(p=>`<div class="cpoint"><b>${p[0]}</b><span>${p[1]}</span></div>`).join('')}</div>
+      </div>
+      ${mockup(c)}
+    </div>`;
+  compsEl.appendChild(el);
+});
+
+const FAQ=[
+  ['What are the five components of the wysdym platform?','wysdymGraph is a per-tenant typed knowledge graph of your GTM domains. wysdymSkills is an open library of GTM skills any agent can call. wysdymConnect wires your full stack — Salesforce, HubSpot, Gong, Slack, Drive, Notion — once, instead of into every agent. wysdymGateway is one governed door with per-agent permissions and human-in-the-loop approvals. wysdymObserve attributes outcomes to deal stages and flags drift. Operator, a working reference agent, ships on top.'],
+  ['Does wysdym work with Salesforce and HubSpot?','Yes. Wysdym is CRM-agnostic with no lock-in — run Salesforce or HubSpot (and switch between them) alongside Gong, Slack, Google Drive, and Notion. Your stack is connected once at the platform layer, so you’re not re-wiring the same integrations into every agent.'],
+  ['How does wysdym keep our data secure and governed?','Every agent goes through one governed door. Access is read-only by default; writes stay off until you enable them, and then they’re approval-gated. You set per-agent permissions, keep a human in the loop on sensitive actions, and get a full audit trail of who did what, when, and with what access.'],
+  ['How do AI agents connect to wysdym?','Agents connect over MCP, the Model Context Protocol. Any MCP-compatible agent can read from your knowledge graph, call your skills, and act through the governed gateway — so you keep your choice of agent instead of being locked into one vendor’s.'],
+  ['Does wysdym lower our total AI spend?','It’s designed to. Because integrations and grounding are shared at the platform layer, your agents don’t each pay to retrieve the same context over and over. One governed source of memory and connection means far less duplicated inference across your agent stack.'],
+  ['What is Operator?','Operator is the working reference agent that ships with wysdym — your agent on day one. It runs on the wysdymGraph, calls your skills, and connects through the gateway, so it’s useful immediately for things like account briefs, pipeline questions, and competitive answers — and every action it takes is governed and observable.']
+];
+const faqEl=document.getElementById('faq');
+FAQ.forEach(f=>{
+  const it=document.createElement('div'); it.className='faq-item';
+  it.innerHTML=`<div class="faq-q">${f[0]} <span class="tw">+</span></div><div class="faq-a">${f[1]}</div>`;
+  it.addEventListener('click',()=>it.classList.toggle('open'));
+  faqEl.appendChild(it);
+});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.06});
+document.querySelectorAll('.fold').forEach(f=>io.observe(f));
+</script>
+</body>
+</html>
