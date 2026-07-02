@@ -144,8 +144,9 @@
   .btn{display:inline-block;font-size:14px;font-weight:700;padding:15px 30px;text-decoration:none;background:#fff;color:var(--magenta-dark);margin-top:28px;transition:.18s;}
   .btn:hover{background:var(--paper-2);}
 
-  footer{padding:54px 0;border-top:1px solid rgba(31,34,51,.12);}
-  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--grey);}
+  footer{padding:60px 0;text-align:center;border-top:1.5px dashed rgba(31,34,51,.25);}
+  footer .tag{font-family:'Caveat',cursive;font-size:26px;color:var(--magenta-deep);}
+  footer .cr{font-size:13px;color:var(--grey);margin-top:8px;}
   .pocnote{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:80;font-size:11px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--grey);background:rgba(253,252,248,.9);border:1px solid rgba(31,34,51,.15);padding:5px 14px;}
   .reveal{opacity:0;transform:translateY(26px);transition:.7s;}
@@ -221,7 +222,8 @@
 </section>
 
 <footer>
-  <div class="wrap foot"><span>The platform every GTM agent runs on.</span><span>© 2026 wysdym, Inc.</span></div>
+  <div class="tag">The platform every GTM agent runs on.</div>
+  <div class="cr">© 2026 wysdym, Inc.</div>
 </footer>
 
 <div class="lb" id="lb" aria-hidden="true"><div class="lb-card"><button class="lb-x" id="lbX" aria-label="Unpin to close" title="unpin to close">✕</button><img id="lbImg" src="" alt=""><div class="lb-cap" id="lbCap"></div></div></div>
