@@ -75,7 +75,8 @@
   .acro-hint{font-family:'Caveat',cursive;font-size:20px;color:var(--red-pen);margin-bottom:18px;}
   .acro-letters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:6px 0 22px;}
   .letter{flex:1;min-width:110px;text-align:center;}
-  .letter .cap{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:60px;color:var(--magenta-deep);line-height:1;}
+  .letter .cap{display:flex;justify-content:center;align-items:flex-end;height:62px;}
+  .letter .cap svg{height:58px;width:auto;display:block;filter:drop-shadow(1px 2px 1px rgba(141,72,116,.18));}
   .letter .word{font-family:'Caveat',cursive;font-size:24px;color:var(--ink);border-bottom:2px solid var(--grid-strong);
     min-height:34px;padding:2px 4px;outline:none;transition:background .15s;}
   .letter .word[contenteditable="true"]{background:rgba(255,224,102,.35);border-bottom-color:var(--red-pen);}
@@ -288,7 +289,9 @@
     lettersEl.innerHTML = '';
     LETTERS.forEach((L,i)=>{
       const d = document.createElement('div'); d.className='letter';
-      d.innerHTML = `<div class="cap">${L}</div><div class="word" data-i="${i}" ${editing?'contenteditable="true"':''}>${words[i]}</div>`;
+      const W=[[33,74],[104,48],[151,39],[191,50],[241,44],[284,68]][i];
+      const cap=`<svg viewBox="${W[0]} 3 ${W[1]} 82" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${L}"><image href="wysdym-wordmark-magenta.svg" x="0" y="0" width="400" height="100"/></svg>`;
+      d.innerHTML = `<div class="cap">${cap}</div><div class="word" data-i="${i}" ${editing?'contenteditable="true"':''}>${words[i]}</div>`;
       lettersEl.appendChild(d);
     });
   }

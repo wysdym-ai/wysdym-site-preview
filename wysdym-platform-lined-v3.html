@@ -127,13 +127,10 @@
   .lb-card{background:#fff;padding:16px 16px 44px;box-shadow:0 30px 70px rgba(0,0,0,.45);max-width:min(940px,94vw);position:relative;}
   .lb-card img{display:block;max-width:100%;max-height:76vh;background:#1a1833;}
   .lb-cap{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);}
-  .lb-x{position:absolute;top:-17px;left:50%;transform:translateX(-50%);width:36px;height:36px;border-radius:50%;border:none;
-    cursor:pointer;font-size:0;z-index:5;
-    background:radial-gradient(circle at 32% 28%, #ffb3c6, #d2553f 52%, #8d2b1c 95%);
-    box-shadow:0 5px 9px rgba(0,0,0,.35), inset 0 -3px 5px rgba(0,0,0,.28), inset 0 2px 3px rgba(255,255,255,.5);}
-  .lb-x::after{content:'';position:absolute;left:50%;top:96%;width:4px;height:13px;transform:translateX(-50%);
-    background:linear-gradient(180deg,#b9bec4,#6a6f75);clip-path:polygon(0 0,100% 0,50% 100%);}
-  .lb-x:hover{filter:brightness(1.08);}
+  .lb-x{position:absolute;top:-32px;left:50%;transform:translateX(-50%);width:46px;height:58px;border:none;background:none;
+    cursor:pointer;z-index:5;padding:0;filter:drop-shadow(0 7px 6px rgba(0,0,0,.32));transition:transform .15s;}
+  .lb-x svg{width:100%;height:100%;display:block;}
+  .lb-x:hover{transform:translateX(-50%) scale(1.07);}
 
   /* CTA: big folded magenta sheet */
   .cta-fold{position:relative;background:linear-gradient(135deg,var(--magenta) 0%,var(--magenta-deep) 60%,var(--magenta-dark) 100%);
@@ -273,7 +270,18 @@
   </div>
 </footer>
 
-<div class="lb" id="lb" aria-hidden="true"><div class="lb-card"><button class="lb-x" id="lbX" aria-label="Unpin to close" title="unpin to close">✕</button><img id="lbImg" src="" alt=""><div class="lb-cap" id="lbCap"></div></div></div>
+<div class="lb" id="lb" aria-hidden="true"><div class="lb-card"><button class="lb-x" id="lbX" aria-label="Unpin to close" title="unpin to close"><svg viewBox="0 0 44 58" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<linearGradient id="pinH" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff938c"/><stop offset=".45" stop-color="#dd4a40"/><stop offset="1" stop-color="#8d1f18"/></linearGradient>
+<linearGradient id="pinC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c8352c"/><stop offset="1" stop-color="#7c1a14"/></linearGradient>
+<linearGradient id="pinM" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#eef1f4"/><stop offset=".5" stop-color="#9aa2ab"/><stop offset="1" stop-color="#5d646c"/></linearGradient></defs>
+<g transform="rotate(-14 22 28)">
+<path d="M22 46 L20.8 30 L23.2 30 Z" fill="url(#pinM)"/>
+<path d="M20.9 29 L23.1 29 L22.6 40 L21.4 40 Z" fill="url(#pinM)"/>
+<ellipse cx="22" cy="25.5" rx="9.5" ry="4" fill="url(#pinC)"/>
+<path d="M12.5 11 C15 18.5 29 18.5 31.5 11 L30 24 C26 27.5 18 27.5 14 24 Z" fill="url(#pinC)"/>
+<ellipse cx="22" cy="10" rx="13.5" ry="6.5" fill="url(#pinH)"/>
+<ellipse cx="17.5" cy="8" rx="4.6" ry="2" fill="rgba(255,255,255,.65)"/>
+</g></svg></button><img id="lbImg" src="" alt=""><div class="lb-cap" id="lbCap"></div></div></div>
 
 <div class="pocnote">Platform v3 · Lined Paper × Origami Studio</div>
 
