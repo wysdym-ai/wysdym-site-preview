@@ -165,6 +165,24 @@
   nav.links a.current{color:var(--magenta-deep);}
   nav.links a.current::after{content:'';position:absolute;left:-2px;right:-2px;bottom:-4px;height:7px;
     background:var(--magenta);opacity:.35;transform:skewX(-10deg);border-radius:40%;}
+  /* pads as taped-on cue cards */
+  .pad{border:1.5px solid rgba(58,63,85,.35) !important;background:linear-gradient(180deg,#fff,#f8f5ec) !important;
+    box-shadow:0 14px 30px -12px rgba(31,34,51,.35) !important;}
+  .two-pads .pad:first-child{transform:rotate(-.8deg);}
+  .two-pads .pad:last-child{transform:rotate(.7deg);}
+  .pad::before{content:'';position:absolute;top:-13px;left:50%;transform:translateX(-50%) rotate(-2.5deg);
+    width:92px;height:26px;background:rgba(255,244,200,.65);border-left:1px dashed rgba(0,0,0,.07);
+    border-right:1px dashed rgba(0,0,0,.07);box-shadow:0 1px 3px rgba(0,0,0,.14);}
+  /* shared paper footer */
+  footer{padding:52px 0 58px;text-align:center;border-top:1.5px dashed rgba(58,63,85,.25);position:relative;z-index:1;}
+  .wrap-f{max-width:1040px;margin:0 auto;padding:0 32px;}
+  .f-tag{font-family:'Caveat',cursive;font-size:26px;color:var(--magenta-deep);}
+  .f-links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
+  .f-links a{font-family:'Caveat',cursive;font-size:20px;color:var(--pencil,#565a70);text-decoration:none;}
+  .f-links a:hover{color:var(--magenta-deep);}
+  .f-meta{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--pencil,#565a70);}
+  .f-meta a{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(58,63,85,.4);}
+  .f-meta a:hover{color:var(--magenta-deep);}
 </style>
 </head>
 <body>
@@ -239,12 +257,12 @@
 <section>
   <div class="wrap fold">
     <div class="eyebrow">who this is for</div>
-    <h2>Built for the 60% of teams<br>bundled vendors <span class="underline-hand">can't reach.</span></h2>
-    <p class="body" style="margin-top:14px;">You're a fit if most of this sounds like you.</p>
+    <h2>Any size. Any stack.<br><span class="underline-hand">Any stage of the AI journey.</span></h2>
+    <p class="body" style="margin-top:14px;">There's no perfect profile. We've seen the harness create value from early-stage startups to large enterprises — and we're curious about every team trying to make their agents compound.</p>
     <div class="postits">
-      <div class="postit p-yellow" style="--r:-2.5deg;--tape:-4deg;"><div class="num">01</div><h3>Mid-market or enterprise GTM</h3><p>Sales, RevOps, marketing, or enablement running go-to-market in North America.</p></div>
-      <div class="postit p-pink" style="--r:1.8deg;--tape:3deg;"><div class="num">02</div><h3>CRM-agnostic</h3><p>Salesforce or HubSpot — or a messy mix of both. No lock-in, switchable.</p></div>
-      <div class="postit p-blue" style="--r:-1.2deg;--tape:-2deg;"><div class="num">03</div><h3>Already living with agents</h3><p>You run three to five AI tools in parallel and feel the drift, the wasted spend, the missing guardrails.</p></div>
+      <div class="postit p-yellow" style="--r:-2.5deg;--tape:-4deg;"><div class="num">01</div><h3>Every size of company</h3><p>Early-stage to enterprise — if a team runs go-to-market, the harness has a job to do. Sales, RevOps, marketing, enablement.</p></div>
+      <div class="postit p-pink" style="--r:1.8deg;--tape:3deg;"><div class="num">02</div><h3>Works with your stack</h3><p>Salesforce, HubSpot, or a mix of both — wysdym plugs into the tools you already run. Nothing to rip out, no lock-in.</p></div>
+      <div class="postit p-blue" style="--r:-1.2deg;--tape:-2deg;"><div class="num">03</div><h3>Anywhere on the AI journey</h3><p>Running five agents or writing your first prompt — if you want AI that compounds instead of drifting, we'd love to learn with you.</p></div>
     </div>
   </div>
 </section>
@@ -297,8 +315,23 @@
 </section>
 
 <footer>
-  <div class="hand tag">The platform every GTM agent runs on.</div>
-  <div class="cr">© 2026 wysdym, Inc.</div>
+  <div class="wrap-f">
+    <div class="f-tag">The platform every GTM agent runs on.</div>
+    <nav class="f-links">
+      <a href="wysdym-home-lined-v2.html">Home</a>
+      <a href="wysdym-platform-lined-v3.html">The platform</a>
+      <a href="wysdym-stand-for-lined.html">What we stand for</a>
+      <a href="wysdym-blog-lined.html">Blog</a>
+      <a href="https://gtmstats.wysdym.ai" target="_blank" rel="noopener">2026 GTM AI Stats</a>
+      <a href="wysdym-design-partner-lined.html">Apply for access</a>
+    </nav>
+    <div class="f-meta">
+      <a href="https://wysdym.ai/privacy" target="_blank" rel="noopener">Privacy policy</a>
+      <a href="https://wysdym.ai/contact" target="_blank" rel="noopener">Contact</a>
+      <a href="https://www.linkedin.com/company/wysdym" target="_blank" rel="noopener">LinkedIn</a>
+      <span>© 2026 wysdym, Inc.</span>
+    </div>
+  </div>
 </footer>
 
 <div class="pocnote">Direction E v2 · Lined Paper · Apply</div>

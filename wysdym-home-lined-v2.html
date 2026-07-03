@@ -278,12 +278,24 @@
   .fold-count{font-family:'Caveat',cursive;font-size:19px;color:var(--pencil);margin-top:6px;}
   .fold-tip .ftl-o{display:block;font-family:'Instrument Serif',serif;font-style:italic;font-size:19px;color:var(--pencil);}
   .fold-tip .ftl-h{display:block;font-family:'Caveat',cursive;font-size:24px;color:var(--magenta-deep);margin-top:2px;}
+  .stage{align-items:flex-start;}
+  .stage-flex{padding-top:84px;}
+  /* shared paper footer */
+  footer{padding:52px 0 58px;text-align:center;border-top:1.5px dashed rgba(58,63,85,.25);position:relative;z-index:1;}
+  .wrap-f{max-width:1040px;margin:0 auto;padding:0 32px;}
+  .f-tag{font-family:'Caveat',cursive;font-size:26px;color:var(--magenta-deep);}
+  .f-links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
+  .f-links a{font-family:'Caveat',cursive;font-size:20px;color:var(--pencil,#565a70);text-decoration:none;}
+  .f-links a:hover{color:var(--magenta-deep);}
+  .f-meta{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--pencil,#565a70);}
+  .f-meta a{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(58,63,85,.4);}
+  .f-meta a:hover{color:var(--magenta-deep);}
 </style>
 </head>
 <body>
 
 <div class="holes" aria-hidden="true"><i></i><i></i><i></i></div>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="pen"><feTurbulence type="fractalNoise" baseFrequency="0.05 0.07" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter></defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="pen"><feTurbulence type="fractalNoise" baseFrequency="0.045 0.06" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/></filter></defs></svg>
 
 <header class="top">
   <a class="logo" href="wysdym-home-lined-v2.html"><img class="logo-crane" src="origami-crane-wysdym.png" alt="wysdym crane"><img class="logo-word" src="wysdym-wordmark-magenta.svg" alt="wysdym"></a>
@@ -323,9 +335,9 @@
     <h2>The agents work.<br>The stack <span class="underline-hand">doesn't.</span></h2>
     <p class="body" style="margin-top:16px;">Every GTM team already runs 3–5 agents in parallel. But isolated agents don't compound — and what doesn't compound doesn't grow revenue.</p>
     <div class="grid3">
-      <div class="ori-card"><svg class="ori-doodle" viewBox="0 0 48 48"><g filter="url(#pen)" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17 31c-5 0-7.5-5.5-4-8.6-2-4.6 2.6-8.6 6.6-7.6 1.8-3.8 8.6-3.8 10.4 0 4-1 8.6 3 6.6 7.6 3.5 3.1 1 8.6-4 8.6"/><path d="M19 22c1.8-1.8 6.2-1.8 8 0"/><path d="M24 31v7"/><path d="M20 41h8" stroke-dasharray="2 4"/></g></svg><h3>Memory is per-agent</h3><p>Drift compounds; nothing learns across the stack. Each agent keeps its own notes.</p></div>
-      <div class="ori-card"><svg class="ori-doodle" viewBox="0 0 48 48"><g filter="url(#pen)" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="12" r="4.2"/><circle cx="38" cy="10" r="4.2"/><circle cx="24" cy="38" r="4.2"/><path d="M14 15l6 5"/><path d="M23 24l-2 8" stroke-dasharray="3 5"/><path d="M35 14l-6 7" stroke-dasharray="3 5"/><path d="M31 26l4 3"/></g></svg><h3>Connection is scattered</h3><p>The same integrations wired into every agent — so you pay for the same retrieval a dozen times.</p></div>
-      <div class="ori-card"><svg class="ori-doodle" viewBox="0 0 48 48"><g filter="url(#pen)" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 5l14 5v10c0 10-6 16-14 19-8-3-14-9-14-19V10z"/><path d="M17 23l5 5 9-11" stroke-dasharray="3 4"/><path d="M12 38L38 11"/></g></svg><h3>Governance is missing</h3><p>No human-in-the-loop, no audit trail, no feedback loop. So the agents never get smarter.</p></div>
+      <div class="ori-card"><svg class="ori-doodle" viewBox="0 0 48 48" style="transform:rotate(-4deg)"><g filter="url(#pen)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 30c-6 1-8.5-5-4.5-8.4-2.4-4.4 2.4-8.8 6.4-7.4 1.6-4.2 9-4.4 10.8.2 4.4-1.4 9 3.2 6.6 7.6 3.8 3-1 8.4-4.6 7.8"/><path d="M18.5 21.5c2-2.2 6.8-2 8.6.3"/><path d="M23.5 30.5l.8 7.4"/><path d="M19 41.5c3-.8 6.5-.6 9.5.3" stroke-dasharray="1.5 4.5"/><path d="M14 15l-2.5-2.8" stroke-width="1.6"/></g></svg><h3>Memory is per-agent</h3><p>Drift compounds; nothing learns across the stack. Each agent keeps its own notes.</p></div>
+      <div class="ori-card"><svg class="ori-doodle" viewBox="0 0 48 48" style="transform:rotate(3deg)"><g filter="url(#pen)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12.5c-.6-3 1.6-5.4 4.2-5 2.8.4 4 3.6 2.4 6-1.8 2.4-6 1.8-6.6-1z"/><path d="M35 7.5c2.8-1.4 6 1 5.6 4-.4 2.8-4 4-6 2-1.8-1.8-1.6-4.6.4-6z"/><path d="M21.5 34c-.8-2.8 1.6-5.6 4.4-5 2.8.4 4 4 2 6.2-2 2-6 1-6.4-1.2z"/><path d="M13.5 15.5l7.2 6.3"/><path d="M23.5 27.5l-1.8 7.2" stroke-dasharray="2.5 5"/><path d="M34.5 13.5l-6.8 8" stroke-dasharray="2.5 5"/><path d="M30.5 27l5 3.6"/></g></svg><h3>Connection is scattered</h3><p>The same integrations wired into every agent — so you pay for the same retrieval a dozen times.</p></div>
+      <div class="ori-card"><svg class="ori-doodle" viewBox="0 0 48 48" style="transform:rotate(-3deg)"><g filter="url(#pen)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4.5l14.5 5.2c.4 10.4-5.4 17-14.2 20.4C15.2 26.6 9.6 20 10 9.9L24 4.5z"/><path d="M17.5 22.5l5.2 5.4 9.6-11.6" stroke-dasharray="2.5 4"/><path d="M11 38.5L39.5 9.5"/><path d="M13.5 41l3-2.8" stroke-width="1.6"/></g></svg><h3>Governance is missing</h3><p>No human-in-the-loop, no audit trail, no feedback loop. So the agents never get smarter.</p></div>
     </div>
     <div class="stat-callout"><div class="big">40%</div><div class="txt">of agentic AI projects will be cancelled by 2027 — largely cost and governance. <a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" target="_blank" rel="noopener" style="color:var(--magenta-deep);font-style:italic;">Gartner, 2025 ↗</a></div></div>
     <div class="cap-note">↳ Today: every agent folds its own square.</div>
@@ -335,7 +347,7 @@
 <div class="crease"></div>
 
 <!-- THE PLATFORM (teaser) -->
-<section id="platform">
+<section id="platform" style="padding-bottom:0;">
   <div class="wrap fold">
     <div class="eyebrow">the platform</div>
     <h2>One sheet. <span class="underline-hand">Five folds.</span></h2>
@@ -396,38 +408,11 @@
   </div>
 </section>
 
-<section style="padding-top:40px;">
+<section style="padding:30px 0 26px;">
   <div class="wrap fold">
     <div><a href="wysdym-platform-lined-v3.html" class="btn-hand primary" style="font-size:16px;">Explore the full platform →</a></div>
-
-    <!-- the real thing, enclosed -->
-    <div class="env-zone fold">
-      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the envelope to see real product screens">
-        <div class="env-back"></div>
-        <div class="env-photos">
-          <div class="ph ph1" data-full="assets/01-wysdymGraph.gif" data-cap="wysdymGraph — live"><img src="assets/01-wysdymGraph.png" alt="wysdymGraph screen" loading="lazy"><span class="ph-cap">wysdymGraph</span></div>
-          <div class="ph ph2" data-full="assets/03-wysdymConnect.gif" data-cap="wysdymConnect — live"><img src="assets/03-wysdymConnect.png" alt="wysdymConnect screen" loading="lazy"><span class="ph-cap">wysdymConnect</span></div>
-          <div class="ph ph3" data-full="assets/06-wysdymCopilot.png" data-cap="Operator — live"><img src="assets/06-wysdymCopilot.png" alt="Operator screen" loading="lazy"><span class="ph-cap">Operator</span></div>
-          <div class="ph ph4" data-full="assets/05-wysdymObserve.gif" data-cap="wysdymObserve — live"><img src="assets/05-wysdymObserve.png" alt="wysdymObserve screen" loading="lazy"><span class="ph-cap">wysdymObserve</span></div>
-        </div>
-        <div class="env-flap"></div>
-        <div class="env-front"></div>
-        <div class="env-label">the real thing<small>photos enclosed · open me</small></div>
-        <div class="env-stamp"><img src="origami-magenta-wysdym-FAVICON.png" alt=""></div>
-      </div>
-      <div class="env-hint" id="envHint">↑ not just sketches — open the envelope for real screens</div>
-    </div>
   </div>
 </section>
-
-<!-- paper lightbox -->
-<div class="lb" id="lb" aria-hidden="true">
-  <div class="lb-card">
-    <button class="lb-x" id="lbX" aria-label="Close">✕</button>
-    <img id="lbImg" src="" alt="">
-    <div class="lb-cap" id="lbCap"></div>
-  </div>
-</div>
 
 <div class="crease"></div>
 
@@ -487,8 +472,23 @@
 </section>
 
 <footer>
-  <div class="hand tag">The platform every GTM agent runs on.</div>
-  <div class="cr">© 2026 wysdym, Inc.</div>
+  <div class="wrap-f">
+    <div class="f-tag">The platform every GTM agent runs on.</div>
+    <nav class="f-links">
+      <a href="wysdym-home-lined-v2.html">Home</a>
+      <a href="wysdym-platform-lined-v3.html">The platform</a>
+      <a href="wysdym-stand-for-lined.html">What we stand for</a>
+      <a href="wysdym-blog-lined.html">Blog</a>
+      <a href="https://gtmstats.wysdym.ai" target="_blank" rel="noopener">2026 GTM AI Stats</a>
+      <a href="wysdym-design-partner-lined.html">Apply for access</a>
+    </nav>
+    <div class="f-meta">
+      <a href="https://wysdym.ai/privacy" target="_blank" rel="noopener">Privacy policy</a>
+      <a href="https://wysdym.ai/contact" target="_blank" rel="noopener">Contact</a>
+      <a href="https://www.linkedin.com/company/wysdym" target="_blank" rel="noopener">LinkedIn</a>
+      <span>© 2026 wysdym, Inc.</span>
+    </div>
+  </div>
 </footer>
 
 <div class="pocnote">Direction E v2 · Lined Paper · Home</div>
@@ -512,177 +512,143 @@
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var NS='http://www.w3.org/2000/svg';
   var svg=document.getElementById('asmSvg');
-
   function clamp(v,a,b){return Math.min(b,Math.max(a,v));}
   function lerp(a,b,t){return a+(b-a)*t;}
   function easeInOut(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;}
 
-  /* ============================================================
-     V2 ENGINE — every fold LANDS one crane facet.
-     Flap start = mirror of the facet across its crease line;
-     theta runs pi -> 0, so cos(theta) sweeps -1 -> +1 and the
-     flap rotates from its mirrored start straight onto the facet.
-     Landed facets stay. The sheet shrinks as material is used.
-     ============================================================ */
-
-  /* the actual wysdym crane mark (5 facets), with per-facet shading */
+  /* ONE-PAPER ENGINE: the square carries the crease pattern; as fold 1
+     begins it resolves into its five pieces (dashed outlines at their
+     flat positions). Each piece then folds over its crease and lands as
+     one facet of the crane. Nothing else is ever on the table. */
   var FACETS=[
-    {pts:[[96,34],[128,147],[104,167]],  L:54, crease:[[128,147],[104,167]], name:'left wing'},
-    {pts:[[98,32],[154,127],[131,146]],  L:60, crease:[[154,127],[131,146]], name:'right wing'},
-    {pts:[[168,61],[155,123],[138,94]],  L:50, crease:[[155,123],[138,94]],  name:'body'},
-    {pts:[[171,59],[190,71],[168,73]],   L:62, crease:[[168,73],[190,71]],   name:'head'},
-    {pts:[[100,154],[101,169],[10,161]], L:56, crease:[[100,154],[101,169]], name:'tail'}
+    {pts:[[96,34],[128,147],[104,167]],  L:54, crease:[[128,147],[104,167]]},
+    {pts:[[98,32],[154,127],[131,146]],  L:60, crease:[[154,127],[131,146]]},
+    {pts:[[168,61],[155,123],[138,94]],  L:50, crease:[[155,123],[138,94]]},
+    {pts:[[171,59],[190,71],[168,73]],   L:62, crease:[[168,73],[190,71]]},
+    {pts:[[100,154],[101,169],[10,161]], L:56, crease:[[100,154],[101,169]]}
   ];
-  /* the shrinking sheet: outline after k facets have been consumed */
-  var OUT=[
-    [[8,22],[204,22],[204,182],[8,182]],
-    [[8,22],[204,22],[204,182],[120,182],[70,150],[8,140]],
-    [[8,22],[96,22],[170,60],[204,110],[204,182],[120,182],[70,150],[8,120]],
-    [[60,40],[150,55],[196,110],[190,170],[110,178],[60,130]],
-    [[80,70],[160,80],[170,150],[100,168],[78,120]],
-    null /* gone — consumed by the tail fold */
-  ];
-
-  /* decompose each facet's vertices against its crease: foot + perpendicular */
   FACETS.forEach(function(f){
     var p1=f.crease[0],p2=f.crease[1];
     var ux=p2[0]-p1[0],uy=p2[1]-p1[1],n=Math.hypot(ux,uy);ux/=n;uy/=n;
-    f.dec=f.pts.map(function(p){
-      var t=(p[0]-p1[0])*ux+(p[1]-p1[1])*uy;
-      var qx=p1[0]+t*ux,qy=p1[1]+t*uy;
-      return{q:[qx,qy],r:[p[0]-qx,p[1]-qy]};
+    f.dec=f.pts.map(function(pt){
+      var tt=(pt[0]-p1[0])*ux+(pt[1]-p1[1])*uy;
+      var qx=p1[0]+tt*ux,qy=p1[1]+tt*uy;
+      return{q:[qx,qy],r:[pt[0]-qx,pt[1]-qy]};
     });
+    f.mirror=f.dec.map(function(d){return[d.q[0]-d.r[0],d.q[1]-d.r[1]];});
   });
+  var SEGS=7;
 
-  var SEGS=7; /* 0 crease-pattern intro · 1-5 facet folds · 6 the crane, alive */
-
-  function el(tag){var e=document.createElementNS(NS,tag);svg.appendChild(e);return e;}
-  /* everything shares one gently-zooming group */
-  var world=el('g');
+  var world=document.createElementNS(NS,'g');svg.appendChild(world);
   function W(tag){var e=document.createElementNS(NS,tag);world.appendChild(e);return e;}
-
-  var sheetShadow=W('polygon');
-  var sheet=W('polygon');
-  sheet.setAttribute('stroke','rgba(94,44,75,.4)');
-  sheet.setAttribute('stroke-width','1');
-  sheet.setAttribute('stroke-linejoin','round');
-  /* crease-pattern preview lines (all five, shown on the flat sheet) */
-  var previews=FACETS.map(function(f){
-    var ln=W('line');
-    ln.setAttribute('x1',f.crease[0][0]);ln.setAttribute('y1',f.crease[0][1]);
-    ln.setAttribute('x2',f.crease[1][0]);ln.setAttribute('y2',f.crease[1][1]);
-    ln.setAttribute('stroke','rgba(94,44,75,.55)');
-    ln.setAttribute('stroke-width','1.1');
-    ln.setAttribute('stroke-dasharray','4 5');
-    return ln;
-  });
-  /* landed facets group (accumulates the crane) */
-  var landedG=W('g');
-  var landed=FACETS.map(function(f){
-    var p=document.createElementNS(NS,'polygon');
-    p.setAttribute('points',f.pts.map(function(pt){return pt[0]+','+pt[1];}).join(' '));
-    p.setAttribute('fill','hsl(322 39% '+f.L+'%)');
-    p.setAttribute('stroke','rgba(94,44,75,.35)');
-    p.setAttribute('stroke-width','.7');
-    p.setAttribute('opacity','0');
-    landedG.appendChild(p);return p;
-  });
-  var flapShadow=W('polygon');
-  var flap=W('polygon');
-  flap.setAttribute('stroke','rgba(94,44,75,.55)');
-  flap.setAttribute('stroke-width','1');
-  flap.setAttribute('stroke-linejoin','round');
-
   function pointsAttr(pts){return pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' ');}
   function paperFill(depth,shade){
     var L=91-depth*2.2-(shade||0), S=18+depth*4;
     return 'hsl(322 '+S.toFixed(0)+'% '+clamp(L,42,96).toFixed(0)+'%)';
   }
-  function camera(depth,t6){
+
+  var sqShadow=W('polygon');
+  var sq=W('polygon');
+  var SQ=[[8,22],[204,22],[204,182],[8,182]];
+  sq.setAttribute('points',pointsAttr(SQ));
+  sq.setAttribute('stroke','rgba(94,44,75,.4)');sq.setAttribute('stroke-width','1');
+  sqShadow.setAttribute('points',pointsAttr(SQ.map(function(p){return[p[0]+4,p[1]+7];})));
+  sqShadow.setAttribute('fill','rgba(94,44,75,.12)');
+  var creases=FACETS.map(function(f){
+    var ln=W('line');
+    ln.setAttribute('x1',f.crease[0][0]);ln.setAttribute('y1',f.crease[0][1]);
+    ln.setAttribute('x2',f.crease[1][0]);ln.setAttribute('y2',f.crease[1][1]);
+    ln.setAttribute('stroke','rgba(94,44,75,.55)');ln.setAttribute('stroke-width','1.1');
+    ln.setAttribute('stroke-dasharray','4 5');return ln;
+  });
+  var ghosts=FACETS.map(function(f){
+    var g=W('polygon');
+    g.setAttribute('points',pointsAttr(f.mirror));
+    g.setAttribute('fill','rgba(94,44,75,.045)');
+    g.setAttribute('stroke','rgba(94,44,75,.5)');
+    g.setAttribute('stroke-width','1');g.setAttribute('stroke-dasharray','4 5');
+    g.setAttribute('opacity','0');return g;
+  });
+  var landedG=W('g');
+  var landed=FACETS.map(function(f){
+    var pg=document.createElementNS(NS,'polygon');
+    pg.setAttribute('points',pointsAttr(f.pts));
+    pg.setAttribute('fill','hsl(322 39% '+f.L+'%)');
+    pg.setAttribute('stroke','rgba(94,44,75,.35)');pg.setAttribute('stroke-width','.7');
+    pg.setAttribute('opacity','0');landedG.appendChild(pg);return pg;
+  });
+  var flapShadow=W('polygon');
+  var flap=W('polygon');
+  flap.setAttribute('stroke','rgba(94,44,75,.55)');flap.setAttribute('stroke-width','1');
+  flap.setAttribute('stroke-linejoin','round');
+
+  function camera(depth,bob){
     var z=clamp(depth/5,0,1);
     var s=1+0.22*easeInOut(z);
-    var bob=t6?(-4*Math.sin(t6*Math.PI*2)):0;
-    world.setAttribute('transform','translate('+(130-105*s+28).toFixed(1)+' '+((115-102*s+18)+bob).toFixed(1)+') scale('+s.toFixed(3)+')');
+    world.setAttribute('transform','translate('+(130-105*s+28).toFixed(1)+' '+((115-102*s+18)+(bob||0)).toFixed(1)+') scale('+s.toFixed(3)+')');
   }
 
   function render(seg){
     seg=clamp(seg,0,SEGS);
     var beat=clamp(Math.floor(seg),0,6);
     var local=seg-beat;
-    var k=beat;                                             /* fold in progress, 0 = intro */
-    var tf=k===0?0:easeInOut(clamp((local-0.12)/0.72,0,1)); /* dwell before + after */
+    var k=beat;
+    var tf=k===0?0:easeInOut(clamp((local-0.12)/0.72,0,1));
     var depthDone=k===0?0:(k-1)+tf;
 
-    /* beat 6: the assembled crane, alive (gentle bob, deeper shadow) */
     if(beat>=6){
       var t6=clamp(local,0,1);
-      camera(5,t6*0.6);
-      sheet.setAttribute('opacity','0');sheetShadow.setAttribute('opacity','0');
+      camera(5,-4*Math.sin(t6*Math.PI*1.2));
+      sq.setAttribute('opacity','0');sqShadow.setAttribute('opacity','0');
+      creases.forEach(function(c){c.setAttribute('opacity','0');});
+      ghosts.forEach(function(g){g.setAttribute('opacity','0');});
       flap.setAttribute('opacity','0');flapShadow.setAttribute('opacity','0');
-      previews.forEach(function(p){p.setAttribute('opacity','0');});
-      landed.forEach(function(p){p.setAttribute('opacity','1');});
+      landed.forEach(function(pg){pg.setAttribute('opacity','1');});
       landedG.setAttribute('filter','drop-shadow('+(4+3*t6)+'px '+(8+5*t6)+'px '+(9+5*t6)+'px rgba(94,44,75,.28))');
       return;
     }
     landedG.setAttribute('filter','drop-shadow(3px 6px 7px rgba(94,44,75,.2))');
     camera(depthDone,0);
 
-    /* the shrinking sheet: during fold k, show the post-fold outline;
-       the rotating flap covers the material being consumed */
-    var outline = k===0 ? OUT[0] : OUT[k];
-    if(outline){
-      sheet.setAttribute('points',pointsAttr(outline));
-      sheet.setAttribute('fill',paperFill(depthDone));
-      sheet.setAttribute('opacity','1');
-      sheetShadow.setAttribute('points',pointsAttr(outline.map(function(p){return[p[0]+4,p[1]+7];})));
-      sheetShadow.setAttribute('fill','rgba(94,44,75,.12)');
-      sheetShadow.setAttribute('opacity','1');
-    }else{
-      /* last fold: the remaining sliver fades away under the tail */
-      var prev=OUT[4];
-      sheet.setAttribute('points',pointsAttr(prev));
-      sheet.setAttribute('fill',paperFill(depthDone));
-      sheet.setAttribute('opacity',clamp(1-tf*1.6,0,1).toFixed(2));
-      sheetShadow.setAttribute('opacity',clamp(1-tf*1.6,0,1).toFixed(2));
-    }
-
-    /* crease-pattern previews: all visible on the flat sheet, then each
-       fades as its fold is made */
-    previews.forEach(function(p,i){
-      var fi=i+1;
-      var op;
-      if(fi<k) op=0;
-      else if(fi===k) op=clamp(0.7-tf*4,0,0.7);
-      else op=k===0?0.7:0.35;
-      p.setAttribute('opacity',op.toFixed(2));
+    /* the flat square holds beats 0-1, then it IS the pieces */
+    var sqOp = k===0?1 : (k===1?clamp(1-tf*1.4,0,1):0);
+    sq.setAttribute('fill',paperFill(0));
+    sq.setAttribute('opacity',sqOp.toFixed(2));
+    sqShadow.setAttribute('opacity',(sqOp*0.9).toFixed(2));
+    creases.forEach(function(c,i){
+      var op = k===0?0.7 : (k===1?clamp(0.7-tf*2,0,0.7):0);
+      c.setAttribute('opacity',op.toFixed(2));
+    });
+    /* piece outlines: where the remaining paper lies flat */
+    ghosts.forEach(function(g,i){
+      var idx=i+1, op=0;
+      if(idx>k) op = (k===0?0 : (k===1?tf*0.55:0.55));
+      else if(idx===k) op = clamp(0.55-local*5,0,0.55);
+      g.setAttribute('opacity',op.toFixed(2));
+    });
+    landed.forEach(function(pg,i){
+      pg.setAttribute('opacity', (i+1<k || (i+1===k&&tf>=1)) ? '1' : '0');
     });
 
-    /* landed facets: everything before the current fold stays */
-    landed.forEach(function(p,i){
-      p.setAttribute('opacity', i+1<k ? '1' : (i+1===k&&tf>=1?'1':'0'));
-    });
-
-    /* the folding flap: mirror of facet k, rotating down onto it */
     if(k>=1&&tf<1){
       var f=FACETS[k-1];
-      var theta=Math.PI*(1-tf);            /* pi -> 0 : mirror -> landed  */
+      var intro=clamp(local/0.10,0,1);
+      var theta=Math.PI*(1-tf);
       var cosT=Math.cos(theta),sinT=Math.sin(theta);
       var pts=f.dec.map(function(d){return[d.q[0]+cosT*d.r[0],d.q[1]+cosT*d.r[1]];});
       flap.setAttribute('points',pointsAttr(pts));
-      /* back of the paper while lifting, crane colour as it lays down */
-      flap.setAttribute('fill', cosT<0 ? paperFill(depthDone,sinT*8) : 'hsl(322 '+lerp(24,39,cosT).toFixed(0)+'% '+lerp(80,f.L,cosT).toFixed(0)+'%)');
-      flap.setAttribute('opacity','1');
+      flap.setAttribute('fill', cosT<0 ? paperFill(depthDone,sinT*8)
+        : 'hsl(322 '+lerp(24,39,cosT).toFixed(0)+'% '+lerp(80,f.L,cosT).toFixed(0)+'%)');
+      flap.setAttribute('opacity',(k===1?Math.max(intro,sqOp):intro).toFixed(2));
       var sh=pts.map(function(p){return[p[0]+6*sinT,p[1]+10*sinT];});
       flapShadow.setAttribute('points',pointsAttr(sh));
       flapShadow.setAttribute('fill','rgba(31,34,51,'+(0.16*sinT).toFixed(3)+')');
-      flapShadow.setAttribute('opacity','1');
+      flapShadow.setAttribute('opacity',intro.toFixed(2));
     }else{
-      flap.setAttribute('opacity','0');
-      flapShadow.setAttribute('opacity','0');
+      flap.setAttribute('opacity','0');flapShadow.setAttribute('opacity','0');
     }
   }
 
-  /* ---- story chrome ---- */
   var LABELS=['the sheet · crease pattern',
               'fold 01 · knowledge — the left wing',
               'fold 02 · capabilities — the right wing',
@@ -695,7 +661,6 @@
   var liveFlag=document.getElementById('liveFlag');
   var stageHint=document.getElementById('stageHint');
   var activeIdx=-1;
-
   function setBeat(idx){
     if(idx===activeIdx)return;
     activeIdx=idx;
@@ -711,13 +676,11 @@
       c.classList.toggle('on',seg>=revealAt);
     });
   }
-
   if(reduce){
     render(SEGS);setBeat(SEGS-1);
     cards.forEach(function(c){c.classList.add('on');});
     return;
   }
-
   var scrolly=document.getElementById('scrolly');
   var ticking=false;
   function onScroll(){
@@ -728,8 +691,7 @@
       var total=scrolly.offsetHeight-window.innerHeight;
       var p=clamp(-r.top/total,0,1);
       var seg=p*SEGS;
-      render(seg);
-      setCards(seg);
+      render(seg);setCards(seg);
       setBeat(clamp(Math.floor(seg+0.25),0,SEGS-1));
     });
   }
@@ -799,27 +761,6 @@
     setCount();render(0);
   })();
 
-  // envelope: open → photos fan out; click a photo → paper lightbox
-  const env=document.getElementById('envelope');
-  const envHint=document.getElementById('envHint');
-  const lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'), lbCap=document.getElementById('lbCap');
-  function toggleEnv(){
-    env.classList.toggle('open');
-    envHint.textContent = env.classList.contains('open')
-      ? 'that’s the live product — click any photo to look closer'
-      : '↑ not just sketches — open the envelope for real screens';
-  }
-  env.addEventListener('click',e=>{ if(e.target.closest('.ph')) return; toggleEnv(); });
-  env.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleEnv();} });
-  document.querySelectorAll('.ph').forEach(p=>p.addEventListener('click',e=>{
-    e.stopPropagation();
-    lbImg.src=p.dataset.full; lbCap.textContent=p.dataset.cap;
-    lb.classList.add('show'); lb.setAttribute('aria-hidden','false');
-  }));
-  function closeLb(){ lb.classList.remove('show'); lb.setAttribute('aria-hidden','true'); lbImg.src=''; }
-  document.getElementById('lbX').addEventListener('click',closeLb);
-  lb.addEventListener('click',e=>{ if(e.target===lb) closeLb(); });
-  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLb(); });
 
   // nav highlighter follows the section you're in
   (function(){

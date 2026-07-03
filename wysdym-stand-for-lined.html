@@ -75,7 +75,7 @@
   .acro-hint{font-family:'Caveat',cursive;font-size:20px;color:var(--red-pen);margin-bottom:18px;}
   .acro-letters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:6px 0 22px;}
   .letter{flex:1;min-width:110px;text-align:center;}
-  .letter .cap{font-family:'Instrument Serif',serif;font-weight:400;font-size:52px;color:var(--magenta-deep);line-height:1;}
+  .letter .cap{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:60px;color:var(--magenta-deep);line-height:1;}
   .letter .word{font-family:'Caveat',cursive;font-size:24px;color:var(--ink);border-bottom:2px solid var(--grid-strong);
     min-height:34px;padding:2px 4px;outline:none;transition:background .15s;}
   .letter .word[contenteditable="true"]{background:rgba(255,224,102,.35);border-bottom-color:var(--red-pen);}
@@ -151,6 +151,16 @@
   nav.links a.current{color:var(--magenta-deep);}
   nav.links a.current::after{content:'';position:absolute;left:-2px;right:-2px;bottom:-4px;height:7px;
     background:var(--magenta);opacity:.35;transform:skewX(-10deg);border-radius:40%;}
+  /* shared paper footer */
+  footer{padding:52px 0 58px;text-align:center;border-top:1.5px dashed rgba(58,63,85,.25);position:relative;z-index:1;}
+  .wrap-f{max-width:1040px;margin:0 auto;padding:0 32px;}
+  .f-tag{font-family:'Caveat',cursive;font-size:26px;color:var(--magenta-deep);}
+  .f-links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
+  .f-links a{font-family:'Caveat',cursive;font-size:20px;color:var(--pencil,#565a70);text-decoration:none;}
+  .f-links a:hover{color:var(--magenta-deep);}
+  .f-meta{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--pencil,#565a70);}
+  .f-meta a{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(58,63,85,.4);}
+  .f-meta a:hover{color:var(--magenta-deep);}
 </style>
 </head>
 <body>
@@ -236,8 +246,23 @@
 </section>
 
 <footer>
-  <div class="hand tag">The platform every GTM agent runs on.</div>
-  <div class="cr">© 2026 wysdym, Inc.</div>
+  <div class="wrap-f">
+    <div class="f-tag">The platform every GTM agent runs on.</div>
+    <nav class="f-links">
+      <a href="wysdym-home-lined-v2.html">Home</a>
+      <a href="wysdym-platform-lined-v3.html">The platform</a>
+      <a href="wysdym-stand-for-lined.html">What we stand for</a>
+      <a href="wysdym-blog-lined.html">Blog</a>
+      <a href="https://gtmstats.wysdym.ai" target="_blank" rel="noopener">2026 GTM AI Stats</a>
+      <a href="wysdym-design-partner-lined.html">Apply for access</a>
+    </nav>
+    <div class="f-meta">
+      <a href="https://wysdym.ai/privacy" target="_blank" rel="noopener">Privacy policy</a>
+      <a href="https://wysdym.ai/contact" target="_blank" rel="noopener">Contact</a>
+      <a href="https://www.linkedin.com/company/wysdym" target="_blank" rel="noopener">LinkedIn</a>
+      <span>© 2026 wysdym, Inc.</span>
+    </div>
+  </div>
 </footer>
 
 <div class="pocnote">Direction E v2 · Lined Paper · What we stand for</div>
