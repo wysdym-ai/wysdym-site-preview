@@ -462,12 +462,12 @@
   <div class="wrap fold">
     <div class="eyebrow">one more (fun) fold</div>
     <h2>Go on — fold the <span class="underline-hand">sheet.</span></h2>
-    <p class="body" style="margin-top:12px;">Origami and the harness run on the same rules. Tap the paper to fold it — every sheet teaches a different one.</p>
+    <p class="body" style="margin-top:12px;">Six sheets, six shapes — a fish, a boat, a star… one for each part of the harness. Tap the paper to fold the next one.</p>
     <div class="fold-count hand" id="foldCount">sheet 1 of 6</div>
     <div class="fold-stage" id="foldStage" role="button" tabindex="0" aria-label="Fold the sheet into a crane">
       <svg id="craneSvg" viewBox="0 0 260 230" xmlns="http://www.w3.org/2000/svg"></svg>
     </div>
-    <div class="fold-tip" id="foldTip">tap the sheet ↑ — fold your first lesson</div>
+    <div class="fold-tip" id="foldTip">tap the sheet ↑ — fold a fish</div>
   </div>
 </section>
 
@@ -701,23 +701,45 @@
   onScroll();
 })();
 
-  // fold-the-lesson: each tap folds a NEW sheet — pairing an origami rule with a harness rule
+  // fold-the-lesson: six sheets, six SHAPES — one per pillar, plus the crane
   (function(){
-    const LESSONS=[
-      {hue:322,sat:46,o:'One uncut sheet can become any shape.',h:'One shared graph grounds every agent — no copies, no forks.'},
-      {hue:255,sat:32,o:'Each crease guides the one after it.',h:'Each outcome trains the next action. Read, run, write, learn.'},
-      {hue:40, sat:60,o:'Folds compound: seven folds, 128 layers.',h:'Reuse compounds too — a skill built once works for every agent.'},
-      {hue:205,sat:45,o:'Paper remembers every crease you make.',h:'The harness remembers every approval, edit, and override.'},
-      {hue:12, sat:55,o:'Same folds, same order, same crane — every time.',h:'Governance: every agent follows the same rules through one door.'},
-      {hue:145,sat:35,o:'Assembled, the sheet flies.',h:'Operator — a working agent on day one.'}
+    const SHAPES=[
+      {name:'a fish',hue:322,sat:46,
+       o:'One uncut sheet can become anything — first, a fish.',
+       h:'wysdymGraph: one shared graph grounds every agent. No copies, no forks.',
+       facets:[[[[62,118],[18,70],[42,120]],66],[[[62,122],[18,170],[42,120]],52],
+               [[[58,120],[152,68],[152,172]],60],[[[152,68],[204,120],[152,172]],46]]},
+      {name:'a pinwheel',hue:255,sat:34,
+       o:'A pinwheel — same paper, now it does work.',
+       h:'wysdymSkills: fold a skill once, and every agent can run it.',
+       facets:[[[[130,120],[130,30],[194,88]],58],[[[130,120],[220,120],[162,184]],46],
+               [[[130,120],[130,210],[66,152]],58],[[[130,120],[40,120],[98,56]],46]]},
+      {name:'a boat',hue:40,sat:58,
+       o:'A boat — built to carry things across.',
+       h:'wysdymConnect: your stack wired once, so everything travels together.',
+       facets:[[[[40,150],[220,150],[180,192]],44],[[[40,150],[180,192],[80,192]],50],
+               [[[128,42],[128,146],[60,146]],64],[[[136,62],[136,146],[196,146]],54]]},
+      {name:'a house',hue:205,sat:42,
+       o:'A house — one door, and everything inside is safe.',
+       h:'wysdymGateway: every agent enters through one governed door.',
+       facets:[[[[50,112],[130,42],[210,112]],46],[[[58,112],[130,112],[130,190],[58,190]],66],
+               [[[130,112],[202,112],[202,190],[130,190]],56],[[[112,190],[112,142],[148,142],[148,190]],34]]},
+      {name:'a star',hue:12,sat:52,
+       o:'A star — something you can navigate by.',
+       h:'wysdymObserve: outcomes become the north star. See what every agent was worth.',
+       facets:[[[[109,96],[130,40],[151,96]],66],[[[151,96],[211,99],[164,136]],50],
+               [[[164,136],[180,194],[130,161]],60],[[[130,161],[80,194],[96,136]],50],
+               [[[96,136],[49,99],[109,96]],60],[[[109,96],[151,96],[164,136],[130,161],[96,136]],42]]},
+      {name:'the crane',hue:322,sat:42,
+       o:'And the crane — assembled, it flies.',
+       h:'Operator: a working agent on day one, built from all five folds.',
+       facets:[[[[96,34],[128,147],[104,167]],54],[[[98,32],[154,127],[131,146]],60],
+               [[[168,61],[155,123],[138,94]],50],[[[171,59],[190,71],[168,73]],62],
+               [[[100,154],[101,169],[10,161]],56]]}
     ];
     let lesson=0;
     const C=[130,120],H=92;
-    const CRANE=[
-      [[[60,168],[126,128],[120,150]],60],[[[128,108],[34,52],[122,138]],72],
-      [[[128,108],[122,138],[130,178],[120,150]],52],[[[128,108],[130,178],[150,132]],44],
-      [[[128,108],[150,132],[226,58]],66],[[[140,112],[206,60],[152,120]],50],[[[206,60],[230,50],[212,78]],58]];
-    function flatPoint(pt){const dx=pt[0]-C[0],dy=pt[1]-C[1];if(Math.hypot(dx,dy)<28)return[C[0],C[1]];
+    function flatPoint(pt){const dx=pt[0]-C[0],dy=pt[1]-C[1];if(Math.hypot(dx,dy)<26)return[C[0],C[1]];
       const s=H/Math.max(Math.abs(dx),Math.abs(dy));return[C[0]+dx*s,C[1]+dy*s];}
     const svg=document.getElementById('craneSvg');
     const NS='http://www.w3.org/2000/svg';
@@ -725,40 +747,45 @@
     sheet.setAttribute('points',`${C[0]-H},${C[1]-H} ${C[0]+H},${C[1]-H} ${C[0]+H},${C[1]+H} ${C[0]-H},${C[1]+H}`);
     sheet.setAttribute('stroke','rgba(94,44,75,.3)');sheet.setAttribute('stroke-width','1.2');
     svg.appendChild(sheet);
-    const polys=CRANE.map(f=>{const el=document.createElementNS(NS,'polygon');el.setAttribute('class','facet');svg.appendChild(el);
-      return{el,flat:f[0].map(flatPoint),fold:f[0],L:f[1]};});
+    let polys=[];
+    function buildShape(i){
+      polys.forEach(pp=>pp.el.remove());
+      polys=SHAPES[i].facets.map(f=>{
+        const el=document.createElementNS(NS,'polygon');el.setAttribute('class','facet');svg.appendChild(el);
+        return{el,flat:f[0].map(flatPoint),fold:f[0],L:f[1]};});
+    }
     const lerp=(a,b,tt)=>a+(b-a)*tt;
     function render(tt){
-      const Ls=LESSONS[lesson];
+      const S=SHAPES[lesson];
       const e=tt<.5?2*tt*tt:1-Math.pow(-2*tt+2,2)/2;
-      sheet.setAttribute('fill',`hsl(${Ls.hue} 16% 90%)`);
+      sheet.setAttribute('fill',`hsl(${S.hue} 16% 90%)`);
       sheet.setAttribute('opacity',Math.max(0,1-tt*2.4).toFixed(2));
       polys.forEach(pp=>{
         pp.el.setAttribute('points',pp.flat.map((fp,i)=>lerp(fp[0],pp.fold[i][0],e).toFixed(1)+','+lerp(fp[1],pp.fold[i][1],e).toFixed(1)).join(' '));
-        pp.el.setAttribute('fill',`hsl(${Ls.hue} ${lerp(18,Ls.sat,tt).toFixed(0)}% ${lerp(88,pp.L,tt).toFixed(0)}%)`);
+        pp.el.setAttribute('fill',`hsl(${S.hue} ${lerp(18,S.sat,tt).toFixed(0)}% ${lerp(88,pp.L,tt).toFixed(0)}%)`);
         pp.el.setAttribute('opacity',Math.min(1,Math.max(0,(tt-0.05)*1.7)).toFixed(2));
       });
     }
     let folded=false,busy=false,cur=0;
     const tipEl=document.getElementById('foldTip');
     const countEl=document.getElementById('foldCount');
-    function setCount(){ if(countEl) countEl.textContent='sheet '+(lesson+1)+' of '+LESSONS.length; }
+    function setCount(){ if(countEl) countEl.textContent='sheet '+(lesson+1)+' of '+SHAPES.length+' — '+SHAPES[lesson].name; }
     function animateTo(target,done){busy=true;
       (function step(){cur+=(target>cur?0.022:-0.03);
         if((target>0&&cur>=target)||(target===0&&cur<=0)){cur=target;render(cur);busy=false;done&&done();return;}
         render(cur);requestAnimationFrame(step);})();}
     function toggle(){if(busy)return;
       if(!folded){tipEl.style.opacity='0';
-        animateTo(1,()=>{folded=true;const Ls=LESSONS[lesson];
-          tipEl.innerHTML='<span class="ftl-o">origami: '+Ls.o+'</span><span class="ftl-h">the harness: '+Ls.h+'</span>';
+        animateTo(1,()=>{folded=true;const S=SHAPES[lesson];
+          tipEl.innerHTML='<span class="ftl-o">origami: '+S.o+'</span><span class="ftl-h">the harness — '+S.h+'</span>';
           tipEl.style.opacity='1';});}
       else{tipEl.style.opacity='0';
-        animateTo(0,()=>{folded=false;lesson=(lesson+1)%LESSONS.length;setCount();render(0);
-          tipEl.innerHTML='a fresh sheet — fold it ↑';tipEl.style.opacity='1';});}}
+        animateTo(0,()=>{folded=false;lesson=(lesson+1)%SHAPES.length;buildShape(lesson);setCount();render(0);
+          tipEl.innerHTML='a fresh sheet — fold '+SHAPES[lesson].name+' ↑';tipEl.style.opacity='1';});}}
     const stage=document.getElementById('foldStage');
     stage.addEventListener('click',toggle);
     stage.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
-    setCount();render(0);
+    buildShape(0);setCount();render(0);
   })();
 
 
