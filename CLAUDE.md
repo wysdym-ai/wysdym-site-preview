@@ -81,5 +81,8 @@ mirror from the repo later.
 6. Framer build spec: FAQPage JSON-LD on home, component structured data, paper-styled OG images.
 7. Accessibility: darken handwritten nav a touch (AA), reduced-motion fallbacks for accordion +
    lesson deck, focus states on interactive toys.
-8. Framer port kit: tileable background SVGs, paper-prop assets, React code components
+8. **REMINDER for Rob — live-site SEO bug:** every wysdym.ai page's meta description still
+   carries the retired Conversation-Agent copy ("automate early discovery conversations through
+   text or voice…"). Fix in Framer site settings + per-page/CMS overrides, republish, verify.
+9. Framer port kit: tileable background SVGs, paper-prop assets, React code components
    (order: tokens → static pages → accordion/envelope → scroll-fold → lesson deck/acronym game).
