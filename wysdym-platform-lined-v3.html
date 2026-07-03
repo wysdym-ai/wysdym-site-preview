@@ -169,6 +169,20 @@
   .pnl .fold-arrow{position:absolute;left:-19px;top:50%;width:36px;height:23px;z-index:3;pointer-events:none;
     color:var(--magenta-deep);transform:translateY(-50%) rotate(var(--ar,-3deg));
     filter:drop-shadow(0 1px 0 rgba(255,255,255,.7));}
+  /* FINAL: magenta paper-scrap Apply + section highlighter */
+  nav.links a.apply-btn{position:relative;font-family:'Caveat',cursive !important;font-size:20px !important;font-weight:700 !important;
+    letter-spacing:.01em;color:#fff !important;background:linear-gradient(180deg,var(--magenta),var(--magenta-deep)) !important;
+    border:none !important;border-radius:2px !important;padding:8px 20px 7px 36px !important;
+    box-shadow:2px 4px 9px rgba(31,34,51,.28) !important;transform:rotate(-2deg);transition:transform .15s, box-shadow .15s;}
+  nav.links a.apply-btn:hover{transform:rotate(0) translateY(-1px);box-shadow:3px 6px 12px rgba(31,34,51,.32) !important;
+    background:linear-gradient(180deg,var(--magenta),var(--magenta-deep)) !important;color:#fff !important;}
+  nav.links a.apply-btn::before{content:'';position:absolute;top:-10px;left:12px;width:13px;height:26px;
+    border:2.5px solid #d7dae0;border-bottom:none;border-radius:7px 7px 5px 5px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.3));}
+  nav.links a.apply-btn::after{content:'';position:absolute;top:-4px;left:16.5px;width:4px;height:16px;
+    border:2px solid #aeb3bb;border-bottom:none;border-radius:3px 3px 0 0;}
+  nav.links a.current{color:var(--magenta-deep);}
+  nav.links a.current::after{content:'';position:absolute;left:-2px;right:-2px;bottom:-4px;height:7px;
+    background:var(--magenta);opacity:.35;transform:skewX(-10deg);border-radius:40%;}
 </style>
 </head>
 <body>

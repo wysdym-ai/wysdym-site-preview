@@ -201,6 +201,83 @@
   .fold-stage svg{width:100%;height:auto;display:block;overflow:visible;filter:drop-shadow(5px 10px 12px rgba(94,44,75,.24));}
   .fold-stage .facet{stroke:rgba(94,44,75,.35);stroke-width:.8;stroke-linejoin:round;}
   .fold-tip{font-family:'Caveat',cursive;font-size:24px;color:var(--magenta-deep);min-height:34px;margin-top:14px;max-width:520px;transition:opacity .2s;}
+  /* FINAL: magenta paper-scrap Apply + section highlighter */
+  nav.links a.apply-btn{position:relative;font-family:'Caveat',cursive !important;font-size:20px !important;font-weight:700 !important;
+    letter-spacing:.01em;color:#fff !important;background:linear-gradient(180deg,var(--magenta),var(--magenta-deep)) !important;
+    border:none !important;border-radius:2px !important;padding:8px 20px 7px 36px !important;
+    box-shadow:2px 4px 9px rgba(31,34,51,.28) !important;transform:rotate(-2deg);transition:transform .15s, box-shadow .15s;}
+  nav.links a.apply-btn:hover{transform:rotate(0) translateY(-1px);box-shadow:3px 6px 12px rgba(31,34,51,.32) !important;
+    background:linear-gradient(180deg,var(--magenta),var(--magenta-deep)) !important;color:#fff !important;}
+  nav.links a.apply-btn::before{content:'';position:absolute;top:-10px;left:12px;width:13px;height:26px;
+    border:2.5px solid #d7dae0;border-bottom:none;border-radius:7px 7px 5px 5px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.3));}
+  nav.links a.apply-btn::after{content:'';position:absolute;top:-4px;left:16.5px;width:4px;height:16px;
+    border:2px solid #aeb3bb;border-bottom:none;border-radius:3px 3px 0 0;}
+  nav.links a.current{color:var(--magenta-deep);}
+  nav.links a.current::after{content:'';position:absolute;left:-2px;right:-2px;bottom:-4px;height:7px;
+    background:var(--magenta);opacity:.35;transform:skewX(-10deg);border-radius:40%;}
+  .scrolly{position:relative;height:640vh;z-index:1;}
+  .stage{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;overflow:hidden;}
+  .stage-flex{width:100%;max-width:1100px;margin:0 auto;padding:70px 28px 0;
+    display:grid;grid-template-columns:minmax(230px,260px) 1fr minmax(230px,260px);gap:20px;align-items:center;}
+  .sideL,.sideR{display:flex;flex-direction:column;gap:18px;}
+  .centerCol{display:flex;flex-direction:column;align-items:center;min-width:0;}
+  .fold-label{font-family:'Caveat',cursive;font-size:27px;color:var(--red-pen);transform:rotate(-2deg);min-height:38px;transition:opacity .25s;text-align:center;}
+  #asmSvg{width:min(400px,100%);height:auto;display:block;overflow:visible;}
+  .live-flag{margin-top:4px;display:inline-flex;align-items:center;gap:7px;font-family:'Caveat',cursive;font-size:22px;color:var(--green);
+    opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s;}
+  .live-flag .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(90,143,99,.6);animation:pl 2s infinite;}
+  .live-flag.on{opacity:1;transform:none;}
+  @keyframes pl{0%{box-shadow:0 0 0 0 rgba(90,143,99,.5);}70%{box-shadow:0 0 0 8px rgba(90,143,99,0);}100%{box-shadow:0 0 0 0 rgba(90,143,99,0);}}
+  .stage-hint{margin-top:8px;font-family:'Caveat',cursive;font-size:20px;color:var(--pencil);white-space:nowrap;transition:opacity .3s;}
+
+  .pc{position:relative;background:var(--paper-2);border:1.5px solid rgba(58,63,85,.45);border-radius:2px;
+    padding:13px 16px 12px;box-shadow:3px 4px 0 rgba(58,63,85,.16);
+    opacity:0;transform:rotate(var(--r,0deg)) translateY(20px) scale(.96);
+    transition:opacity .5s ease,transform .6s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;}
+  .pc.on{opacity:1;transform:rotate(var(--r,0deg));}
+  .pc.active{border-color:var(--magenta-deep);box-shadow:4px 6px 0 rgba(141,72,116,.28);}
+  .pc::after{content:'';position:absolute;top:0;right:0;border-width:0 15px 15px 0;border-style:solid;
+    border-color:transparent var(--paper) transparent transparent;filter:drop-shadow(-1px 1px 1px rgba(0,0,0,.12));}
+  .pc .tag{font-family:'Caveat',cursive;font-size:17px;color:var(--red-pen);line-height:1.2;}
+  .pc h3{font-size:16.5px;font-weight:800;letter-spacing:-.01em;margin:2px 0 4px;}
+  .pc p{font-size:12.5px;color:var(--pencil);line-height:1.45;}
+  .pc.gold{background:linear-gradient(180deg,#fffaf0,var(--gold-bg));border-color:var(--gold);}
+  .pc.gold.active{border-color:#a87f1d;box-shadow:4px 6px 0 rgba(169,127,29,.3);}
+  .pc.gold .tag{color:var(--gold);} .pc.gold h3{color:#8a6a12;}
+  .pc .btn-mini{font-size:12.5px;font-weight:700;border:2px solid var(--ink);border-radius:2px;padding:8px 14px;cursor:pointer;text-decoration:none;
+    box-shadow:3px 3px 0 var(--ink);transition:transform .12s,box-shadow .12s;display:inline-block;background:var(--magenta-deep);color:#fff;margin-top:9px;}
+  .pc .btn-mini:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink);}
+  @media(min-width:901px){
+    .sideL .pc::before,.sideR .pc::before{content:'';position:absolute;top:50%;width:24px;border-top:2px dashed rgba(141,72,116,0);transition:border-color .5s .2s;}
+    .sideL .pc::before{right:-26px;transform:rotate(4deg);}
+    .sideR .pc::before{left:-26px;transform:rotate(-4deg);}
+    .sideL .pc.on::before,.sideR .pc.on::before{border-top-color:rgba(141,72,116,.5);}
+  }
+
+
+
+  @media(max-width:900px){
+    .stage-flex{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:70px 18px 0;align-content:center;}
+    .centerCol{grid-column:1/-1;order:0;}
+    .sideL,.sideR{display:contents;}
+    .pc{order:var(--o,10);--r:0deg;padding:10px 12px 9px;}
+    .pc .tag{font-size:14.5px;}
+    .pc h3{font-size:14px;margin:1px 0 2px;}
+    .pc p{font-size:10.5px;line-height:1.4;}
+    .btn-hand{font-size:11px;padding:6px 10px;margin-top:6px;}
+    #asmSvg{width:min(230px,56vw);}
+    .fold-label{font-size:22px;min-height:30px;}
+    .stage-hint{display:none;}
+    .live-flag{font-size:18px;margin-top:0;}
+  }  @media(prefers-reduced-motion:reduce){
+    .scrolly{height:auto;}
+    .stage{position:static;height:auto;display:block;}
+    .pc{opacity:1;transform:rotate(var(--r,0deg));}
+    .intro .hint .arr{animation:none;}
+  }
+  .fold-count{font-family:'Caveat',cursive;font-size:19px;color:var(--pencil);margin-top:6px;}
+  .fold-tip .ftl-o{display:block;font-family:'Instrument Serif',serif;font-style:italic;font-size:19px;color:var(--pencil);}
+  .fold-tip .ftl-h{display:block;font-family:'Caveat',cursive;font-size:24px;color:var(--magenta-deep);margin-top:2px;}
 </style>
 </head>
 <body>
@@ -212,7 +289,7 @@
   <a class="logo" href="wysdym-home-lined-v2.html"><img class="logo-crane" src="origami-crane-wysdym.png" alt="wysdym crane"><img class="logo-word" src="wysdym-wordmark-magenta.svg" alt="wysdym"></a>
   <nav class="links">
     <a href="wysdym-home-lined-v2.html#problem">The problem</a>
-    <a href="wysdym-platform-lined-v2.html">The platform</a>
+    <a href="wysdym-platform-lined-v3.html">The platform</a>
     <a href="wysdym-stand-for-lined.html">What we stand for</a>
     <span class="res"><a href="#" class="res-a">Resources ▾</a>
       <span class="res-menu">
@@ -232,7 +309,7 @@
     <p class="lead">Every vendor will sell you an agent. None of them make your other agents better, act on your terms, or tell you which ones are working. That's where wysdym comes in — <strong>the harness where every action compounds into a revenue advantage.</strong></p>
     <div class="hero-cta">
       <a href="wysdym-design-partner-lined.html" class="btn-hand primary">Apply for access →</a>
-      <a href="wysdym-platform-lined-v2.html" class="btn-hand ghost">See the platform</a>
+      <a href="wysdym-platform-lined-v3.html" class="btn-hand ghost">See the platform</a>
     </div>
   </div>
 </section>
@@ -262,16 +339,66 @@
   <div class="wrap fold">
     <div class="eyebrow">the platform</div>
     <h2>One sheet. <span class="underline-hand">Five folds.</span></h2>
-    <p class="body" style="margin-top:14px;">Every agent folds from the same sheet. Five components — the layer beneath your agents, not another agent vendor. Read → Run → Write → Learn.</p>
-    <div class="folds">
-      <div class="foldcard" style="--r:-1.5deg;"><div class="tag">01 · Knowledge</div><h3>wysdymGraph</h3><p>Per-tenant typed knowledge graph — 39 GTM domains, self-learning.</p></div>
-      <div class="foldcard" style="--r:1deg;"><div class="tag">02 · Capabilities</div><h3>wysdymSkills</h3><p>An open skill library, invoked by any agent over MCP.</p></div>
-      <div class="foldcard" style="--r:-1deg;"><div class="tag">03 · Integrations</div><h3>wysdymConnect</h3><p>Salesforce, HubSpot, Gong, Slack, Drive, Notion — wired once.</p></div>
-      <div class="foldcard" style="--r:1.4deg;"><div class="tag">04 · Gateway</div><h3>wysdymGateway</h3><p>One governed door. Per-agent permissions, human-in-the-loop.</p></div>
-      <div class="foldcard" style="--r:-.8deg;"><div class="tag">05 · Telemetry</div><h3>wysdymObserve</h3><p>Outcome attribution to deal stages. Findings flag drift.</p></div>
-      <div class="foldcard op" style="--r:1.2deg;"><div class="tag">★ the agent</div><h3>Operator</h3><p>The reference agent that ships with wysdym — your working agent on day one.</p></div>
+    <p class="body" style="margin-top:14px;">Every agent folds from the same sheet. Five components — the layer beneath your agents, not another agent vendor. Scroll: you make the folds yourself, and every fold lands a piece of the crane.</p>
     </div>
-    <div style="margin-top:26px;"><a href="wysdym-platform-lined-v2.html" class="btn-hand primary" style="font-size:16px;">Explore the full platform →</a></div>
+</section>
+
+<!-- THE SCROLL-FOLD: five folds assemble the crane -->
+<section class="scrolly" id="scrolly">
+  <div class="stage">
+    <div class="stage-flex">
+
+      <div class="sideL">
+        <div class="pc" id="pc1" style="--r:-1.2deg;--o:1;">
+          <div class="tag">fold 01 · knowledge → the left wing</div>
+          <h3>wysdymGraph</h3>
+          <p>A typed knowledge graph of your business — 39 GTM domains, self-learning.</p>
+        </div>
+        <div class="pc" id="pc3" style="--r:.9deg;--o:3;">
+          <div class="tag">fold 03 · integrations → the body</div>
+          <h3>wysdymConnect</h3>
+          <p>Salesforce, HubSpot, Gong, Slack, Drive, Notion — wired once, not per agent.</p>
+        </div>
+        <div class="pc" id="pc5" style="--r:-.8deg;--o:5;">
+          <div class="tag">fold 05 · telemetry → the tail</div>
+          <h3>wysdymObserve</h3>
+          <p>Outcome attribution to deal stages. Findings flag drift with the fix attached.</p>
+        </div>
+      </div>
+
+      <div class="centerCol">
+        <div class="fold-label" id="foldLabel">the sheet · crease pattern</div>
+        <svg id="asmSvg" viewBox="0 0 260 230" xmlns="http://www.w3.org/2000/svg" aria-label="A sheet of paper whose five folds assemble the wysdym crane"></svg>
+        <div class="live-flag" id="liveFlag"><span class="dot"></span>Operator · assembled from five folds</div>
+        <div class="stage-hint" id="stageHint">keep scrolling — every fold lands a piece of the crane</div>
+      </div>
+
+      <div class="sideR">
+        <div class="pc" id="pc2" style="--r:1.1deg;--o:2;">
+          <div class="tag">fold 02 · capabilities → the right wing</div>
+          <h3>wysdymSkills</h3>
+          <p>An open skill library any agent invokes over MCP — your playbook, executable.</p>
+        </div>
+        <div class="pc" id="pc4" style="--r:-1deg;--o:4;">
+          <div class="tag">fold 04 · governance → the head</div>
+          <h3>wysdymGateway</h3>
+          <p>One governed door: per-agent permissions, human-in-the-loop, receipts.</p>
+        </div>
+        <div class="pc gold" id="pc6" style="--r:1.2deg;--o:6;">
+          <div class="tag">★ five folds later — the crane</div>
+          <h3>Operator</h3>
+          <p>Every fold you just made is part of the bird. That's the platform: assembled, it flies.</p>
+          <a class="btn-mini" href="wysdym-design-partner-lined.html">Apply for access →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:40px;">
+  <div class="wrap fold">
+    <div><a href="wysdym-platform-lined-v3.html" class="btn-hand primary" style="font-size:16px;">Explore the full platform →</a></div>
 
     <!-- the real thing, enclosed -->
     <div class="env-zone fold">
@@ -312,7 +439,7 @@
     <div class="op-strip" style="position:relative;"><img class="sit-crane" src="origami-crane-wysdym.png" alt="origami crane sitting on the page">
             <p class="body" style="margin-top:10px;">Your working agent on day one. Runs on the Cortex, calls your Skills, connects through the Gateway — governed and observed.</p>
       <p class="body" style="margin-top:10px;font-size:15px;">Ask anything. Get an answer with receipts. Account briefs, pipeline questions, competitive answers from your graph — immediately. Every answer shows what it read and called, so when it matters, you can check it.</p>
-      <div style="margin-top:16px;"><a href="wysdym-platform-lined-v2.html" class="btn-hand ghost">See Operator →</a></div>
+      <div style="margin-top:16px;"><a href="wysdym-platform-lined-v3.html" class="btn-hand ghost">See Operator →</a></div>
     </div>
   </div>
 </section>
@@ -350,11 +477,12 @@
   <div class="wrap fold">
     <div class="eyebrow">one more (fun) fold</div>
     <h2>Go on — fold the <span class="underline-hand">sheet.</span></h2>
-    <p class="body" style="margin-top:12px;">Everything on this site folds from one sheet — including the crane. Tap the paper.</p>
+    <p class="body" style="margin-top:12px;">Origami and the harness run on the same rules. Tap the paper to fold it — every sheet teaches a different one.</p>
+    <div class="fold-count hand" id="foldCount">sheet 1 of 6</div>
     <div class="fold-stage" id="foldStage" role="button" tabindex="0" aria-label="Fold the sheet into a crane">
       <svg id="craneSvg" viewBox="0 0 260 230" xmlns="http://www.w3.org/2000/svg"></svg>
     </div>
-    <div class="fold-tip" id="foldTip">tap the sheet ↑ — every fold leaves a note</div>
+    <div class="fold-tip" id="foldTip">tap the sheet ↑ — fold your first lesson</div>
   </div>
 </section>
 
@@ -379,20 +507,249 @@
     it.innerHTML=`<div class="faq-q">${f[0]} <span class="tw">+</span></div><div class="faq-a">${f[1]}</div>`;
     it.addEventListener('click',()=>it.classList.toggle('open')); faqEl.appendChild(it); });
 
-  // fold-the-sheet: tap to fold flat paper into the crane; each fold leaves a note
-  const TIPS=[
-    'More agents won\u2019t grow revenue. Compounding intelligence will.',
-    'Your agents are only as smart as the stack beneath them.',
-    'An agent with no memory starts from zero every morning.',
-    'If it doesn\u2019t compound, it doesn\u2019t grow revenue.',
-    'The same integration, wired a dozen times, billed a dozen times.',
-    'Governance isn\u2019t the brake \u2014 it\u2019s what lets you take your hands off the wheel.',
-    'Read. Run. Write. Learn. Then do it again, smarter.',
-    'The model gets better, your harness gets better. We\u2019re long on progress.'
+(function(){
+  'use strict';
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS='http://www.w3.org/2000/svg';
+  var svg=document.getElementById('asmSvg');
+
+  function clamp(v,a,b){return Math.min(b,Math.max(a,v));}
+  function lerp(a,b,t){return a+(b-a)*t;}
+  function easeInOut(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;}
+
+  /* ============================================================
+     V2 ENGINE — every fold LANDS one crane facet.
+     Flap start = mirror of the facet across its crease line;
+     theta runs pi -> 0, so cos(theta) sweeps -1 -> +1 and the
+     flap rotates from its mirrored start straight onto the facet.
+     Landed facets stay. The sheet shrinks as material is used.
+     ============================================================ */
+
+  /* the actual wysdym crane mark (5 facets), with per-facet shading */
+  var FACETS=[
+    {pts:[[96,34],[128,147],[104,167]],  L:54, crease:[[128,147],[104,167]], name:'left wing'},
+    {pts:[[98,32],[154,127],[131,146]],  L:60, crease:[[154,127],[131,146]], name:'right wing'},
+    {pts:[[168,61],[155,123],[138,94]],  L:50, crease:[[155,123],[138,94]],  name:'body'},
+    {pts:[[171,59],[190,71],[168,73]],   L:62, crease:[[168,73],[190,71]],   name:'head'},
+    {pts:[[100,154],[101,169],[10,161]], L:56, crease:[[100,154],[101,169]], name:'tail'}
   ];
-  let lastTip=-1;
-  function pickTip(){let i;do{i=Math.floor(Math.random()*TIPS.length);}while(i===lastTip&&TIPS.length>1);lastTip=i;return TIPS[i];}
+  /* the shrinking sheet: outline after k facets have been consumed */
+  var OUT=[
+    [[8,22],[204,22],[204,182],[8,182]],
+    [[8,22],[204,22],[204,182],[120,182],[70,150],[8,140]],
+    [[8,22],[96,22],[170,60],[204,110],[204,182],[120,182],[70,150],[8,120]],
+    [[60,40],[150,55],[196,110],[190,170],[110,178],[60,130]],
+    [[80,70],[160,80],[170,150],[100,168],[78,120]],
+    null /* gone — consumed by the tail fold */
+  ];
+
+  /* decompose each facet's vertices against its crease: foot + perpendicular */
+  FACETS.forEach(function(f){
+    var p1=f.crease[0],p2=f.crease[1];
+    var ux=p2[0]-p1[0],uy=p2[1]-p1[1],n=Math.hypot(ux,uy);ux/=n;uy/=n;
+    f.dec=f.pts.map(function(p){
+      var t=(p[0]-p1[0])*ux+(p[1]-p1[1])*uy;
+      var qx=p1[0]+t*ux,qy=p1[1]+t*uy;
+      return{q:[qx,qy],r:[p[0]-qx,p[1]-qy]};
+    });
+  });
+
+  var SEGS=7; /* 0 crease-pattern intro · 1-5 facet folds · 6 the crane, alive */
+
+  function el(tag){var e=document.createElementNS(NS,tag);svg.appendChild(e);return e;}
+  /* everything shares one gently-zooming group */
+  var world=el('g');
+  function W(tag){var e=document.createElementNS(NS,tag);world.appendChild(e);return e;}
+
+  var sheetShadow=W('polygon');
+  var sheet=W('polygon');
+  sheet.setAttribute('stroke','rgba(94,44,75,.4)');
+  sheet.setAttribute('stroke-width','1');
+  sheet.setAttribute('stroke-linejoin','round');
+  /* crease-pattern preview lines (all five, shown on the flat sheet) */
+  var previews=FACETS.map(function(f){
+    var ln=W('line');
+    ln.setAttribute('x1',f.crease[0][0]);ln.setAttribute('y1',f.crease[0][1]);
+    ln.setAttribute('x2',f.crease[1][0]);ln.setAttribute('y2',f.crease[1][1]);
+    ln.setAttribute('stroke','rgba(94,44,75,.55)');
+    ln.setAttribute('stroke-width','1.1');
+    ln.setAttribute('stroke-dasharray','4 5');
+    return ln;
+  });
+  /* landed facets group (accumulates the crane) */
+  var landedG=W('g');
+  var landed=FACETS.map(function(f){
+    var p=document.createElementNS(NS,'polygon');
+    p.setAttribute('points',f.pts.map(function(pt){return pt[0]+','+pt[1];}).join(' '));
+    p.setAttribute('fill','hsl(322 39% '+f.L+'%)');
+    p.setAttribute('stroke','rgba(94,44,75,.35)');
+    p.setAttribute('stroke-width','.7');
+    p.setAttribute('opacity','0');
+    landedG.appendChild(p);return p;
+  });
+  var flapShadow=W('polygon');
+  var flap=W('polygon');
+  flap.setAttribute('stroke','rgba(94,44,75,.55)');
+  flap.setAttribute('stroke-width','1');
+  flap.setAttribute('stroke-linejoin','round');
+
+  function pointsAttr(pts){return pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' ');}
+  function paperFill(depth,shade){
+    var L=91-depth*2.2-(shade||0), S=18+depth*4;
+    return 'hsl(322 '+S.toFixed(0)+'% '+clamp(L,42,96).toFixed(0)+'%)';
+  }
+  function camera(depth,t6){
+    var z=clamp(depth/5,0,1);
+    var s=1+0.22*easeInOut(z);
+    var bob=t6?(-4*Math.sin(t6*Math.PI*2)):0;
+    world.setAttribute('transform','translate('+(130-105*s+28).toFixed(1)+' '+((115-102*s+18)+bob).toFixed(1)+') scale('+s.toFixed(3)+')');
+  }
+
+  function render(seg){
+    seg=clamp(seg,0,SEGS);
+    var beat=clamp(Math.floor(seg),0,6);
+    var local=seg-beat;
+    var k=beat;                                             /* fold in progress, 0 = intro */
+    var tf=k===0?0:easeInOut(clamp((local-0.12)/0.72,0,1)); /* dwell before + after */
+    var depthDone=k===0?0:(k-1)+tf;
+
+    /* beat 6: the assembled crane, alive (gentle bob, deeper shadow) */
+    if(beat>=6){
+      var t6=clamp(local,0,1);
+      camera(5,t6*0.6);
+      sheet.setAttribute('opacity','0');sheetShadow.setAttribute('opacity','0');
+      flap.setAttribute('opacity','0');flapShadow.setAttribute('opacity','0');
+      previews.forEach(function(p){p.setAttribute('opacity','0');});
+      landed.forEach(function(p){p.setAttribute('opacity','1');});
+      landedG.setAttribute('filter','drop-shadow('+(4+3*t6)+'px '+(8+5*t6)+'px '+(9+5*t6)+'px rgba(94,44,75,.28))');
+      return;
+    }
+    landedG.setAttribute('filter','drop-shadow(3px 6px 7px rgba(94,44,75,.2))');
+    camera(depthDone,0);
+
+    /* the shrinking sheet: during fold k, show the post-fold outline;
+       the rotating flap covers the material being consumed */
+    var outline = k===0 ? OUT[0] : OUT[k];
+    if(outline){
+      sheet.setAttribute('points',pointsAttr(outline));
+      sheet.setAttribute('fill',paperFill(depthDone));
+      sheet.setAttribute('opacity','1');
+      sheetShadow.setAttribute('points',pointsAttr(outline.map(function(p){return[p[0]+4,p[1]+7];})));
+      sheetShadow.setAttribute('fill','rgba(94,44,75,.12)');
+      sheetShadow.setAttribute('opacity','1');
+    }else{
+      /* last fold: the remaining sliver fades away under the tail */
+      var prev=OUT[4];
+      sheet.setAttribute('points',pointsAttr(prev));
+      sheet.setAttribute('fill',paperFill(depthDone));
+      sheet.setAttribute('opacity',clamp(1-tf*1.6,0,1).toFixed(2));
+      sheetShadow.setAttribute('opacity',clamp(1-tf*1.6,0,1).toFixed(2));
+    }
+
+    /* crease-pattern previews: all visible on the flat sheet, then each
+       fades as its fold is made */
+    previews.forEach(function(p,i){
+      var fi=i+1;
+      var op;
+      if(fi<k) op=0;
+      else if(fi===k) op=clamp(0.7-tf*4,0,0.7);
+      else op=k===0?0.7:0.35;
+      p.setAttribute('opacity',op.toFixed(2));
+    });
+
+    /* landed facets: everything before the current fold stays */
+    landed.forEach(function(p,i){
+      p.setAttribute('opacity', i+1<k ? '1' : (i+1===k&&tf>=1?'1':'0'));
+    });
+
+    /* the folding flap: mirror of facet k, rotating down onto it */
+    if(k>=1&&tf<1){
+      var f=FACETS[k-1];
+      var theta=Math.PI*(1-tf);            /* pi -> 0 : mirror -> landed  */
+      var cosT=Math.cos(theta),sinT=Math.sin(theta);
+      var pts=f.dec.map(function(d){return[d.q[0]+cosT*d.r[0],d.q[1]+cosT*d.r[1]];});
+      flap.setAttribute('points',pointsAttr(pts));
+      /* back of the paper while lifting, crane colour as it lays down */
+      flap.setAttribute('fill', cosT<0 ? paperFill(depthDone,sinT*8) : 'hsl(322 '+lerp(24,39,cosT).toFixed(0)+'% '+lerp(80,f.L,cosT).toFixed(0)+'%)');
+      flap.setAttribute('opacity','1');
+      var sh=pts.map(function(p){return[p[0]+6*sinT,p[1]+10*sinT];});
+      flapShadow.setAttribute('points',pointsAttr(sh));
+      flapShadow.setAttribute('fill','rgba(31,34,51,'+(0.16*sinT).toFixed(3)+')');
+      flapShadow.setAttribute('opacity','1');
+    }else{
+      flap.setAttribute('opacity','0');
+      flapShadow.setAttribute('opacity','0');
+    }
+  }
+
+  /* ---- story chrome ---- */
+  var LABELS=['the sheet · crease pattern',
+              'fold 01 · knowledge — the left wing',
+              'fold 02 · capabilities — the right wing',
+              'fold 03 · integrations — the body',
+              'fold 04 · governance — the head',
+              'fold 05 · telemetry — the tail',
+              'Operator — assembled, it flies'];
+  var cards=[1,2,3,4,5,6].map(function(i){return document.getElementById('pc'+i);});
+  var label=document.getElementById('foldLabel');
+  var liveFlag=document.getElementById('liveFlag');
+  var stageHint=document.getElementById('stageHint');
+  var activeIdx=-1;
+
+  function setBeat(idx){
+    if(idx===activeIdx)return;
+    activeIdx=idx;
+    label.textContent=LABELS[idx];
+    liveFlag.classList.toggle('on',idx===SEGS-1);
+    stageHint.style.opacity=(idx===SEGS-1)?'0':'1';
+    cards.forEach(function(c,i){c.classList.toggle('active',i+1===idx);});
+  }
+  function setCards(seg){
+    cards.forEach(function(c,i){
+      var k=i+1;
+      var revealAt=k<=5?k+0.72:6.30;
+      c.classList.toggle('on',seg>=revealAt);
+    });
+  }
+
+  if(reduce){
+    render(SEGS);setBeat(SEGS-1);
+    cards.forEach(function(c){c.classList.add('on');});
+    return;
+  }
+
+  var scrolly=document.getElementById('scrolly');
+  var ticking=false;
+  function onScroll(){
+    if(ticking)return;ticking=true;
+    requestAnimationFrame(function(){
+      ticking=false;
+      var r=scrolly.getBoundingClientRect();
+      var total=scrolly.offsetHeight-window.innerHeight;
+      var p=clamp(-r.top/total,0,1);
+      var seg=p*SEGS;
+      render(seg);
+      setCards(seg);
+      setBeat(clamp(Math.floor(seg+0.25),0,SEGS-1));
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  render(0);setBeat(0);setCards(0);
+  onScroll();
+})();
+
+  // fold-the-lesson: each tap folds a NEW sheet — pairing an origami rule with a harness rule
   (function(){
+    const LESSONS=[
+      {hue:322,sat:46,o:'One uncut sheet can become any shape.',h:'One shared graph grounds every agent — no copies, no forks.'},
+      {hue:255,sat:32,o:'Each crease guides the one after it.',h:'Each outcome trains the next action. Read, run, write, learn.'},
+      {hue:40, sat:60,o:'Folds compound: seven folds, 128 layers.',h:'Reuse compounds too — a skill built once works for every agent.'},
+      {hue:205,sat:45,o:'Paper remembers every crease you make.',h:'The harness remembers every approval, edit, and override.'},
+      {hue:12, sat:55,o:'Same folds, same order, same crane — every time.',h:'Governance: every agent follows the same rules through one door.'},
+      {hue:145,sat:35,o:'Assembled, the sheet flies.',h:'Operator — a working agent on day one.'}
+    ];
+    let lesson=0;
     const C=[130,120],H=92;
     const CRANE=[
       [[[60,168],[126,128],[120,150]],60],[[[128,108],[34,52],[122,138]],72],
@@ -404,35 +761,42 @@
     const NS='http://www.w3.org/2000/svg';
     const sheet=document.createElementNS(NS,'polygon');
     sheet.setAttribute('points',`${C[0]-H},${C[1]-H} ${C[0]+H},${C[1]-H} ${C[0]+H},${C[1]+H} ${C[0]-H},${C[1]+H}`);
-    sheet.setAttribute('fill','hsl(322 16% 90%)');sheet.setAttribute('stroke','rgba(94,44,75,.3)');sheet.setAttribute('stroke-width','1.2');
+    sheet.setAttribute('stroke','rgba(94,44,75,.3)');sheet.setAttribute('stroke-width','1.2');
     svg.appendChild(sheet);
     const polys=CRANE.map(f=>{const el=document.createElementNS(NS,'polygon');el.setAttribute('class','facet');svg.appendChild(el);
       return{el,flat:f[0].map(flatPoint),fold:f[0],L:f[1]};});
     const lerp=(a,b,tt)=>a+(b-a)*tt;
     function render(tt){
+      const Ls=LESSONS[lesson];
       const e=tt<.5?2*tt*tt:1-Math.pow(-2*tt+2,2)/2;
+      sheet.setAttribute('fill',`hsl(${Ls.hue} 16% 90%)`);
       sheet.setAttribute('opacity',Math.max(0,1-tt*2.4).toFixed(2));
       polys.forEach(pp=>{
         pp.el.setAttribute('points',pp.flat.map((fp,i)=>lerp(fp[0],pp.fold[i][0],e).toFixed(1)+','+lerp(fp[1],pp.fold[i][1],e).toFixed(1)).join(' '));
-        pp.el.setAttribute('fill',`hsl(322 ${lerp(18,46,tt)}% ${lerp(88,pp.L,tt)}%)`);
+        pp.el.setAttribute('fill',`hsl(${Ls.hue} ${lerp(18,Ls.sat,tt).toFixed(0)}% ${lerp(88,pp.L,tt).toFixed(0)}%)`);
         pp.el.setAttribute('opacity',Math.min(1,Math.max(0,(tt-0.05)*1.7)).toFixed(2));
       });
     }
     let folded=false,busy=false,cur=0;
     const tipEl=document.getElementById('foldTip');
+    const countEl=document.getElementById('foldCount');
+    function setCount(){ if(countEl) countEl.textContent='sheet '+(lesson+1)+' of '+LESSONS.length; }
     function animateTo(target,done){busy=true;
-      (function step(){cur+=(target>cur?0.022:-0.022);
+      (function step(){cur+=(target>cur?0.022:-0.03);
         if((target>0&&cur>=target)||(target===0&&cur<=0)){cur=target;render(cur);busy=false;done&&done();return;}
         render(cur);requestAnimationFrame(step);})();}
     function toggle(){if(busy)return;
       if(!folded){tipEl.style.opacity='0';
-        animateTo(1,()=>{folded=true;tipEl.textContent='\u201C'+pickTip()+'\u201D';tipEl.style.opacity='1';});}
+        animateTo(1,()=>{folded=true;const Ls=LESSONS[lesson];
+          tipEl.innerHTML='<span class="ftl-o">origami: '+Ls.o+'</span><span class="ftl-h">the harness: '+Ls.h+'</span>';
+          tipEl.style.opacity='1';});}
       else{tipEl.style.opacity='0';
-        animateTo(0,()=>{folded=false;tipEl.textContent='flat again \u2014 fold it once more \u2191';tipEl.style.opacity='1';});}}
+        animateTo(0,()=>{folded=false;lesson=(lesson+1)%LESSONS.length;setCount();render(0);
+          tipEl.innerHTML='a fresh sheet — fold it ↑';tipEl.style.opacity='1';});}}
     const stage=document.getElementById('foldStage');
     stage.addEventListener('click',toggle);
     stage.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
-    render(0);
+    setCount();render(0);
   })();
 
   // envelope: open → photos fan out; click a photo → paper lightbox
@@ -456,6 +820,16 @@
   document.getElementById('lbX').addEventListener('click',closeLb);
   lb.addEventListener('click',e=>{ if(e.target===lb) closeLb(); });
   document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLb(); });
+
+  // nav highlighter follows the section you're in
+  (function(){
+    const probLink=document.querySelector('nav.links a[href$="#problem"]');
+    const prob=document.getElementById('problem');
+    if(probLink&&prob){
+      const spy=new IntersectionObserver(es=>es.forEach(e=>probLink.classList.toggle('current',e.isIntersecting)),{rootMargin:'-25% 0px -55% 0px'});
+      spy.observe(prob);
+    }
+  })();
 
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.06});
   document.querySelectorAll('.fold').forEach(f=>io.observe(f));

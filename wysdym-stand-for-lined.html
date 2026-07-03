@@ -137,6 +137,20 @@
   nav.links a{font-family:'Caveat',cursive;font-size:21px;font-weight:600;letter-spacing:.01em;}
   .res-menu a{font-size:18px;}
   nav.links a.apply-btn{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;}
+  /* FINAL: magenta paper-scrap Apply + section highlighter */
+  nav.links a.apply-btn{position:relative;font-family:'Caveat',cursive !important;font-size:20px !important;font-weight:700 !important;
+    letter-spacing:.01em;color:#fff !important;background:linear-gradient(180deg,var(--magenta),var(--magenta-deep)) !important;
+    border:none !important;border-radius:2px !important;padding:8px 20px 7px 36px !important;
+    box-shadow:2px 4px 9px rgba(31,34,51,.28) !important;transform:rotate(-2deg);transition:transform .15s, box-shadow .15s;}
+  nav.links a.apply-btn:hover{transform:rotate(0) translateY(-1px);box-shadow:3px 6px 12px rgba(31,34,51,.32) !important;
+    background:linear-gradient(180deg,var(--magenta),var(--magenta-deep)) !important;color:#fff !important;}
+  nav.links a.apply-btn::before{content:'';position:absolute;top:-10px;left:12px;width:13px;height:26px;
+    border:2.5px solid #d7dae0;border-bottom:none;border-radius:7px 7px 5px 5px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.3));}
+  nav.links a.apply-btn::after{content:'';position:absolute;top:-4px;left:16.5px;width:4px;height:16px;
+    border:2px solid #aeb3bb;border-bottom:none;border-radius:3px 3px 0 0;}
+  nav.links a.current{color:var(--magenta-deep);}
+  nav.links a.current::after{content:'';position:absolute;left:-2px;right:-2px;bottom:-4px;height:7px;
+    background:var(--magenta);opacity:.35;transform:skewX(-10deg);border-radius:40%;}
 </style>
 </head>
 <body>
@@ -147,7 +161,7 @@
   <a class="logo" href="wysdym-home-lined-v2.html"><img class="logo-crane" src="origami-crane-wysdym.png" alt="wysdym crane"><img class="logo-word" src="wysdym-wordmark-magenta.svg" alt="wysdym"></a>
   <nav class="links">
     <a href="wysdym-home-lined-v2.html#problem">The problem</a>
-    <a href="wysdym-platform-lined-v2.html">The platform</a>
+    <a href="wysdym-platform-lined-v3.html">The platform</a>
     <a href="wysdym-stand-for-lined.html" class="current">What we stand for</a>
     <span class="res"><a href="#" class="res-a">Resources ▾</a>
       <span class="res-menu">
