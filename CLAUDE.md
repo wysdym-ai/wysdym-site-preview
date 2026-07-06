@@ -180,3 +180,23 @@ pass (harness meta description), then domain cutover.
   qlmanage pads square). Use it at 34px tall in headers. NEVER a text
   wordmark. Framer Agent may substitute text when an image crop fails —
   watch for it.
+
+### Framer assembly session 2 (2026-07-06 evening)
+
+DONE: SiteHeader is a shared component on all pages; pages created with slugs
+(/platform /stand-for /apply /blog /contact /privacy /press), each scaffolded
+with PaperBackground + SiteHeader + FoldingFooter and nav wired. FULLY BUILT:
+Home, Platform (hero + RRWL + 7 PaperPrint sections + coming-soon on Plays +
+CTA), Stand-for (hero, AcronymGame, six beliefs post-its, CTA, senbazuru),
+Apply (hero, trade pads, who post-its, full application form + rob@ email).
+PaperPrint.tsx now falls back to GH-Pages asset URLs BY CAPTION (the Framer
+Agent can't set external image URLs — leave image control empty).
+BLOCKED: workspace ran OUT of Framer AI credits ("Buy Add-on" or monthly
+reset needed). Remaining: Contact/Privacy/Press/Blog middles (scaffolded,
+empty), 404 page, dog-ears, project-wide QA, breakpoints.
+WARNING: the Framer Agent rewrote AcronymGame.tsx and SenbazuruCounter.tsx
+with its own simplified versions — both were restored by pasting the port-kit
+originals over them (do this check after any agent run that touches code).
+Editor-paste gotcha: after opening a code file, click directly ON code text
+before cmd+A/cmd+V — clicking empty editor space leaves focus on the page and
+the paste goes nowhere.
