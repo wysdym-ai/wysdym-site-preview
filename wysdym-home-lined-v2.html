@@ -283,10 +283,9 @@
   .hl{background:linear-gradient(100deg, rgba(255,133,192,0) 0%, rgba(255,133,192,.42) 5%, rgba(255,133,192,.42) 95%, rgba(255,133,192,0) 100%);
     padding:1px 6px;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
   .scrolly{padding:0;}
-  .explore-sec{padding:0 0 46px;text-align:center;position:relative;z-index:2;}
-  @media(min-width:901px) and (prefers-reduced-motion:no-preference){
-    .explore-sec{margin-top:calc(-100vh + 585px);margin-top:calc(-100svh + 585px);}
-  }
+  .explore-inline{margin-top:14px;opacity:0;transform:translateY(10px);pointer-events:none;
+    transition:opacity .45s .15s,transform .5s .15s cubic-bezier(.2,.8,.3,1);}
+  .explore-inline.on{opacity:1;transform:none;pointer-events:auto;}
   /* shared paper footer */
   footer{padding:52px 0 58px;text-align:center;border-top:1.5px dashed rgba(58,63,85,.25);position:relative;z-index:1;}
   .wrap-f{max-width:1040px;margin:0 auto;padding:0 32px;}
@@ -336,7 +335,7 @@
     <a href="wysdym-stand-for-lined.html">What we stand for</a>
     <span class="res"><a href="#" class="res-a">Resources ▾</a>
       <span class="res-menu">
-        <a href="https://gtmstats.wysdym.ai" target="_blank" rel="noopener">2026 Go-to-Market AI Stats</a>
+        <a href="https://gtmstats.wysdym.ai" target="_blank" rel="noopener">2026 GTM AI Stats</a>
         <a href="wysdym-blog-lined.html">Blog</a>
       </span>
     </span>
@@ -413,6 +412,7 @@
         <div class="fold-label" id="foldLabel">wysdym starts with a blank sheet of paper</div>
         <svg id="asmSvg" viewBox="0 0 260 230" xmlns="http://www.w3.org/2000/svg" aria-label="A sheet of paper whose five folds assemble the wysdym crane"></svg>
         <div class="live-flag" id="liveFlag"><span class="dot"></span>Operator · assembled from five folds</div>
+        <div class="explore-inline" id="exploreInline"><a href="wysdym-platform-lined-v3.html" class="btn-hand primary" style="font-size:15px;">Explore the full platform →</a></div>
         <div class="stage-hint" id="stageHint">keep scrolling — every fold lands a piece of the crane</div>
       </div>
 
@@ -431,7 +431,6 @@
           <div class="tag">★ five folds later — the crane</div>
           <h3>Operator</h3>
           <p>Every fold you just made is part of the crane. That's the platform: assembled, it flies.</p>
-          <a class="btn-mini" href="wysdym-design-partner-lined.html">Apply for access →</a>
         </div>
       </div>
 
@@ -439,11 +438,6 @@
   </div>
 </section>
 
-<section class="explore-sec">
-  <div class="wrap">
-    <a href="wysdym-platform-lined-v3.html" class="btn-hand primary" style="font-size:16px;">Explore the full platform →</a>
-  </div>
-</section>
 
 
 <div class="crease"></div>
@@ -696,6 +690,7 @@
   var cards=[1,2,3,4,5,6].map(function(i){return document.getElementById('pc'+i);});
   var label=document.getElementById('foldLabel');
   var liveFlag=document.getElementById('liveFlag');
+  var exploreInline=document.getElementById('exploreInline');
   var stageHint=document.getElementById('stageHint');
   var activeIdx=-1;
   function setBeat(idx){
@@ -703,6 +698,7 @@
     activeIdx=idx;
     label.textContent=LABELS[idx];
     liveFlag.classList.toggle('on',idx===SEGS-1);
+    exploreInline.classList.toggle('on',idx===SEGS-1);
     stageHint.style.opacity=(idx===SEGS-1)?'0':'1';
     cards.forEach(function(c,i){c.classList.toggle('active',i+1===idx);});
   }
