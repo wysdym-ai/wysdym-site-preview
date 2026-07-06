@@ -162,6 +162,30 @@
   .f-meta{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--pencil,#565a70);}
   .f-meta a{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(58,63,85,.4);}
   .f-meta a:hover{color:var(--magenta-deep);}
+
+  /* folding footer */
+  footer.ff{padding:34px 0 50px;}
+  .ff-top{display:block;width:100%;background:none;border:none;cursor:pointer;padding:0;font:inherit;text-align:center;}
+  .ff-top .f-tag{display:block;}
+  .ff-hint{display:inline-block;font-family:'Caveat',cursive;font-size:19px;color:var(--pencil,#565a70);margin-top:8px;
+    transform:rotate(-2deg);border-bottom:1.5px dashed rgba(58,63,85,.4);transition:color .15s;}
+  .ff-top:hover .ff-hint{color:var(--magenta-deep);}
+  .ff-panel{perspective:1000px;max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(.2,.8,.3,1);}
+  .ff-face{transform-origin:top center;transform:rotateX(-91deg);opacity:.3;padding-top:18px;margin-top:16px;
+    border-top:1.5px dashed rgba(58,63,85,.3);
+    background:linear-gradient(180deg, rgba(58,63,85,.05), rgba(58,63,85,0) 55%);
+    transition:transform .65s cubic-bezier(.2,.8,.3,1), opacity .45s;}
+  footer.ff.open #ffP1{max-height:420px;}
+  footer.ff.open #ffP1>.ff-face{transform:rotateX(0deg);opacity:1;}
+  footer.ff.open #ffP2{max-height:180px;transition-delay:.26s;}
+  footer.ff.open #ffP2>.ff-face{transform:rotateX(0deg);opacity:1;transition-delay:.26s;}
+  footer.ff .f-links{margin-top:0;}
+  footer.ff .f-meta{margin-top:0;}
+  @media(prefers-reduced-motion:reduce){
+    .ff-panel{max-height:none !important;overflow:visible;}
+    .ff-face{transform:none;opacity:1;}
+    .ff-hint{display:none;}
+  }
 </style>
 </head>
 <body>
@@ -247,25 +271,47 @@
   </div>
 </section>
 
-<footer>
+<footer class="ff">
   <div class="wrap-f">
-    <div class="f-tag">The platform every GTM agent runs on.</div>
-    <nav class="f-links">
-      <a href="wysdym-home-lined-v2.html">Home</a>
-      <a href="wysdym-platform-lined-v3.html">The platform</a>
-      <a href="wysdym-stand-for-lined.html">What we stand for</a>
-      <a href="wysdym-blog-lined.html">Blog</a>
-      <a href="https://gtmstats.wysdym.ai" target="_blank" rel="noopener">2026 GTM AI Stats</a>
-      <a href="wysdym-design-partner-lined.html">Apply for access</a>
-    </nav>
-    <div class="f-meta">
-      <a href="wysdym-privacy-lined.html">Privacy policy</a>
-      <a href="wysdym-contact-lined.html">Contact</a>
-      <a href="https://www.linkedin.com/company/wysdym" target="_blank" rel="noopener">LinkedIn</a>
-      <span>© 2026 wysdym, Inc.</span>
+    <button class="ff-top" id="ffTop" aria-expanded="false" aria-controls="ffP1">
+      <span class="f-tag">The platform every GTM agent runs on.</span>
+      <span class="ff-hint" id="ffHint">unfold the footer ↓</span>
+    </button>
+    <div class="ff-panel" id="ffP1">
+      <div class="ff-face">
+        <nav class="f-links">
+          <a href="wysdym-home-lined-v2.html">Home</a>
+          <a href="wysdym-platform-lined-v3.html">The platform</a>
+          <a href="wysdym-stand-for-lined.html">What we stand for</a>
+          <a href="wysdym-blog-lined.html">Blog</a>
+          <a href="https://gtmstats.wysdym.ai" target="_blank" rel="noopener">2026 GTM AI Stats</a>
+          <a href="wysdym-design-partner-lined.html">Apply for access</a>
+        </nav>
+        <div class="ff-panel" id="ffP2">
+          <div class="ff-face">
+            <div class="f-meta">
+              <a href="wysdym-press-lined.html">Press kit</a>
+              <a href="wysdym-privacy-lined.html">Privacy policy</a>
+              <a href="wysdym-contact-lined.html">Contact</a>
+              <a href="https://www.linkedin.com/company/wysdym" target="_blank" rel="noopener">LinkedIn</a>
+              <span>© 2026 wysdym, Inc.</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
+<script>
+(function(){
+  var t=document.getElementById('ffTop'),h=document.getElementById('ffHint'),ft=t.closest('footer');
+  t.addEventListener('click',function(){
+    var open=ft.classList.toggle('open');
+    t.setAttribute('aria-expanded',open?'true':'false');
+    h.textContent=open?'fold it back ↑':'unfold the footer ↓';
+  });
+})();
+</script>
 
 <div class="pocnote">Direction E v2 · Lined Paper · What we stand for</div>
 

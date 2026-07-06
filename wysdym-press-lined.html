@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>wysdym — Contact · Direction E v2</title>
-<meta name="description" content="Mockup: the contact page in the lined-paper design.">
+<title>wysdym — Press &amp; media kit · Direction E v2</title>
+<meta name="description" content="Mockup: the wysdym press & media kit in the lined-paper design.">
 <link rel="icon" type="image/png" href="origami-magenta-wysdym-FAVICON.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -126,29 +126,54 @@
   .com-ok{font-family:'Caveat',cursive;font-size:21px;color:var(--green);margin-top:12px;display:none;}
   .com-ok.show{display:block;}
 
-  .contact-grid{display:grid;grid-template-columns:minmax(0,640px) 1fr;gap:44px;margin-top:48px;align-items:start;}
-  @media(max-width:900px){.contact-grid{grid-template-columns:1fr;}}
-  .postcard{position:relative;background:linear-gradient(180deg,#fff,#f9f6ee);border:1.5px solid rgba(58,63,85,.35);
-    padding:30px 34px 28px;transform:rotate(-.6deg);box-shadow:0 18px 38px -14px rgba(31,34,51,.35);}
-  .postcard::before{content:'';position:absolute;top:-13px;left:44px;width:90px;height:26px;background:rgba(255,244,200,.65);
-    transform:rotate(-4deg);border-left:1px dashed rgba(0,0,0,.07);border-right:1px dashed rgba(0,0,0,.07);box-shadow:0 1px 3px rgba(0,0,0,.14);}
-  .stamp{position:absolute;top:18px;right:20px;width:66px;height:78px;border:2px dashed rgba(58,63,85,.4);border-radius:2px;
-    background:var(--paper-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transform:rotate(2deg);}
-  .stamp img{width:42px;height:42px;object-fit:contain;}
-  .stamp span{font-family:'Caveat',cursive;font-size:12px;color:var(--pencil);}
-  .pc-field{margin-bottom:18px;}
-  .pc-field label{font-family:'Caveat',cursive;font-size:21px;color:var(--red-pen);display:block;transform:rotate(-1deg);}
-  .pc-field input{width:100%;font-family:'Caveat',cursive;font-size:22px;color:var(--ink);background:transparent;border:none;
-    border-bottom:2px solid var(--grid-strong);padding:4px 2px;outline:none;}
-  .pc-field input:focus{border-bottom-color:var(--red-pen);}
-  .pc-field textarea{width:100%;font-family:'Caveat',cursive;font-size:22px;color:var(--ink);background:transparent;border:none;
-    outline:none;resize:vertical;min-height:124px;line-height:31px;padding:0 2px;
-    background-image:repeating-linear-gradient(180deg, transparent 0 30px, var(--grid-strong) 30px 31px);}
-  .side-notes{padding-top:8px;}
-  .side-notes .hand{font-size:25px;color:var(--magenta-deep);display:block;transform:rotate(-1.5deg);}
-  .side-notes p{font-size:14.5px;color:var(--pencil);margin:8px 0 20px;max-width:320px;}
-  .side-notes a.mini{font-family:'Caveat',cursive;font-size:21px;color:var(--magenta-deep);text-decoration:none;border-bottom:1.5px dashed var(--magenta);}
-  .arrow-doodle{width:70px;transform:rotate(14deg);margin:6px 0 2px;color:var(--red-pen);}
+  /* press kit */
+  .draft-note{display:inline-block;font-family:'Caveat',cursive;font-size:20px;color:var(--pencil);
+    border:1.5px dashed var(--pencil);border-radius:100px;padding:3px 16px;transform:rotate(-1.5deg);margin-top:22px;opacity:.8;}
+  .pk-h{margin-top:56px;}
+  .pk-h .hand-h{font-family:'Caveat',cursive;font-size:24px;color:var(--red-pen);transform:rotate(-1.5deg);display:inline-block;}
+  .pk-h h2{font-size:24px;font-weight:800;letter-spacing:-.015em;margin-top:2px;}
+  .boiler{position:relative;max-width:760px;background:linear-gradient(180deg,#fff,#f8f5ec);border:1.5px solid rgba(58,63,85,.35);
+    border-radius:3px;padding:20px 24px 18px;margin-top:18px;box-shadow:0 10px 24px -12px rgba(31,34,51,.28);transform:rotate(var(--r,0deg));}
+  .boiler .b-tag{font-family:'Caveat',cursive;font-size:19px;color:var(--magenta-deep);}
+  .boiler p{font-size:15px;color:#2c2f42;line-height:1.65;margin-top:6px;}
+  .copy-btn{position:absolute;top:14px;right:14px;font-family:'Caveat',cursive;font-size:18px;font-weight:600;color:var(--pencil);
+    background:var(--paper-2);border:1.5px solid var(--pencil);border-radius:100px;padding:2px 14px;cursor:pointer;transition:color .15s,border-color .15s;}
+  .copy-btn:hover{color:var(--magenta-deep);border-color:var(--magenta-deep);}
+  .copy-btn.done{color:var(--green);border-color:var(--green);}
+  .facts{max-width:760px;margin-top:18px;}
+  .facts .row{display:grid;grid-template-columns:200px 1fr;gap:14px;padding:10px 2px;border-bottom:1px dashed rgba(58,63,85,.2);}
+  .facts .row:last-child{border-bottom:none;}
+  .facts .k{font-family:'Caveat',cursive;font-size:21px;color:var(--red-pen);line-height:1.2;}
+  .facts .v{font-size:15px;color:#2c2f42;line-height:1.6;}
+  @media(max-width:640px){.facts .row{grid-template-columns:1fr;gap:2px;}}
+  .logo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:24px;margin-top:20px;max-width:1000px;}
+  .logo-card{background:linear-gradient(180deg,#fff,#f8f5ec);border:1.5px solid rgba(58,63,85,.35);border-radius:3px;
+    padding:18px;text-align:center;box-shadow:0 10px 24px -12px rgba(31,34,51,.28);transform:rotate(var(--r,0deg));}
+  .logo-card.dark{background:linear-gradient(180deg,#2c2a4a,#1f2233);}
+  .logo-card .art{height:110px;display:flex;align-items:center;justify-content:center;}
+  .logo-card img{max-height:96px;max-width:85%;object-fit:contain;}
+  .logo-card .nm{font-family:'Caveat',cursive;font-size:19px;color:var(--pencil);margin-top:8px;}
+  .logo-card.dark .nm{color:#cfd3e0;}
+  .logo-card a.dl{display:inline-block;margin-top:6px;font-size:12.5px;font-weight:700;color:var(--magenta-deep);text-decoration:none;
+    border-bottom:1.5px dashed var(--magenta);}
+  .logo-card.dark a.dl{color:#e8a9cd;border-bottom-color:#e8a9cd;}
+  .swatches{display:flex;flex-wrap:wrap;gap:18px;margin-top:20px;max-width:820px;}
+  .sw{width:128px;text-align:center;}
+  .sw .chip{height:74px;border-radius:3px;border:1.5px solid rgba(58,63,85,.3);box-shadow:2px 3px 0 rgba(58,63,85,.15);transform:rotate(var(--r,0deg));}
+  .sw .nm{font-family:'Caveat',cursive;font-size:18px;color:var(--pencil);margin-top:7px;line-height:1.15;}
+  .sw .hex{font-size:12px;color:var(--pencil);letter-spacing:.04em;}
+  .rules{max-width:760px;margin-top:16px;list-style:none;}
+  .rules li{font-size:15px;color:#2c2f42;line-height:1.6;padding:8px 0 8px 32px;position:relative;border-bottom:1px dashed rgba(58,63,85,.15);}
+  .rules li:last-child{border-bottom:none;}
+  .rules li::before{content:'';position:absolute;left:2px;top:11px;width:20px;height:18px;background-repeat:no-repeat;background-size:contain;transform:rotate(-4deg);}
+  .rules li:nth-child(2n)::before{transform:rotate(5deg) scale(.92);}
+  .rules li.do::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 22'%3E%3Cpath d='M3 12 C5 13.5 7.5 16.5 9 19 C11.5 12 16 5.5 21.5 2.5' fill='none' stroke='%235a8f63' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");}
+  .rules li.dont::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 22'%3E%3Cpath d='M4 3.5 C9 8 15 14.5 20.5 19 M20 3 C15.5 8 9.5 14 3.5 19.5' fill='none' stroke='%23d2553f' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");}
+  .press-cta{max-width:720px;background:linear-gradient(180deg,#fff,#f8eef5);border:2px solid var(--ink);border-radius:4px;
+    padding:22px 26px;box-shadow:5px 6px 0 rgba(58,63,85,.18);transform:rotate(-.4deg);margin-top:52px;}
+  .press-cta .hand{font-size:23px;color:var(--magenta-deep);}
+  .press-cta p{font-size:14.5px;color:var(--pencil);margin-top:6px;}
+  .press-cta a{color:var(--magenta-deep);}
 
   /* folding footer */
   footer.ff{padding:34px 0 50px;}
@@ -191,39 +216,92 @@
         <a href="wysdym-blog-lined.html">Blog</a>
       </span>
     </span>
-    <a href="wysdym-contact-lined.html" class="current">Contact</a>
+    <a href="wysdym-contact-lined.html">Contact</a>
     <a href="wysdym-design-partner-lined.html" class="apply-btn">Apply for access</a>
   </nav>
 </header>
 
 <section>
   <div class="wrap">
-    <div class="eyebrow">say hello ↓</div>
-    <h1>Drop us a <span class="serif-accent">line.</span></h1>
-    <p class="lead">Want the full harness, a quick conversation about your agent stack, or just to compare notes on where GTM AI is going? The notebook is open.</p>
+    <div class="eyebrow">for journalists, analysts &amp; partners ↓</div>
+    <h1>Press &amp; <span class="serif-accent">media kit.</span></h1>
+    <p class="lead">Everything you need to write about wysdym accurately — approved boilerplate, the fast facts, logo files, and the colors. If you need something that isn't here, just ask.</p>
+    <div class="draft-note">✎ draft for team review — assets &amp; facts to be finalized before the live site</div>
 
-    <div class="contact-grid">
-      <div class="postcard">
-        <div class="stamp" aria-hidden="true"><img src="origami-crane-wysdym.png" alt=""><span>par avion</span></div>
-        <div class="pc-field" style="max-width:70%;"><label for="cName">from</label><input id="cName" type="text" placeholder="Your name"></div>
-        <div class="pc-field" style="max-width:70%;"><label for="cMail">work email</label><input id="cMail" type="email" placeholder="name@company.com"></div>
-        <div class="pc-field"><label for="cMsg">what's on your mind</label><textarea id="cMsg" placeholder="Our stack has five agents and none of them talk to each other…"></textarea></div>
-        <button class="com-btn" id="sendBtn">Send it our way →</button>
-        <div class="com-ok" id="sendOk">✓ Posted — we read every note and reply fast. (Display mockup — wired to the real inbox on the live site.)</div>
+    <div class="pk-h"><span class="hand-h">say it in one line</span><h2>Boilerplate</h2></div>
+    <div class="boiler" style="--r:-.4deg;">
+      <div class="b-tag">the one-liner</div>
+      <p id="bp1">wysdym is the platform every GTM agent runs on.</p>
+      <button class="copy-btn" data-t="bp1">copy</button>
+    </div>
+    <div class="boiler" style="--r:.4deg;">
+      <div class="b-tag">the short version</div>
+      <p id="bp2">wysdym is GTM infrastructure — the harness beneath a company's AI agents. It gives every agent shared memory, skills, integrations, governance, and an outcome feedback loop, so agents stop drifting and start compounding. More agents won't grow revenue. Compounding intelligence will.</p>
+      <button class="copy-btn" data-t="bp2">copy</button>
+    </div>
+    <div class="boiler" style="--r:-.3deg;">
+      <div class="b-tag">the full paragraph</div>
+      <p id="bp3">GTM teams already run three to five AI agents in parallel — and the agents work, but the stack doesn't. Memory is per-agent, integrations are wired separately into everything, and there's no governance or feedback loop, so nothing compounds. wysdym is the platform every GTM agent runs on: five components — wysdymGraph, wysdymSkills, wysdymConnect, wysdymGateway, and wysdymObserve — plus Operator, a working reference agent, ship as one governed harness. Every agent inherits the same grounding, acts on your terms, and gets smarter from every outcome. wysdym is based in the Toronto area and is currently onboarding a select group of customers.</p>
+      <button class="copy-btn" data-t="bp3">copy</button>
+    </div>
+
+    <div class="pk-h"><span class="hand-h">the checkables</span><h2>Fast facts</h2></div>
+    <div class="facts">
+      <div class="row"><div class="k">the name</div><div class="v"><b>wysdym</b> — always lowercase, even at the start of a sentence.</div></div>
+      <div class="row"><div class="k">category</div><div class="v">GTM infrastructure — "the harness." The layer beneath AI agents, not another agent.</div></div>
+      <div class="row"><div class="k">the platform</div><div class="v">Five components — wysdymGraph, wysdymSkills, wysdymConnect, wysdymGateway, wysdymObserve — plus Operator, the reference agent that ships with it.</div></div>
+      <div class="row"><div class="k">headquarters</div><div class="v">Toronto area, Canada.</div></div>
+      <div class="row"><div class="k">status</div><div class="v">Currently onboarding a select group of customers.</div></div>
+      <div class="row"><div class="k">founders</div><div class="v">Co-founded by Rob Catalano (founding team at Achievers; co-founder of WorkTango) and team.</div></div>
+    </div>
+
+    <div class="pk-h"><span class="hand-h">the birds &amp; the letters</span><h2>Logos</h2></div>
+    <div class="logo-grid">
+      <div class="logo-card" style="--r:-.5deg;">
+        <div class="art"><img src="origami-crane-wysdym.png" alt="wysdym origami crane mark"></div>
+        <div class="nm">the crane · primary mark</div>
+        <a class="dl" href="origami-crane-wysdym.png" download>download PNG ↓</a>
       </div>
-
-      <div class="side-notes">
-        <span class="hand">Prefer to skip the small talk?</span>
-        <p>If you already know you want your agents on the harness, go straight to the application — it takes two minutes.</p>
-        <a class="mini" href="wysdym-design-partner-lined.html">Apply for access →</a>
-
-        <div style="margin-top:34px;">
-          <span class="hand">Or find us out in the wild —</span>
-          <p>We post field notes on GTM infrastructure, governance, and compounding intelligence.</p>
-          <a class="mini" href="https://www.linkedin.com/company/wysdym" target="_blank" rel="noopener">wysdym on LinkedIn ↗</a><br><br>
-          <a class="mini" href="wysdym-blog-lined.html">Read the notebook →</a>
-        </div>
+      <div class="logo-card" style="--r:.5deg;">
+        <div class="art"><img src="wysdym-wordmark-magenta.svg" alt="wysdym wordmark" style="max-height:52px;"></div>
+        <div class="nm">the wordmark · magenta</div>
+        <a class="dl" href="wysdym-wordmark-magenta.svg" download>download SVG ↓</a>
       </div>
+      <div class="logo-card" style="--r:-.4deg;">
+        <div class="art"><img src="origami-magenta-wysdym-FAVICON.png" alt="wysdym magenta icon" style="max-height:72px;"></div>
+        <div class="nm">the icon · magenta</div>
+        <a class="dl" href="origami-magenta-wysdym-FAVICON.png" download>download PNG ↓</a>
+      </div>
+      <div class="logo-card dark" style="--r:.4deg;">
+        <div class="art"><img src="origami-white-wysdym-FAVICON.png" alt="wysdym white icon on dark" style="max-height:72px;"></div>
+        <div class="nm">the icon · white on dark</div>
+        <a class="dl" href="origami-white-wysdym-FAVICON.png" download>download PNG ↓</a>
+      </div>
+    </div>
+
+    <div class="pk-h"><span class="hand-h">the inks on this sheet</span><h2>Colors</h2></div>
+    <div class="swatches">
+      <div class="sw" style="--r:-1deg;"><div class="chip" style="background:#BA6296;"></div><div class="nm">magenta</div><div class="hex">#BA6296</div></div>
+      <div class="sw" style="--r:.8deg;"><div class="chip" style="background:#8d4874;"></div><div class="nm">magenta deep</div><div class="hex">#8D4874</div></div>
+      <div class="sw" style="--r:-.6deg;"><div class="chip" style="background:#1f2233;"></div><div class="nm">ink</div><div class="hex">#1F2233</div></div>
+      <div class="sw" style="--r:1deg;"><div class="chip" style="background:#fdfcf8;"></div><div class="nm">paper</div><div class="hex">#FDFCF8</div></div>
+      <div class="sw" style="--r:-.8deg;"><div class="chip" style="background:#d2553f;"></div><div class="nm">red pen</div><div class="hex">#D2553F</div></div>
+      <div class="sw" style="--r:.6deg;"><div class="chip" style="background:#c9992e;"></div><div class="nm">gold</div><div class="hex">#C9992E</div></div>
+    </div>
+
+    <div class="pk-h"><span class="hand-h">please &amp; please don't</span><h2>Usage</h2></div>
+    <ul class="rules">
+      <li class="do">Write <b>wysdym</b> in lowercase — always.</li>
+      <li class="do">Describe it as "the platform every GTM agent runs on," GTM infrastructure, or the harness.</li>
+      <li class="do">Say <b>knowledge-powered</b> and <b>AI-native</b>.</li>
+      <li class="dont">Don't call wysdym "an AI agent" or "an AI agent platform" — it's the layer beneath the agents.</li>
+      <li class="dont">Don't say "AI-powered" or "AI-enabled."</li>
+      <li class="dont">Don't stretch, recolor, redraw, or add effects to the crane or the wordmark.</li>
+    </ul>
+
+    <div class="press-cta">
+      <div class="hand">Working on a story?</div>
+      <p>We're happy to share more — background on the harness category, founder interviews, or product walkthroughs. <a href="wysdym-contact-lined.html">Drop us a line</a> or reach us on <a href="https://www.linkedin.com/company/wysdym" target="_blank" rel="noopener">LinkedIn</a>.</p>
     </div>
   </div>
 </section>
@@ -270,10 +348,14 @@
 })();
 </script>
 
-<div class="pocnote">Direction E v2 · Lined Paper · Contact</div>
+<div class="pocnote">Direction E v2 · Lined Paper · Press kit</div>
 
 <script>
-  document.getElementById('sendBtn').addEventListener('click',()=>document.getElementById('sendOk').classList.add('show'));
+  document.querySelectorAll('.copy-btn').forEach(b=>b.addEventListener('click',async()=>{
+    try{await navigator.clipboard.writeText(document.getElementById(b.dataset.t).textContent);}catch(e){}
+    b.textContent='copied ✓';b.classList.add('done');
+    setTimeout(()=>{b.textContent='copy';b.classList.remove('done');},1800);
+  }));
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.08});
   document.querySelectorAll('.fold').forEach(f=>io.observe(f));
 </script>
