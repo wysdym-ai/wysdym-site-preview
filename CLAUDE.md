@@ -15,6 +15,11 @@ The builder occasionally reports `errored` spuriously — one retry has always f
 | What we stand for | `wysdym-stand-for-lined.html` |
 | Apply for access | `wysdym-design-partner-lined.html` |
 | Blog | `wysdym-blog-lined.html` |
+| Blog post mockup | `wysdym-blog-post-lined.html` |
+| Contact | `wysdym-contact-lined.html` |
+| Privacy | `wysdym-privacy-lined.html` |
+| Press & media kit | `wysdym-press-lined.html` |
+| 404 | `wysdym-404-lined.html` (also copied to root `404.html` so Pages serves it) |
 | Team review hub | `wysdym-lined-review.html` |
 
 **Archived / reference only — do not evolve:** `wysdym-platform-lined-v2.html` (lost the
@@ -102,3 +107,20 @@ marked block. Names & where they live:
 | `senbazuru` | thousand-crane counter easter egg (date-seeded, `287 + 3/day` from 2026-06-24, caps at 999) | stand-for |
 | `pen-underlines` | hand-drawn underline animates on nav/footer link hover | all 10 pages |
 | `footer-auto-unfold` | folding footer opens itself on scroll-into-view (click still toggles) | all 10 pages |
+
+## Removable feature modules (ORIGAMI-EXTRA)
+
+Every "extra" origami feature is wrapped in paired markers so it can be deleted
+cleanly — CSS blocks use `/* ORIGAMI-EXTRA:<name> BEGIN|END */`, markup/JS use
+`<!-- ORIGAMI-EXTRA:<name> BEGIN|END -->`. To remove a feature, delete every
+marked block with that name across the pages (grep the name), nothing else
+references them.
+
+| Module | Where | What it does |
+|---|---|---|
+| `pen-underlines` | all pages | hand-drawn underline wipes in on nav/footer link hover |
+| `dogear-nav` | home, platform, stand-for, blog, apply | fixed folded corner bottom-right; hover lifts + tooltip; click turns to the next page in the cycle |
+| `footer-auto-unfold` | all pages | footer unfolds on scroll-into-view (manual toggle still works) |
+| `fold-to-send` | contact | postcard folds up and flies off as a paper plane on send |
+| `senbazuru` | stand-for (end) | "crane #N of 1,000" flock counter — N is a playful fiction (287 + 3/day from 2026-06-24), NOT a real metric; swap for a real number before anyone cites it |
+| `page-404` | wysdym-404-lined.html + root 404.html | "this page got torn out" page for the live-site launch |
