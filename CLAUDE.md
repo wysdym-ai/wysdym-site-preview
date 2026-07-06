@@ -166,3 +166,17 @@ STILL TO DO in Framer: FAQ fold-corner interactivity (static rows for now),
 remaining pages (Platform, Stand-for, Apply, Blog+CMS, Contact, Privacy,
 Press, 404), page link slugs, dog-ear per page, responsive breakpoints, SEO
 pass (harness meta description), then domain cutover.
+
+### Framer assembly lessons (post-Rob review, 2026-07-06)
+
+- CONTENT MUST START RIGHT OF THE RED MARGIN LINE (x=96): give sections left
+  padding so text begins ~x=120 on the 1200 frame; never center a 1040 block
+  (it starts at x=80, inside the margin). Apply to every page.
+- Handwritten treatments are easy for the Framer Agent to miss — spell out
+  font family Caveat explicitly for stats/annotations (40% = Caveat Bold 68
+  magenta-deep, rotate -3deg, in a white hard-shadow card).
+- Wordmark: the project now has "wysdym-wordmark-tight.png" (1261x304
+  transparent, tight crop — generated via canvas from the SVG because
+  qlmanage pads square). Use it at 34px tall in headers. NEVER a text
+  wordmark. Framer Agent may substitute text when an image crop fails —
+  watch for it.
