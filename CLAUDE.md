@@ -102,10 +102,10 @@ marked block. Names & where they live:
 | name | what | pages |
 |---|---|---|
 | `fold-to-send` | contact postcard folds into a paper plane on send (removal note: restore the one-liner `sendBtn -> sendOk.classList.add('show')` recorded in the JS marker) | contact |
-| `page-404` | torn-out-page 404 (`wysdym-404-lined.html`, also deployed as root `404.html` for GitHub Pages) | its own file |
-| `dogear-nav` | folded bottom-right corner turns to the next page (journey: home → platform → stand-for → blog → apply → home) | 5 journey pages |
-| `senbazuru` | thousand-crane counter easter egg (date-seeded, `287 + 3/day` from 2026-06-24, caps at 999) | stand-for |
-| `pen-underlines` | hand-drawn underline animates on nav/footer link hover | all 10 pages |
+| `page-404` | torn-out-page 404 (`wysdym-404-lined.html`, also root `404.html`; linked as 'The torn-out page' in every footer meta row) | own file + footers |
+| `dogear-nav` | REMOVED 2026-07-06 per Rob (didn't make the cut) | — |
+| `senbazuru` | thousand-crane counter easter egg (date-seeded, `77 + 1/day` from 2026-06-24 → #89 on 2026-07-06, caps at 999) | stand-for |
+| `pen-underlines` | REMOVED 2026-07-06 per Rob (didn't make the cut) | — |
 | `footer-auto-unfold` | folding footer opens itself on scroll-into-view (click still toggles) | all 10 pages |
 
 ## Removable feature modules (ORIGAMI-EXTRA)

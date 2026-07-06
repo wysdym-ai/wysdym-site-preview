@@ -327,26 +327,7 @@
     .ff-hint{display:none;}
   }
 
-  /* ORIGAMI-EXTRA:pen-underlines BEGIN */
-  nav.links a:not(.apply-btn),.f-links a{position:relative;}
-  nav.links a:not(.apply-btn)::before,.f-links a::before{content:'';position:absolute;left:0;bottom:-4px;height:5px;width:0;
-    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='5' viewBox='0 0 44 5'%3E%3Cpath d='M1 3.2 C6 1.6 11 4.2 16 3 C21 1.8 26 4 31 3 C36 2 41 3.8 43 2.6' fill='none' stroke='%23ba6296' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
-    background-size:44px 5px;transition:width .28s ease;pointer-events:none;}
-  nav.links a:not(.apply-btn):hover::before,.f-links a:hover::before{width:100%;}
-  nav.links a.current::before{display:none;}
-  /* ORIGAMI-EXTRA:pen-underlines END */
 
-  /* ORIGAMI-EXTRA:dogear-nav BEGIN */
-  .dogear{position:fixed;right:0;bottom:0;width:66px;height:66px;z-index:75;display:block;transform-origin:100% 100%;
-    transition:transform .25s cubic-bezier(.2,.8,.3,1);text-decoration:none;}
-  .dogear:hover{transform:scale(1.35);}
-  .dogear svg{width:100%;height:100%;display:block;}
-  .de-tip{position:absolute;right:74px;bottom:16px;white-space:nowrap;font-family:'Caveat',cursive;font-size:20px;color:var(--magenta-deep);
-    background:rgba(253,252,248,.92);border:1.5px dashed var(--magenta);border-radius:100px;padding:2px 14px;
-    opacity:0;transform:translateX(8px) rotate(-2deg);transition:opacity .2s,transform .25s;pointer-events:none;}
-  .dogear:hover .de-tip{opacity:1;transform:translateX(0) rotate(-2deg);}
-  @media(max-width:720px){.dogear{display:none;}}
-  /* ORIGAMI-EXTRA:dogear-nav END */
 </style>
 </head>
 <body>
@@ -529,6 +510,9 @@
           <div class="ff-face">
             <div class="f-meta">
               <a href="wysdym-press-lined.html">Press kit</a>
+              <!-- ORIGAMI-EXTRA:page-404 BEGIN -->
+              <a href="wysdym-404-lined.html">The torn-out page</a>
+              <!-- ORIGAMI-EXTRA:page-404 END -->
               <a href="wysdym-privacy-lined.html">Privacy policy</a>
               <a href="wysdym-contact-lined.html">Contact</a>
               <a href="https://www.linkedin.com/company/wysdym" target="_blank" rel="noopener">LinkedIn</a>
@@ -874,29 +858,5 @@
   document.querySelectorAll('.fold').forEach(f=>io.observe(f));
 </script>
 
-<!-- ORIGAMI-EXTRA:dogear-nav BEGIN -->
-<a class="dogear" id="dogear" href="#" aria-label="Turn the page">
-  <span class="de-tip">turn the page → <b id="deNext"></b></span>
-  <svg viewBox="0 0 80 80" aria-hidden="true">
-    <path d="M14 80 L80 14 L80 80 Z" fill="rgba(141,72,116,.13)"/>
-    <path d="M14 80 L80 14 L74 74 Z" fill="#f4efe4" stroke="rgba(94,44,75,.4)" stroke-width="1.2"
-      style="filter:drop-shadow(-2px -2px 3px rgba(31,34,51,.18));"/>
-    <path d="M30 68 L64 34" stroke="rgba(94,44,75,.25)" stroke-width="1" stroke-dasharray="3 4"/>
-  </svg>
-</a>
-<script>
-(function(){
-  var MAP={'wysdym-home-lined-v2.html':['wysdym-platform-lined-v3.html','the platform'],
-    'wysdym-platform-lined-v3.html':['wysdym-stand-for-lined.html','what we stand for'],
-    'wysdym-stand-for-lined.html':['wysdym-blog-lined.html','the blog'],
-    'wysdym-blog-lined.html':['wysdym-design-partner-lined.html','apply for access'],
-    'wysdym-design-partner-lined.html':['wysdym-home-lined-v2.html','back to the start']};
-  var here=location.pathname.split('/').pop()||'wysdym-home-lined-v2.html';
-  var de=document.getElementById('dogear');
-  if(MAP[here]){de.href=MAP[here][0];document.getElementById('deNext').textContent=MAP[here][1];}
-  else{de.style.display='none';}
-})();
-</script>
-<!-- ORIGAMI-EXTRA:dogear-nav END -->
 </body>
 </html>

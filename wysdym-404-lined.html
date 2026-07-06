@@ -169,14 +169,6 @@
   .torn-top svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
   /* ORIGAMI-EXTRA:page-404 END */
 
-  /* ORIGAMI-EXTRA:pen-underlines BEGIN */
-  nav.links a:not(.apply-btn),.f-links a{position:relative;}
-  nav.links a:not(.apply-btn)::before,.f-links a::before{content:'';position:absolute;left:0;bottom:-4px;height:5px;width:0;
-    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='5' viewBox='0 0 44 5'%3E%3Cpath d='M1 3.2 C6 1.6 11 4.2 16 3 C21 1.8 26 4 31 3 C36 2 41 3.8 43 2.6' fill='none' stroke='%23ba6296' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
-    background-size:44px 5px;transition:width .28s ease;pointer-events:none;}
-  nav.links a:not(.apply-btn):hover::before,.f-links a:hover::before{width:100%;}
-  nav.links a.current::before{display:none;}
-  /* ORIGAMI-EXTRA:pen-underlines END */
 </style>
 </head>
 <body>
@@ -256,6 +248,9 @@
           <div class="ff-face">
             <div class="f-meta">
               <a href="wysdym-press-lined.html">Press kit</a>
+              <!-- ORIGAMI-EXTRA:page-404 BEGIN -->
+              <a href="wysdym-404-lined.html">The torn-out page</a>
+              <!-- ORIGAMI-EXTRA:page-404 END -->
               <a href="wysdym-privacy-lined.html">Privacy policy</a>
               <a href="wysdym-contact-lined.html">Contact</a>
               <a href="https://www.linkedin.com/company/wysdym" target="_blank" rel="noopener">LinkedIn</a>
