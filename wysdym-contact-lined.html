@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>wysdym — Blog · Direction E v2</title>
-<meta name="description" content="Direction E v2: what the blog looks like on lined paper.">
+<title>wysdym — Contact · Direction E v2</title>
+<meta name="description" content="Mockup: the contact page in the lined-paper design.">
 <link rel="icon" type="image/png" href="origami-magenta-wysdym-FAVICON.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,6 +125,30 @@
   .com-btn:hover{transform:translate(-1px,-1px);box-shadow:4px 5px 0 var(--ink);}
   .com-ok{font-family:'Caveat',cursive;font-size:21px;color:var(--green);margin-top:12px;display:none;}
   .com-ok.show{display:block;}
+
+  .contact-grid{display:grid;grid-template-columns:minmax(0,640px) 1fr;gap:44px;margin-top:48px;align-items:start;}
+  @media(max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+  .postcard{position:relative;background:linear-gradient(180deg,#fff,#f9f6ee);border:1.5px solid rgba(58,63,85,.35);
+    padding:30px 34px 28px;transform:rotate(-.6deg);box-shadow:0 18px 38px -14px rgba(31,34,51,.35);}
+  .postcard::before{content:'';position:absolute;top:-13px;left:44px;width:90px;height:26px;background:rgba(255,244,200,.65);
+    transform:rotate(-4deg);border-left:1px dashed rgba(0,0,0,.07);border-right:1px dashed rgba(0,0,0,.07);box-shadow:0 1px 3px rgba(0,0,0,.14);}
+  .stamp{position:absolute;top:18px;right:20px;width:66px;height:78px;border:2px dashed rgba(58,63,85,.4);border-radius:2px;
+    background:var(--paper-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transform:rotate(2deg);}
+  .stamp img{width:42px;height:42px;object-fit:contain;}
+  .stamp span{font-family:'Caveat',cursive;font-size:12px;color:var(--pencil);}
+  .pc-field{margin-bottom:18px;}
+  .pc-field label{font-family:'Caveat',cursive;font-size:21px;color:var(--red-pen);display:block;transform:rotate(-1deg);}
+  .pc-field input{width:100%;font-family:'Caveat',cursive;font-size:22px;color:var(--ink);background:transparent;border:none;
+    border-bottom:2px solid var(--grid-strong);padding:4px 2px;outline:none;}
+  .pc-field input:focus{border-bottom-color:var(--red-pen);}
+  .pc-field textarea{width:100%;font-family:'Caveat',cursive;font-size:22px;color:var(--ink);background:transparent;border:none;
+    outline:none;resize:vertical;min-height:124px;line-height:31px;padding:0 2px;
+    background-image:repeating-linear-gradient(180deg, transparent 0 30px, var(--grid-strong) 30px 31px);}
+  .side-notes{padding-top:8px;}
+  .side-notes .hand{font-size:25px;color:var(--magenta-deep);display:block;transform:rotate(-1.5deg);}
+  .side-notes p{font-size:14.5px;color:var(--pencil);margin:8px 0 20px;max-width:320px;}
+  .side-notes a.mini{font-family:'Caveat',cursive;font-size:21px;color:var(--magenta-deep);text-decoration:none;border-bottom:1.5px dashed var(--magenta);}
+  .arrow-doodle{width:70px;transform:rotate(14deg);margin:6px 0 2px;color:var(--red-pen);}
 </style>
 </head>
 <body>
@@ -137,7 +161,7 @@
     <a href="wysdym-home-lined-v2.html#problem">The problem</a>
     <a href="wysdym-platform-lined-v3.html">The platform</a>
     <a href="wysdym-stand-for-lined.html">What we stand for</a>
-    <span class="res"><a href="#" class="res-a current">Resources ▾</a>
+    <span class="res"><a href="#" class="res-a">Resources ▾</a>
       <span class="res-menu">
         <a href="https://gtmstats.wysdym.ai" target="_blank" rel="noopener">2026 Go-to-Market AI Stats</a>
         <a href="wysdym-blog-lined.html">Blog</a>
@@ -149,56 +173,32 @@
 
 <section>
   <div class="wrap">
-    <div class="eyebrow">notes from the harness ↓</div>
-    <h1>The wysdym <span class="serif-accent">notebook.</span></h1>
-    <p class="lead">Field notes on GTM infrastructure — agents, governance, compounding intelligence, and the layer underneath it all. Written on the same sheet everything else runs on.</p>
+    <div class="eyebrow">say hello ↓</div>
+    <h1>Drop us a <span class="serif-accent">line.</span></h1>
+    <p class="lead">Want the full harness, a quick conversation about your agent stack, or just to compare notes on where GTM AI is going? The notebook is open.</p>
 
-    <div class="posts">
-      <a class="post feature fold in" href="https://gtmstats.wysdym.ai" target="_blank" rel="noopener" style="--r:-.4deg;--t:-2deg;">
-        <span class="cat">resource · live now ↗</span>
-        <h3>2026 Go-to-Market AI Statistics — 52 stats on agents, governance & spend</h3>
-        <p>The reference page: every citable number on agentic AI in go-to-market — adoption, cancellation rates, orchestration market growth, MCP momentum — with sources.</p>
-        <div class="meta"><span class="date">Live · updated 2026</span><span class="read">read it →</span></div>
-      </a>
-
-      <a class="post fold" href="wysdym-blog-post-lined.html" style="--r:-.8deg;--t:3deg;">
-        <span class="draft-flag">post-page mockup →</span>
-        <span class="cat">build-in-public · Jun 25, 2026</span>
-        <h3>Why We're Building the Harness, Not Another Agent</h3>
-        <p>The bet behind wysdym: the agent layer commoditizes, and the value concentrates in the layer beneath — memory, skills, governance, and a feedback loop every agent shares.</p>
-        <div class="meta"><span class="date">Jun 25, 2026</span><span class="read">read →</span></div>
-      </a>
-
-      <a class="post fold" href="https://wysdym.ai/blog/ai-pilots-return-zero" target="_blank" rel="noopener" style="--r:.7deg;--t:-4deg;">
-        <span class="cat">agentic AI & industry trends · Jun 26, 2026</span>
-        <h3>95% of Enterprise AI Pilots Return Zero — and the Reason Isn't the Model</h3>
-        <p>The pilots aren't failing on intelligence. They're failing on everything around it — grounding, governance, and a way for wins to compound.</p>
-        <div class="meta"><span class="date">live on wysdym.ai ↗</span><span class="read">read →</span></div>
-      </a>
-
-      <a class="post fold" href="https://wysdym.ai/blog/the-40-percent-problem" target="_blank" rel="noopener" style="--r:.6deg;--t:2deg;">
-        <span class="cat">agentic AI & industry trends · Jun 24, 2026</span>
-        <h3>The 40% Problem: Why Most GTM AI Agents Won't Survive 2027</h3>
-        <p>Gartner says 40% of agentic AI projects get cancelled by 2027 — mostly on cost and governance. What separates the survivors.</p>
-        <div class="meta"><span class="date">live on wysdym.ai ↗</span><span class="read">read →</span></div>
-      </a>
-
-      <a class="post fold" href="https://wysdym.ai/blog/agents-dont-share-a-brain" target="_blank" rel="noopener" style="--r:-.6deg;--t:-2deg;">
-        <span class="cat">GTM pain points · Jun 16, 2026</span>
-        <h3>Your AI Agents Don't Share a Brain, a Rulebook, or a Scoreboard</h3>
-        <p>Five agents, five silos: memory that doesn't transfer, rules that don't apply, and outcomes nobody attributes. The three gaps the harness closes.</p>
-        <div class="meta"><span class="date">live on wysdym.ai ↗</span><span class="read">read →</span></div>
-      </a>
-    </div>
-
-    <div class="subscribe fold" id="community">
-      <div class="hand">Join the wysdym community —</div>
-      <p>Sharp, citable takes on AI × go-to-market: what's working, what's drifting, and the numbers behind it. No spam, no fluff — just the good folds.</p>
-      <div class="com-row">
-        <input id="comEmail" type="email" placeholder="name@company.com" aria-label="Work email">
-        <button class="com-btn" id="comBtn">Count me in →</button>
+    <div class="contact-grid">
+      <div class="postcard">
+        <div class="stamp" aria-hidden="true"><img src="origami-crane-wysdym.png" alt=""><span>par avion</span></div>
+        <div class="pc-field" style="max-width:70%;"><label for="cName">from</label><input id="cName" type="text" placeholder="Your name"></div>
+        <div class="pc-field" style="max-width:70%;"><label for="cMail">work email</label><input id="cMail" type="email" placeholder="name@company.com"></div>
+        <div class="pc-field"><label for="cMsg">what's on your mind</label><textarea id="cMsg" placeholder="Our stack has five agents and none of them talk to each other…"></textarea></div>
+        <button class="com-btn" id="sendBtn">Send it our way →</button>
+        <div class="com-ok" id="sendOk">✓ Posted — we read every note and reply fast. (Display mockup — wired to the real inbox on the live site.)</div>
       </div>
-      <div class="com-ok" id="comOk">✓ You're in — first note lands soon. (Wired to the newsletter on the live site.)</div>
+
+      <div class="side-notes">
+        <span class="hand">Prefer to skip the small talk?</span>
+        <p>If you already know you want your agents on the harness, go straight to the application — it takes two minutes.</p>
+        <a class="mini" href="wysdym-design-partner-lined.html">Apply for access →</a>
+
+        <div style="margin-top:34px;">
+          <span class="hand">Or find us out in the wild —</span>
+          <p>We post field notes on GTM infrastructure, governance, and compounding intelligence.</p>
+          <a class="mini" href="https://www.linkedin.com/company/wysdym" target="_blank" rel="noopener">wysdym on LinkedIn ↗</a><br><br>
+          <a class="mini" href="wysdym-blog-lined.html">Read the notebook →</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -223,10 +223,10 @@
   </div>
 </footer>
 
-<div class="pocnote">Direction E v2 · Lined Paper · Blog</div>
+<div class="pocnote">Direction E v2 · Lined Paper · Contact</div>
 
 <script>
-  document.getElementById('comBtn').addEventListener('click',()=>document.getElementById('comOk').classList.add('show'));
+  document.getElementById('sendBtn').addEventListener('click',()=>document.getElementById('sendOk').classList.add('show'));
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.08});
   document.querySelectorAll('.fold').forEach(f=>io.observe(f));
 </script>

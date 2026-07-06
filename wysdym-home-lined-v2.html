@@ -280,6 +280,13 @@
   .fold-tip .ftl-h{display:block;font-family:'Caveat',cursive;font-size:24px;color:var(--magenta-deep);margin-top:2px;}
   .stage{align-items:flex-start;}
   .stage-flex{padding-top:84px;}
+  .hl{background:linear-gradient(100deg, rgba(255,133,192,0) 0%, rgba(255,133,192,.42) 5%, rgba(255,133,192,.42) 95%, rgba(255,133,192,0) 100%);
+    padding:1px 6px;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+  .scrolly{padding:0;}
+  .explore-sec{padding:0 0 46px;text-align:center;position:relative;z-index:2;}
+  @media(min-width:901px) and (prefers-reduced-motion:no-preference){
+    .explore-sec{margin-top:calc(-100vh + 585px);margin-top:calc(-100svh + 585px);}
+  }
   /* shared paper footer */
   footer{padding:52px 0 58px;text-align:center;border-top:1.5px dashed rgba(58,63,85,.25);position:relative;z-index:1;}
   .wrap-f{max-width:1040px;margin:0 auto;padding:0 32px;}
@@ -318,7 +325,7 @@
   <div class="wrap">
     <div class="eyebrow">GTM infrastructure · the harness ↓</div>
     <h1>More agents won't grow revenue.<br><span class="serif underline-hand" style="color:var(--magenta-deep);font-size:.94em;">Compounding intelligence will.</span></h1>
-    <p class="lead">Every vendor will sell you an agent. None of them make your other agents better, act on your terms, or tell you which ones are working. That's where wysdym comes in — <strong>the harness where every action compounds into a revenue advantage.</strong></p>
+    <p class="lead">Every vendor will sell you an agent. None of them make your other agents better, act on your terms, or tell you which ones are working. <span class="hl">That's where wysdym comes in</span> — <strong>the harness where every action compounds into a revenue advantage.</strong></p>
     <div class="hero-cta">
       <a href="wysdym-design-partner-lined.html" class="btn-hand primary">Apply for access →</a>
       <a href="wysdym-platform-lined-v3.html" class="btn-hand ghost">See the platform</a>
@@ -333,7 +340,7 @@
   <div class="wrap fold">
     <div class="eyebrow">the problem</div>
     <h2>The agents work.<br>The stack <span class="underline-hand">doesn't.</span></h2>
-    <p class="body" style="margin-top:16px;">Every GTM team already runs 3–5 agents in parallel. But isolated agents don't compound — and what doesn't compound doesn't grow revenue.</p>
+    <p class="body" style="margin-top:16px;">Average GTM teams already run 3–5 agents in parallel. But isolated agents don't compound… and what doesn't compound doesn't grow revenue.</p>
     <div class="grid3">
       <div class="ori-card"><svg class="ori-doodle" viewBox="0 0 48 48" style="transform:rotate(-4deg)"><g filter="url(#pen)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 30c-6 1-8.5-5-4.5-8.4-2.4-4.4 2.4-8.8 6.4-7.4 1.6-4.2 9-4.4 10.8.2 4.4-1.4 9 3.2 6.6 7.6 3.8 3-1 8.4-4.6 7.8"/><path d="M18.5 21.5c2-2.2 6.8-2 8.6.3"/><path d="M23.5 30.5l.8 7.4"/><path d="M19 41.5c3-.8 6.5-.6 9.5.3" stroke-dasharray="1.5 4.5"/><path d="M14 15l-2.5-2.8" stroke-width="1.6"/></g></svg><h3>Memory is per-agent</h3><p>Drift compounds; nothing learns across the stack. Each agent keeps its own notes.</p></div>
       <div class="ori-card"><svg class="ori-doodle" viewBox="0 0 48 48" style="transform:rotate(3deg)"><g filter="url(#pen)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12.5c-.6-3 1.6-5.4 4.2-5 2.8.4 4 3.6 2.4 6-1.8 2.4-6 1.8-6.6-1z"/><path d="M35 7.5c2.8-1.4 6 1 5.6 4-.4 2.8-4 4-6 2-1.8-1.8-1.6-4.6.4-6z"/><path d="M21.5 34c-.8-2.8 1.6-5.6 4.4-5 2.8.4 4 4 2 6.2-2 2-6 1-6.4-1.2z"/><path d="M13.5 15.5l7.2 6.3"/><path d="M23.5 27.5l-1.8 7.2" stroke-dasharray="2.5 5"/><path d="M34.5 13.5l-6.8 8" stroke-dasharray="2.5 5"/><path d="M30.5 27l5 3.6"/></g></svg><h3>Connection is scattered</h3><p>The same integrations wired into every agent — so you pay for the same retrieval a dozen times.</p></div>
@@ -362,24 +369,24 @@
 
       <div class="sideL">
         <div class="pc" id="pc1" style="--r:-1.2deg;--o:1;">
-          <div class="tag">fold 01 · knowledge → the left wing</div>
+          <div class="tag">fold 01 · knowledge</div>
           <h3>wysdymGraph</h3>
           <p>A typed knowledge graph of your business — 39 GTM domains, self-learning.</p>
         </div>
         <div class="pc" id="pc3" style="--r:.9deg;--o:3;">
-          <div class="tag">fold 03 · integrations → the body</div>
+          <div class="tag">fold 03 · integrations</div>
           <h3>wysdymConnect</h3>
           <p>Salesforce, HubSpot, Gong, Slack, Drive, Notion — wired once, not per agent.</p>
         </div>
         <div class="pc" id="pc5" style="--r:-.8deg;--o:5;">
-          <div class="tag">fold 05 · telemetry → the tail</div>
+          <div class="tag">fold 05 · telemetry</div>
           <h3>wysdymObserve</h3>
           <p>Outcome attribution to deal stages. Findings flag drift with the fix attached.</p>
         </div>
       </div>
 
       <div class="centerCol">
-        <div class="fold-label" id="foldLabel">the sheet · crease pattern</div>
+        <div class="fold-label" id="foldLabel">wysdym starts with a blank sheet of paper</div>
         <svg id="asmSvg" viewBox="0 0 260 230" xmlns="http://www.w3.org/2000/svg" aria-label="A sheet of paper whose five folds assemble the wysdym crane"></svg>
         <div class="live-flag" id="liveFlag"><span class="dot"></span>Operator · assembled from five folds</div>
         <div class="stage-hint" id="stageHint">keep scrolling — every fold lands a piece of the crane</div>
@@ -387,19 +394,19 @@
 
       <div class="sideR">
         <div class="pc" id="pc2" style="--r:1.1deg;--o:2;">
-          <div class="tag">fold 02 · capabilities → the right wing</div>
+          <div class="tag">fold 02 · capabilities</div>
           <h3>wysdymSkills</h3>
           <p>An open skill library any agent invokes over MCP — your playbook, executable.</p>
         </div>
         <div class="pc" id="pc4" style="--r:-1deg;--o:4;">
-          <div class="tag">fold 04 · governance → the head</div>
+          <div class="tag">fold 04 · governance</div>
           <h3>wysdymGateway</h3>
           <p>One governed door: per-agent permissions, human-in-the-loop, receipts.</p>
         </div>
         <div class="pc gold" id="pc6" style="--r:1.2deg;--o:6;">
           <div class="tag">★ five folds later — the crane</div>
           <h3>Operator</h3>
-          <p>Every fold you just made is part of the bird. That's the platform: assembled, it flies.</p>
+          <p>Every fold you just made is part of the crane. That's the platform: assembled, it flies.</p>
           <a class="btn-mini" href="wysdym-design-partner-lined.html">Apply for access →</a>
         </div>
       </div>
@@ -408,26 +415,12 @@
   </div>
 </section>
 
-<section style="padding:30px 0 26px;">
-  <div class="wrap fold">
-    <div><a href="wysdym-platform-lined-v3.html" class="btn-hand primary" style="font-size:16px;">Explore the full platform →</a></div>
+<section class="explore-sec">
+  <div class="wrap">
+    <a href="wysdym-platform-lined-v3.html" class="btn-hand primary" style="font-size:16px;">Explore the full platform →</a>
   </div>
 </section>
 
-<div class="crease"></div>
-
-<!-- OPERATOR -->
-<section>
-  <div class="wrap fold">
-    <div class="eyebrow">the agent that ships with wysdym</div>
-    <h2>Operator <span class="serif" style="color:var(--magenta-deep);font-size:.7em;">— your working agent.</span></h2>
-    <div class="op-strip" style="position:relative;"><img class="sit-crane" src="origami-crane-wysdym.png" alt="origami crane sitting on the page">
-            <p class="body" style="margin-top:10px;">Your working agent on day one. Runs on the Cortex, calls your Skills, connects through the Gateway — governed and observed.</p>
-      <p class="body" style="margin-top:10px;font-size:15px;">Ask anything. Get an answer with receipts. Account briefs, pipeline questions, competitive answers from your graph — immediately. Every answer shows what it read and called, so when it matters, you can check it.</p>
-      <div style="margin-top:16px;"><a href="wysdym-platform-lined-v3.html" class="btn-hand ghost">See Operator →</a></div>
-    </div>
-  </div>
-</section>
 
 <div class="crease"></div>
 
@@ -437,7 +430,7 @@
     <div class="eyebrow">get in touch</div>
     <h2>Run every agent on <span class="underline-hand">the harness.</span></h2>
     <div class="cta-note">
-      <p class="body" style="font-size:16px;">wysdym is live — and we're onboarding a select group of customers. Apply to run every agent on the harness; we take on the ones we can go deepest with.</p>
+      <p class="body" style="font-size:16px;">wysdym is currently onboarding a select group of customers. Apply to run every agent on the harness; we take on the ones we can go deepest with.</p>
       <div style="margin-top:20px;"><a class="btn-hand primary" href="wysdym-design-partner-lined.html">Apply for access →</a></div>
     </div>
   </div>
@@ -483,8 +476,8 @@
       <a href="wysdym-design-partner-lined.html">Apply for access</a>
     </nav>
     <div class="f-meta">
-      <a href="https://wysdym.ai/privacy" target="_blank" rel="noopener">Privacy policy</a>
-      <a href="https://wysdym.ai/contact" target="_blank" rel="noopener">Contact</a>
+      <a href="wysdym-privacy-lined.html">Privacy policy</a>
+      <a href="wysdym-contact-lined.html">Contact</a>
       <a href="https://www.linkedin.com/company/wysdym" target="_blank" rel="noopener">LinkedIn</a>
       <span>© 2026 wysdym, Inc.</span>
     </div>
@@ -521,10 +514,10 @@
      flat positions). Each piece then folds over its crease and lands as
      one facet of the crane. Nothing else is ever on the table. */
   var FACETS=[
-    {pts:[[96,34],[128,147],[104,167]],  L:54, crease:[[128,147],[104,167]]},
-    {pts:[[98,32],[154,127],[131,146]],  L:60, crease:[[154,127],[131,146]]},
-    {pts:[[168,61],[155,123],[138,94]],  L:50, crease:[[155,123],[138,94]]},
-    {pts:[[171,59],[190,71],[168,73]],   L:62, crease:[[168,73],[190,71]]},
+    {pts:[[96,34],[128,147],[104,167]],  L:54, crease:[[96,34],[128,147]]},
+    {pts:[[98,32],[154,127],[131,146]],  L:60, crease:[[98,32],[154,127]]},
+    {pts:[[168,61],[155,123],[138,94]],  L:50, crease:[[168,61],[155,123]]},
+    {pts:[[171,59],[190,71],[168,73]],   L:62, crease:[[171,59],[190,71]]},
     {pts:[[100,154],[101,169],[10,161]], L:56, crease:[[100,154],[101,169]]}
   ];
   FACETS.forEach(function(f){
@@ -563,9 +556,9 @@
   });
   var ghosts=FACETS.map(function(f){
     var g=W('polygon');
-    g.setAttribute('points',pointsAttr(f.mirror));
-    g.setAttribute('fill','rgba(94,44,75,.045)');
-    g.setAttribute('stroke','rgba(94,44,75,.5)');
+    g.setAttribute('points',pointsAttr(f.pts));
+    g.setAttribute('fill','rgba(94,44,75,.04)');
+    g.setAttribute('stroke','rgba(94,44,75,.45)');
     g.setAttribute('stroke-width','1');g.setAttribute('stroke-dasharray','4 5');
     g.setAttribute('opacity','0');return g;
   });
@@ -585,7 +578,7 @@
   function camera(depth,bob){
     var z=clamp(depth/5,0,1);
     var s=1+0.22*easeInOut(z);
-    world.setAttribute('transform','translate('+(130-105*s+28).toFixed(1)+' '+((115-102*s+18)+(bob||0)).toFixed(1)+') scale('+s.toFixed(3)+')');
+    world.setAttribute('transform','translate('+(130-105*s+28).toFixed(1)+' '+((115-102*s+4)+(bob||0)).toFixed(1)+') scale('+s.toFixed(3)+')');
   }
 
   function render(seg){
@@ -611,20 +604,18 @@
     camera(depthDone,0);
 
     /* the flat square holds beats 0-1, then it IS the pieces */
-    var sqOp = k===0?1 : (k===1?clamp(1-tf*1.4,0,1):0);
+    var sqOp = k===0?1 : clamp(1-depthDone*0.21,0,1);
     sq.setAttribute('fill',paperFill(0));
     sq.setAttribute('opacity',sqOp.toFixed(2));
     sqShadow.setAttribute('opacity',(sqOp*0.9).toFixed(2));
     creases.forEach(function(c,i){
-      var op = k===0?0.7 : (k===1?clamp(0.7-tf*2,0,0.7):0);
+      var op = (i+1>=k?0.65:0)*sqOp;
       c.setAttribute('opacity',op.toFixed(2));
     });
     /* piece outlines: where the remaining paper lies flat */
     ghosts.forEach(function(g,i){
-      var idx=i+1, op=0;
-      if(idx>k) op = (k===0?0 : (k===1?tf*0.55:0.55));
-      else if(idx===k) op = clamp(0.55-local*5,0,0.55);
-      g.setAttribute('opacity',op.toFixed(2));
+      var idx=i+1;
+      g.setAttribute('opacity', idx>=k ? '0.55' : '0');
     });
     landed.forEach(function(pg,i){
       pg.setAttribute('opacity', (i+1<k || (i+1===k&&tf>=1)) ? '1' : '0');
@@ -649,12 +640,12 @@
     }
   }
 
-  var LABELS=['the sheet · crease pattern',
-              'fold 01 · knowledge — the left wing',
-              'fold 02 · capabilities — the right wing',
-              'fold 03 · integrations — the body',
-              'fold 04 · governance — the head',
-              'fold 05 · telemetry — the tail',
+  var LABELS=['wysdym starts with a blank sheet of paper',
+              'fold 01 · knowledge',
+              'fold 02 · capabilities',
+              'fold 03 · integrations',
+              'fold 04 · governance',
+              'fold 05 · telemetry',
               'Operator — assembled, it flies'];
   var cards=[1,2,3,4,5,6].map(function(i){return document.getElementById('pc'+i);});
   var label=document.getElementById('foldLabel');
@@ -777,7 +768,7 @@
     function toggle(){if(busy)return;
       if(!folded){tipEl.style.opacity='0';
         animateTo(1,()=>{folded=true;const S=SHAPES[lesson];
-          tipEl.innerHTML='<span class="ftl-o">origami: '+S.o+'</span><span class="ftl-h">the harness — '+S.h+'</span>';
+          tipEl.innerHTML='<span class="ftl-o">origami: '+S.o+'</span><span class="ftl-h">'+S.h+'</span>';
           tipEl.style.opacity='1';});}
       else{tipEl.style.opacity='0';
         animateTo(0,()=>{folded=false;lesson=(lesson+1)%SHAPES.length;buildShape(lesson);setCount();render(0);
