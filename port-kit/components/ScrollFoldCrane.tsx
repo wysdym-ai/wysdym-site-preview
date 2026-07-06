@@ -8,6 +8,9 @@
 //
 // Usage in Framer: add as a code component, drop into the Home page flow,
 // set width Fill and height Auto. The internal scroll length is `heightVh`.
+// `ctaOffset` drops the Explore button below the card bottoms (default 110px,
+// matching the HTML mockup). Tip: pull the NEXT page section up with a
+// negative top margin (~ -(100vh - 720px)) so it follows the button closely.
 // On the Framer canvas it renders the starting state (sheet + crease pattern);
 // the fold plays in Preview / on the published site.
 
@@ -52,7 +55,7 @@ const CSS = `
 .wsf-flag.on{opacity:1;transform:none;}
 @keyframes wsfpl{0%{box-shadow:0 0 0 0 rgba(90,143,99,.5);}70%{box-shadow:0 0 0 8px rgba(90,143,99,0);}100%{box-shadow:0 0 0 0 rgba(90,143,99,0);}}
 .wsf-hint{margin-top:8px;font-family:'Caveat',cursive;font-size:20px;color:var(--pencil);white-space:nowrap;transition:opacity .3s;}
-.wsf-cta{margin-top:14px;opacity:0;transform:translateY(10px);pointer-events:none;
+.wsf-cta{margin-top:0;opacity:0;transform:translateY(10px);pointer-events:none;
   transition:opacity .45s .15s,transform .5s .15s cubic-bezier(.2,.8,.3,1);}
 .wsf-cta.on{opacity:1;transform:none;pointer-events:auto;}
 .wsf-cta a{font-size:15px;font-weight:700;border:2px solid var(--ink);border-radius:2px;padding:12px 22px;cursor:pointer;
@@ -129,6 +132,7 @@ function useFonts() {
 export default function ScrollFoldCrane(props: any) {
     const {
         heightVh = 640,
+        ctaOffset = 110,
         ctaText = "Explore the full platform →",
         ctaLink = "/platform",
         hintText = "keep scrolling — every fold lands a piece of the crane",
@@ -405,7 +409,10 @@ export default function ScrollFoldCrane(props: any) {
                                 <span className="wsf-dot" />
                                 {flagText}
                             </div>
-                            <div className="wsf-cta">
+                            <div
+                                className="wsf-cta"
+                                style={{ marginTop: ctaOffset }}
+                            >
                                 <a href={ctaLink}>{ctaText}</a>
                             </div>
                             <div className="wsf-hint">{hintText}</div>
@@ -427,6 +434,15 @@ addPropertyControls(ScrollFoldCrane, {
         max: 1000,
         step: 20,
         unit: "vh",
+    },
+    ctaOffset: {
+        type: ControlType.Number,
+        title: "CTA drop",
+        defaultValue: 110,
+        min: 0,
+        max: 240,
+        step: 2,
+        unit: "px",
     },
     ctaText: {
         type: ControlType.String,
