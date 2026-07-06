@@ -86,3 +86,19 @@ mirror from the repo later.
    text or voice…"). Fix in Framer site settings + per-page/CMS overrides, republish, verify.
 9. Framer port kit: tileable background SVGs, paper-prop assets, React code components
    (order: tokens → static pages → accordion/envelope → scroll-fold → lesson deck/acronym game).
+
+## Origami extras (each removable independently)
+
+Six opt-in flourishes shipped 2026-07-06, every one wrapped in marker comments —
+`<!-- ORIGAMI-EXTRA:<name> BEGIN/END -->` in HTML and `/* ORIGAMI-EXTRA:<name> BEGIN/END */`
+in CSS/JS. To remove one: `grep -n "ORIGAMI-EXTRA:<name>" *.html` and delete every
+marked block. Names & where they live:
+
+| name | what | pages |
+|---|---|---|
+| `fold-to-send` | contact postcard folds into a paper plane on send (removal note: restore the one-liner `sendBtn -> sendOk.classList.add('show')` recorded in the JS marker) | contact |
+| `page-404` | torn-out-page 404 (`wysdym-404-lined.html`, also deployed as root `404.html` for GitHub Pages) | its own file |
+| `dogear-nav` | folded bottom-right corner turns to the next page (journey: home → platform → stand-for → blog → apply → home) | 5 journey pages |
+| `senbazuru` | thousand-crane counter easter egg (date-seeded, `287 + 3/day` from 2026-06-24, caps at 999) | stand-for |
+| `pen-underlines` | hand-drawn underline animates on nav/footer link hover | all 10 pages |
+| `footer-auto-unfold` | folding footer opens itself on scroll-into-view (click still toggles) | all 10 pages |

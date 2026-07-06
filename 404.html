@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>wysdym — Contact · Direction E v2</title>
-<meta name="description" content="Mockup: the contact page in the lined-paper design.">
+<title>wysdym — 404 · this page got torn out</title>
+<meta name="description" content="404 — this page got torn out.">
 <link rel="icon" type="image/png" href="origami-magenta-wysdym-FAVICON.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -126,30 +126,6 @@
   .com-ok{font-family:'Caveat',cursive;font-size:21px;color:var(--green);margin-top:12px;display:none;}
   .com-ok.show{display:block;}
 
-  .contact-grid{display:grid;grid-template-columns:minmax(0,640px) 1fr;gap:44px;margin-top:48px;align-items:start;}
-  @media(max-width:900px){.contact-grid{grid-template-columns:1fr;}}
-  .postcard{position:relative;background:linear-gradient(180deg,#fff,#f9f6ee);border:1.5px solid rgba(58,63,85,.35);
-    padding:30px 34px 28px;transform:rotate(-.6deg);box-shadow:0 18px 38px -14px rgba(31,34,51,.35);}
-  .postcard::before{content:'';position:absolute;top:-13px;left:44px;width:90px;height:26px;background:rgba(255,244,200,.65);
-    transform:rotate(-4deg);border-left:1px dashed rgba(0,0,0,.07);border-right:1px dashed rgba(0,0,0,.07);box-shadow:0 1px 3px rgba(0,0,0,.14);}
-  .stamp{position:absolute;top:18px;right:20px;width:66px;height:78px;border:2px dashed rgba(58,63,85,.4);border-radius:2px;
-    background:var(--paper-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transform:rotate(2deg);}
-  .stamp img{width:42px;height:42px;object-fit:contain;}
-  .stamp span{font-family:'Caveat',cursive;font-size:12px;color:var(--pencil);}
-  .pc-field{margin-bottom:18px;}
-  .pc-field label{font-family:'Caveat',cursive;font-size:21px;color:var(--red-pen);display:block;transform:rotate(-1deg);}
-  .pc-field input{width:100%;font-family:'Caveat',cursive;font-size:22px;color:var(--ink);background:transparent;border:none;
-    border-bottom:2px solid var(--grid-strong);padding:4px 2px;outline:none;}
-  .pc-field input:focus{border-bottom-color:var(--red-pen);}
-  .pc-field textarea{width:100%;font-family:'Caveat',cursive;font-size:22px;color:var(--ink);background:transparent;border:none;
-    outline:none;resize:vertical;min-height:124px;line-height:31px;padding:0 2px;
-    background-image:repeating-linear-gradient(180deg, transparent 0 30px, var(--grid-strong) 30px 31px);}
-  .side-notes{padding-top:8px;}
-  .side-notes .hand{font-size:25px;color:var(--magenta-deep);display:block;transform:rotate(-1.5deg);}
-  .side-notes p{font-size:14.5px;color:var(--pencil);margin:8px 0 20px;max-width:320px;}
-  .side-notes a.mini{font-family:'Caveat',cursive;font-size:21px;color:var(--magenta-deep);text-decoration:none;border-bottom:1.5px dashed var(--magenta);}
-  .arrow-doodle{width:70px;transform:rotate(14deg);margin:6px 0 2px;color:var(--red-pen);}
-
   /* folding footer */
   footer.ff{padding:34px 0 50px;}
   .ff-top{display:block;width:100%;background:none;border:none;cursor:pointer;padding:0;font:inherit;text-align:center;}
@@ -174,6 +150,23 @@
     .ff-hint{display:none;}
   }
 
+  /* ORIGAMI-EXTRA:page-404 BEGIN */
+  .torn-wrap{position:relative;max-width:660px;margin:48px auto 0;}
+  .torn-scrap{position:relative;background:
+      repeating-linear-gradient(180deg, transparent 0 27px, rgba(126,162,204,.35) 27px 28px),
+      linear-gradient(180deg,#fff,#f7f4ea);
+    border:1.5px solid rgba(58,63,85,.25);border-top:none;padding:38px 36px 30px;transform:rotate(-1.2deg);
+    box-shadow:0 18px 36px -14px rgba(31,34,51,.35);
+    clip-path:polygon(0 22px,4% 8px,9% 24px,15% 5px,21% 20px,27% 3px,33% 22px,40% 8px,47% 25px,54% 4px,61% 21px,68% 7px,75% 23px,82% 5px,89% 20px,95% 3px,100% 17px,100% 100%,0 100%);}
+  .torn-scrap p{font-family:'Instrument Serif',serif;font-style:italic;font-size:19px;color:var(--pencil);line-height:28px;}
+  .torn-note{font-family:'Caveat',cursive;font-size:21px;color:var(--red-pen);transform:rotate(-2deg);display:inline-block;margin-top:14px;}
+  .became{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:34px;flex-wrap:wrap;}
+  .became img{width:110px;height:110px;object-fit:contain;filter:drop-shadow(3px 6px 6px rgba(94,44,75,.3));}
+  .became .hand{font-size:24px;color:var(--magenta-deep);}
+  .btn-row-404{display:flex;gap:16px;justify-content:center;margin-top:34px;flex-wrap:wrap;}
+  .btn-row-404 a{text-decoration:none;}
+  /* ORIGAMI-EXTRA:page-404 END */
+
   /* ORIGAMI-EXTRA:pen-underlines BEGIN */
   nav.links a:not(.apply-btn),.f-links a{position:relative;}
   nav.links a:not(.apply-btn)::before,.f-links a::before{content:'';position:absolute;left:0;bottom:-4px;height:5px;width:0;
@@ -182,30 +175,6 @@
   nav.links a:not(.apply-btn):hover::before,.f-links a:hover::before{width:100%;}
   nav.links a.current::before{display:none;}
   /* ORIGAMI-EXTRA:pen-underlines END */
-
-  /* ORIGAMI-EXTRA:fold-to-send BEGIN */
-  .contact-grid{position:relative;}
-  .postcard.sent{animation:pcFold 1.2s ease-in forwards;pointer-events:none;}
-  @keyframes pcFold{
-    0%{transform:rotate(-.6deg);}
-    45%{transform:perspective(900px) rotateX(72deg) scale(.78);opacity:1;}
-    72%{transform:perspective(900px) rotateX(72deg) scale(.4);opacity:.75;}
-    100%{transform:perspective(900px) rotateX(72deg) scale(.12);opacity:0;}
-  }
-  .pc-plane{position:absolute;width:68px;left:26%;top:230px;opacity:0;pointer-events:none;z-index:6;
-    filter:drop-shadow(2px 5px 5px rgba(31,34,51,.28));}
-  .pc-plane.fly{animation:planeFly 1.6s .5s cubic-bezier(.3,.1,.45,1) forwards;}
-  @keyframes planeFly{
-    0%{opacity:0;transform:translate(0,0) rotate(2deg) scale(.65);}
-    12%{opacity:1;}
-    100%{opacity:0;transform:translate(58vw,-62vh) rotate(20deg) scale(1.05);}
-  }
-  .sent-note{display:none;font-family:'Caveat',cursive;font-size:23px;color:var(--green);margin-top:6px;max-width:520px;}
-  .sent-note.show{display:block;}
-  .sent-note .pc-again{display:inline-block;margin-top:8px;font-family:'Caveat',cursive;font-size:20px;color:var(--magenta-deep);
-    background:none;border:none;border-bottom:1.5px dashed var(--magenta);cursor:pointer;padding:0;}
-  @media(prefers-reduced-motion:reduce){.postcard.sent{animation:none;opacity:0;} .pc-plane{display:none;}}
-  /* ORIGAMI-EXTRA:fold-to-send END */
 </style>
 </head>
 <body>
@@ -224,46 +193,32 @@
         <a href="wysdym-blog-lined.html">Blog</a>
       </span>
     </span>
-    <a href="wysdym-contact-lined.html" class="current">Contact</a>
+    <a href="wysdym-contact-lined.html">Contact</a>
     <a href="wysdym-design-partner-lined.html" class="apply-btn">Apply for access</a>
   </nav>
 </header>
 
 <section>
-  <div class="wrap">
-    <div class="eyebrow">say hello ↓</div>
-    <h1>Drop us a <span class="serif-accent">line.</span></h1>
-    <p class="lead">Want the full harness, a quick conversation about your agent stack, or just to compare notes on where GTM AI is going? The notebook is open.</p>
+  <div class="wrap" style="text-align:center;max-width:860px;">
+    <div class="eyebrow">404 · not in this notebook</div>
+    <h1>This page got <span class="serif-accent">torn out.</span></h1>
+    <p class="lead" style="margin:18px auto 0;">Someone needed the paper. Whatever used to be here isn't in the notebook anymore.</p>
 
-    <div class="contact-grid">
-      <div class="postcard">
-        <div class="stamp" aria-hidden="true"><img src="origami-crane-wysdym.png" alt=""><span>par avion</span></div>
-        <div class="pc-field" style="max-width:70%;"><label for="cName">from</label><input id="cName" type="text" placeholder="Your name"></div>
-        <div class="pc-field" style="max-width:70%;"><label for="cMail">work email</label><input id="cMail" type="email" placeholder="name@company.com"></div>
-        <div class="pc-field"><label for="cMsg">what's on your mind</label><textarea id="cMsg" placeholder="Our stack has five agents and none of them talk to each other…"></textarea></div>
-        <button class="com-btn" id="sendBtn">Send it our way →</button>
-        <div class="com-ok" id="sendOk">✓ Posted — we read every note and reply fast. (Display mockup — wired to the real inbox on the live site.)</div>
+    <div class="torn-wrap">
+      <div class="torn-scrap">
+        <p>…which is exactly why memory has to live <b>under</b> the agents, not inside them. Give every agent the same sheet and every fold lands in the same place. And that's the whole point of the har—</p>
+        <span class="torn-note">↑ the rest of this page is missing</span>
       </div>
-      <!-- ORIGAMI-EXTRA:fold-to-send BEGIN -->
-      <svg class="pc-plane" id="pcPlane" viewBox="0 0 60 40" aria-hidden="true"><path d="M2 26 L56 6 L38 36 L28 24 Z" fill="#f6f0f8" stroke="#8d4874" stroke-width="1.6" stroke-linejoin="round"/><path d="M28 24 L56 6" stroke="#8d4874" stroke-width="1.2"/></svg>
-      <!-- ORIGAMI-EXTRA:fold-to-send END -->
+    </div>
 
-      <div class="side-notes">
-        <!-- ORIGAMI-EXTRA:fold-to-send BEGIN -->
-        <div class="sent-note" id="sentNote">✓ Folded &amp; flown — we read every note and reply fast. <span style="font-size:.8em;color:var(--pencil);">(Display mockup — wired to the real inbox on the live site.)</span><br>
-          <button class="pc-again" id="pcAgain">unfold a fresh card ↺</button></div>
-        <!-- ORIGAMI-EXTRA:fold-to-send END -->
-        <span class="hand">Prefer to skip the small talk?</span>
-        <p>If you already know you want your agents on the harness, go straight to the application — it takes two minutes.</p>
-        <a class="mini" href="wysdym-design-partner-lined.html">Apply for access →</a>
+    <div class="became">
+      <span class="hand">Don't worry — the missing half became this:</span>
+      <img src="origami-crane-wysdym.png" alt="an origami crane, folded from the missing page">
+    </div>
 
-        <div style="margin-top:34px;">
-          <span class="hand">Or find us out in the wild —</span>
-          <p>We post field notes on GTM infrastructure, governance, and compounding intelligence.</p>
-          <a class="mini" href="https://www.linkedin.com/company/wysdym" target="_blank" rel="noopener">wysdym on LinkedIn ↗</a><br><br>
-          <a class="mini" href="wysdym-blog-lined.html">Read the notebook →</a>
-        </div>
-      </div>
+    <div class="btn-row-404">
+      <a class="com-btn" href="wysdym-home-lined-v2.html" style="text-decoration:none;display:inline-block;">Back to a page that exists →</a>
+      <a class="com-btn" href="wysdym-platform-lined-v3.html" style="background:var(--paper-2);color:var(--ink);text-decoration:none;display:inline-block;">See the platform</a>
     </div>
   </div>
 </section>
@@ -316,22 +271,9 @@
 })();
 </script>
 
-<div class="pocnote">Direction E v2 · Lined Paper · Contact</div>
+<div class="pocnote">Direction E v2 · Lined Paper · 404</div>
 
 <script>
-  /* ORIGAMI-EXTRA:fold-to-send BEGIN (replaces: sendBtn -> sendOk.classList.add('show')) */
-  (function(){
-    var card=document.querySelector('.postcard'),plane=document.getElementById('pcPlane'),note=document.getElementById('sentNote');
-    document.getElementById('sendBtn').addEventListener('click',function(){
-      if(card.classList.contains('sent'))return;
-      card.classList.add('sent');plane.classList.add('fly');
-      setTimeout(function(){note.classList.add('show');},1500);
-    });
-    document.getElementById('pcAgain').addEventListener('click',function(){
-      card.classList.remove('sent');plane.classList.remove('fly');note.classList.remove('show');
-    });
-  })();
-  /* ORIGAMI-EXTRA:fold-to-send END */
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.08});
   document.querySelectorAll('.fold').forEach(f=>io.observe(f));
 </script>
