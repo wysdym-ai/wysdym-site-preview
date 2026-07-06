@@ -149,3 +149,20 @@ drag-and-drop resists synthetic input; menus need hover-then-click; new files
 via duplicate-an-existing-file → rename → paste. CRITICAL: when pasting code
 via clipboard, run pbcopy with LC_CTYPE=en_US.UTF-8 or every non-ASCII char
 (· — ★ ↑ ©) turns to mojibake in the paste.
+
+## Framer assembly state (2026-07-06)
+
+Home page Desktop is ASSEMBLED in "wysdym.ai paper": 9 color styles + 7 text
+styles created (Inter/Caveat/Instrument Serif); crane PNG + wordmark vector
+uploaded as project assets; sticky header (logo lockup, Caveat nav, magenta
+Apply chip), hero, problem section (3 paper cards + Gartner-linked 40% stat),
+platform teaser, ScrollFoldCrane, CTA (pulled up under the finale), fun-fold
+section with FoldTheLesson, FAQ (6 rows, dashed dividers), FoldingFooter.
+Agent-QA'd: 1040px content width, rhythm, no overflow, background pinned.
+Method: Framer's built-in Agent does all canvas work from pasted specs
+(clipboard → agent input); logo assets pasted via osascript PNG clipboard
+(SVG markup paste also works and registers a vector asset).
+STILL TO DO in Framer: FAQ fold-corner interactivity (static rows for now),
+remaining pages (Platform, Stand-for, Apply, Blog+CMS, Contact, Privacy,
+Press, 404), page link slugs, dog-ear per page, responsive breakpoints, SEO
+pass (harness meta description), then domain cutover.
