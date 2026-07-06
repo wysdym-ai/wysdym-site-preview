@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wysdym port kit · component preview</title>
+<link rel="icon" type="image/png" href="../origami-magenta-wysdym-FAVICON.png">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:Inter,system-ui,sans-serif;}
+  .pk-note{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:80;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:#3a3f55;background:rgba(253,252,248,.9);border:1px dashed #3a3f55;padding:5px 12px;border-radius:20px;}
+  #status{padding:40px;font-size:15px;color:#3a3f55;}
+</style>
+</head>
+<body>
+<div id="status">loading the port-kit components…</div>
+<div id="root"></div>
+<div class="pk-note">PORT KIT PREVIEW · same .tsx files that go into Framer</div>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone@7/babel.min.js" crossorigin></script>
+<script>
+(async function(){
+  const FILES = ['components/PaperBackground.tsx','components/ScrollFoldCrane.tsx'];
+  window.framer = { addPropertyControls: function(){}, ControlType: new Proxy({}, { get: (t,k)=>String(k) }) };
+  try {
+    let src = '';
+    for (const f of FILES) {
+      let code = await fetch(f + '?cb=' + Date.now()).then(r => { if(!r.ok) throw new Error(f+' '+r.status); return r.text(); });
+      const m = code.match(/export default function (\w+)/);
+      const name = m ? m[1] : null;
+      code = code
+        .replace(/import \* as React from "react";?/g, '')
+        .replace(/import \{[^}]*\} from "framer";?/g, 'const { addPropertyControls, ControlType } = window.framer;')
+        .replace(/export default function (\w+)/, 'function $1');
+      if (name) code += '\nwindow.' + name + ' = ' + name + ';';
+      src += '\n;(function(){\n' + code + '\n})();\n';
+    }
+    const js = Babel.transform(src, { presets: [['typescript', { isTSX: true, allExtensions: true }], 'react'] }).code;
+    new Function('React', js)(React);
+    const e = React.createElement;
+    document.getElementById('status').remove();
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      e('div', { style: { position: 'relative', minHeight: '100vh' } },
+        e(window.PaperBackground, {}),
+        e('div', { style: { position: 'relative', height: '70vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 10 } },
+          e('div', { style: { fontSize: 28, fontWeight: 800, color: '#1f2233' } }, 'port-kit preview'),
+          e('div', { style: { fontFamily: 'Caveat, cursive', fontSize: 24, color: '#d2553f' } }, 'scroll — the fold should play exactly like the mockup ↓')),
+        e(window.ScrollFoldCrane, { ctaLink: '../wysdym-platform-lined-v3.html' }),
+        e('div', { style: { position: 'relative', height: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Caveat, cursive', fontSize: 24, color: '#3a3f55' } }, 'after the fold — normal page flow resumes')));
+  } catch (err) {
+    document.getElementById('status').textContent = 'preview failed: ' + err.message;
+    console.error(err);
+  }
+})();
+</script>
+</body>
+</html>

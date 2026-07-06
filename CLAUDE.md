@@ -124,3 +124,16 @@ references them.
 | `fold-to-send` | contact | postcard folds up and flies off as a paper plane on send |
 | `senbazuru` | stand-for (end) | "crane #N of 1,000" flock counter — N is a playful fiction (287 + 3/day from 2026-06-24), NOT a real metric; swap for a real number before anyone cites it |
 | `page-404` | wysdym-404-lined.html + root 404.html | "this page got torn out" page for the live-site launch |
+
+## Framer port kit (`port-kit/`)
+
+The Framer rebuild lives in the Framer project **"wysdym.ai paper"** (blank
+slate; the live "NEW wysdym" project stays untouched until cutover).
+`port-kit/README.md` has the build order and install steps; `tokens.md` has
+the color/text styles to create in Framer first. Components are self-contained
+Framer code components (.tsx, injected CSS, no external deps).
+`port-kit/preview.html` renders the actual .tsx files in a browser (Babel
+standalone) — use it to verify a component before pasting it into Framer.
+Shipped so far: PaperBackground, ScrollFoldCrane. Still to port: FoldTheLesson,
+AcronymGame, RRWL accordion, FoldingFooter, PushpinLightbox, ORIGAMI-EXTRA
+modules.
