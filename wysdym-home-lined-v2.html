@@ -704,7 +704,6 @@
     activeIdx=idx;
     label.textContent=LABELS[idx];
     liveFlag.classList.toggle('on',idx===SEGS-1);
-    exploreInline.classList.toggle('on',idx===SEGS-1);
     stageHint.style.opacity=(idx===SEGS-1)?'0':'1';
     cards.forEach(function(c,i){c.classList.toggle('active',i+1===idx);});
   }
@@ -714,10 +713,12 @@
       var revealAt=k<=5?k+0.72:6.30;
       c.classList.toggle('on',seg>=revealAt);
     });
+    exploreInline.classList.toggle('on',seg>=6.52);
   }
   if(reduce){
     render(SEGS);setBeat(SEGS-1);
     cards.forEach(function(c){c.classList.add('on');});
+    exploreInline.classList.add('on');
     return;
   }
   var scrolly=document.getElementById('scrolly');
