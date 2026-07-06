@@ -134,10 +134,14 @@ the color/text styles to create in Framer first. Components are self-contained
 Framer code components (.tsx, injected CSS, no external deps).
 `port-kit/preview.html` renders the actual .tsx files in a browser (Babel
 standalone) — use it to verify a component before pasting it into Framer.
-Shipped so far: PaperBackground, ScrollFoldCrane (ctaOffset prop mirrors the
-110px CTA drop from commit 59ea6fc), ReadRunWriteLearn, FoldTheLesson,
-FoldingFooter. Still to port: AcronymGame, PushpinLightbox, ORIGAMI-EXTRA
-modules (dogear, fold-to-send, senbazuru, pen underlines).
+The kit is COMPLETE — every mockup interaction is ported: PaperBackground,
+ScrollFoldCrane (ctaOffset prop), ReadRunWriteLearn, FoldTheLesson,
+FoldingFooter, AcronymGame (wordmarkUrl prop → hosted wordmark SVG),
+PaperPrint (photo-corner print + pushpin lightbox), SenbazuruCounter
+(counter is design fiction — swap props before citing), PostcardForm
+(fold-to-send; postUrl prop wires a real form endpoint), DogEarNav
+(per-page link/label), PenUnderline (a code OVERRIDE — attach via
+Code Overrides on nav/footer link layers, not draggable).
 Installed in the Framer project so far: PaperBackground, ScrollFoldCrane
 (placed on Home), FoldingFooter, ReadRunWriteLearn, FoldTheLesson (files in,
 not yet placed). Framer's own Agent handles canvas placement — panel
