@@ -139,5 +139,9 @@ Shipped so far: PaperBackground, ScrollFoldCrane (ctaOffset prop mirrors the
 FoldingFooter. Still to port: AcronymGame, PushpinLightbox, ORIGAMI-EXTRA
 modules (dogear, fold-to-send, senbazuru, pen underlines).
 Installed in the Framer project so far: PaperBackground, ScrollFoldCrane
-(placed on Home; Framer's own Agent handles canvas placement — panel
-drag-and-drop resists synthetic input; menus need hover-then-click).
+(placed on Home), FoldingFooter, ReadRunWriteLearn, FoldTheLesson (files in,
+not yet placed). Framer's own Agent handles canvas placement — panel
+drag-and-drop resists synthetic input; menus need hover-then-click; new files
+via duplicate-an-existing-file → rename → paste. CRITICAL: when pasting code
+via clipboard, run pbcopy with LC_CTYPE=en_US.UTF-8 or every non-ASCII char
+(· — ★ ↑ ©) turns to mojibake in the paste.
