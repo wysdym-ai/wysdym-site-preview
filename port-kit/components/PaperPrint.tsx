@@ -29,11 +29,11 @@ const CSS = `
   justify-content:center;color:#3a3f55;box-shadow:0 2px 5px rgba(0,0,0,.18);}
 .wpp-zoom svg{width:15px;height:15px;}
 .wpp-lb{position:fixed;inset:0;z-index:200;background:rgba(31,34,51,.55);display:none;align-items:center;
-  justify-content:center;padding:30px;}
+  justify-content:center;padding:72px 30px 34px;}
 .wpp-lb.show{display:flex;}
 .wpp-lbcard{background:#fff;padding:16px 16px 44px;box-shadow:0 30px 70px rgba(0,0,0,.45);
   max-width:min(940px,94vw);position:relative;}
-.wpp-lbcard img{display:block;max-width:100%;max-height:76vh;background:#1a1833;}
+.wpp-lbcard img{display:block;max-width:100%;max-height:calc(100vh - 220px);background:#1a1833;}
 .wpp-lbcap{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:11px;letter-spacing:.2em;
   text-transform:uppercase;color:var(--grey);}
 .wpp-x{position:absolute;top:-32px;left:50%;transform:translateX(-50%);width:46px;height:58px;border:none;
@@ -75,12 +75,19 @@ const Pin = ({ uid }: { uid: string }) => (
  * @framerSupportedLayoutWidth fullwidth
  * @framerSupportedLayoutHeight auto
  */
+const ASSET_BASE = "https://wysdym-ai.github.io/wysdym-site-preview/assets/"
+const DEFAULT_BY_CAPTION: Record<string, string> = {
+    wysdymGraph: "01-wysdymGraph.gif",
+    wysdymSkills: "02-wysdymSkills.gif",
+    wysdymConnect: "03-wysdymConnect.gif",
+    wysdymGateway: "04-wysdymGateway.gif",
+    wysdymObserve: "05-wysdymObserve.gif",
+    wysdymPlays: "07-wysdymPlays.png",
+    Operator: "06-wysdymCopilot.png",
+}
+
 export default function PaperPrint(props: any) {
-    const {
-        image = "https://wysdym-ai.github.io/wysdym-site-preview/assets/01-wysdymGraph.gif",
-        caption = "wysdymGraph",
-        rotate = -1,
-    } = props
+    const { image, caption = "wysdymGraph", rotate = -1 } = props
     const [open, setOpen] = React.useState(false)
     const uid = React.useMemo(
         () => "wpp" + Math.abs((caption + image).split("").reduce((a: number, c: string) => a * 31 + c.charCodeAt(0), 7) % 100000),
@@ -96,7 +103,11 @@ export default function PaperPrint(props: any) {
         return () => document.removeEventListener("keydown", onEsc)
     }, [open])
 
-    const src = typeof image === "string" ? image : image?.src
+    const src =
+        (typeof image === "string" ? image : image?.src) ||
+        (DEFAULT_BY_CAPTION[caption]
+            ? ASSET_BASE + DEFAULT_BY_CAPTION[caption]
+            : undefined)
 
     return (
         <div className="wpp-root">

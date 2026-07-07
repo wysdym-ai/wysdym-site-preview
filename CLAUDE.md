@@ -200,3 +200,43 @@ originals over them (do this check after any agent run that touches code).
 Editor-paste gotcha: after opening a code file, click directly ON code text
 before cmd+A/cmd+V — clicking empty editor space leaves focus on the page and
 the paste goes nowhere.
+
+### Rob's Framer punch list (2026-07-06 review) — status
+
+FIXED IN CODE, LIVE IN FRAMER (no credits needed, already pasted+saved):
+- ScrollFoldCrane: fold labels get breathing room under the nav (stage
+  padding-top 84→118px) AND the "keep scrolling" hint moved up to sit right
+  under the crane (before the CTA in the column).
+- PaperPrint lightbox: overlay top padding 72px + image max-height
+  calc(100vh-220px) so the push-pin is never clipped.
+- FAQAccordion.tsx: NEW component — working folded-corner FAQ toggles with
+  all six Q/As baked in. Installed in the project, NOT yet placed.
+- SiteNav.tsx: NEW component in port-kit (working Resources dropdown,
+  auto current-page highlighter, pen underlines, real wordmark). In the
+  repo; NOT yet installed in Framer (install via duplicate→rename→paste).
+
+QUEUED FOR NEXT FRAMER-AGENT RUN (needs credits):
+1. Home: replace static FAQ rows with the FAQAccordion component.
+2. All pages: replace canvas SiteHeader instances with the SiteNav code
+   component (fixes dead Resources dropdown + missing nav highlighting).
+3. Platform: cut the vertical gap between hero and section 01 (and between
+   all component sections) to ~20% of current.
+4. Platform: add the hand-drawn origami doodle next to each section kicker
+   (elephant=Graph, pinwheel=Skills, boat=Connect, house=Gateway,
+   star=Observe, paper plane=Plays, crane=Operator — SVG paths in
+   wysdym-platform-lined-v3.html DOODLES map).
+5. Stand-for: hero is missing its lead paragraph: "Every GTM tool promises
+   lift. Almost none of it compounds — so teams keep buying agents, keep
+   starting from zero, and keep wondering why the number didn't move. We're
+   building the opposite: the platform underneath, where every action makes
+   the next one smarter."
+6. Stand-for: reduce spacing between major sections.
+7. Stand-for beliefs: the post-its' white inner rectangles should be TAPE
+   strips (rgba(255,244,200,.65), rotated ±3-4deg, dashed side borders,
+   small shadow) sticking out over the TOP EDGE of each note.
+8. Then: Contact/Privacy/Press/Blog middles, 404, dog-ears, full QA,
+   breakpoints (original plan).
+
+Editor-paste focus recipe that finally works reliably: open file → cmd+F →
+Escape (leaves caret in editor) → cmd+A → cmd+V → cmd+S. Never send
+Page_Down/Home keys to the editor — they get typed as literal text.

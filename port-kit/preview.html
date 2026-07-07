@@ -23,7 +23,7 @@
 <script src="https://unpkg.com/@babel/standalone@7/babel.min.js" crossorigin></script>
 <script>
 (async function(){
-  const FILES = ['components/PaperBackground.tsx','components/ScrollFoldCrane.tsx','components/ReadRunWriteLearn.tsx','components/FoldTheLesson.tsx','components/AcronymGame.tsx','components/PaperPrint.tsx','components/SenbazuruCounter.tsx','components/PostcardForm.tsx','components/DogEarNav.tsx','components/FoldingFooter.tsx'];
+  const FILES = ['components/PaperBackground.tsx','components/ScrollFoldCrane.tsx','components/ReadRunWriteLearn.tsx','components/FoldTheLesson.tsx','components/AcronymGame.tsx','components/PaperPrint.tsx','components/SenbazuruCounter.tsx','components/PostcardForm.tsx','components/DogEarNav.tsx','components/FAQAccordion.tsx','components/SiteNav.tsx','components/FoldingFooter.tsx'];
   window.framer = { addPropertyControls: function(){}, ControlType: new Proxy({}, { get: (t,k)=>String(k) }) };
   try {
     let src = '';
@@ -65,6 +65,10 @@
         e('div', { style: { position: 'relative', padding: '20px 24px 80px', display: 'flex', justifyContent: 'center' } },
           e('div', { style: { width: 'min(640px,92vw)' } },
             e(window.PostcardForm, { stampUrl: '../origami-crane-wysdym.png' }))),
+        e('div', { style: { position: 'relative', padding: '20px 24px 40px', maxWidth: 900, margin: '0 auto' } },
+          e(window.FAQAccordion, {})),
+        e('div', { style: { position: 'relative', padding: '0 0 40px' } },
+          e(window.SiteNav, {})),
         e(window.DogEarNav, { link: '../wysdym-platform-lined-v3.html', label: 'the platform' }),
         e('div', { style: { position: 'relative' } },
           e(window.FoldingFooter, {}))));

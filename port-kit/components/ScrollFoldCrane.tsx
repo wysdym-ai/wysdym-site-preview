@@ -43,7 +43,7 @@ const CSS = `
 .wsf-root *{box-sizing:border-box;margin:0;padding:0;}
 .wsf-scrolly{position:relative;z-index:1;}
 .wsf-stage{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:flex-start;overflow:hidden;}
-.wsf-flex{width:100%;max-width:1100px;margin:0 auto;padding:84px 28px 0;
+.wsf-flex{width:100%;max-width:1100px;margin:0 auto;padding:118px 28px 0;
   display:grid;grid-template-columns:minmax(230px,260px) 1fr minmax(230px,260px);gap:20px;align-items:center;}
 .wsf-sideL,.wsf-sideR{display:flex;flex-direction:column;gap:18px;}
 .wsf-center{display:flex;flex-direction:column;align-items:center;min-width:0;}
@@ -54,7 +54,7 @@ const CSS = `
 .wsf-flag .wsf-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(90,143,99,.6);animation:wsfpl 2s infinite;}
 .wsf-flag.on{opacity:1;transform:none;}
 @keyframes wsfpl{0%{box-shadow:0 0 0 0 rgba(90,143,99,.5);}70%{box-shadow:0 0 0 8px rgba(90,143,99,0);}100%{box-shadow:0 0 0 0 rgba(90,143,99,0);}}
-.wsf-hint{margin-top:8px;font-family:'Caveat',cursive;font-size:20px;color:var(--pencil);white-space:nowrap;transition:opacity .3s;}
+.wsf-hint{margin-top:10px;font-family:'Caveat',cursive;font-size:20px;color:var(--pencil);white-space:nowrap;transition:opacity .3s;}
 .wsf-cta{margin-top:0;opacity:0;transform:translateY(10px);pointer-events:none;
   transition:opacity .45s .15s,transform .5s .15s cubic-bezier(.2,.8,.3,1);}
 .wsf-cta.on{opacity:1;transform:none;pointer-events:auto;}
@@ -409,13 +409,13 @@ export default function ScrollFoldCrane(props: any) {
                                 <span className="wsf-dot" />
                                 {flagText}
                             </div>
+                            <div className="wsf-hint">{hintText}</div>
                             <div
                                 className="wsf-cta"
                                 style={{ marginTop: ctaOffset }}
                             >
                                 <a href={ctaLink}>{ctaText}</a>
                             </div>
-                            <div className="wsf-hint">{hintText}</div>
                         </div>
                         <div className="wsf-sideR">{[1, 3, 5].map(card)}</div>
                     </div>
