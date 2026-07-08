@@ -23,8 +23,8 @@
 <script src="https://unpkg.com/@babel/standalone@7/babel.min.js" crossorigin></script>
 <script>
 (async function(){
-  const FILES = ['components/PaperBackground.tsx','components/ScrollFoldCrane.tsx','components/ReadRunWriteLearn.tsx','components/FoldTheLesson.tsx','components/AcronymGame.tsx','components/PaperPrint.tsx','components/SenbazuruCounter.tsx','components/PostcardForm.tsx','components/DogEarNav.tsx','components/FAQAccordion.tsx','components/SiteNav.tsx','components/FoldingFooter.tsx'];
-  window.framer = { addPropertyControls: function(){}, ControlType: new Proxy({}, { get: (t,k)=>String(k) }) };
+  const FILES = ['components/PaperBackground.tsx','components/ScrollFoldCrane.tsx','components/ReadRunWriteLearn.tsx','components/FoldTheLesson.tsx','components/AcronymGame.tsx','components/PaperPrint.tsx','components/SenbazuruCounter.tsx','components/PostcardForm.tsx','components/DogEarNav.tsx','components/FAQAccordion.tsx','components/SiteNav.tsx','components/OrigamiDoodle.tsx','components/FoldingFooter.tsx','components/SeoFaqSchema.tsx','components/NewsletterFold.tsx','components/TornEdge.tsx'];
+  window.framer = { addPropertyControls: function(){}, ControlType: new Proxy({}, { get: (t,k)=>String(k) }), RenderTarget: { canvas: 'canvas', current: function(){ return 'preview'; } } };
   try {
     let src = '';
     for (const f of FILES) {
@@ -33,7 +33,7 @@
       const name = m ? m[1] : null;
       code = code
         .replace(/import \* as React from "react";?/g, '')
-        .replace(/import \{[^}]*\} from "framer";?/g, 'const { addPropertyControls, ControlType } = window.framer;')
+        .replace(/import \{[^}]*\} from "framer";?/g, 'const { addPropertyControls, ControlType, RenderTarget } = window.framer;')
         .replace(/export default function (\w+)/, 'function $1');
       if (name) code += '\nwindow.' + name + ' = ' + name + ';';
       src += '\n;(function(){\n' + code + '\n})();\n';

@@ -151,7 +151,7 @@ export default function FoldTheLesson(props: any) {
         function setCount() {
             if (countEl)
                 countEl.textContent =
-                    "sheet " + (lesson + 1) + " of " + SHAPES.length + " — " + SHAPES[lesson].name
+                    "sheet " + (lesson + 1) + " of " + SHAPES.length
         }
         function animateTo(target: number, done?: () => void) {
             busy = true
@@ -196,7 +196,7 @@ export default function FoldTheLesson(props: any) {
                     setCount()
                     render(0)
                     tipEl.innerHTML =
-                        "a fresh sheet — fold " + SHAPES[lesson].name + " ↑"
+                        "a fresh sheet — tap to fold the next one ↑"
                     tipEl.style.opacity = "1"
                 })
             }
@@ -232,7 +232,7 @@ export default function FoldTheLesson(props: any) {
             >
                 <svg viewBox="0 0 260 230" xmlns="http://www.w3.org/2000/svg" />
             </div>
-            <div className="wfl-tip">tap the sheet ↑ — fold an elephant</div>
+            <div className="wfl-tip">tap the sheet ↑ — see what it folds into</div>
         </div>
     )
 }
