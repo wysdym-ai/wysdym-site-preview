@@ -54,7 +54,39 @@ const CSS = `
 .wsn-apply:hover{transform:rotate(0) translateY(-1px);color:#fff !important;}
 .wsn-clip{position:absolute;top:-16px;left:9px;width:19px;height:48px;transform:rotate(9deg);
   pointer-events:none;filter:drop-shadow(1px 2px 2px rgba(31,34,51,.35));}
-@media(max-width:860px){.wsn-links a:not(.wsn-apply){display:none;}}
+
+/* --- mobile: hand-drawn hamburger + fold-down paper menu --- */
+.wsn-burger{display:none;background:none;border:none;cursor:pointer;padding:8px;margin-left:4px;}
+.wsn-burger svg{width:30px;height:24px;display:block;}
+.wsn-burger svg path{stroke:var(--pencil);stroke-width:2.6;stroke-linecap:round;fill:none;}
+.wsn-mwrap{display:none;position:absolute;left:0;right:0;top:100%;perspective:900px;z-index:89;}
+.wsn-mpanel{transform-origin:top center;transform:rotateX(-90deg);opacity:0;
+  transition:transform .45s cubic-bezier(.2,.8,.3,1),opacity .3s;
+  background:rgba(253,252,248,.98);border-bottom:2px dashed rgba(58,63,85,.3);
+  box-shadow:0 24px 40px -18px rgba(31,34,51,.35);padding:10px 26px 22px;
+  display:flex;flex-direction:column;gap:2px;}
+.wsn-mwrap.open .wsn-mpanel{transform:rotateX(0);opacity:1;}
+.wsn-mpanel a{font-family:'Caveat',cursive;font-size:24px;font-weight:600;color:var(--pencil);
+  text-decoration:none;padding:9px 2px;border-bottom:1.5px dashed rgba(58,63,85,.18);position:relative;}
+.wsn-mpanel a:last-child{border-bottom:none;}
+.wsn-mpanel a.wsn-current{color:var(--magenta-deep);}
+.wsn-mpanel a.wsn-current::after{content:'';position:absolute;left:0;bottom:6px;width:120px;height:7px;
+  background:var(--magenta);opacity:.35;transform:skewX(-10deg);border-radius:40%;}
+.wsn-mpanel .wsn-msmall{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--pencil);opacity:.7;margin-top:12px;}
+.wsn-mpanel a.wsn-mapply{font-weight:700;color:#fff;text-align:center;margin-top:14px;
+  background:linear-gradient(180deg,var(--magenta),var(--magenta-deep));border-radius:2px;
+  padding:10px 20px;box-shadow:2px 4px 9px rgba(31,34,51,.28);transform:rotate(-1deg);border-bottom:none;}
+@media(max-width:860px){
+  .wsn-links{display:none;}
+  .wsn-burger{display:block;}
+  .wsn-mwrap{display:block;pointer-events:none;}
+  .wsn-mwrap.open{pointer-events:auto;}
+  .wsn-logo img.wsn-crane{width:44px;height:44px;}
+  .wsn-logo img.wsn-word{height:26px;}
+  .wsn-bar{padding:10px 18px;}
+}
+@media(prefers-reduced-motion:reduce){.wsn-mpanel{transition:opacity .2s;transform:none;}}
 `
 
 function useFonts() {
@@ -84,6 +116,7 @@ export default function SiteNav(props: any) {
     useFonts()
 
     const [path, setPath] = React.useState("")
+    const [menuOpen, setMenuOpen] = React.useState(false)
     React.useEffect(() => {
         setPath(window.location.pathname.replace(/\/$/, "") || "/")
     }, [])
@@ -138,7 +171,7 @@ export default function SiteNav(props: any) {
                     >
                         Contact
                     </a>
-                    <a href={applyHref} className="wsn-apply">
+                    <a href={applyHref} className="wsn-apply wsn-apply-desktop">
                         <svg className="wsn-clip" viewBox="0 0 20 50" aria-hidden="true">
                             <defs>
                                 <linearGradient id="wsnclipg" x1="0" y1="0" x2="1" y2="0.15">
@@ -165,6 +198,61 @@ export default function SiteNav(props: any) {
                             />
                         </svg>
                         Apply for access
+                    </a>
+                </nav>
+                <button
+                    className="wsn-burger"
+                    aria-label={menuOpen ? "Close menu" : "Open menu"}
+                    aria-expanded={menuOpen}
+                    onClick={() => setMenuOpen(!menuOpen)}
+                >
+                    {menuOpen ? (
+                        <svg viewBox="0 0 30 24" aria-hidden="true">
+                            <path d="M5 3.5 C12 9 19 15.5 25.5 20.5" />
+                            <path d="M25 3 C18.5 9.5 11.5 15 4.5 20.8" />
+                        </svg>
+                    ) : (
+                        <svg viewBox="0 0 30 24" aria-hidden="true">
+                            <path d="M3.5 4.5 C11 3.4 20 5 27 4.1" />
+                            <path d="M3 12.4 C12 11 19 13.2 27.5 11.8" />
+                            <path d="M4 20.2 C11 19 21 21 26.5 19.6" />
+                        </svg>
+                    )}
+                </button>
+            </div>
+            <div className={"wsn-mwrap" + (menuOpen ? " open" : "")}>
+                <nav className="wsn-mpanel">
+                    {NAV.map((n) => (
+                        <a
+                            key={n.match}
+                            href={n.href}
+                            className={isCurrent(n.match) ? "wsn-current" : ""}
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            {n.label}
+                        </a>
+                    ))}
+                    <a
+                        href={contactHref}
+                        className={isCurrent("contact") ? "wsn-current" : ""}
+                        onClick={() => setMenuOpen(false)}
+                    >
+                        Contact
+                    </a>
+                    <div className="wsn-msmall">Resources</div>
+                    {RESOURCES.map((r) => (
+                        <a
+                            key={r.label}
+                            href={r.href}
+                            target={r.external ? "_blank" : undefined}
+                            rel={r.external ? "noopener" : undefined}
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            {r.label}
+                        </a>
+                    ))}
+                    <a href={applyHref} className="wsn-mapply" onClick={() => setMenuOpen(false)}>
+                        Apply for access →
                     </a>
                 </nav>
             </div>

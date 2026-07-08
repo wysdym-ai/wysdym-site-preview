@@ -70,6 +70,44 @@
   .post .meta{display:flex;justify-content:space-between;align-items:center;margin-top:16px;border-top:1.5px dashed rgba(58,63,85,.2);padding-top:12px;}
   .post .date{font-size:12.5px;color:var(--pencil);}
   .post .read{font-family:'Caveat',cursive;font-size:19px;color:var(--magenta-deep);}
+
+  /* featured-card ebook cover */
+  .post.feature{display:flex;gap:34px;align-items:center;}
+  .post.feature .ftext{flex:1;min-width:0;}
+  .febook{position:relative;flex:0 0 190px;width:190px;aspect-ratio:210/290;transform:rotate(2.5deg);
+    filter:drop-shadow(6px 14px 18px rgba(31,34,51,.32));transition:transform .25s;}
+  .post.feature:hover .febook{transform:rotate(0) translateY(-3px);}
+  .febook .fpg i{position:absolute;inset:0;background:#f4f1e7;border:1px solid rgba(58,63,85,.18);border-radius:2px 4px 4px 2px;}
+  .febook .fpg i:nth-child(1){transform:translate(5px,5px) rotate(.6deg);}
+  .febook .fpg i:nth-child(2){transform:translate(3px,3px) rotate(-.4deg);background:#faf8f0;}
+  .fcover{position:absolute;inset:0;background:linear-gradient(160deg,#fff,#faf7ef 70%,#f1ede0);
+    border:1.5px solid rgba(58,63,85,.35);border-radius:2px 4px 4px 2px;overflow:hidden;
+    display:flex;flex-direction:column;padding:16px 16px 14px;}
+  .fcover::before{content:'';position:absolute;top:0;bottom:0;left:0;width:16px;
+    background:linear-gradient(90deg,rgba(31,34,51,.14),rgba(31,34,51,0));pointer-events:none;}
+  .fcover::after{content:'';position:absolute;inset:0;
+    background:repeating-linear-gradient(180deg,transparent 0 20px,rgba(126,162,204,.16) 20px 21px);pointer-events:none;}
+  .fkick{font-family:'Caveat',cursive;font-size:14px;font-weight:600;color:var(--pencil);transform:rotate(-1.4deg);}
+  .fband{position:relative;margin:12px -22px 0;background:linear-gradient(180deg,var(--magenta),var(--magenta-deep));
+    padding:14px 24px;transform:rotate(-1.6deg);box-shadow:0 3px 8px rgba(31,34,51,.25);}
+  .fband .fyear{display:block;font-family:'Caveat',cursive;font-size:26px;font-weight:700;color:rgba(255,255,255,.85);line-height:1;}
+  .fband .ftitle{display:block;font-size:16px;font-weight:800;letter-spacing:-.02em;color:#fff;line-height:1.15;margin-top:2px;}
+  .fsub{margin-top:16px;font-size:10.5px;line-height:1.5;color:var(--pencil);}
+  .fsub b{color:var(--ink);}
+  .fbadge{margin-top:auto;display:flex;align-items:center;gap:6px;}
+  .fbadge img{width:22px;height:22px;object-fit:contain;}
+  .fbadge span{font-family:'Caveat',cursive;font-size:13px;font-weight:600;color:var(--magenta-deep);}
+  .ffree{position:absolute;right:8px;top:8px;transform:rotate(8deg);font-family:'Caveat',cursive;
+    font-size:11.5px;font-weight:700;color:var(--gold,#C9992E);border:1.8px solid var(--gold,#C9992E);border-radius:50%;
+    padding:7px 5px;line-height:1.05;max-width:60px;text-align:center;opacity:.9;}
+  .fear{position:absolute;right:-1px;bottom:-1px;width:28px;height:28px;
+    background:linear-gradient(315deg,transparent 48%,#e7e2d2 50%,#d8d3c1 100%);
+    clip-path:polygon(100% 0,0 100%,100% 100%);filter:drop-shadow(-2px -2px 2px rgba(31,34,51,.12));}
+  .fpin{position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:36px;height:47px;z-index:5;
+    filter:drop-shadow(0 6px 5px rgba(0,0,0,.3));}
+  .fpin svg{width:100%;height:100%;display:block;}
+  @media(max-width:720px){.post.feature{flex-direction:column-reverse;align-items:flex-start;}
+    .febook{margin:14px auto 4px;}}
   .post.feature{grid-column:1 / -1;background:linear-gradient(180deg,#fff,#f8eef5);border:2px solid var(--ink);box-shadow:5px 7px 0 rgba(58,63,85,.2);}
   .post.feature h3{font-size:clamp(24px,3vw,32px);}
   .draft-flag{position:absolute;top:12px;right:14px;font-family:'Caveat',cursive;font-size:16px;color:var(--pencil);
@@ -182,10 +220,35 @@
 
     <div class="posts">
       <a class="post feature fold in" href="https://gtmstats.wysdym.ai" target="_blank" rel="noopener" style="--r:-.4deg;--t:-2deg;">
-        <span class="cat">resource · live now ↗</span>
-        <h3>2026 Go-to-Market AI Statistics — 52 stats on agents, governance & spend</h3>
-        <p>The reference page: every citable number on agentic AI in go-to-market — adoption, cancellation rates, orchestration market growth, MCP momentum — with sources.</p>
-        <div class="meta"><span class="date">Live · updated 2026</span><span class="read">read it →</span></div>
+        <div class="ftext">
+          <span class="cat">resource · live now ↗</span>
+          <h3>2026 Go-to-Market AI Statistics — 52 stats on agents, governance & spend</h3>
+          <p>The reference page: every citable number on agentic AI in go-to-market — adoption, cancellation rates, orchestration market growth, MCP momentum — with sources.</p>
+          <div class="meta"><span class="date">Live · updated 2026</span><span class="read">read it →</span></div>
+        </div>
+        <span class="febook" aria-hidden="true">
+          <span class="fpg"><i></i><i></i></span>
+          <span class="fcover">
+            <span class="fkick">the reference sheet ↓</span>
+            <span class="fband"><span class="fyear">2026</span><span class="ftitle">GTM AI Statistics</span></span>
+            <span class="fsub"><b>52 sourced stats on agents, governance &amp; spend</b> — every citable number in one place.</span>
+            <span class="fbadge"><img src="origami-crane-wysdym.png" alt=""><span>by wysdym</span></span>
+            <span class="ffree">free · always current</span>
+          </span>
+          <span class="fear"></span>
+          <span class="fpin"><svg viewBox="0 0 44 58" xmlns="http://www.w3.org/2000/svg"><defs>
+            <linearGradient id="febPinH" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff938c"/><stop offset=".45" stop-color="#dd4a40"/><stop offset="1" stop-color="#8d1f18"/></linearGradient>
+            <linearGradient id="febPinC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c8352c"/><stop offset="1" stop-color="#7c1a14"/></linearGradient>
+            <linearGradient id="febPinM" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#eef1f4"/><stop offset=".5" stop-color="#9aa2ab"/><stop offset="1" stop-color="#5d646c"/></linearGradient></defs>
+            <g transform="rotate(-14 22 28)">
+              <path d="M22 46 L20.8 30 L23.2 30 Z" fill="url(#febPinM)"/>
+              <path d="M20.9 29 L23.1 29 L22.6 40 L21.4 40 Z" fill="url(#febPinM)"/>
+              <ellipse cx="22" cy="25.5" rx="9.5" ry="4" fill="url(#febPinC)"/>
+              <path d="M12.5 11 C15 18.5 29 18.5 31.5 11 L30 24 C26 27.5 18 27.5 14 24 Z" fill="url(#febPinC)"/>
+              <ellipse cx="22" cy="10" rx="13.5" ry="6.5" fill="url(#febPinH)"/>
+              <ellipse cx="17.5" cy="8" rx="4.6" ry="2" fill="rgba(255,255,255,.65)"/>
+            </g></svg></span>
+        </span>
       </a>
 
       <a class="post fold" href="blog-the-harness-not-the-agent.html" style="--r:-.8deg;--t:3deg;">
