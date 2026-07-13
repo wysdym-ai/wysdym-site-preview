@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="origami-magenta-wysdym-FAVICON.png">
+</head>
+<body>
+<title>Wysdym — Intro Motion Concepts</title>
+<style>
+  :root{
+    --bg:#131218;
+    --panel:#1b1a23;
+    --screen:#0d0c12;
+    --indigo:#2c2a4a;
+    --magenta:#BA6296;
+    --magenta-hi:#d98fb8;
+    --magenta-lo:#8f4a75;
+    --taupe:#D3B1C2;
+    --paper:#f2ede9;
+    --blue:#a3d5ff;
+    --line:rgba(211,177,194,.14);
+    --dim:rgba(211,177,194,.62);
+  }
+  html{background:var(--bg);}
+  body{
+    margin:0;
+    font-family:'Inter',-apple-system,'SF Pro Text','Segoe UI',system-ui,sans-serif;
+    background:
+      repeating-linear-gradient(115deg, transparent 0 180px, rgba(211,177,194,.02) 180px 181px),
+      var(--bg);
+    color:var(--taupe);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:56px 24px 80px;}
+
+  /* ---------- header ---------- */
+  .masthead{margin-bottom:14px;}
+  .masthead .wm{width:150px;height:auto;display:block;fill:var(--magenta);}
+  .eyebrow{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--dim);margin:26px 0 10px;font-weight:600;
+  }
+  h1{
+    color:var(--paper);
+    font-size:clamp(28px,4.6vw,42px);
+    line-height:1.12;letter-spacing:-.02em;font-weight:700;
+    margin:0 0 14px;text-wrap:balance;
+  }
+  h1 em{font-style:normal;color:var(--magenta-hi);}
+  .intro{max-width:62ch;color:var(--dim);font-size:15.5px;margin:0 0 8px;}
+  .intro b{color:var(--taupe);font-weight:600;}
+
+  /* ---------- concept cards ---------- */
+  .concept{
+    margin-top:56px;background:var(--panel);
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  }
+  .c-head{
+    display:flex;align-items:baseline;gap:14px;
+    padding:18px 22px 14px;
+  }
+  .c-num{
+    font-size:12px;font-weight:700;color:var(--magenta-hi);
+    letter-spacing:.14em;font-variant-numeric:tabular-nums;
+  }
+  .c-head h2{
+    margin:0;color:var(--paper);font-size:20px;font-weight:700;letter-spacing:-.01em;
+  }
+  .c-dur{
+    font-size:11px;color:var(--dim);border:1px solid var(--line);
+    border-radius:999px;padding:2px 9px;letter-spacing:.06em;white-space:nowrap;
+  }
+  .replay{
+    margin-left:auto;background:none;border:1px solid var(--line);
+    color:var(--taupe);font:600 12px/1 inherit;letter-spacing:.04em;
+    border-radius:999px;padding:7px 14px;cursor:pointer;
+  }
+  .replay:hover{border-color:var(--magenta);color:var(--magenta-hi);}
+  .replay:focus-visible{outline:2px solid var(--magenta);outline-offset:2px;}
+
+  .screen{
+    position:relative;aspect-ratio:16/9;background:var(--screen);
+    overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .c-info{padding:18px 22px 22px;}
+  .logline{margin:0 0 12px;color:var(--paper);font-size:15px;font-weight:500;max-width:64ch;}
+  .beats{
+    list-style:none;margin:0 0 14px;padding:0;
+    display:flex;flex-direction:column;gap:5px;font-size:13.5px;color:var(--dim);
+  }
+  .beats b{
+    color:var(--magenta-hi);font-weight:600;font-variant-numeric:tabular-nums;
+    display:inline-block;min-width:66px;
+  }
+  .fit{margin:0;font-size:13px;color:var(--dim);}
+  .fit b{color:var(--taupe);font-weight:600;}
+
+  /* generic end-card inside screens */
+  .endcard{
+    position:absolute;left:0;right:0;bottom:9%;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    pointer-events:none;
+  }
+  .endcard .wm{width:26%;min-width:150px;height:auto;fill:var(--paper);}
+  .endcard p{
+    margin:0;font-size:clamp(10px,1.6vw,14px);letter-spacing:.02em;color:var(--dim);
+  }
+  .loopfade{
+    position:absolute;inset:0;background:var(--screen);opacity:0;pointer-events:none;
+  }
+
+  /* =========================================================
+     01 — THE FOLD  (8s)
+  ==========================================================*/
+  .c1-sheet{
+    position:absolute;left:50%;top:38%;width:24%;
+    transform:translate(-50%,-50%);
+  }
+  .c1-sheet svg{width:100%;height:auto;display:block;animation:c1-sheet 8s ease-in-out infinite;}
+  @keyframes c1-sheet{
+    0%{opacity:0;transform:scale(.7) rotate(-8deg);}
+    7%{opacity:1;transform:scale(1) rotate(-4deg);}
+    30%{opacity:1;transform:scale(1) rotate(-4deg);}
+    37%{opacity:0;transform:perspective(500px) rotateX(68deg) scale(.85) rotate(-4deg);}
+    100%{opacity:0;}
+  }
+  .c1-crease{
+    fill:none;stroke:rgba(255,255,255,.75);stroke-width:1.6;
+    stroke-dasharray:6 5;
+  }
+  .cr1{animation:c1-crease 8s linear infinite;}
+  .cr2{animation:c1-crease2 8s linear infinite;}
+  @keyframes c1-crease{
+    0%,12%{opacity:0;} 16%{opacity:1;} 30%{opacity:1;} 36%,100%{opacity:0;}
+  }
+  @keyframes c1-crease2{
+    0%,17%{opacity:0;} 21%{opacity:1;} 30%{opacity:1;} 36%,100%{opacity:0;}
+  }
+  .c1-crane{
+    position:absolute;left:50%;top:40%;width:34%;
+    transform:translate(-50%,-50%);
+  }
+  .c1-crane svg{width:100%;height:auto;display:block;}
+  .c1-crane polygon{
+    transform-box:fill-box;transform-origin:center;opacity:0;
+  }
+  .c1-crane .k1{fill:var(--magenta);animation:c1f1 8s ease-out infinite;}
+  .c1-crane .k2{fill:var(--magenta-lo);animation:c1f2 8s ease-out infinite;}
+  .c1-crane .k3{fill:var(--magenta-hi);animation:c1f3 8s ease-out infinite;}
+  .c1-crane .k4{fill:var(--magenta-lo);animation:c1f4 8s ease-out infinite;}
+  .c1-crane .k5{fill:var(--magenta);animation:c1f5 8s ease-out infinite;}
+  @keyframes c1f1{0%,37%{opacity:0;transform:scale(.55) rotate(22deg);}44%{opacity:1;transform:none;}100%{opacity:1;}}
+  @keyframes c1f2{0%,42%{opacity:0;transform:scale(.55) rotate(-18deg);}49%{opacity:1;transform:none;}100%{opacity:1;}}
+  @keyframes c1f3{0%,47%{opacity:0;transform:scale(.55) rotate(16deg);}54%{opacity:1;transform:none;}100%{opacity:1;}}
+  @keyframes c1f4{0%,52%{opacity:0;transform:scale(.4) rotate(-24deg);}59%{opacity:1;transform:none;}100%{opacity:1;}}
+  @keyframes c1f5{0%,56%{opacity:0;transform:scale(.55) rotate(12deg);}63%{opacity:1;transform:none;}100%{opacity:1;}}
+  .c1-end{animation:c1-end 8s ease infinite;}
+  @keyframes c1-end{
+    0%,66%{opacity:0;transform:translateY(12px);}
+    75%{opacity:1;transform:none;}100%{opacity:1;transform:none;}
+  }
+  .c1-fade{animation:cutfade 8s linear infinite;}
+
+  @keyframes cutfade{0%{opacity:1;}4%{opacity:0;}92%{opacity:0;}98%{opacity:1;}100%{opacity:1;}}
+
+  /* =========================================================
+     02 — THE UNFOLD  (8s)
+  ==========================================================*/
+  .c2-crane{
+    position:absolute;left:50%;top:44%;width:34%;
+    transform:translate(-50%,-50%);z-index:1;
+  }
+  .c2-crane svg{width:100%;height:auto;display:block;}
+  .c2-crane polygon{transform-box:fill-box;transform-origin:center;}
+  .c2-crane .k1{fill:var(--magenta);animation:c2f1 8s ease-in infinite;}
+  .c2-crane .k2{fill:var(--magenta-lo);animation:c2f2 8s ease-in infinite;}
+  .c2-crane .k3{fill:var(--magenta-hi);animation:c2f3 8s ease-in infinite;}
+  .c2-crane .k4{fill:var(--magenta-lo);animation:c2f4 8s ease-in infinite;}
+  .c2-crane .k5{fill:var(--magenta);animation:c2f5 8s ease-in infinite;}
+  @keyframes c2f1{0%,20%{opacity:1;transform:none;}34%{opacity:0;transform:translate(-34px,-22px) rotate(-42deg);}100%{opacity:0;}}
+  @keyframes c2f2{0%,22%{opacity:1;transform:none;}36%{opacity:0;transform:translate(30px,-28px) rotate(38deg);}100%{opacity:0;}}
+  @keyframes c2f3{0%,24%{opacity:1;transform:none;}38%{opacity:0;transform:translate(38px,10px) rotate(46deg);}100%{opacity:0;}}
+  @keyframes c2f4{0%,26%{opacity:1;transform:none;}40%{opacity:0;transform:translate(26px,-34px) rotate(-30deg);}100%{opacity:0;}}
+  @keyframes c2f5{0%,28%{opacity:1;transform:none;}42%{opacity:0;transform:translate(-28px,30px) rotate(24deg);}100%{opacity:0;}}
+  .c2-sheet{
+    position:absolute;left:50%;top:44%;width:120px;height:120px;
+    margin:-60px 0 0 -60px;background:var(--magenta);border-radius:10px;
+    animation:c2-sheet 8s cubic-bezier(.6,0,.3,1) infinite;
+  }
+  @keyframes c2-sheet{
+    0%,24%{opacity:0;transform:scale(.14) rotate(-10deg);}
+    36%{opacity:1;transform:scale(.3) rotate(-5deg);}
+    46%{opacity:1;transform:scale(.36) rotate(0deg);}
+    64%{transform:scale(14);border-radius:0;}
+    100%{opacity:1;transform:scale(14);border-radius:0;}
+  }
+  .c2-end{bottom:auto;top:50%;transform:translateY(-50%);animation:c2-end 8s ease infinite;z-index:2;}
+  .c2-end .wm{fill:#fff;width:30%;}
+  .c2-end p{color:rgba(255,255,255,.88);}
+  @keyframes c2-end{
+    0%,66%{opacity:0;}76%{opacity:1;}100%{opacity:1;}
+  }
+  .c2-fade{animation:cutfade 8s linear infinite;z-index:3;}
+
+  /* =========================================================
+     03 — SAY IT STRAIGHT  (8s, kinetic type)
+  ==========================================================*/
+  .c3{background:var(--indigo);}
+  .c3-stack{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:.35em;
+    font-weight:800;letter-spacing:-.02em;text-align:center;
+  }
+  .c3-l1{
+    color:var(--paper);font-size:clamp(22px,5.4vw,52px);
+    animation:c3l1 8s ease infinite;
+  }
+  .c3-l2{
+    color:var(--taupe);font-size:clamp(16px,3.8vw,36px);font-weight:600;
+    animation:c3l2 8s ease infinite;
+  }
+  @keyframes c3l1{
+    0%{opacity:0;transform:scale(1.6);}
+    5%{opacity:0;transform:scale(1.55);}
+    9%{opacity:1;transform:scale(1);}
+    30%{opacity:1;transform:none;}
+    36%{opacity:0;transform:perspective(600px) rotateX(-92deg) translateY(14px);}
+    100%{opacity:0;}
+  }
+  @keyframes c3l2{
+    0%,12%{opacity:0;transform:translateY(.5em);}
+    17%{opacity:1;transform:none;}
+    32%{opacity:1;transform:none;}
+    38%{opacity:0;transform:perspective(600px) rotateX(-92deg) translateY(14px);}
+    100%{opacity:0;}
+  }
+  .c3-l3{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    gap:.32em;flex-wrap:wrap;padding:0 6%;
+    color:var(--paper);font-size:clamp(18px,4.2vw,40px);font-weight:700;letter-spacing:-.01em;
+    animation:c3l3 8s ease infinite;
+  }
+  .c3-l3 .w{display:inline-block;}
+  .c3-l3 .w1{animation:c3w 8s ease infinite;}
+  .c3-l3 .w2{animation:c3w2 8s ease infinite;}
+  .c3-l3 .w3{color:var(--magenta-hi);animation:c3w3 8s ease infinite;}
+  @keyframes c3l3{0%,40%{opacity:1;}64%{opacity:1;}70%{opacity:0;letter-spacing:.06em;}100%{opacity:0;}}
+  @keyframes c3w {0%,40%{opacity:0;transform:translateY(.6em);}46%{opacity:1;transform:none;}100%{opacity:1;transform:none;}}
+  @keyframes c3w2{0%,45%{opacity:0;transform:translateY(.6em);}51%{opacity:1;transform:none;}100%{opacity:1;transform:none;}}
+  @keyframes c3w3{0%,50%{opacity:0;transform:translateY(.6em);}56%{opacity:1;transform:none;}100%{opacity:1;transform:none;}}
+  .c3-end{bottom:auto;top:50%;transform:translateY(-50%);animation:c3-end 8s ease infinite;}
+  .c3-end .wm{fill:var(--paper);}
+  @keyframes c3-end{0%,72%{opacity:0;transform:translateY(calc(-50% + 10px));}80%{opacity:1;transform:translateY(-50%);}100%{opacity:1;transform:translateY(-50%);}}
+  .c3-fade{background:var(--indigo);animation:cutfade 8s linear infinite;}
+
+  /* =========================================================
+     04 — THE TURNTABLE  (9s, seamless rotation)
+  ==========================================================*/
+  .c4-floor{
+    position:absolute;left:50%;bottom:20%;width:52%;height:14%;
+    transform:translateX(-50%);
+    background:radial-gradient(ellipse at center, rgba(186,98,150,.22), transparent 70%);
+  }
+  .c4-stage{
+    position:absolute;left:50%;top:40%;width:32%;
+    transform:translate(-50%,-50%);
+    perspective:900px;
+  }
+  .c4-spin{
+    transform-style:preserve-3d;
+    animation:c4-rot 9s linear infinite;
+  }
+  @keyframes c4-rot{
+    from{transform:rotateX(9deg) rotateY(0deg);}
+    to{transform:rotateX(9deg) rotateY(360deg);}
+  }
+  .c4-spin svg{width:100%;height:auto;display:block;}
+  .c4-spin .k1{fill:var(--magenta);}
+  .c4-spin .k2{fill:var(--magenta-lo);}
+  .c4-spin .k3{fill:var(--magenta-hi);}
+  .c4-spin .k4{fill:var(--magenta-lo);}
+  .c4-spin .k5{fill:var(--magenta);}
+  .c4-refl{
+    transform:scaleY(-1) translateY(-6%);
+    opacity:.22;filter:blur(2px);
+    -webkit-mask-image:linear-gradient(to top, rgba(0,0,0,.9), transparent 70%);
+    mask-image:linear-gradient(to top, rgba(0,0,0,.9), transparent 70%);
+  }
+  .c4-sweep{
+    position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(100deg, transparent 42%, rgba(255,255,255,.06) 50%, transparent 58%);
+    background-size:220% 100%;
+    animation:c4-sweep 9s linear infinite;
+  }
+  @keyframes c4-sweep{from{background-position:130% 0;}to{background-position:-130% 0;}}
+  .c4-end{animation:c4-end 2.4s ease 1 both;animation-delay:.8s;}
+  @keyframes c4-end{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+
+  /* =========================================================
+     05 — SNAP TO GRID  (9s)
+  ==========================================================*/
+  .c5-svg{position:absolute;inset:0;width:100%;height:100%;}
+  .c5-svg line{
+    stroke:var(--magenta);stroke-width:1;opacity:0;
+  }
+  .c5-svg .gv{stroke-dasharray:360;animation:c5gv 9s ease infinite;}
+  .c5-svg .gh{stroke-dasharray:640;animation:c5gh 9s ease infinite;}
+  @keyframes c5gv{0%,26%{stroke-dashoffset:360;opacity:0;}30%{opacity:.3;}44%{stroke-dashoffset:0;opacity:.3;}100%{stroke-dashoffset:0;opacity:.3;}}
+  @keyframes c5gh{0%,29%{stroke-dashoffset:640;opacity:0;}33%{opacity:.3;}47%{stroke-dashoffset:0;opacity:.3;}100%{stroke-dashoffset:0;opacity:.3;}}
+  .c5-svg circle{
+    transform-box:fill-box;transform-origin:center;fill:var(--blue);
+  }
+  @keyframes c5p{
+    52%{transform:translate(0,0) scale(1);}
+    56%{transform:translate(0,0) scale(1.45);}
+    60%{transform:translate(0,0) scale(1);}
+    72%{transform:translate(0,0) scale(1.3);}
+    76%{transform:translate(0,0) scale(1);}
+    100%{transform:translate(0,0) scale(1);}
+  }
+  .d1{animation:c5d1 9s ease-in-out infinite;}
+  .d2{animation:c5d2 9s ease-in-out infinite;}
+  .d3{animation:c5d3 9s ease-in-out infinite;}
+  .d4{animation:c5d4 9s ease-in-out infinite;}
+  .d5{animation:c5d5 9s ease-in-out infinite;}
+  .d6{animation:c5d6 9s ease-in-out infinite;}
+  .d7{animation:c5d7 9s ease-in-out infinite;}
+  .d8{animation:c5d8 9s ease-in-out infinite;}
+  @keyframes c5d1{0%{transform:translate(-70px,-50px);}16%{transform:translate(-62px,-58px);}32%{transform:translate(-70px,-50px);fill:#a3d5ff;}44%{transform:translate(0,0);fill:#BA6296;}52%{transform:translate(0,0) scale(1);}56%{transform:translate(0,0) scale(1.45);}60%{transform:translate(0,0) scale(1);}72%{transform:translate(0,0) scale(1.3);}76%,100%{transform:translate(0,0) scale(1);fill:#BA6296;}}
+  @keyframes c5d2{0%{transform:translate(40px,-60px);}16%{transform:translate(48px,-52px);}32%{transform:translate(40px,-60px);fill:#a3d5ff;}44%{transform:translate(0,0);fill:#BA6296;}52%{transform:translate(0,0) scale(1);}56%{transform:translate(0,0) scale(1.45);}60%{transform:translate(0,0) scale(1);}72%{transform:translate(0,0) scale(1.3);}76%,100%{transform:translate(0,0) scale(1);fill:#BA6296;}}
+  @keyframes c5d3{0%{transform:translate(40px,60px);}16%{transform:translate(32px,52px);}32%{transform:translate(40px,60px);fill:#a3d5ff;}44%{transform:translate(0,0);fill:#BA6296;}52%{transform:translate(0,0) scale(1);}56%{transform:translate(0,0) scale(1.45);}60%{transform:translate(0,0) scale(1);}72%{transform:translate(0,0) scale(1.3);}76%,100%{transform:translate(0,0) scale(1);fill:#BA6296;}}
+  @keyframes c5d4{0%{transform:translate(60px,-40px);}16%{transform:translate(52px,-32px);}32%{transform:translate(60px,-40px);fill:#a3d5ff;}44%{transform:translate(0,0);fill:#BA6296;}52%{transform:translate(0,0) scale(1);}56%{transform:translate(0,0) scale(1.45);}60%{transform:translate(0,0) scale(1);}72%{transform:translate(0,0) scale(1.3);}76%,100%{transform:translate(0,0) scale(1);fill:#BA6296;}}
+  @keyframes c5d5{0%{transform:translate(-50px,40px);}16%{transform:translate(-42px,48px);}32%{transform:translate(-50px,40px);fill:#a3d5ff;}44%{transform:translate(0,0);fill:#BA6296;}52%{transform:translate(0,0) scale(1);}56%{transform:translate(0,0) scale(1.45);}60%{transform:translate(0,0) scale(1);}72%{transform:translate(0,0) scale(1.3);}76%,100%{transform:translate(0,0) scale(1);fill:#BA6296;}}
+  @keyframes c5d6{0%{transform:translate(-60px,50px);}16%{transform:translate(-52px,42px);}32%{transform:translate(-60px,50px);fill:#a3d5ff;}44%{transform:translate(0,0);fill:#BA6296;}52%{transform:translate(0,0) scale(1);}56%{transform:translate(0,0) scale(1.45);}60%{transform:translate(0,0) scale(1);}72%{transform:translate(0,0) scale(1.3);}76%,100%{transform:translate(0,0) scale(1);fill:#BA6296;}}
+  @keyframes c5d7{0%{transform:translate(-40px,60px);}16%{transform:translate(-32px,52px);}32%{transform:translate(-40px,60px);fill:#a3d5ff;}44%{transform:translate(0,0);fill:#BA6296;}52%{transform:translate(0,0) scale(1);}56%{transform:translate(0,0) scale(1.45);}60%{transform:translate(0,0) scale(1);}72%{transform:translate(0,0) scale(1.3);}76%,100%{transform:translate(0,0) scale(1);fill:#BA6296;}}
+  @keyframes c5d8{0%{transform:translate(40px,50px);}16%{transform:translate(48px,42px);}32%{transform:translate(40px,50px);fill:#a3d5ff;}44%{transform:translate(0,0);fill:#BA6296;}52%{transform:translate(0,0) scale(1);}56%{transform:translate(0,0) scale(1.45);}60%{transform:translate(0,0) scale(1);}72%{transform:translate(0,0) scale(1.3);}76%,100%{transform:translate(0,0) scale(1);fill:#BA6296;}}
+  .c5-end{animation:c5-end 9s ease infinite;}
+  @keyframes c5-end{0%,64%{opacity:0;transform:translateY(12px);}72%{opacity:1;transform:none;}100%{opacity:1;transform:none;}}
+  .c5-fade{animation:cutfade 9s linear infinite;}
+
+  /* =========================================================
+     06 — CONVENTIONAL WYSDYM  (11s)
+  ==========================================================*/
+  #s6{container-type:inline-size;}
+  .c6-lines{
+    position:absolute;inset:0 8%;bottom:14%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:2.2em;text-align:center;
+  }
+  .c6-lines p{
+    margin:0;color:var(--paper);font-weight:600;letter-spacing:-.01em;
+    font-size:clamp(14px,2.6vw,26px);font-size:3.4cqw;
+    line-height:1.35;text-wrap:balance;
+  }
+  .c6-lines em{font-style:normal;color:var(--taupe);}
+  .c6-lines b{color:var(--magenta);font-weight:700;}
+  .c6-l1{animation:c6l1 15s ease infinite;}
+  .c6-l2{animation:c6l2 15s ease infinite;}
+  @keyframes c6l1{
+    0%{opacity:0;transform:translateY(14px);}
+    4.7%{opacity:1;transform:none;}
+    23.3%{opacity:1;transform:none;}
+    26.7%{opacity:.38;transform:none;}
+    52.7%{opacity:.38;transform:none;}
+    57.3%{opacity:0;transform:translateY(-12px);}
+    100%{opacity:0;}
+  }
+  @keyframes c6l2{
+    0%,23.3%{opacity:0;transform:translateY(30px);}
+    28%{opacity:1;transform:none;}
+    100%{opacity:1;transform:none;}
+  }
+  .c6-l2 .txt{animation:c6txt 15s ease infinite;}
+  @keyframes c6txt{
+    0%,52.7%{opacity:1;}
+    57.3%,100%{opacity:0;}
+  }
+  .c6-wminline{
+    height:1.5em;width:auto;vertical-align:-0.58em;
+    margin:0 -0.72em 0 -0.51em;
+    fill:var(--magenta);
+    animation:c6wmi 15s linear infinite;
+  }
+  @keyframes c6wmi{
+    0%,57.2%{opacity:1;}
+    57.3%,100%{opacity:0;}
+  }
+  .c6-wm2{
+    position:absolute;left:50%;top:76%;width:22%;height:auto;
+    fill:var(--magenta);opacity:0;
+    --dx:0.56cqw;--dy:-16.5cqw;--s:.927;
+    animation:c6wm2 15s cubic-bezier(.55,0,.25,1) infinite;
+  }
+  @keyframes c6wm2{
+    0%,57.2%{opacity:0;transform:translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(var(--s));}
+    57.3%{opacity:1;transform:translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(var(--s));}
+    63.3%{opacity:1;transform:translate(-50%,-50%) scale(1);}
+    100%{opacity:1;transform:translate(-50%,-50%) scale(1);}
+  }
+  .c6b-crane{
+    position:absolute;left:50%;top:38%;width:32%;
+    transform:translate(-50%,-50%);
+  }
+  .c6b-crane svg{width:100%;height:auto;display:block;}
+  .c6b-crane polygon{transform-box:fill-box;transform-origin:center;opacity:0;}
+  .c6b-crane .k1{fill:var(--magenta);animation:c6g1 15s ease-out infinite;}
+  .c6b-crane .k2{fill:var(--magenta-lo);animation:c6g2 15s ease-out infinite;}
+  .c6b-crane .k3{fill:var(--magenta-hi);animation:c6g3 15s ease-out infinite;}
+  .c6b-crane .k4{fill:var(--magenta-lo);animation:c6g4 15s ease-out infinite;}
+  .c6b-crane .k5{fill:var(--magenta);animation:c6g5 15s ease-out infinite;}
+  @keyframes c6g1{0%,64.7%{opacity:0;transform:scale(.55) rotate(22deg);}68%{opacity:1;transform:none;}100%{opacity:1;}}
+  @keyframes c6g2{0%,66.7%{opacity:0;transform:scale(.55) rotate(-18deg);}70%{opacity:1;transform:none;}100%{opacity:1;}}
+  @keyframes c6g3{0%,68.7%{opacity:0;transform:scale(.55) rotate(16deg);}72%{opacity:1;transform:none;}100%{opacity:1;}}
+  @keyframes c6g4{0%,70.7%{opacity:0;transform:scale(.4) rotate(-24deg);}74%{opacity:1;transform:none;}100%{opacity:1;}}
+  @keyframes c6g5{0%,72.7%{opacity:0;transform:scale(.55) rotate(12deg);}76%{opacity:1;transform:none;}100%{opacity:1;}}
+  .c6b-tag{animation:c6tag 15s ease infinite;}
+  .c6b-tag p{font-size:clamp(13px,2.33cqw,26px);}
+  @keyframes c6tag{
+    0%,78%{opacity:0;transform:scale(.7);}
+    81.3%{opacity:1;transform:scale(1.06);}
+    83.3%{opacity:1;transform:scale(1);}
+    100%{opacity:1;transform:scale(1);}
+  }
+  .c6-fade{animation:c6cut 15s linear infinite;}
+  @keyframes c6cut{0%{opacity:1;}2.2%{opacity:0;}98%{opacity:0;}99.8%{opacity:1;}100%{opacity:1;}}
+
+  /* ---------- footer / production notes ---------- */
+  .prod{margin-top:64px;}
+  .prod h3{color:var(--paper);font-size:18px;font-weight:700;margin:0 0 6px;}
+  .prod p{color:var(--dim);font-size:14px;max-width:66ch;margin:0 0 18px;}
+  .paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+  .path{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+  }
+  .path h4{margin:0 0 6px;color:var(--taupe);font-size:14px;font-weight:600;}
+  .path p{font-size:13px;color:var(--dim);margin:0;}
+  .path .tag{
+    display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--magenta-hi);font-weight:700;margin-bottom:8px;
+  }
+  .uses{margin-top:26px;font-size:13.5px;color:var(--dim);max-width:70ch;}
+  .uses b{color:var(--taupe);font-weight:600;}
+  footer{margin-top:48px;font-size:12px;color:rgba(211,177,194,.4);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-play-state:paused !important;}
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="wm" viewBox="0 0 400 100">
+      <g transform="translate(35.4,5.0) scale(1.2857)">
+        <path d="M70.5,56.9C71.1,55.5 72.5,52.3 73.5,49.9C74.6,47.5 78.4,38.4 82.1,29.7C85.8,21.1 88.8,13.9 88.8,13.9C88.8,13.8 87.3,13.7 85.5,13.8L82.2,13.8L77.5,25.7C74.9,32.2 72.7,37.8 72.5,38.1C72.3,38.7 71.8,37.5 67.3,26.3L62.4,13.8L59.0,13.8L55.6,13.7L55.8,14.2C55.9,14.5 58.9,21.8 62.5,30.3C66.1,38.9 69.1,45.9 69.1,46.0C69.1,46.0 67.7,49.0 65.9,52.7C64.2,56.3 62.8,59.4 62.8,59.4C62.8,59.5 64.3,59.5 66.1,59.5L69.4,59.4L70.5,56.9ZM177.0,57.3C178.6,53.6 181.4,46.8 187.9,31.7C191.2,23.9 194.3,16.7 194.7,15.6L195.6,13.7L192.2,13.7L188.9,13.7L183.9,26.2C181.2,33.0 178.9,38.5 178.8,38.4C178.7,38.3 176.5,32.7 173.8,26.0L169.0,13.7L165.6,13.7L162.2,13.7L168.9,29.7C172.6,38.4 175.6,45.8 175.6,45.9C175.6,46.1 174.4,48.7 173.0,51.7C171.6,54.7 170.2,57.6 169.9,58.3L169.3,59.5L172.6,59.5L176.0,59.5L177.0,57.3ZM110.7,46.6C113.8,45.9 116.3,44.0 117.5,41.4C118.2,40.0 118.3,39.7 118.3,37.6C118.3,35.5 118.2,35.1 117.6,33.9C116.3,31.3 114.2,30.1 107.3,27.7C101.4,25.6 100.2,24.9 99.8,23.3C99.0,20.4 101.8,18.2 106.0,18.4C109.0,18.6 110.7,19.9 111.4,22.6L111.7,23.7L114.5,23.7L117.2,23.7L117.2,23.0C117.2,20.8 116.1,18.1 114.5,16.3C112.5,14.1 109.6,13.0 105.6,13.0C100.1,13.0 96.0,15.1 94.1,18.8C93.5,20.2 93.4,20.5 93.4,22.4C93.4,24.3 93.5,24.7 94.0,25.8C95.3,28.5 98.2,30.4 103.7,32.1C108.6,33.6 109.6,34.0 110.5,34.6C112.7,36.1 112.5,39.5 110.0,40.9C109.1,41.4 108.7,41.5 106.6,41.6C103.3,41.7 101.4,41.2 99.8,39.6C98.9,38.7 98.5,38.1 98.2,37.1L97.8,35.8L94.9,35.8L92.0,35.8L92.2,37.3C92.5,41.3 96.0,45.1 100.6,46.4C103.4,47.2 107.5,47.3 110.7,46.6ZM142.0,46.7C145.9,45.6 148.8,42.6 150.4,37.9L150.8,36.6L151.0,40.2C151.0,42.2 151.2,44.4 151.3,45.1L151.4,46.3L154.3,46.3L157.2,46.3L157.2,23.4L157.2,0.5L154.1,0.5L150.9,0.5L150.9,11.3L150.8,22.2L150.3,20.8C148.7,16.6 146.1,14.1 142.1,13.3C140.4,12.9 136.4,13.0 134.8,13.4C130.2,14.5 126.5,17.9 124.5,22.7C122.7,27.3 122.9,34.3 125.1,38.6C127.2,42.7 130.7,45.6 134.8,46.6C136.6,47.0 140.5,47.1 142.0,46.7ZM22.2,34.0C24.7,27.2 26.8,21.5 26.8,21.5C27.0,21.3 27.0,21.5 31.2,33.3C33.0,38.5 34.6,42.8 34.7,42.8C34.7,42.8 35.4,41.1 36.0,38.9L37.2,35.1L33.4,24.4L29.6,13.6L26.4,13.5L23.1,13.5L19.0,25.3C16.7,31.8 14.2,39.2 13.3,41.7C12.4,44.3 11.6,46.4 11.6,46.4C11.6,46.5 13.0,46.5 14.7,46.5L17.7,46.4L22.2,34.0ZM43.1,42.7C43.8,40.7 46.4,33.3 48.8,26.3L53.2,13.6L49.8,13.5C48.0,13.5 46.4,13.6 46.3,13.7C46.1,13.8 36.3,44.6 35.9,46.0L35.8,46.5L38.8,46.5L41.8,46.5L43.1,42.7ZM199.9,46.3C199.9,46.2 201.5,41.4 203.3,35.6C205.1,29.7 207.3,22.6 208.3,19.6C209.2,16.7 210.0,14.1 210.0,13.9C210.0,13.5 209.7,13.5 207.0,13.5L204.0,13.5L198.5,29.7C195.5,38.6 193.0,46.1 193.0,46.2C193.0,46.4 193.9,46.5 196.4,46.5C198.2,46.5 199.8,46.4 199.9,46.3ZM224.4,42.2C225.5,38.6 227.6,32.0 233.4,13.9C233.5,13.5 233.3,13.5 230.9,13.5L228.2,13.5L227.6,15.3C226.0,19.9 219.4,38.5 219.3,38.7C219.2,38.8 217.4,33.9 215.2,27.9C213.1,21.9 211.3,17.0 211.2,17.1C211.2,17.1 210.6,19.0 209.9,21.2L208.6,25.3L212.0,35.8L215.4,46.3L216.2,46.3C216.5,46.4 218.2,46.5 219.9,46.5L223.0,46.5L224.4,42.2ZM245.1,45.2C244.9,44.6 242.5,38.1 239.8,30.7C237.0,23.3 234.8,17.2 234.7,17.1C234.5,17.0 232.1,24.2 232.1,24.9C232.1,25.1 233.5,29.8 235.2,35.4C237.0,40.9 238.4,45.6 238.5,45.9C238.6,46.2 239.0,46.3 242.1,46.3L245.6,46.3L245.1,45.2ZM12.3,38.5L13.7,34.3L10.6,24.1L7.5,13.8L4.0,13.8L0.5,13.7L2.2,18.7C3.1,21.4 5.4,28.0 7.2,33.3C9.0,38.7 10.6,43.0 10.7,42.9C10.8,42.8 11.5,40.8 12.3,38.5ZM137.8,41.3C134.9,40.6 132.1,38.3 130.8,35.7C128.0,29.8 130.1,22.0 135.2,19.5C139.3,17.6 144.8,18.3 147.8,21.3C151.1,24.6 151.9,31.3 149.6,36.1C148.8,37.8 147.0,39.6 145.4,40.5C143.3,41.5 140.1,41.9 137.8,41.3Z" fill-rule="evenodd"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header class="masthead">
+    <svg class="wm" viewBox="0 0 400 100" role="img" aria-label="wysdym"><use href="#wm"/></svg>
+    <p class="eyebrow">Motion concepts · Intro video · 5–10 seconds</p>
+    <h1>Six ways to introduce Wysdym <em>in under ten seconds.</em></h1>
+    <p class="intro">Each concept below is a <b>live prototype</b>, not a storyboard — the loops run in real time at the actual pacing. All five use only brand assets: the magenta wordmark, the origami crane, and the June 2026 taglines. They're deliberately different from each other; pick a direction and the timing, copy, and easing are all adjustable.</p>
+  </header>
+
+  <!-- ================= 06 CONVENTIONAL WYSDYM ================= -->
+  <section class="concept">
+    <div class="c-head">
+      <span class="c-num">06</span><h2>Conventional Wysdym</h2><span class="c-dur">≈ 15s · from your brief</span>
+      <button class="replay" data-target="s6">Replay ↻</button>
+    </div>
+    <div class="screen" id="s6">
+      <div class="c6-lines">
+        <p class="c6-l1">Conventional <b>wisdom</b> says <em>buy more GTM agents.</em></p>
+        <p class="c6-l2"><span class="txt">Conventional</span> <svg class="c6-wminline" viewBox="0 0 400 100" role="img" aria-label="wysdym"><use href="#wm"/></svg> <span class="txt">says give the ones you have <em>a foundation to run on.</em></span></p>
+      </div>
+      <svg class="c6-wm2" viewBox="0 0 400 100" aria-hidden="true"><use href="#wm"/></svg>
+      <div class="c6b-crane">
+        <svg viewBox="0 0 200 185">
+          <polygon class="k1" points="96,34 128,147 104,167"/>
+          <polygon class="k2" points="98,32 154,127 131,146"/>
+          <polygon class="k3" points="168,61 155,123 138,94"/>
+          <polygon class="k4" points="171,59 190,71 168,73"/>
+          <polygon class="k5" points="100,154 101,169 10,161"/>
+        </svg>
+      </div>
+      <div class="endcard c6b-tag">
+        <p>The platform every GTM agent runs on.</p>
+      </div>
+      <div class="loopfade c6-fade"></div>
+    </div>
+    <div class="c-info">
+      <p class="logline">The wordplay one. "Conventional wisdom says buy more agents." Then the counter rolls in beneath it — and in line two, <em>wysdym</em> isn't typed, it's the actual logo lettering, in magenta, sitting inside the sentence. The text clears around it, the wordmark glides down to the bottom — staying magenta — the crane folds itself together above it, and the tagline pops in.</p>
+      <ol class="beats">
+        <li><b>0.0–3.5s</b> Line one: "Conventional wisdom says buy more GTM agents." — "wisdom" in magenta.</li>
+        <li><b>3.5–7.9s</b> Line two rolls up underneath while line one dims — "wysdym" set in the logo's own lettering, magenta. Holds ~4s for reading.</li>
+        <li><b>8.6–9.5s</b> Everything else clears; the wordmark glides to the bottom, still magenta.</li>
+        <li><b>9.7–11.4s</b> The crane folds in above it, facet by facet — the end frame is the stacked logo lockup.</li>
+        <li><b>11.7–15.0s</b> Tagline pops in; the full lockup holds ~3 seconds so it can actually be read.</li>
+      </ol>
+      <p class="fit"><b>Best for:</b> the full 10 seconds — deck opener, website, pre-roll. It's the only concept that argues <em>and</em> brands: the wisdom→wysdym turn is the pitch, and it resolves into the exact stacked logo end frame.</p>
+    </div>
+  </section>
+
+  <!-- ================= 01 THE FOLD ================= -->
+  <section class="concept">
+    <div class="c-head">
+      <span class="c-num">01</span><h2>The Fold</h2><span class="c-dur">≈ 8s</span>
+      <button class="replay" data-target="s1">Replay ↻</button>
+    </div>
+    <div class="screen" id="s1">
+      <div class="c1-sheet">
+        <svg viewBox="0 0 120 120">
+          <rect x="4" y="4" width="112" height="112" rx="6" fill="#BA6296"/>
+          <line class="c1-crease cr1" x1="10" y1="110" x2="110" y2="10"/>
+          <line class="c1-crease cr2" x1="60" y1="8" x2="60" y2="112"/>
+        </svg>
+      </div>
+      <div class="c1-crane">
+        <svg viewBox="0 0 200 185">
+          <polygon class="k1" points="96,34 128,147 104,167"/>
+          <polygon class="k2" points="98,32 154,127 131,146"/>
+          <polygon class="k3" points="168,61 155,123 138,94"/>
+          <polygon class="k4" points="171,59 190,71 168,73"/>
+          <polygon class="k5" points="100,154 101,169 10,161"/>
+        </svg>
+      </div>
+      <div class="endcard c1-end">
+        <svg class="wm" viewBox="0 0 400 100"><use href="#wm"/></svg>
+        <p>The platform every GTM agent runs on.</p>
+      </div>
+      <div class="loopfade c1-fade"></div>
+    </div>
+    <div class="c-info">
+      <p class="logline">One flat magenta sheet. Crease lines flash across it. It folds — and becomes the crane. The origin story of the brand in one gesture: everything starts from the same sheet.</p>
+      <ol class="beats">
+        <li><b>0.0–0.6s</b> A single magenta square settles onto black.</li>
+        <li><b>0.6–2.4s</b> Dashed crease lines score the paper — the "plan" before the fold.</li>
+        <li><b>2.4–5.0s</b> The sheet collapses; crane facets fold into place one by one.</li>
+        <li><b>5.0–8.0s</b> Crane holds. Wordmark and tagline rise beneath it.</li>
+      </ol>
+      <p class="fit"><b>Best for:</b> the flagship — website hero, deck opener, launch post. It literally performs the positioning: agents are folds; the sheet is the harness.</p>
+    </div>
+  </section>
+
+  <!-- ================= 02 THE UNFOLD ================= -->
+  <section class="concept">
+    <div class="c-head">
+      <span class="c-num">02</span><h2>The Unfold</h2><span class="c-dur">≈ 8s</span>
+      <button class="replay" data-target="s2">Replay ↻</button>
+    </div>
+    <div class="screen" id="s2">
+      <div class="c2-sheet"></div>
+      <div class="c2-crane">
+        <svg viewBox="0 0 200 185">
+          <polygon class="k1" points="96,34 128,147 104,167"/>
+          <polygon class="k2" points="98,32 154,127 131,146"/>
+          <polygon class="k3" points="168,61 155,123 138,94"/>
+          <polygon class="k4" points="171,59 190,71 168,73"/>
+          <polygon class="k5" points="100,154 101,169 10,161"/>
+        </svg>
+      </div>
+      <div class="endcard c2-end">
+        <svg class="wm" viewBox="0 0 400 100"><use href="#wm"/></svg>
+        <p>The platform every GTM agent runs on.</p>
+      </div>
+      <div class="loopfade c2-fade"></div>
+    </div>
+    <div class="c-info">
+      <p class="logline">The reverse argument. Start with the crane — the agent everyone's staring at — then unfold it. What's left is the sheet, and the sheet grows until it <em>is</em> the screen. The platform was underneath the whole time.</p>
+      <ol class="beats">
+        <li><b>0.0–1.6s</b> The crane sits alone in the dark — the thing everyone thinks matters.</li>
+        <li><b>1.6–3.4s</b> Its facets lift away and dissolve, revealing a small flat sheet beneath.</li>
+        <li><b>3.4–5.2s</b> The sheet expands to fill the entire frame in brand magenta.</li>
+        <li><b>5.2–8.0s</b> White wordmark and tagline on the full-bleed magenta field.</li>
+      </ol>
+      <p class="fit"><b>Best for:</b> investor contexts — it's the thesis ("don't bet on the agents") as a visual argument, and it ends on the strongest brand frame of the five.</p>
+    </div>
+  </section>
+
+  <!-- ================= 03 SAY IT STRAIGHT ================= -->
+  <section class="concept">
+    <div class="c-head">
+      <span class="c-num">03</span><h2>Say It Straight</h2><span class="c-dur">≈ 8s</span>
+      <button class="replay" data-target="s3">Replay ↻</button>
+    </div>
+    <div class="screen c3" id="s3">
+      <div class="c3-stack">
+        <div class="c3-l1">More agents</div>
+        <div class="c3-l2">won't grow revenue.</div>
+      </div>
+      <div class="c3-l3">
+        <span class="w w1">Compounding</span>
+        <span class="w w2">intelligence</span>
+        <span class="w w3">will.</span>
+      </div>
+      <div class="endcard c3-end">
+        <svg class="wm" viewBox="0 0 400 100"><use href="#wm"/></svg>
+        <p>wysdym.ai</p>
+      </div>
+      <div class="loopfade c3-fade"></div>
+    </div>
+    <div class="c-info">
+      <p class="logline">No metaphor, no illustration — just the tagline, cut hard like a film title. The first claim lands, folds away like paper, and the counter-claim answers it. Ends on the wordmark alone.</p>
+      <ol class="beats">
+        <li><b>0.0–2.6s</b> "More agents / won't grow revenue." slams in on midnight indigo.</li>
+        <li><b>2.6–3.2s</b> Both lines fold backward and drop — a paper-fold exit.</li>
+        <li><b>3.2–5.6s</b> "Compounding intelligence <em>will.</em>" builds word by word, "will." in magenta.</li>
+        <li><b>5.6–8.0s</b> Cut to wordmark + wysdym.ai.</li>
+      </ol>
+      <p class="fit"><b>Best for:</b> LinkedIn and paid social — it works with sound off, reads at feed size, and the copy does all the work. Cheapest to produce at broadcast quality.</p>
+    </div>
+  </section>
+
+  <!-- ================= 04 THE TURNTABLE ================= -->
+  <section class="concept">
+    <div class="c-head">
+      <span class="c-num">04</span><h2>The Turntable</h2><span class="c-dur">seamless loop</span>
+      <button class="replay" data-target="s4">Replay ↻</button>
+    </div>
+    <div class="screen" id="s4">
+      <div class="c4-floor"></div>
+      <div class="c4-stage">
+        <div class="c4-spin">
+          <svg viewBox="0 0 200 185">
+            <polygon class="k1" points="96,34 128,147 104,167"/>
+            <polygon class="k2" points="98,32 154,127 131,146"/>
+            <polygon class="k3" points="168,61 155,123 138,94"/>
+            <polygon class="k4" points="171,59 190,71 168,73"/>
+            <polygon class="k5" points="100,154 101,169 10,161"/>
+          </svg>
+          <svg class="c4-refl" viewBox="0 0 200 185" aria-hidden="true">
+            <polygon class="k1" points="96,34 128,147 104,167"/>
+            <polygon class="k2" points="98,32 154,127 131,146"/>
+            <polygon class="k3" points="168,61 155,123 138,94"/>
+            <polygon class="k4" points="171,59 190,71 168,73"/>
+            <polygon class="k5" points="100,154 101,169 10,161"/>
+          </svg>
+        </div>
+      </div>
+      <div class="c4-sweep"></div>
+      <div class="endcard c4-end">
+        <svg class="wm" viewBox="0 0 400 100"><use href="#wm"/></svg>
+        <p>The platform every GTM agent runs on.</p>
+      </div>
+    </div>
+    <div class="c-info">
+      <p class="logline">The rotating one. The crane turns slowly on a lit pedestal like a product reveal — and because it's paper, it nearly vanishes edge-on every half turn, then blooms back. That paper-thin moment <em>is</em> the hook. Loops forever with no cut.</p>
+      <ol class="beats">
+        <li><b>continuous</b> Crane rotates on its axis over a soft magenta light pool, with reflection.</li>
+        <li><b>continuous</b> A subtle specular sweep passes across the frame each revolution.</li>
+        <li><b>0.8s in</b> Wordmark and tagline fade up once and hold.</li>
+      </ol>
+      <p class="fit"><b>Best for:</b> anywhere a loop lives — website hero background, event booth screen, email signature GIF, virtual-meeting waiting room. Zero-narrative, pure sleekness.</p>
+    </div>
+  </section>
+
+  <!-- ================= 05 SNAP TO GRID ================= -->
+  <section class="concept">
+    <div class="c-head">
+      <span class="c-num">05</span><h2>Snap to Grid</h2><span class="c-dur">≈ 9s</span>
+      <button class="replay" data-target="s5">Replay ↻</button>
+    </div>
+    <div class="screen" id="s5">
+      <svg class="c5-svg" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice">
+        <line class="gv" x1="130" y1="0" x2="130" y2="360"/>
+        <line class="gv" x1="260" y1="0" x2="260" y2="360"/>
+        <line class="gv" x1="390" y1="0" x2="390" y2="360"/>
+        <line class="gv" x1="520" y1="0" x2="520" y2="360"/>
+        <line class="gh" x1="0" y1="100" x2="640" y2="100"/>
+        <line class="gh" x1="0" y1="180" x2="640" y2="180"/>
+        <line class="gh" x1="0" y1="260" x2="640" y2="260"/>
+        <circle class="d1" cx="130" cy="100" r="5"/>
+        <circle class="d2" cx="260" cy="100" r="5"/>
+        <circle class="d3" cx="390" cy="100" r="5"/>
+        <circle class="d4" cx="520" cy="100" r="5"/>
+        <circle class="d5" cx="130" cy="260" r="5"/>
+        <circle class="d6" cx="260" cy="180" r="5"/>
+        <circle class="d7" cx="390" cy="260" r="5"/>
+        <circle class="d8" cx="520" cy="260" r="5"/>
+      </svg>
+      <div class="endcard c5-end">
+        <svg class="wm" viewBox="0 0 400 100"><use href="#wm"/></svg>
+        <p>The platform every GTM agent runs on.</p>
+      </div>
+      <div class="loopfade c5-fade"></div>
+    </div>
+    <div class="c-info">
+      <p class="logline">The abstract one — no origami at all. Blue dots (your agents) drift, disconnected. A magenta grid draws in beneath them. Every dot snaps to the grid, turns magenta, and starts pulsing <em>in unison</em>. Chaos, then a harness.</p>
+      <ol class="beats">
+        <li><b>0.0–2.7s</b> Eight pale-blue dots wander the dark frame, each on its own path.</li>
+        <li><b>2.4–4.2s</b> Magenta grid lines draw themselves across the frame.</li>
+        <li><b>3.6–4.6s</b> Every dot snaps to an intersection and turns magenta.</li>
+        <li><b>4.6–9.0s</b> Dots pulse in sync; wordmark and tagline appear.</li>
+      </ol>
+      <p class="fit"><b>Best for:</b> technical audiences — RevOps, engineers, infrastructure investors. It says "orchestration layer" without a single word, and it's the most category-defining of the five.</p>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCTION ================= -->
+  <section class="prod">
+    <h3>From prototype to finished video</h3>
+    <p>These loops are real code, which changes the production math — you're choosing a finish, not commissioning from scratch.</p>
+    <div class="paths">
+      <div class="path">
+        <span class="tag">Fastest · ~free</span>
+        <h4>Polish + capture this code</h4>
+        <p>Tune the chosen prototype (timing, sizes, easing), render it full-screen, and capture at 4K/60fps to MP4. Hours, not days, and pixel-perfect brand assets since it uses the actual SVGs.</p>
+      </div>
+      <div class="path">
+        <span class="tag">Crispest · 1–2 days</span>
+        <h4>After Effects / Lottie rebuild</h4>
+        <p>Hand a motion freelancer this page as the animatic. You get broadcast-grade easing, motion blur, and a Lottie export that can also run natively on the website at tiny file size.</p>
+      </div>
+      <div class="path">
+        <span class="tag">Not recommended</span>
+        <h4>AI video generation</h4>
+        <p>Runway / Veo can't hold logo geometry or exact brand hex values steady across frames. Fine for mood exploration, wrong tool for a logo animation.</p>
+      </div>
+    </div>
+    <p class="uses"><b>Where it goes:</b> LinkedIn company + personal profile video, first slide of the pre-seed and design-partner decks, wysdym.ai hero, email signatures (as GIF), and the loop concept (04) on any screen at events.</p>
+  </section>
+
+  <footer>Prototype board · brand assets from Brand &amp; Logos + origami-site · taglines per June 2026 decks · no metrics, no claims — just the brand.</footer>
+</div>
+
+<script>
+  document.querySelectorAll('.replay').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var s = document.getElementById(btn.dataset.target);
+      if(!s || !s.getAnimations) return;
+      s.getAnimations({subtree:true}).forEach(function(a){ a.cancel(); a.play(); });
+    });
+  });
+</script>
+
+</body>
+</html>
