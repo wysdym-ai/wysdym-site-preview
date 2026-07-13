@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>wysdym — one sheet (crumple concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --magenta:#BA6296;
+    --indigo:#2c2a4a;
+    --ink:#1b1b1b;
+    --taupe:#D3B1C2;
+    --slate:#444b59;
+    --paper:#f7f3ec;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:auto}
+  body{
+    font-family:'Inter',-apple-system,sans-serif;
+    background:radial-gradient(120% 90% at 50% 30%, #38355e 0%, var(--indigo) 45%, #201e38 100%);
+    color:var(--taupe);
+    overflow-x:hidden;
+  }
+  /* scroll runway */
+  .runway{height:900vh;position:relative}
+
+  canvas#gl{
+    position:fixed;inset:0;width:100vw;height:100vh;display:block;z-index:1;
+  }
+  .vignette{
+    position:fixed;inset:0;z-index:2;pointer-events:none;
+    background:radial-gradient(90% 90% at 50% 50%, transparent 55%, rgba(16,15,28,.55) 100%);
+  }
+
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:10;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 32px;
+  }
+  .wordmark{height:22px;display:block}
+  .demo-tag{
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--taupe);opacity:.7;border:1px solid rgba(211,177,194,.35);
+    border-radius:999px;padding:5px 12px;
+  }
+
+  /* copy panels */
+  .panel{
+    position:fixed;z-index:5;max-width:430px;
+    opacity:0;transform:translateY(24px);
+    transition:none;pointer-events:none;
+  }
+  .panel.left{left:6vw;top:50%;margin-top:-90px}
+  .panel.right{right:11vw;top:50%;margin-top:-90px;text-align:right}
+  .panel.center{left:50%;top:52%;margin-top:-120px;transform:translate(-50%,24px);text-align:center;max-width:640px}
+  .panel .kicker{
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--magenta);font-weight:600;margin-bottom:14px;
+  }
+  .panel h1{
+    font-family:'Instrument Serif',Georgia,serif;font-weight:400;
+    font-size:clamp(38px,5.2vw,64px);line-height:1.04;color:#f2e9ee;
+    margin-bottom:16px;letter-spacing:-.01em;
+  }
+  .panel h2{
+    font-family:'Instrument Serif',Georgia,serif;font-weight:400;
+    font-size:clamp(30px,3.8vw,46px);line-height:1.08;color:#f2e9ee;
+    margin-bottom:12px;
+  }
+  .panel p{font-size:16px;line-height:1.55;color:var(--taupe);max-width:40ch}
+  .panel.right p{margin-left:auto}
+  .panel.center p{margin:0 auto}
+  .panel .fold-num{
+    font-family:'Instrument Serif',Georgia,serif;font-style:italic;
+    font-size:15px;color:var(--taupe);opacity:.75;margin-bottom:6px;display:block;
+  }
+  .live-dot{display:inline-flex;align-items:center;gap:7px;font-size:12px;letter-spacing:.1em;
+    text-transform:uppercase;color:#a8e6c1;margin-top:14px;font-weight:600}
+  .live-dot::before{content:'';width:7px;height:7px;border-radius:50%;background:#5fce8b;
+    box-shadow:0 0 10px #5fce8b}
+
+  .scroll-hint{
+    position:fixed;bottom:30px;left:50%;transform:translateX(-50%);z-index:6;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);
+    opacity:.65;display:flex;flex-direction:column;align-items:center;gap:10px;
+  }
+  .scroll-hint .line{width:1px;height:34px;background:linear-gradient(var(--taupe),transparent);
+    animation:drip 1.8s ease-in-out infinite}
+  @keyframes drip{0%{transform:scaleY(.2);transform-origin:top}55%{transform:scaleY(1)}100%{opacity:0;transform:scaleY(1)}}
+
+  /* fold progress rail */
+  .rail{
+    position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:8;
+    display:flex;flex-direction:column;gap:0;align-items:flex-end;
+  }
+  .rail .stop{display:flex;align-items:center;gap:10px;padding:9px 0;opacity:.32;transition:opacity .4s}
+  .rail .stop.active{opacity:1}
+  .rail .stop .lbl{font-size:11px;letter-spacing:.06em;color:var(--taupe);
+    opacity:0;transform:translateX(6px);transition:all .4s}
+  .rail .stop.active .lbl{opacity:1;transform:none}
+  .rail .stop .dot{width:8px;height:8px;border-radius:50%;background:var(--taupe);flex:none}
+  .rail .stop.active .dot{background:var(--magenta);box-shadow:0 0 12px rgba(186,98,150,.8)}
+
+  /* final CTA */
+  .cta-btn{
+    display:inline-block;margin-top:26px;padding:14px 30px;border-radius:999px;
+    background:var(--magenta);color:#fff;text-decoration:none;font-weight:600;font-size:15px;
+    letter-spacing:.02em;box-shadow:0 8px 30px rgba(186,98,150,.4);
+    pointer-events:auto;
+  }
+  .tagline{
+    font-family:'Instrument Serif',Georgia,serif;font-style:italic;
+    font-size:clamp(19px,2.2vw,25px);color:var(--taupe);margin-top:18px;
+  }
+
+  @media (max-width:720px){
+    .panel.left,.panel.right{left:7vw;right:7vw;max-width:none;text-align:left}
+    .panel.right p{margin-left:0}
+    .rail{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .scroll-hint .line{animation:none}
+  }
+</style>
+</head>
+<body>
+<div class="runway"></div>
+
+<canvas id="gl"></canvas>
+<div class="vignette"></div>
+
+<header>
+  <img class="wordmark" src="wysdym-wordmark-magenta.svg" alt="wysdym">
+  <span class="demo-tag">motion concept — one sheet</span>
+</header>
+
+<div class="scroll-hint" id="hint"><span>scroll</span><span class="line"></span></div>
+
+<div class="rail" id="rail">
+  <div class="stop" data-k="0"><span class="lbl">the stack today</span><span class="dot"></span></div>
+  <div class="stop" data-k="1"><span class="lbl">the harness</span><span class="dot"></span></div>
+  <div class="stop" data-k="2"><span class="lbl">wysdymGraph</span><span class="dot"></span></div>
+  <div class="stop" data-k="3"><span class="lbl">wysdymSkills</span><span class="dot"></span></div>
+  <div class="stop" data-k="4"><span class="lbl">wysdymConnect</span><span class="dot"></span></div>
+  <div class="stop" data-k="5"><span class="lbl">wysdymGateway</span><span class="dot"></span></div>
+  <div class="stop" data-k="6"><span class="lbl">wysdymObserve</span><span class="dot"></span></div>
+  <div class="stop" data-k="7"><span class="lbl">Operator</span><span class="dot"></span></div>
+</div>
+
+<!-- copy beats -->
+<div class="panel left" data-start="-0.06" data-end="0.075">
+  <div class="kicker">your GTM stack today</div>
+  <h1>Five agents.<br>Zero shared memory.</h1>
+  <p>Every agent you add brings its own context, its own integrations, its own drift. It doesn't compound. It crumples.</p>
+</div>
+
+<div class="panel right" data-start="0.10" data-end="0.185">
+  <h2>Smooth it out.</h2>
+  <p>The problem was never the agents. It's that nothing sits underneath them.</p>
+</div>
+
+<div class="panel left" data-start="0.20" data-end="0.28">
+  <div class="kicker">the harness</div>
+  <h2>One sheet everything runs on.</h2>
+  <p>Shared memory, skills, integrations, governance — and a feedback loop. Every agent inherits the same grounding.</p>
+</div>
+
+<div class="panel right" data-start="0.30" data-end="0.385">
+  <span class="fold-num">fold one</span>
+  <h2>wysdymGraph</h2>
+  <p>One typed knowledge graph across 39 GTM domains. Every agent reads the same truth.</p>
+  <div class="live-dot">in production</div>
+</div>
+
+<div class="panel left" data-start="0.41" data-end="0.485">
+  <span class="fold-num">fold two</span>
+  <h2>wysdymSkills</h2>
+  <p>An open skill library any agent can invoke over MCP. Each motion becomes a crease you can repeat.</p>
+</div>
+
+<div class="panel right" data-start="0.51" data-end="0.585">
+  <span class="fold-num">fold three</span>
+  <h2>wysdymConnect</h2>
+  <p>Salesforce, HubSpot, Gong, Slack, Drive, Notion — wired once, shared by every agent.</p>
+</div>
+
+<div class="panel left" data-start="0.61" data-end="0.685">
+  <span class="fold-num">fold four</span>
+  <h2>wysdymGateway</h2>
+  <p>One governed door. Read-only by default, write-approval queues, per-agent RBAC, full audit.</p>
+</div>
+
+<div class="panel right" data-start="0.71" data-end="0.785">
+  <span class="fold-num">fold five</span>
+  <h2>wysdymObserve</h2>
+  <p>Outcomes attributed to deal stages. Every approval, edit and override sharpens the next crease.</p>
+</div>
+
+<div class="panel center" data-start="0.84" data-end="1.01">
+  <div class="kicker">the same sheet, working</div>
+  <h1>Operator.</h1>
+  <p>The reference agent that ships with wysdym — your working agent on day one, running on everything you just watched fold into place.</p>
+  <div class="tagline">More agents won't grow revenue.<br>Compounding intelligence will.</div>
+  <a class="cta-btn" href="#">become a design partner</a>
+</div>
+
+<script>
+'use strict';
+/* ============ minimal mat4 ============ */
+const M4 = {
+  ident:()=>[1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1],
+  mul(a,b){const o=new Array(16);for(let r=0;r<4;r++)for(let c=0;c<4;c++){let s=0;for(let k=0;k<4;k++)s+=a[k*4+c]*b[r*4+k];o[r*4+c]=s;}return o;},
+  persp(fov,asp,n,f){const t=1/Math.tan(fov/2);return[t/asp,0,0,0, 0,t,0,0, 0,0,(f+n)/(n-f),-1, 0,0,2*f*n/(n-f),0];},
+  trans(x,y,z){const m=M4.ident();m[12]=x;m[13]=y;m[14]=z;return m;},
+  rotX(a){const c=Math.cos(a),s=Math.sin(a);return[1,0,0,0, 0,c,s,0, 0,-s,c,0, 0,0,0,1];},
+  rotY(a){const c=Math.cos(a),s=Math.sin(a);return[c,0,-s,0, 0,1,0,0, s,0,c,0, 0,0,0,1];},
+  rotZ(a){const c=Math.cos(a),s=Math.sin(a);return[c,s,0,0, -s,c,0,0, 0,0,1,0, 0,0,0,1];},
+  scale(s){return[s,0,0,0, 0,s,0,0, 0,0,s,0, 0,0,0,1];},
+};
+
+/* ============ GL setup ============ */
+const canvas = document.getElementById('gl');
+const gl = canvas.getContext('webgl2',{antialias:true,alpha:true});
+
+const VS = `#version 300 es
+precision highp float;
+in vec2 aPos;
+uniform mat4 uMVP, uModel;
+uniform float uCrumple;
+uniform float uFold[5];
+out vec3 vWorld;
+out vec2 vUV;
+
+float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }
+float vnoise(vec2 p){
+  vec2 i=floor(p), f=fract(p);
+  vec2 u=f*f*(3.0-2.0*f);
+  return mix(mix(hash(i),hash(i+vec2(1,0)),u.x),
+             mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),u.x), u.y);
+}
+vec3 rotAround(vec3 p, vec3 a, vec3 dir, float ang){
+  vec3 v = p - a;
+  float c = cos(ang), s = sin(ang);
+  return a + v*c + cross(dir, v)*s + dir*dot(dir,v)*(1.0-c);
+}
+void main(){
+  vec2 p = aPos;
+  vec3 pos = vec3(p, 0.0);
+
+  // ---- five folds (world-plane creases; each completes before the next starts) ----
+  // fold data: crease point A, unit dir D, max angle
+  vec2 A[5]; vec2 D[5]; float ANG[5];
+  A[0]=vec2( 0.0, 0.0); D[0]=normalize(vec2( 1.0,-1.0)); ANG[0]= 3.00;   // diagonal -> triangle
+  A[1]=vec2( 0.0, 0.0); D[1]=normalize(vec2( 1.0, 1.0)); ANG[1]= 3.00;   // halve -> slim triangle
+  A[2]=vec2( 0.0,-0.62); D[2]=vec2(1.0,0.0);             ANG[2]= 2.30;   // wing lift
+  A[3]=vec2(-0.55,-1.2); D[3]=normalize(vec2(0.55,1.0)); ANG[3]= 2.00;   // tail up
+  A[4]=vec2( 0.62,-1.2); D[4]=normalize(vec2(0.5,-1.0)); ANG[4]= 1.85;   // head crease
+  for(int i=0;i<5;i++){
+    float u = uFold[i];
+    if(u<=0.0) continue;
+    vec2 N = vec2(-D[i].y, D[i].x);
+    float s = dot(pos.xy - A[i], N);
+    if(s > 0.0){
+      pos = rotAround(pos, vec3(A[i],0.0), vec3(D[i],0.0), ANG[i]*u);
+    }
+  }
+
+  // ---- crumple (active only near top of page) ----
+  float cr = uCrumple;
+  if(cr > 0.001){
+    float lon = p.x * 2.5;
+    float lat = p.y * 1.25;
+    vec3 ball = 0.52 * vec3(cos(lat)*sin(lon), sin(lat), cos(lat)*cos(lon));
+    float n2 = vnoise(p*4.5+13.0);
+    float n3 = vnoise(p*8.0+41.0);
+    vec3 nd = vec3(vnoise(p*2.5)-0.5, vnoise(p*2.5+31.0)-0.5, vnoise(p*2.5+57.0)-0.5);
+    vec3 crumpled = ball + nd*0.18*cr + normalize(ball)*( abs(n2-0.5)*1.1 + abs(n3-0.5)*0.45 - 0.35 )*0.17;
+    float w = smoothstep(0.0, 1.0, cr);
+    pos = mix(pos, crumpled, w);
+    // residual creasing that survives partial crumple — paper remembers
+    pos.z += ( abs(n2-0.5) + abs(n3-0.5)*0.7 - 0.4 ) * 0.10 * cr;
+  }
+
+  vec4 w4 = uModel * vec4(pos, 1.0);
+  vWorld = w4.xyz;
+  vUV = p*0.5+0.5;
+  gl_Position = uMVP * vec4(pos, 1.0);
+}`;
+
+const FS = `#version 300 es
+precision highp float;
+in vec3 vWorld;
+in vec2 vUV;
+uniform vec3 uEye;
+out vec4 outColor;
+float hash(vec2 p){ return fract(sin(dot(p, vec2(269.5,183.3)))*43758.5453); }
+void main(){
+  vec3 X = dFdx(vWorld), Y = dFdy(vWorld);
+  vec3 N = normalize(cross(X, Y));
+  vec3 V = normalize(uEye - vWorld);
+  bool front = dot(N, V) >= 0.0;
+  if(!front) N = -N;
+
+  // paper front = warm white; back = brand magenta wash
+  vec3 base = front ? vec3(0.968,0.952,0.922) : vec3(0.845,0.622,0.734);
+
+  vec3 L1 = normalize(vec3(0.45, 0.85, 0.55));
+  vec3 L2 = normalize(vec3(-0.65,-0.15, 0.45));
+  float d1 = max(dot(N,L1), 0.0);
+  float d2 = max(dot(N,L2), 0.0);
+  vec3 col = base * (0.30 + 0.72*d1) + base * d2 * 0.20 * vec3(0.75,0.8,1.0);
+
+  vec3 H = normalize(L1 + V);
+  col += vec3(0.05) * pow(max(dot(N,H),0.0), 28.0);
+
+  // paper grain
+  float g = hash(floor(vUV*900.0));
+  col *= 0.965 + 0.055*g;
+
+  outColor = vec4(col, 1.0);
+}`;
+
+function mkShader(type, src){
+  const s = gl.createShader(type);
+  gl.shaderSource(s, src); gl.compileShader(s);
+  if(!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+  return s;
+}
+const prog = gl.createProgram();
+gl.attachShader(prog, mkShader(gl.VERTEX_SHADER, VS));
+gl.attachShader(prog, mkShader(gl.FRAGMENT_SHADER, FS));
+gl.linkProgram(prog);
+if(!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+gl.useProgram(prog);
+
+/* plane grid */
+const SEG = 256;
+const verts = [], idx = [];
+for(let j=0;j<=SEG;j++)for(let i=0;i<=SEG;i++){
+  verts.push(i/SEG*2-1, j/SEG*2-1);
+}
+for(let j=0;j<SEG;j++)for(let i=0;i<SEG;i++){
+  const a=j*(SEG+1)+i, b=a+1, c=a+SEG+1, d=c+1;
+  idx.push(a,b,c, b,d,c);
+}
+const vao = gl.createVertexArray(); gl.bindVertexArray(vao);
+const vbo = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
+gl.enableVertexAttribArray(0);
+gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+const ibo = gl.createBuffer();
+gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibo);
+gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint32Array(idx), gl.STATIC_DRAW);
+
+gl.enable(gl.DEPTH_TEST);
+gl.clearColor(0,0,0,0);
+
+const U = n => gl.getUniformLocation(prog, n);
+const uMVP=U('uMVP'), uModel=U('uModel'), uCr=U('uCrumple'), uEye=U('uEye');
+const uF = [0,1,2,3,4].map(i=>U(`uFold[${i}]`));
+
+/* ============ scroll timeline ============ */
+const ease = t => t<0?0:t>1?1:t*t*(3-2*t);
+const win = (p,a,b) => ease((p-a)/(b-a));
+
+// fold windows (progress space)
+const FW = [[0.28,0.385],[0.395,0.49],[0.50,0.59],[0.60,0.69],[0.70,0.79]];
+
+// keyframed model orientation: [progress, rotX, rotY, rotZ, scale, camZ, tx, ty]
+const KEYS = [
+  [0.00, -0.15,  0.00,  0.00, 1.00, 3.00,  0.25, -0.02],
+  [0.09, -0.25,  1.30,  0.10, 1.00, 3.00,  0.25, -0.02],
+  [0.20, -0.85,  0.28, -0.06, 0.76, 3.85,  0.62, -0.05],
+  [0.30, -0.75,  0.25, -0.04, 0.80, 3.90, -0.52, -0.05],
+  [0.41, -0.70,  0.40,  0.05, 0.80, 4.10,  0.52, -0.05],
+  [0.51, -0.66,  0.60,  0.10, 0.82, 4.10, -0.52,  0.30],
+  [0.61, -0.62,  0.85,  0.12, 0.85, 4.00,  0.52,  0.30],
+  [0.71, -0.55,  1.05,  0.10, 0.90, 3.90, -0.52,  0.30],
+  [0.84, -0.40,  1.60, -0.10, 0.78, 4.00,  0.00,  1.46],
+  [1.00, -0.30,  2.10, -0.12, 0.80, 4.00,  0.00,  1.46],
+];
+function keyed(p){
+  let a=KEYS[0], b=KEYS[KEYS.length-1];
+  for(let i=0;i<KEYS.length-1;i++){
+    if(p>=KEYS[i][0] && p<=KEYS[i+1][0]){ a=KEYS[i]; b=KEYS[i+1]; break; }
+  }
+  const t = ease((p-a[0])/Math.max(1e-6,(b[0]-a[0])));
+  const L=(x,y)=>x+(y-x)*t;
+  return {rx:L(a[1],b[1]), ry:L(a[2],b[2]), rz:L(a[3],b[3]), s:L(a[4],b[4]), cz:L(a[5],b[5]), tx:L(a[6],b[6]), ty:L(a[7],b[7])};
+}
+
+const panels = [...document.querySelectorAll('.panel')].map(el=>({
+  el, start:+el.dataset.start, end:+el.dataset.end,
+  center:el.classList.contains('center')
+}));
+const stops = [...document.querySelectorAll('.rail .stop')];
+const STOP_AT = [0.0, 0.20, 0.28, 0.395, 0.50, 0.60, 0.70, 0.84];
+const hint = document.getElementById('hint');
+
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let target = 0, smooth = 0, tPrev = 0;
+
+function resize(){
+  const dpr = Math.min(devicePixelRatio||1, 2);
+  canvas.width = innerWidth*dpr; canvas.height = innerHeight*dpr;
+  gl.viewport(0,0,canvas.width,canvas.height);
+}
+addEventListener('resize', resize); resize();
+
+function onScroll(){
+  const max = document.documentElement.scrollHeight - innerHeight;
+  target = max>0 ? scrollY/max : 0;
+}
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+// deterministic jump for testing / deep links
+window.jumpTo = function(p){
+  const max = document.documentElement.scrollHeight - innerHeight;
+  scrollTo(0, p*max);
+  target = p; smooth = p;
+  render(performance.now());
+};
+
+function frame(tms){
+  const dt = Math.min((tms-tPrev)/1000, 0.05); tPrev = tms;
+  smooth = reduced ? target : smooth + (target-smooth)*Math.min(1, dt*6.5);
+  render(tms);
+  requestAnimationFrame(frame);
+}
+
+function render(tms){
+  const p = smooth;
+
+  // crumple: 1 at top -> residual 0.06 when flat -> 0 as folding starts
+  let cr;
+  if(p < 0.04) cr = 1.0;
+  else if(p < 0.19) cr = 1.0 - 0.94*win(p, 0.04, 0.19);
+  else if(p < 0.29) cr = 0.06*(1.0 - win(p, 0.21, 0.29));
+  else cr = 0.0;
+
+  const folds = FW.map(w=>win(p, w[0], w[1]));
+
+  const k = keyed(p);
+  const idle = reduced ? 0 : Math.sin(tms*0.0004)*0.04;
+  let model = M4.ident();
+  model = M4.mul(M4.rotZ(k.rz), model);
+  model = M4.mul(M4.rotY(k.ry + idle), model);
+  model = M4.mul(M4.rotX(k.rx), model);
+  model = M4.mul(M4.scale(k.s), model);
+  model = M4.mul(M4.trans(k.tx, k.ty, 0), model);
+  const view = M4.trans(0, -0.05, -k.cz);
+  const proj = M4.persp(0.62, innerWidth/innerHeight, 0.1, 20);
+  const mvp = M4.mul(proj, M4.mul(view, model));
+
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+  gl.uniformMatrix4fv(uMVP, false, mvp);
+  gl.uniformMatrix4fv(uModel, false, model);
+  gl.uniform1f(uCr, cr);
+  folds.forEach((f,i)=>gl.uniform1f(uF[i], f));
+  gl.uniform3f(uEye, 0, 0.05, k.cz);
+  gl.drawElements(gl.TRIANGLES, idx.length, gl.UNSIGNED_INT, 0);
+
+  // copy panels
+  for(const pn of panels){
+    const {start,end} = pn;
+    const fadeIn = win(p, start, start + (end-start)*0.25);
+    const fadeOut = 1 - win(p, end - (end-start)*0.2, end);
+    const o = Math.min(fadeIn, fadeOut);
+    pn.el.style.opacity = o.toFixed(3);
+    const ty = (1-fadeIn)*24 - (1-fadeOut)*18;
+    pn.el.style.transform = pn.center
+      ? `translate(-50%, ${ty}px)` : `translateY(${ty}px)`;
+    pn.el.style.pointerEvents = o>0.5 ? 'auto' : 'none';
+  }
+  // rail
+  stops.forEach((s,i)=>{
+    const on = p >= STOP_AT[i] - 0.01 && (i===stops.length-1 ? true : p < STOP_AT[i+1]);
+    s.classList.toggle('active', on);
+  });
+  hint.style.opacity = p < 0.02 ? 0.65 : Math.max(0, 0.65 - p*20);
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
