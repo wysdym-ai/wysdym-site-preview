@@ -128,16 +128,28 @@
     100%{opacity:0;}
   }
   .c1-crease{
-    fill:none;stroke:rgba(255,255,255,.75);stroke-width:1.6;
-    stroke-dasharray:6 5;
+    fill:none;stroke:rgba(235,233,238,.34);stroke-width:.6;
+    stroke-dasharray:3 4;
   }
   .cr1{animation:c1-crease 8s linear infinite;}
   .cr2{animation:c1-crease2 8s linear infinite;}
+  .cr3{animation:c1-crease3 8s linear infinite;}
   @keyframes c1-crease{
     0%,12%{opacity:0;} 16%{opacity:1;} 30%{opacity:1;} 36%,100%{opacity:0;}
   }
   @keyframes c1-crease2{
-    0%,17%{opacity:0;} 21%{opacity:1;} 30%{opacity:1;} 36%,100%{opacity:0;}
+    0%,15%{opacity:0;} 19%{opacity:1;} 30%{opacity:1;} 36%,100%{opacity:0;}
+  }
+  @keyframes c1-crease3{
+    0%,18%{opacity:0;} 22%{opacity:1;} 30%{opacity:1;} 36%,100%{opacity:0;}
+  }
+  .c1-intro{
+    fill:rgba(255,255,255,.94);
+    font-family:inherit;font-size:12.5px;font-weight:600;letter-spacing:.04em;
+    animation:c1-intro 8s ease infinite;
+  }
+  @keyframes c1-intro{
+    0%,8%{opacity:0;} 13%{opacity:1;} 100%{opacity:1;}
   }
   .c1-crane{
     position:absolute;left:50%;top:40%;width:34%;
@@ -519,6 +531,8 @@
           <rect x="4" y="4" width="112" height="112" rx="6" fill="#BA6296"/>
           <line class="c1-crease cr1" x1="10" y1="110" x2="110" y2="10"/>
           <line class="c1-crease cr2" x1="60" y1="8" x2="60" y2="112"/>
+          <line class="c1-crease cr3" x1="8" y1="60" x2="112" y2="60"/>
+          <text class="c1-intro" x="60" y="52" text-anchor="middle">Introducing</text>
         </svg>
       </div>
       <div class="c1-crane">
@@ -539,9 +553,9 @@
     <div class="c-info">
       <p class="logline">One flat magenta sheet. Crease lines flash across it. It folds — and becomes the crane. The origin story of the brand in one gesture: everything starts from the same sheet.</p>
       <ol class="beats">
-        <li><b>0.0–0.6s</b> A single magenta square settles onto black.</li>
-        <li><b>0.6–2.4s</b> Dashed crease lines score the paper — the "plan" before the fold.</li>
-        <li><b>2.4–5.0s</b> The sheet collapses; crane facets fold into place one by one.</li>
+        <li><b>0.0–1.0s</b> A single magenta square settles onto black, with "Introducing" written on it.</li>
+        <li><b>1.0–2.4s</b> Three faint crease lines score the paper — the "plan" before the fold.</li>
+        <li><b>2.4–5.0s</b> The sheet folds away — taking "Introducing" with it — and crane facets fold into place one by one.</li>
         <li><b>5.0–8.0s</b> Crane holds. Wordmark and tagline rise beneath it.</li>
       </ol>
       <p class="fit"><b>Best for:</b> the flagship — website hero, deck opener, launch post. It literally performs the positioning: agents are folds; the sheet is the harness.</p>
