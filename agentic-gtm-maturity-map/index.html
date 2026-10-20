@@ -535,5 +535,26 @@ button.btn{display:inline-block;background:var(--magenta);color:#fff;font-weight
   });
 </script>
 
+<script>
+/* UTM passthrough: copy utm_* (and ref/src) from this page's URL onto every
+   link into agenticgtmassessment.wysdym.ai, except the sample-report PDF. */
+(function(){
+  try{
+    var src=new URLSearchParams(window.location.search);
+    var keep=new URLSearchParams();
+    src.forEach(function(v,k){ if(/^utm_/i.test(k)||k==='ref'||k==='src') keep.append(k,v); });
+    if(!Array.from(keep.keys()).length) return;
+    var links=document.querySelectorAll('a[href*="agenticgtmassessment.wysdym.ai"]');
+    Array.prototype.forEach.call(links,function(a){
+      var u;
+      try{ u=new URL(a.getAttribute('href'),window.location.href); }catch(e){ return; }
+      if(/\.pdf$/i.test(u.pathname)) return;
+      keep.forEach(function(v,k){ if(!u.searchParams.has(k)) u.searchParams.set(k,v); });
+      a.setAttribute('href',u.toString());
+    });
+  }catch(e){}
+})();
+</script>
+
 </body>
 </html>
